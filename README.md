@@ -13,6 +13,17 @@
   <li>You can now see the map</li>
 </ol>
 
+<h2>Keybinds</h2>
+
+| Key           | Function        |
+| ------------- | --------------- |
+| W             | Move forward    |
+| S             | Move backwards  |
+| A             | Strafe left     |
+| D             | Strafe right    |
+| Space         | Ascend          |
+| Shift         | Descend         |
+
 <h2>Thanks to:</h2>
 
   [Kyle Mayes for making a tutorial on Vulkan for Rust](https://kylemayes.github.io/vulkanalia/introduction.html)
