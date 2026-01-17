@@ -1,0 +1,10 @@
+[category: weapons]
+[title: Zero Cannon]
+[model: models/pickups/pu_ZeroCannon.abc]
+[skin: skins/player/weapons/3rdZeroCannon.dtx]
+[anim: none]
+[scale: 2.5]
+[start]
+Anyone who claims water is a soft element has not gone up against a skilled Avatar wielding the Zero Cannon. The spinning barrel rails high-density ice shards at super-sonic speeds, kitchen-blending targets with near-instant results.
+
+Element: Water

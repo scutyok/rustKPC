@@ -1,0 +1,28 @@
+0 user_input off
+//0 player teleport cartstand01
+0 camera_path tententrycamera01
+//0 player lookatangles 0 270
+0 letterbox on
+0 disable_ai true
+0 music intensity 1 transition measure
+
+10 trigger_generic butpush01run
+
+15 move_player tententry01
+
+17 trigger_door btentrydoor01 close
+18 levelvar bigtent 1
+
+19 player lookatangles 0 45
+19.1 player alignbody
+
+//22 letterbox off
+//22 camera_reset
+//22 user_input on
+//22 disable_ai false
+
+
+
+
+
+

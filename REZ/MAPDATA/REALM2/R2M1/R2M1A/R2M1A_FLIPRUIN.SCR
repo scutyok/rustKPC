@@ -1,0 +1,25 @@
+0 user_input off
+0 camera_path flipruin
+0 letterbox on
+0 endingscript mapdata\realm2\r2m1\r2m1a\r2m1a_flipruinEND.scr
+0 player invulnerable true
+0 turn_player flipfocus 1
+0 disable_ai true
+
+2 camera_fov 60 6
+2 trigger_generic satan
+6 trigger_door FFTScore open
+8 disable_ai false
+10 camera_fov 100 3
+15 trigger_generic Adios
+15 music intensity 3 transition measure
+16 wake_monster_group Wrenme
+
+19 letterbox off
+19 camera_reset
+19 user_input on
+19 player invulnerable false
+
+24 wake_monster_group Wrenme
+
+

@@ -1,0 +1,18 @@
+//play the truck doors sounds
+1 sound truckdoorspot sounds\environment\door4open.wav
+
+//open truck doors
+1 trigger_door truckdoorright open
+1 trigger_door truckdoorleft open
+
+//music up
+1 music intensity 3 transition beat
+
+1 trigger_generic truckBMspawn
+2 trigger_generic truckspawns
+
+
+
+
+
+

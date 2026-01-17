@@ -1,0 +1,8 @@
+0 trigger_door Takethiswaltz01 open
+0 trigger_door Takethiswaltz02 open
+0 trigger_door Leveliquid01 open
+0 trigger_door Leveliquid02 open
+0 stopstream mapdata\Realm3\R3M1\R3M1a\r3m1-intro.wav
+
+0 player invulnerable false
+0 disable_ai false

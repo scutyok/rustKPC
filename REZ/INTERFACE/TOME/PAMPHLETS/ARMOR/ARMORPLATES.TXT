@@ -1,0 +1,8 @@
+[category: armor]
+[title: Elder Plate]
+[model: models/pickups/starbearer/breastplate.abc]
+[skin: skins/pickups/starbearer/breastplate.dtx]
+[anim: none]
+[scale: 1.8]
+[start]
+The Elder Plate puts an impenetrable protective layer of heavy metal over the avatar's torso, adding a full 100 points to his health.

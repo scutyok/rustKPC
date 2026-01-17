@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Strongman]
+[model: models/creatures/Strongman.abc]
+[skin: skins/creatures/Strongman.dtx]
+[anim: none]
+[scale: 0.6]
+[start]
+Buffed beyond reason, the Strongman's sole remaining joy is to smash things smaller than him into mushy pulp. His brutal ground slam creates a shockwave that can be devastating, but a well-timed jump evades it.
+
+Element: Earth

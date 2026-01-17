@@ -1,0 +1,35 @@
+0 user_input off
+0 camera_path climbout01
+0 letterbox on
+0 player invulnerable true
+
+0 player teleport ladderstand01
+0 player powerup
+0 streamsound player sounds\pickups\armorpowerup.wav local
+0 camera_path shpickup01
+
+0 player lookatangles 0 0
+.001 player animate powerup 8.5
+
+6.5 player GiveItem Shoulderplates
+
+9 camera_path climbout01
+9 trigger_volume biglava05 open
+9 music intensity 2 transition beat
+
+10 player teleport ladderstand01
+10.1 player lookat ladderlook01
+10.2 player alignbody
+
+13 trigger_generic upper01a
+14 camera_path climbout02
+
+17 trigger_generic upper01b
+
+19.9 trigger_generic upper01a2
+
+20 letterbox off
+20 camera_reset
+20 user_input on
+20 player invulnerable false
+

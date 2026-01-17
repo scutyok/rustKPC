@@ -1,0 +1,5 @@
+// Urban Chasm 01 script
+name "Tutmaster"
+
+
+Loadscript "mapdata\realm0\r0m1\r0m1a\jackwalk.sc"

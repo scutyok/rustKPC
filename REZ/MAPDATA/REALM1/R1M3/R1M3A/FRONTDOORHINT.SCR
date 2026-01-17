@@ -1,0 +1,11 @@
+0 endingscript none
+0 letterbox on
+0 user_input off
+0 disable_ai true
+0 player invulnerable true
+0.1 hint realm1\r1m3\r1m3a\r1m3a-1
+12 letterbox off
+12 user_input on
+12.5 disable_ai false
+13 player invulnerable false
+

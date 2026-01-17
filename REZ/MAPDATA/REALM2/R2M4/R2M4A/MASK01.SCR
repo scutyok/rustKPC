@@ -1,0 +1,39 @@
+
+0 user_input off
+0 player teleport cartstand01
+0 camera_path wagonmask01
+0 player lookatangles 0 270
+0 letterbox on
+0 disable_ai true
+0 player powerup
+0 streamsound player sounds\pickups\armorpowerup.wav local
+.001 player animate powerup 8.5
+
+6.5 player GiveItem Mask
+
+8.5 window_break cartgate01
+8.55 sound_ambient_off snoring01
+
+8.6 wake_monster_group sleepy01
+8.6 wake_monster_group sleepy02
+
+8.8 trigger_generic wakey01
+8.8 trigger_generic wakey02
+
+16 letterbox off
+16 camera_reset
+16 user_input on
+16.5 disable_ai false
+16.5 trigger_generic box01mask
+
+
+
+
+
+
+
+
+
+
+
+

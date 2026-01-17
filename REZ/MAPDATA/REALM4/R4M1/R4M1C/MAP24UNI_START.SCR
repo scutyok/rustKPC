@@ -1,0 +1,42 @@
+//setup
+0.0 cprint "Starting unipsycho battle."
+0.0 user_input off
+0.0 letterbox on
+
+//disable the script objects that control the fire traps above
+0 script_object_disable flame1obj1
+0 script_object_disable flame2obj1
+      
+0.0 camera_path cameramove1
+
+0 endingscript "mapdata\realm4\r4m1\r4m1c\uniending.scr"
+
+//open the door
+0.3 trigger_sliding_door door_entrance open
+
+//player walks out.
+2.0 move_player walk1
+//play the intro .wav file
+2.0 streamsound player mapdata\realm4\r4m1\r4m1c\r4m1c-1.wav local
+2.0 subtitle 4.8 "To block your way, an old enemy has a new trick up his sleeve."
+//move camera to inside room.
+//2.5 camera_pos camerapos 200
+
+//close door behind player.
+4.5 trigger_sliding_door door_entrance close
+7.7 subtitle 7.7 "Use his elemental weakness against him, and quench the growing flames."
+16.2 subtitle 11.0 "If the ring of fire is completed, the dome will fill with flames that will burn flesh and soul to a crisp."
+//battle starts.
+28.5 boss_controller uni_controller "start"
+
+//shutdown
+28.5 letterbox off
+28.5 user_input on
+28.5 camera_reset
+
+//music set to intensity 3
+28.6 music intensity 3 transition measure
+
+
+
+

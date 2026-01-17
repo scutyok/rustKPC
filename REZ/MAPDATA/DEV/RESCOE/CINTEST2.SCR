@@ -1,0 +1,8 @@
+0 user_input off
+0 camera_path path2
+0 letterbox on
+
+
+5 letterbox off
+5 camera_reset
+5 user_input on

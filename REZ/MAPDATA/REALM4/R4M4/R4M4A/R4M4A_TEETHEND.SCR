@@ -1,0 +1,7 @@
+0 inventory remove ticket
+0 trigger_door tann01 open
+0 letterbox off
+0 camera_reset
+0 user_input on
+0 disable_AI false
+0 trigger_generic FAKK4

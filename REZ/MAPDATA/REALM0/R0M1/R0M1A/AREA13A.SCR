@@ -1,0 +1,9 @@
+0 streamsound player sounds\tutorial\area13-5.wav local
+// wav file length 8.29
+0 center_text 0 9.3 "Exit mirrors are the bridge between locations in the elemental realms. To travel on, target the mirror and press your use control."
+
+3 trigger_door tentdoor open
+
+10 streamsound player sounds\tutorial\area13-6.wav local
+// wav file length 7.35
+10 center_text 0 8.3 "This concludes the tutorial. Using this mirror will return you to the game menu. Good luck."

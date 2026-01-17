@@ -1,0 +1,10 @@
+// Urban Chasm 01 script
+name "mansion01"
+
+Loadscript "mapdata\realm2\r2m2\r2m2a\balltur01.sc"
+Loadscript "mapdata\realm2\r2m2\r2m2a\ballwalk01.sc"
+Loadscript "mapdata\realm2\r2m2\r2m2a\ballwalk02.sc"
+Loadscript "mapdata\realm2\r2m2\r2m2a\ballwalk02b.sc"
+Loadscript "mapdata\realm2\r2m2\r2m2a\wait01.sc"
+Loadscript "mapdata\realm2\r2m2\r2m2a\autokill01.sc"
+

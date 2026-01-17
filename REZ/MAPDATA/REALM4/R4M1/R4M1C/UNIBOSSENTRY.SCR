@@ -1,0 +1,11 @@
+//load scripts
+0 scriptload mapdata\realm4\r4m1\r4m1c\map24uni_start.scr
+0 scriptload mapdata\realm4\r4m1\r4m1c\map24uni_end.scr
+0 scriptload mapdata\realm4\r4m1\r4m1c\cheat.scr
+
+0 hint realm4\r4m1\r4m1c\r4m1-introtext
+
+//set water texture
+0 water_texture moltensteel sprites\world\lava1.spr
+
+0.001 cheatscript mapdata\realm4\r4m1\r4m1c\cheat.scr

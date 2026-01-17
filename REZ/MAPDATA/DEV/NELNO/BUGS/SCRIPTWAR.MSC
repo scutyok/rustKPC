@@ -1,0 +1,4 @@
+//This is the master script for ScriptWar.dat
+Name "ScriptWar"
+LoadScript "mapdata\dev\Nelno\ScriptWar_Headless.sc"
+LoadScript "mapdata\dev\Nelno\ScriptWar_BallBuster.sc"

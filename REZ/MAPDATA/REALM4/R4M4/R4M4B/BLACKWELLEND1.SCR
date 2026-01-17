@@ -1,0 +1,4 @@
+0 stopstream mapdata\realm4\r4m4\r4m4b\r4m4-end.wav 
+0.1 trigger_generic exit
+0.1 player invulnerable false
+1 music ravensong intensity 1

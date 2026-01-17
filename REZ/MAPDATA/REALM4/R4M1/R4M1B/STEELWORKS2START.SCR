@@ -1,0 +1,17 @@
+//load all scripts
+0 scriptload "mapdata\realm4\r4m1\r4m1b\cheat.scr"
+0 scriptload "mapdata\realm4\r4m1\r4m1b\armor.scr"
+0 scriptload "mapdata\realm4\r4m1\r4m1b\limedoor.scr"
+0 scriptload "mapdata\realm4\r4m1\r4m1b\limeending.scr"
+
+0 hint realm4\r4m1\r4m1b\r4m1-introtext
+
+0.001 cheatscript mapdata\realm4\r4m1\r4m1b\cheat.scr
+
+1 script_object_disable firstliftobj
+
+1 levelvar secondliftlock 99
+
+1 levelvar exitlock 99
+
+

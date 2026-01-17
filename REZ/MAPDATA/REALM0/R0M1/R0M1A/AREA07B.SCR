@@ -1,0 +1,29 @@
+0 streamsound player sounds\tutorial\area07-7.wav local
+// wav file length 2.36
+0 center_text 0 3.3 "Some doors require keys to open them."
+
+4 streamsound player sounds\tutorial\area07-8.wav local
+// wav file length 2.21
+4 center_text 0 3.3 "Pick up the key by running into it."
+
+6 trigger_door keygate01 open
+6 sound keygate01sound sounds\environment\metalslide3.wav
+
+9 streamsound player sounds\tutorial\area07-9.wav local
+// wav file length 1.81
+9 center_text 0 3.3 " All of these doors are locked."
+
+14 streamsound player sounds\tutorial\area07-10.wav local
+// wav file length 4.34
+14 center_text 0 5.3 "The door ahead of you and the one on the left cannot be opened at this time."
+
+20.5 streamsound player sounds\tutorial\area07-11.wav local
+// wav file length 3.32
+20.5 center_text 0 4.3 "If you try to open them you will be told they are locked."
+
+26 streamsound player sounds\tutorial\area07-12.wav local
+// wav file length 5.14
+26 center_text 0 6.1 "The door on the right will be unlocked with the key and you can move on to the next area."
+
+32 trigger_door diablo open
+32 sound diablospot sounds\environment\metalslide2.wav 

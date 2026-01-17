@@ -1,0 +1,8 @@
+[category: characters]
+[title: Stargrave]
+[model: models/creatures/stargrave.abc]
+[skin: skins/creatures/stargrave.dtx]
+[anim: amba]
+[scale: 0.4]
+[start]
+It is the shell of the mute stilt man that watches over the border between air and nightmare. The blessing of the Celestial may have left him, but this mute specter still holds enough elemental power to be reckoned with. 

@@ -1,0 +1,26 @@
+0 scriptload mapdata\realm4\r4m2\r4m2c\r4m2ccheat.scr
+0 endingscript mapdata\realm4\r4m2\r4m2c\sewer03aintro.scr
+0 water_texture drain01 Sprites\World\lava1.spr
+
+0 user_input off
+0 camera_path Intro01
+0 letterbox on
+0 player invulnerable true
+
+0 hint realm4\r4m2\r4m2c\r4m2-introtext
+
+0.001 cheatscript mapdata\realm4\r4m2\r4m2c\r4m2ccheat.scr
+
+1 script_object_play flametime01a 
+
+5 trigger_spawner spawn01 on
+5 trigger_spawner spawn01a on
+5 trigger_spawner spawn01b on
+
+6 trigger_generic stumpy01
+
+14 letterbox off
+14 camera_reset
+14 user_input on
+14 player invulnerable false
+

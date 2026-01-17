@@ -1,0 +1,12 @@
+0 stopstream mapdata\realm4\r4m2\r4m2a\r4m2-intro.wav
+
+.01 player teleport playmove01 10
+
+
+.01 trigger_door entrydoor01 close
+
+
+.01 letterbox off
+.01 camera_reset
+.01 user_input on
+

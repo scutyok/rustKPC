@@ -1,0 +1,32 @@
+0 user_input off
+0 camera_path Blademaster
+0 letterbox on
+0 endingscript mapdata\realm1\r1m1\r1m1b\r1m1b_Blademaster_END.scr
+0 player invulnerable true
+0 disable_ai true
+
+0 music intensity 2 transition measure
+5 trigger_door 5MinutesAlone01 open
+5.2 trigger_door 5MinutesAlone02 open
+8 trigger_door Nelnoz01 open
+8 trigger_door Nelnoz02 open
+8.2 disable_ai false
+
+9 trigger_generic BMBoss01
+9.5 sound player sounds\monsters\monsterland.wav local
+9.7 sound player sounds\monsters\monsterland3.wav local
+
+10 subtitle 4 "BLADEMASTER"
+
+11 sound player sounds\monsters\blademaster\bladeambient3.wav local
+
+13 music intensity 3 transition measure
+
+15 wake_monster_group Boss01
+15.3 wake_monster_group Boss02
+
+
+17 letterbox off
+17 camera_reset
+17 user_input on
+19 player invulnerable false

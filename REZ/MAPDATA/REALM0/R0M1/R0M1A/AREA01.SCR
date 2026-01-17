@@ -1,0 +1,42 @@
+1 streamsound player sounds\tutorial\area01-1.wav local
+// wav file length 5.3
+1 center_text 0 6.3 "In this tutorial you will learn movement, combat, and interaction with the world."
+
+9 streamsound player sounds\tutorial\area01-2.wav local
+// wav file length 7.33
+9 center_text 0 8.3 "Move your mouse to change the direction you are facing. You may turn completely around, as well as look up and down."
+
+20 streamsound player sounds\tutorial\area01-3.wav local
+// wav file length 7.03
+20 center_text 0 8 "Using your forward and backward controls move forward a short distance, then back again."
+
+//print forward key
+20.5 print_message 0 15 7
+
+//print backward key
+21 print_message 0 15 8
+
+32 streamsound player sounds\tutorial\area01-4.wav local
+// wav file length 6.33
+32 center_text 0 7.3 "Holding down your slow control while you move will slow you down, allowing you to maneuver more precisely. 
+
+//print slow key
+32.5 print_message 0 15 9
+
+41 streamsound player sounds\tutorial\area01-5.wav local
+// wav file length 6.08
+41 center_text 0 7 "You may also toggle between walking and running using your walk/run toggle control."
+
+//print walkruntoggle key
+41.5 print_message 0 15 10
+
+49 streamsound player sounds\tutorial\area01-6.wav local
+// wav file length 3.82
+49 center_text 0 4.8 "Move around this room, following the path through the boxes."
+
+55 streamsound player sounds\tutorial\area01-7.wav local
+// wav file length 4.59
+55 center_text 0 5.6 "When you are comfortable with the controls, move through the doorway to the next area."
+
+60 trigger_door firstrooma open
+60 trigger_door firstroomb open

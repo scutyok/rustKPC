@@ -1,0 +1,8 @@
+//This is the master script for Cathedral2.dat
+Name "ca2patrol"
+LoadScript "mapdata\Realm1\r1m3\r1m3b\ca2patrol1.sc"
+LoadScript "mapdata\Realm1\r1m3\r1m3b\ca2turret1.sc"
+LoadScript "mapdata\Realm1\r1m3\r1m3b\ca2turret2.sc"
+LoadScript "mapdata\Realm1\r1m3\r1m3b\strutter1.sc"
+LoadScript "mapdata\Realm1\r1m3\r1m3b\strutter2.sc"
+LoadScript "mapdata\Realm1\r1m3\r1m3b\strutter3.sc"

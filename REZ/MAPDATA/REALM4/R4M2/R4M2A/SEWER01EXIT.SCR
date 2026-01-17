@@ -1,0 +1,14 @@
+0 user_input off
+0 letterbox on
+0 camera_path exitmovie01
+
+1 move_player exitmovie02
+
+1.5 trigger_volume biglava01 open_time 10
+
+4 trigger_door exitdoor01 open
+
+6.5 trigger_generic exitout01
+6.5 letterbox off
+6.5 camera_reset
+6.5 user_input on

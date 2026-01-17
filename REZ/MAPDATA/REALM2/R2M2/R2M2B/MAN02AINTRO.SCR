@@ -1,0 +1,16 @@
+0 stopstream mapdata\realm2\r2m2\r2m2b\r2m2b-1.wav
+0 trigger_door basedoor01 close
+0  fog_fade 1 on 1 3000 52 88 56 off
+0  hint realm2\r2m2\r2m2b\r2m2-introtext
+
+0 player teleport startspot01
+0  camera_reset
+0 user_input on
+0 letterbox off
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+
+.5 trigger_sliding_door elevatordoor open
+
+.5 trigger_generic lobbyspawn
+
+.5 user_input on
+.5 letterbox off
+.5 camera_reset
+.5 player invulnerable false
+.5 disable_ai false

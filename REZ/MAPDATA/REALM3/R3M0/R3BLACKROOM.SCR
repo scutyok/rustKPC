@@ -1,0 +1,80 @@
+0 endingscript mapdata\realm3\R3M0\r3blackroomEND.scr
+0 user_input off
+0 letterbox on
+0 user_input off
+
+0 model_anim_loop Raven1 HunchTwiddle
+0 model_anim_loop Raven2 HunchTwiddle
+
+
+0.1 fog_fade 8 on 1 1500 119 222 227 on 100 1000
+2 camera_path path0
+3 streamsound player mapdata\Realm3\R3M0\r3-ravenintro-1.wav local
+3 subtitle 4.3 "The Celestial is the arbiter of balance,"
+3 model_anim_loop Raven1 HunchTwiddleTalk
+3 model_anim_loop Raven2 HunchTwiddleTalk
+//wav-file length = 4 second
+
+3 camera_path path1
+
+8 streamsound player mapdata\Realm3\R3M0\r3-ravenintro-2.wav local
+//wav-file length = 10 seconds
+8 subtitle 4.7 "but harmony was lost when the chains of fate were broken"
+
+13.3 subtitle 4.5 "and the great darkness forced itself into our world."
+
+
+19 streamsound player mapdata\Realm3\R3M0\r3-ravenintro-3.wav local
+//wav-file length = 6 seconds
+19 subtitle 5.8 "The Celestial must be united with his brethren for our world to stand a chance."
+
+
+26 streamsound player mapdata\Realm3\R3M0\r3-ravenintro-4.wav local
+//wav-file length = 8 seconds
+26 subtitle 8.1 "His armor shards have been hidden in the most perilous corners of the fading realm,"
+29.4 model_anim_loop Raven1 HunchBallGaze
+29.4 model_anim_loop Raven2 HunchBallGaze
+33 model_anim_loop Raven1 HunchTwiddle
+33 model_anim_loop Raven2 HunchTwiddle
+
+35 camera_path path2
+35 streamsound player mapdata\Realm3\R3M0\r3-ravenintro-5.wav local
+//wav-file length = 14 seconds
+35 model_anim_loop Raven1 HunchTwiddleTalk
+35 model_anim_loop Raven2 HunchTwiddleTalk
+35.2 subtitle 5.2 "from the wharf of waste, to the stacks of poison that feed them,"
+36.5 model_anim_loop Raven1 HunchRaiseHandsTalk
+36.5 model_anim_loop Raven2 HunchRaiseHands
+40.4 model_anim_loop Raven1 HunchTwiddle
+40.4 model_anim_loop Raven2 HunchTwiddle
+         
+
+40.9 subtitle 6.8 "over the urban chasm and into the Midway's Mouth of Madness."
+41 model_anim_loop Raven1 HunchTwiddleTalk
+41 model_anim_loop Raven2 HunchTwiddleTalk
+43 model_anim_loop Raven1 Hunch2Up 
+43 model_anim_loop Raven2 Hunch2Up 
+44.3 model_anim_loop Raven1 UpAmb 
+44.3 model_anim_loop Raven2 UpAmb  
+46 model_anim_loop Raven1 Up2Hunch
+46 model_anim_loop Raven2 Up2Hunch
+47.3 model_anim_loop Raven1 HunchTwiddle
+47.3 model_anim_loop Raven2 HunchTwiddle
+
+
+49 model_anim_loop Raven1 HunchTwiddleTalk
+49 model_anim_loop Raven2 HunchTwiddleTalk
+49 streamsound player mapdata\Realm3\R3M0\r3-ravenintro-6.wav local
+//wav-file length = 7 seconds
+49 subtitle 7.0 "Lay claim to the air realm before it fades out of existence!"
+50 camera_fov 50 3
+51 fog_fade 3 on 1 2 255 255 255 off
+
+56.5 camera_reset
+56.5 trigger_generic CExitTrigger0
+
+
+
+
+
+

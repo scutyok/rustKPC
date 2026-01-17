@@ -1,0 +1,4 @@
+// Sewer 01 script
+name "Sewer01"
+
+Loadscript "mapdata\dev\cleaner\turret.sc"

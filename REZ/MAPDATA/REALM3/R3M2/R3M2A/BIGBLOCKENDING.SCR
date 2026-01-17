@@ -1,0 +1,17 @@
+//move the block
+0 trigger_door bigblock open
+
+//spawn aclown
+.5 trigger_generic aclown1
+
+//end script and give player control
+.5 user_input on
+.5 letterbox off
+.5 camera_reset
+.5 player invulnerable false
+.5 disable_ai false
+
+
+
+
+

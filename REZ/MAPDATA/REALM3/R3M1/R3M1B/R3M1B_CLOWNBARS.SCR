@@ -1,0 +1,11 @@
+0 user_input off
+0 camera_path Clownbars
+0 letterbox on
+0 disable_AI true
+
+3 trigger_door WhatsMyNameIs open
+
+6 letterbox off
+6 camera_reset
+6 user_input on
+6 disable_AI false

@@ -1,0 +1,8 @@
+[category: artifact]
+[title: Elemental Icons]
+[model: models/pickups/ammo.abc]
+[skin: skins/pickups/ammo_w.dtx]
+[anim: none]
+[scale: 3.0]
+[start]
+Gather the strength of the elements unto yourself by collecting their symbols! The ammo for the Elder Arms come in three size variants, icon (+10), cube (+40) and tablet (+100). Shared and Ultimate weapons eat this ammo hungrily, so try to keep a healthy supply.

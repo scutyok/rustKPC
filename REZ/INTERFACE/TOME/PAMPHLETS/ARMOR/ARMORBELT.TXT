@@ -1,0 +1,8 @@
+[category: armor]
+[title: Elder Belt]
+[model: models/pickups/starbearer/belt.abc]
+[skin: skins/pickups/starbearer/belt.dtx]
+[anim: none]
+[scale: 2.0]
+[start]
+A most powerful boon, the Elder Belt will greatly increase your running speed, allow you to make longer jumps and maneuver more effectively in combat.

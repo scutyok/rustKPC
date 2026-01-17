@@ -1,0 +1,34 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//start the camera on the path
+0 camera_path torsopath
+
+0 music intensity 1 transition beat
+
+//teleport player to exact spot
+0 player teleport torsospot
+0 player animate powerup 8.5
+0 player powerup
+0 player lookat torsoturn
+
+0 sound player sounds\pickups\armorpowerup.wav local
+
+6.75 player giveitem mask
+
+//end script
+11 user_input on
+11 letterbox off
+11 camera_reset
+11 player invulnerable false
+11 disable_ai false
+
+11 trigger_generic flyspawns
+
+11.2  scriptplay mapdata\realm3\r3m4\r3m4a\maskdooroff.scr
+
+11.5 music intensity 3 transition beat
+

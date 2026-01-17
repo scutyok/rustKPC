@@ -1,0 +1,10 @@
+[category: weapons]
+[title: Magma Cannon]
+[model: models/pickups/pu_MagmaCannon.abc]
+[skin: skins/player/weapons/3rdMagmaCannon.dtx]
+[anim: none]
+[scale: 2.7]
+[start]
+A glorious union of iron and fire, this rusted boom-stick sports a molten core and the fangs of an ancient Wyrm. No other weapon packs as much impact up close, but the kickback hurts and it could use a good oiling to improve firing speeds.
+
+Element: Fire

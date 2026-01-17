@@ -1,0 +1,10 @@
+// CitySquare3 master script
+name "CitySquare3"
+
+Loadscript "mapdata\realm1\r1m2\r1m2c\cratebuster1.sc"
+Loadscript "mapdata\realm1\r1m2\r1m2c\cratebuster2.sc"
+Loadscript "mapdata\realm1\r1m2\r1m2c\cs3uni1.sc"
+Loadscript "mapdata\realm1\r1m2\r1m2c\turret1.sc"
+
+
+

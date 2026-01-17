@@ -1,0 +1,30 @@
+0 letterbox on
+0 user_input off
+0 camera_path path3
+0 player teleport telespot1
+0 player lookatangles 0 0
+
+0 music intensity 1 transition beat
+
+0 nmc_activate 4 10.5
+
+7 streamsound player mapdata\realm5\R5-3.wav local
+7 subtitle 9.5 "From beyond the grave, the Nightmare Child means to drag you with it into the downward spiral of doom that already shackles it!"
+
+12 camera_fov 130 9
+
+18 subtitle 5.0 "Have you the strength left to face the fury of retaliation?"
+
+24 music intensity 3 transition instant
+24 letterbox off
+24 user_input on
+24 camera_reset
+24 camera_fov 90 0
+
+
+
+
+
+
+
+

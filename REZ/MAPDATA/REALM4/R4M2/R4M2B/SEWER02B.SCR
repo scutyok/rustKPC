@@ -1,0 +1,40 @@
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+
+
+0 teleport_door elev01 close
+0 trigger_volume smalllava01 open
+
+.1 camera_path doorswitch01
+
+.2 explosion expl01 2
+.3 explosion expl01 3
+.4 explosion expl01 4
+.5 explosion expl01 1
+
+
+
+1.6 trigger_volume biglava01 open_time 2
+
+2.0 trigger_volume biglava01 open
+
+2.7 trigger_volume biglava01 open_time 5
+2.9 water_on drain04
+
+
+// 6.0 trigger_volume biglava01 open_time 4500
+//6.0 trigger_volume biglava01 open_time 100000000000
+
+
+
+8.7 music intensity 3
+
+
+
+9.5 letterbox off
+9.5 camera_reset
+9.5 user_input on
+9.5 player invulnerable false
+9.6 script_object_play timer01
+

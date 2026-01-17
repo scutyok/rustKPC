@@ -1,0 +1,23 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//switch camera to show torso gate opening
+0 camera_path showdgpath
+
+//exit script command
+0.02 endingscript mapdata\realm1\r1m2\r1m2c\endingdg.scr
+
+//open drain gate doors
+1 trigger_door gatedrain close
+1 trigger_door gatedrain2 close
+
+//end script
+8 user_input on
+8 letterbox off
+8 camera_reset
+8 player invulnerable false
+8 disable_ai false
+

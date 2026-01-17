@@ -1,0 +1,11 @@
+// Beast Pens 01 script
+name "Beast01"
+
+Loadscript "mapdata\realm2\r2m4\r2m4a\balltur01.sc"
+Loadscript "mapdata\realm2\r2m4\r2m4a\bladepat02.sc"
+Loadscript "mapdata\realm2\r2m4\r2m4a\bladepat03.sc"
+Loadscript "mapdata\realm2\r2m4\r2m4a\wait01.sc"
+Loadscript "mapdata\realm2\r2m4\r2m4a\wait02.sc"
+
+Loadscript "mapdata\realm2\r2m4\r2m4a\flyout01.sc"
+Loadscript "mapdata\realm2\r2m4\r2m4a\flyout02.sc"

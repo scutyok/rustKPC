@@ -1,0 +1,8 @@
+0 player teleport  bloodstart
+0 stopstream mapdata\realm5\R5-Intro.wav 
+0 trigger_door teethgate1 close
+0 trigger_door teethgate2 close
+
+
+
+

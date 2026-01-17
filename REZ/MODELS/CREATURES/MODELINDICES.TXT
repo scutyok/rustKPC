@@ -1,0 +1,14 @@
+//	This is a list of models that is shared on the client and server.
+//	Both the client and server read this file and set up arrays so that
+//	they can send an index down for a model instead of the entire model
+//	name.
+models/player/sanjuro.abc
+models/player/starbearer/starbearer.abc
+models/player/starbearer/pablo.abc
+models/player/beastking/beastking.abc
+models/player/beastking/patrick.abc
+models/player/celestial/celestial.abc
+models/player/celestial/andy.abc
+models/player/demon/demon.abc
+models/player/demon/gabe.abc
+models/default.abc

@@ -1,0 +1,8 @@
+[category: characters]
+[title: The Celestial]
+[model: models/player/Celestial/Celestial_head.abc]
+[skin: skins/player/Celestial/Celestial_head.dtx]
+[anim: amba]
+[scale: 3]
+[start]
+Represents the principles of universal balance, the ultimate harmony of the cosmos. Observes situations dispassionately and sees all sides of a dilemma. His is the element of air.

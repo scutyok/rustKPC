@@ -1,0 +1,83 @@
+0 endingscript mapdata\realm1\R1M0\r1blackroomEND.scr
+0 user_input off
+0 letterbox on
+0 model_disappear ball02
+
+//--------Shot 01
+0 model_anim_loop Madam1 UpAmbTalk
+0 model_anim_loop Madam2 UpAmb
+0 fog_fade 0 on 1 2 0 0 0 on 1 2
+0 camera_fov 170 0
+0 camera_path MR05
+0 camera_fov 90 3
+0.1 fog_fade 3 on 1 15000 255 108 255 on 100 1000
+3.1 streamsound player mapdata\Realm1\R1M0\r1-ravenintro-1.wav local
+//wav-file length = 3 seconds
+3.1 subtitle 4.0 "This is the Water Realm."
+8 streamsound player mapdata\Realm1\R1M0\r1-ravenintro-2a.wav local
+//wav-file length = 8 seconds
+8 subtitle 6.8 "The old avatars are powerless, lost in the void with their masters."
+8 camera_fov 50 8
+
+11.7 model_anim Madam1 UpShrugTalk
+11.7 model_anim Madam2 UpShrug
+
+16 streamsound player mapdata\Realm1\R1M0\r1-ravenintro-2b.wav local
+//wav-file length = 10 seconds
+16 subtitle 9.0 "It is you that have been favored to be the Starbearer's champion in this time of desperation."
+
+16.1 model_anim Madam1 HunchRaiseHandsTalk
+16.1 model_anim Madam2 HunchRaiseHands
+
+16.5 model_anim_loop Madam1 HunchTwiddleTalk
+16.5 model_anim_loop Madam2 HunchTwiddle
+
+26.4 streamsound player mapdata\Realm1\R1M0\r1-ravenintro-3.wav local
+//wav-file length = 3 seconds
+26.4 subtitle 3.5 "Your journey will be a perilous one."
+26.4 model_anim Madam1 HunchBallGaze
+26.4 model_anim Madam2 HunchBallGaze
+
+
+//30 model_anim Madam HunchTwiddle
+31 streamsound player mapdata\Realm1\R1M0\r1-ravenintro-4.wav local
+//wav-file length = 19 seconds
+31 subtitle 7.3 "From the moving shadows of tattered back streets, through the haze of the city heart,"
+
+//31 model_anim Madam HunchTwiddleTalk
+//31 camera_fov 190 8
+
+34 model_anim Madam1 HunchRaiseHandsTalk
+34 model_anim Madam2 HunchRaiseHands
+39 subtitle 9.5 "you must pass through hallowed halls to finally reach into the circus and strike at the root of evil."
+
+46 model_anim Madam1 TerribleThingsTalk
+46 model_anim Madam2 TerribleThings
+
+50 streamsound player mapdata\Realm1\R1M0\r1-ravenintro-5.wav local
+//wav-file length = 16 seconds
+
+
+50 subtitle 8.0 "The contamination from the Nightmare Child is already seeping out of the seams of the cosmos,"
+50 model_anim Madam1 HunchBallGaze
+50 model_anim Madam2 HunchBallGaze
+53 model_disappear ball01
+53 model_appear ball02
+55 model_anim Madam1 HunchRaiseHandsTalk
+55 model_anim Madam2 HunchRaiseHands
+59.5 subtitle 3.5 "giving darkness eyes to see with..."
+63.2 subtitle 4.0  "...and fangs to tear with."
+
+67.5 model_anim Madam1 Hunch2Up
+67.5 model_anim Madam2 Hunch2Up
+67.5 streamsound player mapdata\Realm1\R1M0\r1-ravenintro-6.wav local
+67.5 subtitle 7.0 " Steel yourself! Fear will take shape before your eyes."
+//wav-file length = 8 seconds
+67.6 camera_fov 30 7
+68 model_anim_loop Madam1 UpAmb
+68 model_anim_loop Madam2 UpAmb
+70 fog_fade .3 on 1 1024 0 0 0 off
+70.4 fog_fade 6 on 1 2 0 0 0 off
+
+79 trigger_generic CExitTrigger0
+

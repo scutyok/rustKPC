@@ -1,0 +1,38 @@
+//start
+//0 user_input off
+//0 letterbox on
+
+//start the camera on the path to watch crates break
+//0 camera_path cratepath
+
+
+
+//start the crate breaking
+0 window_break crate1
+.1 window_break crate4
+.5 window_break crate3
+.6 window_break crate5
+.95 window_break crate7
+1.2 window_break crate2
+
+//switch camera to show first cratebuster walking out
+//2 camera_path cb1path
+
+//start cratebuster1
+//2 trigger_generic cb1runner
+
+//switch camera to show second cratebuster walking out
+//5 camera_path cb2path
+
+//start cratebuster2
+//5 trigger_generic cb2runner
+
+//end script
+//8 user_input on
+//8 letterbox off
+//8 camera_reset
+
+
+
+
+

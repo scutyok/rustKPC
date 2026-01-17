@@ -1,0 +1,75 @@
+//	This is a list of sprites that is shared on the client and server.
+//	Both the client and server read this file and set up arrays so that
+//	they can send an index down for a sprite instead of the entire sprite
+//	name (thus speeding up networking immensly).
+//	When you specify a sprite name in a world object such as a CTorch or
+//	CTorchColored object, you must specify a sprite name that is in this
+//	list.  If a sprite you want to use is not in this, you can add its
+//	name here.  You must specify the name exactly as it appears in this
+//	list, except for capitals.
+//  surface sprites
+sprites/surface/MagmaBurn.spr
+sprites/surface/MagmaHit.spr
+sprites/surface/MagmaMetal.spr
+sprites/surface/Splat1.spr
+sprites/surface/Splat2.spr
+sprites/surface/Splat3.spr
+sprites/surface/Splat4.spr
+sprites/surface/Splat5.spr
+sprites/surface/GreenSplat1.spr
+sprites/surface/GreenSplat2.spr
+sprites/surface/GreenSplat3.spr
+sprites/surface/GreenSplat4.spr
+sprites/weapons/zerocannon/zerofreeze.spr
+//  particle sprites
+sprites/particles/flame1.spr
+sprites/particles/TorchWhite.spr
+sprites/particles/UnipsychoFire.spr
+sprites/particles/PurpleFlame.spr
+sprites/particles/smoke.spr
+sprites/particles/torchtest1.spr
+sprites/particles/torchtest2.spr
+sprites/particles/torchtest3.spr
+sprites/particles/torchtest4.spr
+sprites/particles/torchtest5.spr
+sprites/particles/PipeFire.spr
+sprites/particles/whitewater.spr
+sprites/particles/waterleak.spr
+sprites/particles/waterleaksplash.spr
+//  flare sprites
+sprites/flares/BlueFlare.spr
+sprites/flares/RedFlare.spr
+sprites/flares/Whiteflare.spr
+sprites/flares/Yellowflare.spr
+sprites/flares/EyeFlare.spr
+//  pickup sprites
+sprites/pickups/rageorb/ragepickup.spr
+sprites/pickups/purifier/purifier.spr
+//	misc sprites
+sprites/credits/lightning.spr
+sprites/beams/bladetrail.spr
+sprites/effects/gubsplat1.spr
+sprites/effects/gubsplat2.spr
+sprites/effects/gubdroplet1.spr
+sprites/effects/gubdroplet2.spr
+sprites/beams/grindershot.spr
+sprites/effects/grinderdeath.spr
+sprites/effects/flamewall.spr
+sprites/powerup/starbearer_flash.spr
+sprites/powerup/beastking_flash.spr
+sprites/powerup/celestial_flash.spr
+sprites/powerup/demon_flash.spr
+sprites/effects/hellsporew.spr
+sprites/effects/hellsporee.spr
+sprites/effects/hellsporea.spr
+sprites/effects/hellsporef.spr
+sprites/effects/eyeballglow.spr
+sprites/effects/nightshot1.spr
+sprites/flares/eyeshot.spr
+//	weapons
+sprites/weapons/magmacannon/magmatrail.spr
+sprites/weapons/zerocannon/zerotrail.spr
+sprites/weapons/zerocannon/smokefrost.spr
+sprites/particles/leak.spr
+sprites/weapons/muzzleflash0.spr
+sprites/weapons/muzzleflash1.spr

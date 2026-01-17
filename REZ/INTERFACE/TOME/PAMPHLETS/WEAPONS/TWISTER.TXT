@@ -1,0 +1,11 @@
+[category: weapons]
+[title: Twister]
+[model: models/pickups/celestial/gauntlets.abc]
+[skin: skins/pickups/celestial/gauntlets.dtx]
+[anim: none]
+[scale: 3.0]
+[start]
+Anyone stepping within arm's reach of the Celestial runs the risk of being roasted alive by the Twister gloves. Discharging lethal levels of electricity directly from the air, the twister will shock your opposition if they dare step close.
+
+Element: Air
+

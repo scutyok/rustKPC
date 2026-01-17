@@ -1,0 +1,96 @@
+0 endingscript mapdata\realm2\R2M0\r2blackroomEND.scr
+0 user_input off
+0 letterbox on
+0 model_disappear ball02
+0 model_disappear Fatima
+
+//Shot 01
+0 fog_fade 0 on 1 2 0 0 0 on 1 2
+0 camera_fov 30 0
+0 camera_path MR00
+0 camera_fov 50 20
+0.1 fog_fade 5 on 1 15000 116 255 108 on 100 1000
+2.5 fog_fade 6 on 1 15000 0 0 0 off
+3.5 streamsound player mapdata\Realm2\R2M0\r2-ravenintro-1.wav local
+//wav-file length = 4 second
+3.5 subtitle 4.5 "You are now in the Realm of Earth."
+4 model_anim_loop Madam1 HunchTwiddleTalk
+4 model_anim_loop Madam2 HunchTwiddleTalk
+
+9 streamsound player mapdata\Realm2\R2M0\r2-ravenintro-2.wav local
+//wav-file length = 5 seconds
+9 subtitle 5.0 "The safeties of your own domain have been left behind."
+
+14 model_anim_loop Madam1 HunchTwiddleTalk
+14 model_anim_loop Madam2 HunchTwiddleTalk
+15 subtitle 9.0 "Don't trust the rules of this world to follow those of your own, or it will be your undoing."
+15.1 streamsound player mapdata\Realm2\R2M0\r2-ravenintro-3.wav local
+//wav-file length = 9 seconds
+
+24 fog_fade 1 on 1 2 0 0 0 on 100 1000
+
+//Shot 03
+25 camera_fov 170 0
+25 streamsound player mapdata\Realm2\R2M0\r2-ravenintro-5.wav local
+//wav-file length = 10 seconds
+25 subtitle 10.0 "Only the strength of the Elder will protect you from the approaching abyss that eats at the fabric of time."
+25 camera_path MR09
+25 fog_fade 10 on 1 15000 116 255 108 on 100 1000
+25.1 camera_fov 80 8
+30 model_anim Madam1 HunchRaiseHandsTalk
+30 model_anim Madam2 HunchRaiseHands
+35 model_anim Madam1 HunchTwiddle
+35 model_anim Madam2 HunchTwiddle
+
+//Shot 04
+37.2 streamsound player mapdata\Realm2\R2M0\r2-ravenintro-6.wav local
+37.2 model_anim_loop Madam1 HunchTwiddleTalk
+37.2 model_anim_loop Madam2 HunchTwiddleTalk
+//wav-file length = 26 seconds
+37.2 subtitle 11.7 "From the smoldering ruins of the roadhouse, you must head deep into the earth wound, pass through the palace of pain,"
+37.5 camera_path MR08
+37.5 camera_fov 190 0
+47.5 model_anim Madam1 TerribleThingsTalk
+47.5 model_anim Madam2 TerribleThings
+50.5 subtitle 11.0 "beyond the dank vaults of the dead, before you'll come face to face with your fate, deep within the beast pens."
+
+57 camera_fov 90 6.8
+
+59 model_anim Madam1 Hunch2Up
+59 model_anim Madam2 Hunch2Up
+59.5 model_anim_loop Madam1 UpAmb
+59.5 model_anim_loop Madam2 UpAmb
+
+64 model_anim Madam1 HunchBallGaze
+64 model_anim Madam2 HunchBallGaze
+//Shot 05
+//64 fog_fade 12 on 1 2 0 0 0 on 1 2
+64 model_disappear ball01
+64 model_appear ball02
+64 camera_path MR05
+64 camera_fov 50 0
+64.1 camera_fov 180 13
+64.5 model_anim_loop Madam1 HunchTwiddle
+64.5 model_anim_loop Madam2 HunchTwiddle
+65 streamsound player mapdata\Realm2\R2M0\r2-ravenintro-7.wav local
+//wav-file length = 11 seconds
+65 subtitle 11.0 "But make haste! As these words reach you, the elemental realms lose ground to the cosmic cancer."
+72 model_anim Madam1 HunchRaiseHandsTalk
+72 model_anim Madam2 HunchRaiseHands
+
+75.8 model_anim Madam1 TerribleThingsTalk
+75.8 model_anim Madam2 TerribleThings
+76.5 streamsound player mapdata\Realm2\R2M0\r2-ravenintro-8.wav local
+//wav-file length = 14 seconds
+76.5 subtitle 13.0 "Call upon the rage inside yourself! Show the enemy that their rage is no match for the beast you hold chained within!"
+76.5 camera_fov 50 17
+
+80 model_anim Madam1 HunchBallGaze
+80 model_anim Madam2 HunchBallGaze
+83.6 model_anim Madam1 TerribleThingsTalk
+83.6 model_anim Madam2 TerribleThings
+
+90 fog_fade .3 on 1 256 0 0 0 off
+90.5 fog_fade 2 on 1 2 0 0 0 off
+93 trigger_generic CExitTrigger0
+

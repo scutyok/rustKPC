@@ -1,0 +1,46 @@
+//start
+.5 user_input off
+.5 letterbox on
+.5 player invulnerable true
+.5 disable_ai true
+
+//camera shows spikes unblocking path
+.5 camera_path rightfinpath1
+
+//spikes move back up
+.5 trigger_door rightspike1 close
+.5 trigger_door rightspike2 close
+.5 trigger_door rightspike3 close
+.5 trigger_door rightyclipdoor close
+
+.5 endingscript "mapdata\realm2\r2m1\r2m1c\rfinending.scr"
+
+//turn player to face tickler
+1 player lookat aftertick
+
+//camera shows bigrock unblocking path from below
+1.7 camera_path rightfinpath2
+
+//bring down the bigleftrock that blocks the above path
+1.7 trigger_door bigrightrock open
+
+//play the door sounds
+1.7 sound bigrightrockspot sounds\environment\bigrock.wav
+
+//camera shows bigrock unblocking path from above
+4 camera_path rightfinpath3
+
+//re spawn in the truck room +
+7 trigger_generic rightyrespawn
+
+//end script and give player control
+7.3 user_input on
+7.3 letterbox off
+7.3 camera_reset
+7.3 player invulnerable false
+7.3 disable_ai false
+
+
+
+
+

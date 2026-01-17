@@ -1,0 +1,8 @@
+0 stopstream mapdata\Realm1\R1M0\r1-ravenintro-1.wav
+0 stopstream mapdata\Realm1\R1M0\r1-ravenintro-2a.wav
+0 stopstream mapdata\Realm1\R1M0\r1-ravenintro-2b.wav
+0 stopstream mapdata\Realm1\R1M0\r1-ravenintro-3.wav 
+0 stopstream mapdata\Realm1\R1M0\r1-ravenintro-4.wav 
+0 stopstream mapdata\Realm1\R1M0\r1-ravenintro-5.wav
+0 stopstream mapdata\Realm1\R1M0\r1-ravenintro-6.wav 
+0 trigger_generic CExitTrigger0

@@ -1,0 +1,54 @@
+0 user_input off
+0 camera_path path1
+0 letterbox on
+0 music song1 intensity 1 transition measure
+0 disable_ai true
+0 player invulnerable true
+
+0 window_hide windownopic
+
+3 player teleport telespot
+
+4 player lookatangles 0 70
+
+6.0 boss_controller fatlady fadein
+
+6 streamsound player mapdata\realm1\r1m3\r1m3a\fatladyappear.wav local
+
+10 window_hide windowpic
+
+10 window_show windownopic
+
+11 subtitle 4 "FAT LADY"
+
+11 trigger_generic fatsplat
+
+11 camera_path path2
+
+14 sound player sounds\monsters\fatlady\fatsight2.wav local
+
+15 trigger_generic spawn11
+
+15 trigger_generic spawn1
+
+15 music song1 intensity 3
+
+15.16 letterbox off
+
+15.16 user_input on
+15.16 camera_reset
+
+15.16 boss_controller fatlady start
+
+15.2 trigger_generic fatladyboss
+
+15.7 trigger_generic cathscript
+
+16 disable_ai false
+
+16 player invulnerable false
+
+17 script_object_play bossfighta
+
+
+

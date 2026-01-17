@@ -1,0 +1,193 @@
+//	This is a list of filenames for gibs that is shared on the client and server.
+//	Both the client and server read this file and set up arrays so that
+//	they can send an index down for a gib instead of the entire node
+//	name.  DON'T PUT SPACES IN ANY OF THE NAMES OR THE PARSER WILL SIMPLY
+//	DROP THEM!
+//	generic gibs
+models/gibs/generic_gib1.abc : skins/creatures/gas_gibs.dtx
+models/gibs/generic_gib2.abc : skins/creatures/gas_gibs.dtx
+models/gibs/generic_gib3.abc : skins/creatures/gas_gibs.dtx
+models/gibs/generic_gib4.abc : skins/creatures/gas_gibs.dtx
+//	water headless
+@0models/gibs/headless_l_arm.abc : skins/creatures/waterhead.dtx
+@0models/gibs/headless_l_hook.abc : skins/creatures/waterhead.dtx
+@0models/gibs/headless_r_arm.abc : skins/creatures/waterhead.dtx
+@0models/gibs/headless_r_hook.abc : skins/creatures/waterhead.dtx
+@0models/gibs/headless_l_thigh.abc : skins/creatures/waterhead.dtx
+@0models/gibs/headless_l_calf.abc : skins/creatures/waterhead.dtx
+@0models/gibs/headless_r_thigh.abc : skins/creatures/waterhead.dtx
+@0models/gibs/headless_r_calf.abc : skins/creatures/waterhead.dtx
+//	stump
+models/gibs/stump_Torso.abc : skins/creatures/stump.dtx
+models/gibs/stump_L_Thigh.abc : skins/creatures/stump.dtx
+models/gibs/stump_R_Thigh.abc : skins/creatures/stump.dtx
+models/gibs/stump_L_Calf.abc : skins/creatures/stump.dtx
+models/gibs/stump_R_Calf.abc : skins/creatures/stump.dtx
+models/gibs/stump_L_Foot.abc : skins/creatures/stump.dtx
+models/gibs/stump_R_Foot.abc : skins/creatures/stump.dtx
+//	Arachniclown
+models/gibs/Aclown_LowTorso.abc : skins/creatures/arach_gibs.dtx
+models/gibs/Aclown_UpTorso.abc : skins/creatures/arach_gibs.dtx
+models/gibs/Aclown_Head.abc : skins/creatures/arach_gibs.dtx
+models/gibs/Aclown_L_Hair.abc : skins/creatures/arach_gibs.dtx
+models/gibs/Aclown_R_Hair.abc : skins/creatures/arach_gibs.dtx
+models/gibs/Aclown_L_UpArm.abc : skins/creatures/arach_gibs.dtx
+models/gibs/Aclown_L_Forearm.abc : skins/creatures/arach_gibs.dtx
+models/gibs/Aclown_L_Hand.abc : skins/creatures/arach_gibs.dtx
+models/gibs/Aclown_R_UpArm.abc : skins/creatures/arach_gibs.dtx
+models/gibs/Aclown_R_Forearm.abc : skins/creatures/arach_gibs.dtx
+models/gibs/Aclown_R_Hand.abc : skins/creatures/arach_gibs.dtx
+models/gibs/Aclown_Leg1.abc : skins/creatures/arach_gibs.dtx
+models/gibs/Aclown_Leg2.abc : skins/creatures/arach_gibs.dtx
+models/gibs/Aclown_Leg3.abc : skins/creatures/arach_gibs.dtx
+//	unipsycho
+models/creatures/uniwheel.abc : skins/creatures/unipsycho.dtx
+models/creatures/UniLegs.abc : skins/creatures/unipsycho.dtx
+models/gibs/uni_torso.abc : skins/creatures/unipsycho.dtx
+models/gibs/uni_head.abc : skins/creatures/unipsycho.dtx
+models/gibs/uni_L_UpArm.abc : skins/creatures/unipsycho.dtx
+models/gibs/uni_R_UpArm.abc : skins/creatures/unipsycho.dtx
+models/gibs/uni_L_ForeArm.abc : skins/creatures/unipsycho.dtx
+models/gibs/uni_R_ForeArm.abc : skins/creatures/unipsycho.dtx
+//	gasbag
+models/gibs/gasbag_head.abc : skins/creatures/gas_gibs.dtx
+models/gibs/gasbag_torso.abc : skins/creatures/gas_gibs.dtx
+models/gibs/gasbag_int1.abc : skins/creatures/gas_gibs.dtx
+models/gibs/gasbag_int2.abc : skins/creatures/gas_gibs.dtx
+//	blademaster
+models/gibs/blade_torso.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_head.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_waist.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_L_UpArm.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_L_ForeArm.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_L_Hand.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_L_Thigh.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_L_Calf.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_L_Foot.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_R_UpArm.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_R_ForeArm.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_R_Hand.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_R_Thigh.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_R_Calf.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_R_Foot.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_L_Knife.abc : skins/creatures/blade_gibs.dtx
+models/gibs/blade_R_Knife.abc : skins/creatures/blade_gibs.dtx
+//	larva
+models/gibs/larva_head.abc : skins/creatures/larva_gibs.dtx
+models/gibs/larva_jaw.abc : skins/creatures/larva_gibs.dtx
+models/gibs/larva_l_leg1.abc : skins/creatures/larva_gibs.dtx
+models/gibs/larva_l_leg2.abc : skins/creatures/larva_gibs.dtx
+models/gibs/larva_l_leg3.abc : skins/creatures/larva_gibs.dtx
+models/gibs/larva_r_leg1.abc : skins/creatures/larva_gibs.dtx
+models/gibs/larva_r_leg2.abc : skins/creatures/larva_gibs.dtx
+models/gibs/larva_r_leg3.abc : skins/creatures/larva_gibs.dtx
+models/gibs/larva_segmentA.abc : skins/creatures/larva_gibs.dtx
+models/gibs/larva_segmentB.abc : skins/creatures/larva_gibs.dtx
+models/gibs/larva_segmentC.abc : skins/creatures/larva_gibs.dtx
+models/gibs/larva_segmentD.abc : skins/creatures/larva_gibs.dtx
+models/gibs/larva_segmentE.abc : skins/creatures/larva_gibs.dtx
+//	ballbuster
+models/gibs/bbuster_cannon.abc : skins/creatures/ball_gibs.dtx
+models/gibs/bbuster_head.abc : skins/creatures/ball_gibs.dtx
+models/gibs/bbuster_foot.abc : skins/creatures/ball_gibs.dtx
+//	fat lady
+models/gibs/fatlady_arm.abc : skins/creatures/fat_gibs.dtx
+models/gibs/fatlady_hand.abc : skins/creatures/fat_gibs.dtx
+models/gibs/fatlady_head.abc : skins/creatures/fat_gibs.dtx
+//	rotsack
+//	fire strutter
+models/gibs/strut_segmentB.abc : skins/creatures/strutter.dtx
+models/gibs/strut_Beak1.abc : skins/creatures/strutter.dtx
+models/gibs/strut_Beak2.abc : skins/creatures/strutter.dtx
+models/gibs/strut_Beak3.abc : skins/creatures/strutter.dtx
+models/gibs/strut_LF_Leg1.abc : skins/creatures/strutter.dtx
+models/gibs/strut_LF_Leg2.abc : skins/creatures/strutter.dtx
+models/gibs/strut_RF_Leg1.abc : skins/creatures/strutter.dtx
+models/gibs/strut_RF_Leg2.abc : skins/creatures/strutter.dtx
+models/gibs/strut_LR_Leg1.abc : skins/creatures/strutter.dtx
+models/gibs/strut_LR_Leg2.abc : skins/creatures/strutter.dtx
+models/gibs/strut_RR_Leg1.abc : skins/creatures/strutter.dtx
+models/gibs/strut_RR_Leg2.abc : skins/creatures/strutter.dtx
+models/gibs/strut_Spike1.abc : skins/creatures/strutter.dtx
+//	ice strutter
+//	the @ in front means this is an entry with the same name as 
+//	another entry but with different parameters.  This gets 
+//	stripped off by the client-side gib code.
+@0models/gibs/strut_segmentB.abc : skins/creatures/strutter2.dtx
+@0models/gibs/strut_Beak1.abc : skins/creatures/strutter2.dtx
+@0models/gibs/strut_Beak2.abc : skins/creatures/strutter2.dtx
+@0models/gibs/strut_Beak3.abc : skins/creatures/strutter2.dtx
+@0models/gibs/strut_LF_Leg1.abc : skins/creatures/strutter2.dtx
+@0models/gibs/strut_LF_Leg2.abc : skins/creatures/strutter2.dtx
+@0models/gibs/strut_RF_Leg1.abc : skins/creatures/strutter2.dtx
+@0models/gibs/strut_RF_Leg2.abc : skins/creatures/strutter2.dtx
+@0models/gibs/strut_LR_Leg1.abc : skins/creatures/strutter2.dtx
+@0models/gibs/strut_LR_Leg2.abc : skins/creatures/strutter2.dtx
+@0models/gibs/strut_RR_Leg1.abc : skins/creatures/strutter2.dtx
+@0models/gibs/strut_RR_Leg2.abc : skins/creatures/strutter2.dtx
+@0models/gibs/strut_Spike1.abc : skins/creatures/strutter2.dtx
+//	earth headless
+@1models/gibs/headless_l_arm.abc : skins/creatures/head.dtx
+@1models/gibs/headless_l_hook.abc : skins/creatures/head.dtx
+@1models/gibs/headless_r_arm.abc : skins/creatures/head.dtx
+@1models/gibs/headless_r_hook.abc : skins/creatures/head.dtx
+@1models/gibs/headless_l_thigh.abc : skins/creatures/head.dtx
+@1models/gibs/headless_l_calf.abc : skins/creatures/head.dtx
+@1models/gibs/headless_r_thigh.abc : skins/creatures/head.dtx
+@1models/gibs/headless_r_calf.abc : skins/creatures/head.dtx
+//	air headless
+@2models/gibs/headless_l_arm.abc : skins/creatures/airhead.dtx
+@2models/gibs/headless_l_hook.abc : skins/creatures/airhead.dtx
+@2models/gibs/headless_r_arm.abc : skins/creatures/airhead.dtx
+@2models/gibs/headless_r_hook.abc : skins/creatures/airhead.dtx
+@2models/gibs/headless_l_thigh.abc : skins/creatures/airhead.dtx
+@2models/gibs/headless_l_calf.abc : skins/creatures/airhead.dtx
+@2models/gibs/headless_r_thigh.abc : skins/creatures/airhead.dtx
+@2models/gibs/headless_r_calf.abc : skins/creatures/airhead.dtx
+//	fire headless
+@3models/gibs/headless_l_arm.abc : skins/creatures/firehead.dtx
+@3models/gibs/headless_l_hook.abc : skins/creatures/firehead.dtx
+@3models/gibs/headless_r_arm.abc : skins/creatures/firehead.dtx
+@3models/gibs/headless_r_hook.abc : skins/creatures/firehead.dtx
+@3models/gibs/headless_l_thigh.abc : skins/creatures/firehead.dtx
+@3models/gibs/headless_l_calf.abc : skins/creatures/firehead.dtx
+@3models/gibs/headless_r_thigh.abc : skins/creatures/firehead.dtx
+@3models/gibs/headless_r_calf.abc : skins/creatures/firehead.dtx
+//	nightmare headless
+@4models/gibs/headless_l_arm.abc : skins/creatures/nighthead.dtx
+@4models/gibs/headless_l_hook.abc : skins/creatures/nighthead.dtx
+@4models/gibs/headless_r_arm.abc : skins/creatures/nighthead.dtx
+@4models/gibs/headless_r_hook.abc : skins/creatures/nighthead.dtx
+@4models/gibs/headless_l_thigh.abc : skins/creatures/nighthead.dtx
+@4models/gibs/headless_l_calf.abc : skins/creatures/nighthead.dtx
+@4models/gibs/headless_r_thigh.abc : skins/creatures/nighthead.dtx
+@4models/gibs/headless_r_calf.abc : skins/creatures/nighthead.dtx
+//	strongman
+models/gibs/strongman_arm.abc : skins/creatures/strong_gibs.dtx
+models/gibs/strongman_head.abc : skins/creatures/strong_gibs.dtx
+models/gibs/strongman_leg.abc : skins/creatures/strong_gibs.dtx
+//	meanie beanie
+models/gibs/meanie_head.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_body.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_l_foot.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_r_foot.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_l_uparm.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_r_uparm.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_l_forearm.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_r_forearm.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_l_hair.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_r_hair.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_l_hand.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_r_hand.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_l_leg.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_r_leg.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_rotor.abc : skins/creatures/meanie_gibs.dtx
+models/gibs/meanie_nose.abc : skins/creatures/meanie_gibs.dtx
+//	grinder
+//	tickler
+//	batwing
+models/creatures/batwing.abc : skins/creatures/batwing.dtx
+//	nightmare child
+models/gibs/nightmare_leg.abc : skins/creatures/nightmare_gibs.dtx
+models/gibs/nightmare_lhand.abc : skins/creatures/nightmare_gibs.dtx
+models/gibs/nightmare_rarm.abc : skins/creatures/nightmare_gibs.dtx

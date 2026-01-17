@@ -1,0 +1,27 @@
+0 scriptload mapdata\realm3\r3m3\r3m3a\urbanchasm01a.scr
+0 scriptload mapdata\realm3\r3m3\r3m3a\r3m3acheat.scr
+0 endingscript mapdata\realm3\r3m3\r3m3a\urbanchasm01aintro.scr
+
+
+0 user_input off
+0 camera_path urbanchasm01a
+0 letterbox on
+
+0 hint realm3\r3m3\r3m3a\r3m3-introtext
+
+0.001 cheatscript mapdata\realm3\r3m3\r3m3a\r3m3acheat.scr
+
+6 streamsound player mapdata\realm3\r3m3\r3m3a\r3m3-intro.wav local
+6 subtitle 5.0 "From the tall roof of the city you must climb ever higher."
+
+12 subtitle 6.4 "Transcend the bottomless pits below and ascend to the temple of winds."
+
+19 subtitle 4.6 "There you may set sail to your final trial."
+
+25 letterbox off
+25 camera_reset
+25 user_input on
+25 trigger_generic ledge01
+
+
+

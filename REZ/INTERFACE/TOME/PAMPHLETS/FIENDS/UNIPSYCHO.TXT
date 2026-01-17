@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Unipsycho]
+[model: models/creatures/Unipsycho.abc]
+[skin: skins/creatures/Unipsycho.dtx]
+[anim: none]
+[scale: 1.0]
+[start]
+All memories of his jolly past as a juggler are blisters on the Unipsycho's lost soul. Now, all that remains is an ever-burning hatred for those that don't feel his pain. He commands the element of fire like no other and is a major threat in open areas. Use his lack of speed to your advantage and make sure you have cover before taking him on.
+
+Element: Fire

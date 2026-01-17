@@ -1,0 +1,10 @@
+[category: weapons]
+[title: Punisher]
+[model: models/pickups/pu_Punisher.abc]
+[skin: skins/player/weapons/3rdPunisher.dtx]
+[anim: none]
+[scale: 1.0]
+[start]
+The Punisher lays down the Demon's law without mercy. Never beaten in range or power, this two-handed menace will let you reclaim your personal space against seemingly insurmountable odds. When faced with its rib-cracking power, even the thickest of hordes will evaporate before you in a crimson haze of justice. The Punisher's one drawback is a relative lack of speed, but the capability to decimate entire packs of spawn with a single swipe makes this a very forgiveable trait.
+
+Element: Fire

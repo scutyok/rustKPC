@@ -1,0 +1,43 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//camera shows spikes unblocking path
+0 camera_path leftfinishpath1
+
+//spikes move back up
+0 trigger_door leftspike1 close
+0 trigger_door leftspike2 close
+
+0.1 endingscript "mapdata\realm2\r2m1\r2m1c\lfinending.scr"
+
+1.5 camera_path leftfinishpath2
+
+//bring down the bigleftrock that blocks the above path
+3 trigger_door bigleftrock open
+
+//play the door sounds
+3 sound bigleftrockspot sounds\environment\bigrock.wav
+
+//camera shows bigleftrock unblocking above path
+5 camera_path leftfinishpath3
+
+//re spawn in the truck room
+7 trigger_generic leftyrespawn
+
+//bring down music intensity back to 2
+//7.3 music intensity 3 transition beat
+
+//end script and give player control
+8 user_input on
+8 letterbox off
+8 camera_reset
+8 player invulnerable false
+8 disable_ai false
+
+
+
+
+

@@ -1,0 +1,45 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//camera flys out and shows volume lowering
+0 camera_path unit1path
+
+//turn on the ambient draining sound
+0 sound_ambient_on unit1drain 
+0 sound_ambient_on alarm
+
+0.1 endingscript mapdata\realm3\r3m2\r3m2b\unit1ending.scr 
+
+//activate the gasbag spawner
+3 trigger_spawner tank1spawn on
+
+//activate the ballbuster spawner
+3 trigger_spawner tankbuster on
+
+//play the door sounds
+//3 sound spot sounds\environment\bigrock.wav
+
+
+//turn off the ambient draining sound
+5.5 sound_ambient_off unit1drain
+5.7 streamsound ladyspot sounds\environment\tankpurged.wav
+6 sound_ambient_off alarm
+
+//end script and give player control
+6 user_input on
+6 letterbox off
+6 camera_reset
+6 player invulnerable false
+6 disable_ai false
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+// Sewer 03 script
+name "Sewer03"
+
+Loadscript "mapdata\realm4\r4m2\r4m2c\walker01.sc"
+Loadscript "mapdata\realm4\r4m2\r4m2c\walker02.sc"
+Loadscript "mapdata\realm4\r4m2\r4m2c\walker03.sc"
+Loadscript "mapdata\realm4\r4m2\r4m2c\walker04.sc"
+Loadscript "mapdata\realm4\r4m2\r4m2c\walker05.sc"
+Loadscript "mapdata\realm4\r4m2\r4m2c\walker06.sc"
+Loadscript "mapdata\realm4\r4m2\r4m2c\walker07.sc"
+Loadscript "mapdata\realm4\r4m2\r4m2c\walker08.sc"
+Loadscript "mapdata\realm4\r4m2\r4m2c\walker09.sc"
+Loadscript "mapdata\realm4\r4m2\r4m2c\turret01.sc"

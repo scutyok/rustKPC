@@ -1,0 +1,10 @@
+[category: weapons]
+[title: Windblade]
+[model: models/pickups/pu_Windblade.abc]
+[skin: skins/player/weapons/3rdWindblade.dtx]
+[anim: none]
+[scale: 3.0]
+[start]
+Once you get your hands on this concussion blaster, the hordes of hell have a major problem and the old elements breathe a sigh of relief. Each gyro-guided grenade is a thunderstorm in a nutshell and decimates all creatures in the area of effect. Even if your foe avoids the dome of lightning, there is also a forceful blast of wind they'll have to deal with. The weapon's only drawback is its tendency to reduce the user to gibs.
+
+Element: Air

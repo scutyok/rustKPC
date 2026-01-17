@@ -1,0 +1,7 @@
+0 trigger_generic sloopy
+0 sound_ambient_off ColdGib
+0 letterbox off
+0 camera_reset
+0 user_input on
+0 player invulnerable false
+0 disable_ai false

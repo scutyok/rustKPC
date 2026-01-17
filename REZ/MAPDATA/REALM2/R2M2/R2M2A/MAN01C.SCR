@@ -1,0 +1,28 @@
+0 user_input off
+0 camera_path auto01
+0 letterbox on
+0 disable_ai true
+0 player invulnerable true
+
+0 player teleport pstart
+
+2 move_player auto02
+
+3 window_show cartrig01
+
+4 trigger_door garage01 open
+
+4.1 trigger_generic drivespawn01
+4.5 trigger_generic driver01run
+
+8 trigger_door garage01 close
+
+13 letterbox off
+13 camera_reset
+13 user_input on
+13 disable_ai false
+13 player invulnerable false
+
+13.5 wake_monster_group fianlwait01
+
+14 window_break fd01

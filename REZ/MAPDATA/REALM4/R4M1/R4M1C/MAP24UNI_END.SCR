@@ -1,0 +1,26 @@
+//setup
+0.5 cprint "End unipsycho battle."
+0.5 user_input off
+
+0.5 letterbox on
+
+//music back to intensity 1
+0.5 music intensity 1
+
+//first camera position
+0.5 camera_pos finalcam 1
+
+//play event sound
+.75 sound player sounds\environment\event.wav local
+
+//open the door
+1.0 trigger_sliding_door door_exit open
+
+//shutdown
+2.5 letterbox off
+2.5 user_input on
+2.5 camera_reset
+
+
+
+

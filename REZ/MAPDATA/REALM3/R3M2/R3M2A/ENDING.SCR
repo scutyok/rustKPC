@@ -1,0 +1,15 @@
+//stop the intro .wav file
+0 stopstream mapdata\realm3\r3m2\r3m2a\r3m2-intro.wav
+
+
+
+0 user_input on
+0 letterbox off
+0 camera_reset
+0 player invulnerable false
+0 disable_ai false
+
+
+
+
+

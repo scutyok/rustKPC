@@ -1,0 +1,19 @@
+0 sound player sounds\environment\switch3.wav local
+
+0 letterbox on
+0 disable_AI true
+0 inventory remove ticket
+0 user_input off
+0 camera_path teeth
+0 player invulnerable true
+
+4 trigger_door tann01 open
+
+5 disable_AI false
+
+6 trigger_generic FAKK4
+
+11 letterbox off
+11 camera_reset
+11 user_input on
+11 player invulnerable false

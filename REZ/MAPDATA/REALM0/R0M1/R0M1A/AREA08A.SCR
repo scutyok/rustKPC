@@ -1,0 +1,25 @@
+// 0 stop streaming sound from last area
+
+
+0.5 streamsound player sounds\tutorial\area08a-1.wav local
+// wav file length 4.20
+0.5 center_text 0 5.2 "Break the glass and then fire the zerocannon at the creatures that appear."
+
+1 trigger_door shootrange01 open
+1 trigger_door shootrange02 open
+1 sound shootrangesound sounds\environment\metalslide2.wav 
+
+7 streamsound player sounds\tutorial\area08a-2.wav local
+// wav file length 5.18
+7 center_text 0 6.2 "When all have been dispatched, you will hear a sound indicating a goal has been completed."
+
+15 streamsound player sounds\tutorial\area08a-3.wav local
+// wav file length 3.87
+15 center_text 0 4.9 "When you hear this sound, you have triggered an event in the world."
+ 
+21 streamsound player sounds\tutorial\area08a-4.wav local
+// wav file length 6.84
+21 center_text 0 7.9 "In this example, killing all of the creatures opens the door on the opposite wall and you may then move to the next area."
+
+29 window_break Dcount02
+

@@ -1,0 +1,31 @@
+0 endingscript mapdata\realm2\r2m3\r2m3b\openwalla.scr
+
+2 earthquake quake2 3
+2 sound quake2 sounds\environment\quake2.wav
+
+3 letterbox on
+3 user_input off
+3 camera_path path1
+
+3 player invulnerable true
+3 disable_ai true
+
+4.1 trigger_generic quakewall2
+
+8 sound quake2 sounds\environment\quake2.wav
+
+8 trigger_door quakewall1 open
+
+9 trigger_generic quakewall3
+
+16 fog_fade 1 on 1 2 0 0 0 off
+16.5 player lookatangles 0 270
+
+17 letterbox off
+17 user_input on
+17 camera_reset
+
+17 fog_fade 2 on 1 5000 81 172 120 off
+
+17.5 player invulnerable false
+17.5 disable_ai false

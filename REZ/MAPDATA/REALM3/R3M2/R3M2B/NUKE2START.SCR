@@ -1,0 +1,30 @@
+//load all scripts
+0 scriptload "mapdata\realm3\r3m2\r3m2b\cheat.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2b\unit1.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2b\unit2.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2b\elecdoor1.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2b\elecdoor2.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2b\elecdoor3.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2b\unit1ending.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2b\unit2ending.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2b\elecdoor1ending.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2b\elecdoor2ending.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2b\elecdoor3ending.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2b\plates.scr"
+
+0 hint realm3\r3m2\r3m2b\r3m2-introtext
+
+0.001 cheatscript mapdata\realm3\r3m2\r3m2b\cheat.scr
+
+//Change water sprite graphic
+//0 water_texture cswaterfall sprites\alphawater\soulsoup.spr
+
+//activate all lightning doors
+1 script_object_play elecdoor1on
+1 script_object_play elecdoor2on
+1 script_object_play elecdoor3on
+1 script_object_play elecdoor4on
+
+
+
+

@@ -1,0 +1,11 @@
+0 sound_ambient_off squeak
+
+0.01 trigger_generic CExitTrigger0
+
+0.01 stopstream mapdata\Realm4\R4M0\r4-ravenintro-1.wav 
+0.01 stopstream mapdata\Realm4\R4M0\r4-ravenintro-2.wav 
+0.01 stopstream mapdata\Realm4\R4M0\r4-ravenintro-3.wav 
+0.01 stopstream mapdata\Realm4\R4M0\r4-ravenintro-4.wav 
+0.01 stopstream mapdata\Realm4\R4M0\r4-ravenintro-5.wav 
+0.01 stopstream mapdata\Realm4\R4M0\r4-ravenintro-6.wav 
+

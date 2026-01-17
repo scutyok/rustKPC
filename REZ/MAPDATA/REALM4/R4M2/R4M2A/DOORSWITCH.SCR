@@ -1,0 +1,17 @@
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+0 camera_path lastswitch01
+
+1 trigger_door sdoor03 open
+1 trigger_door sgrate01b open
+2 script_object_play pistonrun01
+
+3 letterbox off
+3 camera_reset
+3 user_input on
+3 player invulnerable false
+3 disable_ai false
+
+

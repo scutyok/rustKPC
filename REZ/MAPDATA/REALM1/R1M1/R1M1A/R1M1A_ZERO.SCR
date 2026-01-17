@@ -1,0 +1,12 @@
+0 user_input off
+0 camera_path zero
+0 letterbox on
+0 player teleport Zerolauncher
+0 player invulnerable true
+
+0 endingscript mapdata\realm1\r1m1\r1m1a\r1m1a_ZeroEND.scr
+
+8 letterbox off
+8 camera_reset
+8 user_input on
+8 player invulnerable false

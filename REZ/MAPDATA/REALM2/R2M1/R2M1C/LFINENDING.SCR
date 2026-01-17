@@ -1,0 +1,20 @@
+//bring down the bigleftrock that blocks the above path
+0 trigger_door bigleftrock open
+
+//play the door sounds
+0 sound bigleftrockspot sounds\environment\bigrock.wav
+
+//re spawn in the truck room
+0 trigger_generic leftyrespawn
+
+//end script and give player control
+0 user_input on
+0 letterbox off
+0 camera_reset
+0 player invulnerable false
+0 disable_ai false
+
+
+
+
+

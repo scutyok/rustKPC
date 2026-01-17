@@ -1,0 +1,42 @@
+0 endingscript mapdata\realm5\nightmare1introa.scr
+0 letterbox on
+0 user_input off
+
+0 scriptload mapdata\realm5\fog1.scr
+0 scriptload mapdata\realm5\fog2.scr
+0 scriptload mapdata\realm5\fog3.scr
+0 scriptload mapdata\dev\rescoe\cheat5.scr
+0.001 cheatscript mapdata\dev\rescoe\cheat5.scr
+
+0.1 camera_path path1
+7 fog_fade 1 on 1 500 0 0 0 off
+8 fog_fade 4 on 1 4000 82 124 88 on 1 1200
+
+8 camera_path path2
+8 sound_ambient_on laugh
+
+13 camera_path path3
+16 fog_fade 1 on 1 2 0 0 0 off
+17 fog_fade 2 on 1 3000 94 0 0 on 1 1200
+
+17 camera_path path4
+17 sound_ambient_off laugh
+17 sound_ambient_on circus
+21 fog_fade 2 on 1 2 0 0 0 off
+
+24.5 player lookatangles 0 0
+24.5 trigger_door startdoor open
+
+
+25 fog_fade 4 on 1 3000 94 0 0 on 1 1200
+25 sound_ambient_off circus
+25 letterbox off
+25 user_input on
+25 camera_reset
+
+
+
+
+
+
+

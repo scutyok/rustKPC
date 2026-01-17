@@ -1,0 +1,29 @@
+
+0 user_input off
+0 letterbox on
+0 camera_path path2
+0 turn_player path2 600
+0 disable_ai true
+0 player invulnerable true
+
+
+0.1 player animate powerup 8.5
+0.1 player powerup
+0.1 sound player sounds\pickups\armorpowerup.wav local
+6.75 player giveitem mask 
+
+
+8 camera_path path3
+
+12 camera_path path4
+
+13 trigger_generic spawn7
+16 trigger_door curtain open
+18 trigger_generic spawn8
+
+18 letterbox off
+18 user_input on
+18 camera_reset
+
+18 disable_ai false
+18 player invulnerable false

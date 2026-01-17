@@ -1,0 +1,29 @@
+0 scriptload mapdata\realm4\r4m4\r4m4a\r4m4a_mask.scr
+0 scriptload mapdata\realm4\r4m4\r4m4a\r4m4a_teeth.scr
+0 endingscript mapdata\realm4\r4m4\r4m4a\r4m4a_introEND.scr
+
+0 user_input off
+0 camera_path intro
+0 letterbox on
+//0 camera_fov 160 0
+0 disable_AI true
+0 fog_fade 12 on -1024 12000 200 0 0 on 1 1700
+
+0 hint realm4\r4m4\r4m4a\r4m4-introtext
+
+//0.1 camera_fov 90 3
+
+2.5 streamsound player mapdata\Realm4\R4M4\R4M4a\r4m4-intro.wav local
+2.5 subtitle 11.0 "What was once our proud carnival is now but an empty shell of evil, ruled by a soulless Ringmaster."
+
+15.2 subtitle 6.3 "You must cleanse this unholy fortress and restore the justice of the Elder."
+22.2 subtitle 12.1 "Bring back the Demon's rage so that we may undo the Nightmare Child's evil and find a new start in the purgatory flames."
+
+36.5 subtitle 6.5 "There is nothing left to say. It all rests with you now."
+
+39 camera_fov 60 6
+
+45 letterbox off
+45 camera_reset
+45 user_input on
+45 disable_AI false

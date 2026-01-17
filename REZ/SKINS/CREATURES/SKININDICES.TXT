@@ -1,0 +1,22 @@
+//	This is a list of model that is shared on the client and server.
+//	Both the client and server read this file and set up arrays so that
+//	they can send an index down for a model instead of the entire model
+//	name.
+skins/player/sanjuro.abc
+skins/player/sanjuro_m.dtx
+skins/player/starbearer/starbearer.dtx
+skins/player/starbearer/starbearer_m.dtx
+skins/player/starbearer/pablo.dtx
+skins/player/starbearer/pablo_m.dtx
+skins/player/beastking/beastking.dtx
+skins/player/beastking/beastking_m.dtx
+skins/player/beastking/patrick.dtx
+skins/player/beastking/patrick_m.dtx
+skins/player/celestial/celestial.dtx
+skins/player/celestial/celestial_m.dtx
+skins/player/celestial/andy.dtx
+skins/player/celestial/andy_m.dtx
+skins/player/demon/demon.dtx
+skins/player/demon/demon_m.dtx
+skins/player/demon/gabe.dtx
+skins/player/demon/gabe_m.dtx

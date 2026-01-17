@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Arachniclown]
+[model: models/creatures/Arachniclown.abc]
+[skin: skins/creatures/Arachniclown.dtx]
+[anim: none]
+[scale: 0.5]
+[start]
+In spite of recently having sprouted spider legs he's still the laughing clown. You know he must be crying on the inside. Unfortunately for him his large mass makes him an easy target, but then he really doesn't mind the pain. If he can see you he can zap you and this God-of-Thunder wannabe does command some serious firepower. Arachniclown's two-handed blast may be successfully evaded by ducking just as he's done powering up for it.
+
+Element: Water

@@ -1,0 +1,24 @@
+0 user_input off
+0 camera_path Arachniclown
+0 letterbox on
+//0 endingscript mapdata\realm1\r1m1\r1m1b\r1m1b_Arachniclown_END.scr
+0 player invulnerable true
+
+0 player teleport clownspot
+0 turn_player clownfocus 0.5
+
+1.1 sound player sounds\environment\doorslide2.wav
+
+5 trigger_generic AClownRunner
+
+13 music intensity 3 transition measure
+13 subtitle 6 "ARACHNICLOWN"
+
+13.5 sound player sounds\monsters\aclown\aclownsight2.wav local
+
+30 letterbox off
+30 camera_reset
+30 user_input on
+
+31 player invulnerable false
+31 trigger_generic Heathrow

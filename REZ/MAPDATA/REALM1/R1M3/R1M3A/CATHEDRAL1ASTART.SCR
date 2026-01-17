@@ -1,0 +1,8 @@
+0 stopstream mapdata\realm1\r1m3\r1m3a\r1m3-intro.wav 
+0.1 music song1 intensity 3
+0.2 window_break wind1
+0.3 trigger_generic spawn6
+0.4 disable_ai false
+0.4 player invulnerable false
+
+

@@ -1,0 +1,11 @@
+0 scriptload mapdata\realm4\r4m2\r4m2a\sewer01a.scr
+0 scriptload mapdata\realm4\r4m2\r4m2a\r4m2acheat.scr
+0 scriptload mapdata\realm4\r4m2\r4m2a\sewer01exit.scr
+0 scriptload mapdata\realm4\r4m2\r4m2a\beltpick.scr
+0 scriptload mapdata\realm4\r4m2\r4m2a\doorswitch.scr
+
+0 hint realm4\r4m2\r4m2a\r4m2-introtext
+
+0.001 cheatscript mapdata\realm4\r4m2\r4m2a\r4m2acheat.scr
+
+.2 scriptplay mapdata\realm4\r4m2\r4m2a\sewer01a.scr

@@ -1,0 +1,7 @@
+0 user_input off
+
+0.5 player teleport telespot
+
+2 player lookat lookatme
+
+4 user_input on

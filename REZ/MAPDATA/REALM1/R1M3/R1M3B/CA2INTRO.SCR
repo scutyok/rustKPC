@@ -1,0 +1,9 @@
+0 scriptload mapdata\realm1\r1m3\r1m3b\cath2a.scr
+0 scriptload mapdata\realm1\r1m3\r1m3b\cath2b.scr
+0 scriptload mapdata\realm1\r1m3\r1m3b\stargaze.scr
+0 scriptload mapdata\realm1\r1m3\r1m3b\strutterintro.scr
+0 scriptload mapdata\dev\rescoe\cheatcath2.scr
+
+0 hint realm1\r1m3\r1m3b\r1m3-introtext
+
+0.001 cheatscript mapdata\dev\rescoe\cheatcath2.scr

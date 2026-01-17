@@ -1,0 +1,17 @@
+0 player class Demon
+0 player SetHealth 100
+0 player GiveItem Gauntlets
+0 player GiveItem Boots
+0 player GiveItem Belt
+0 player GiveItem Shoulderplates
+0 player GiveItem ZeroCannon 
+0 player GiveItem MagmaCannon
+0 player GiveItem Windblade
+0 player GiveItem Draco
+0 player GiveItem Scourge
+0 player GiveItem MagmaAmmo 100
+0 player GiveItem AirAmmo 40
+0 player GiveItem WaterAmmo 200
+0 player GiveItem EarthAmmo 100
+0 player GiveItem BlackDiamond 10
+0 player GiveItem JackInTheBox 5

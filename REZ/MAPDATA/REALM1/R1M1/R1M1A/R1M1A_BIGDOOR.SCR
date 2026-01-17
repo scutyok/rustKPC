@@ -1,0 +1,20 @@
+0 user_input off
+0 camera_path larva01
+0 letterbox on
+0 player invulnerable true
+// 0 endingscript mapdata\realm1\r1m1\r1m1a\r1m1a_BigdoorEND.scr
+0 turn_player Lookat 2
+0 levelvar cleaner 1
+
+2.8 trigger_door door01 open
+
+3.2 trigger_generic Doorless01
+3.4 trigger_generic Doorless02
+3.6 trigger_generic Doorless03
+4 subtitle 4 "HEADLESS"
+8 player teleport Switchlauncher
+
+9 letterbox off
+9 camera_reset
+9 user_input on
+9 player invulnerable false

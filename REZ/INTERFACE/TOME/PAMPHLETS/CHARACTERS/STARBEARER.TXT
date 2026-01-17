@@ -1,0 +1,8 @@
+[category: characters]
+[title: The Starbearer]
+[model: models/player/Starbearer/Starbearer_head.abc]
+[skin: skins/player/Starbearer/Starbearer_head.dtx]
+[anim: amba]
+[scale: 3]
+[start]
+He who draws from the deep wells of the soul and emotion, bringer of passion and pain. He can move a heart to tender love or murderous rage. His is the element of water.

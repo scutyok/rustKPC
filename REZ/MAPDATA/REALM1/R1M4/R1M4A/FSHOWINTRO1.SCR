@@ -1,0 +1,29 @@
+0 stopstream mapdata\realm1\r1m4\r1m4a\r1m4-intro.wav
+0 trigger_generic introspawnbuster
+0 user_input off
+0 letterbox on
+0 camera_fov 90 0
+
+
+0 camera_path path3
+0 fog_fade 2 on 1 4000 106 116 162 on 1 600
+
+0.8 trigger_door caged open
+1 sound player sounds\monsters\ballbuster\ballambient1.wav local
+2 fog_fade 2 on 1 2 0 0 0 off
+
+3 music song2 intensity 2
+
+4.5 fog_fade 2 on 1 4000 106 116 162 on 1 600
+
+4.5 camera_path path4
+
+10 camera_path path5
+
+11 subtitle 4 "BALLBUSTER"
+
+17 fog_fade 0.1 on 1 2 0 0 0 off
+17 letterbox off
+17 user_input on
+17 camera_reset
+17.2 fog_fade 2 on 1 4000 106 116 162 on 1 600

@@ -1,0 +1,180 @@
+/////////////////////////////////////////////////////
+//	Set up Script
+/////////////////////////////////////////////////////
+0 endingscript mapdata\realm4\R4M0\r4blackroomEND.scr
+0 user_input off
+0 letterbox on
+0 model_anim_loop Raven1 HunchTwiddle
+0 model_anim_loop Raven2 HunchTwiddle
+
+
+/////////////////////////////////////////////////////
+//	Fade fog to black to start 
+/////////////////////////////////////////////////////
+0 fog_fade 0 on 1 2 0 0 0 on 1 2
+
+
+
+/////////////////////////////////////////////////////
+//	Put camera looking in mirror 
+/////////////////////////////////////////////////////
+0 camera_path campathmirror
+
+
+
+/////////////////////////////////////////////////////
+//	Fade fog to reddish orange
+/////////////////////////////////////////////////////
+0.1 fog_fade 3 on 1 12000 200 40 0 on 100 1300
+
+
+
+/////////////////////////////////////////////////////
+//	Play the 1st raven .wav		8.04sec	(1/6)  
+/////////////////////////////////////////////////////
+3 streamsound player mapdata\Realm4\R4M0\r4-ravenintro-1.wav local
+3 subtitle 7.4 "You now stand on the rim of the Fire Realm, a most hostile of realities."
+
+3 model_anim_loop Raven1 HunchTwiddleTalk
+3 model_anim_loop Raven2 HunchTwiddleTalk
+
+11.04 model_anim_loop Raven1 HunchTwiddle
+11.04 model_anim_loop Raven2 HunchTwiddle
+
+
+
+/////////////////////////////////////////////////////
+//	fly camera from mirror 
+/////////////////////////////////////////////////////
+11.1 camera_path campathfly1
+
+
+
+/////////////////////////////////////////////////////
+//	Play the 2nd raven .wav		7.08sec	(2/6)  
+/////////////////////////////////////////////////////
+12 streamsound player mapdata\Realm4\R4M0\r4-ravenintro-2.wav local
+12 subtitle 7.0 "The source of the Demon's power lies buried under the blasted rock."
+
+12 model_anim_loop Raven1 HunchTwiddleTalk
+12 model_anim_loop Raven2 HunchTwiddleTalk
+
+19.08 model_anim_loop Raven1 HunchTwiddle
+19.08 model_anim_loop Raven2 HunchTwiddle
+
+
+
+/////////////////////////////////////////////////////
+//	Play the 3rd raven .wav	 	13.53sec(3/6)  
+/////////////////////////////////////////////////////
+20 streamsound player mapdata\Realm4\R4M0\r4-ravenintro-3.wav local
+20 subtitle 6.6 "From the forge of doom you must go, through the molten veins of the wasteland,"
+
+
+
+20 model_anim_loop Raven1 HunchTwiddleTalk
+20 model_anim_loop Raven2 HunchTwiddleTalk
+
+24 model_anim Raven1 TerribleThingsTalk
+24 model_anim Raven2 TerribleThings
+
+27.3 subtitle 5.3 "past the rail of infernos, to the valley of gloom."
+
+/////////////////////////////////////////////////////
+//	make a flame go up from lava  
+/////////////////////////////////////////////////////
+29 leak_on Flame1
+29 sound flamesoundspot sounds\environment\firelight.wav
+
+30.5 model_anim Raven1 HunchBallGaze
+30.5 model_anim Raven2 HunchBallGaze
+
+31 leak_off Flame1
+
+33.53 model_anim_loop Raven1 HunchTwiddle
+33.53 model_anim_loop Raven2 HunchTwiddle
+
+
+
+/////////////////////////////////////////////////////
+//	Play the 4th raven .wav		5.27sec (4/6)  
+/////////////////////////////////////////////////////
+34 streamsound player mapdata\Realm4\R4M0\r4-ravenintro-4.wav local
+34 subtitle 5 "There you'll find the tainted fortress that seals your fate."
+
+34 model_anim_loop Raven1 HunchTwiddleTalk
+34 model_anim_loop Raven2 HunchTwiddleTalk
+
+38 model_anim_loop Raven1 HunchTwiddle
+38 model_anim_loop Raven2 HunchTwiddle
+
+
+
+/////////////////////////////////////////////////////
+//	Play the 5th raven .wav		11.08sec(5/6)  
+/////////////////////////////////////////////////////
+40 streamsound player mapdata\Realm4\R4M0\r4-ravenintro-5.wav local
+40 subtitle 11.5 "Like a war machine you must be, for no other avatar faces a struggle as tough as yours."
+
+40 model_anim_loop Raven1 HunchTwiddleTalk
+40 model_anim_loop Raven2 HunchTwiddleTalk
+
+44 model_anim Raven1 HunchRaisehandsTalk
+44 model_anim Raven2 HunchRaisehands
+
+
+
+/////////////////////////////////////////////////////
+//	fly camera up to swinging light
+/////////////////////////////////////////////////////
+44 camera_path campathfly2
+
+49 model_anim Raven1 Hunch2Up
+49 model_anim Raven2 Hunch2Up
+
+50.3 model_anim_loop Raven1 UpAmb
+50.3 model_anim_loop Raven2 UpAmb
+
+52 model_anim Raven1 Up2Hunch
+52 model_anim Raven2 Up2Hunch
+
+53.3 model_anim_loop Raven1 HunchTwiddle
+53.3 model_anim_loop Raven2 HunchTwiddle
+
+
+
+/////////////////////////////////////////////////////
+//	Play the 6th raven .wav		12.30sec(6/6)  
+/////////////////////////////////////////////////////
+54 streamsound player mapdata\Realm4\R4M0\r4-ravenintro-6.wav local
+54 subtitle 12.5 "Only an elite warrior may claim to be a worthy vessel of the mighty Demon, a true avatar of brimstone and fire."
+
+54 model_anim_loop Raven1 HunchTwiddleTalk
+54 model_anim_loop Raven2 HunchTwiddleTalk
+
+65.3 model_anim Raven1 Hunch2Up
+65.3 model_anim Raven2 Hunch2Up
+
+66.6 model_anim_loop Raven1 UpAmb
+66.6 model_anim_loop Raven2 UpAmb
+
+
+
+/////////////////////////////////////////////////////
+//	Fade fog to black and out   
+/////////////////////////////////////////////////////
+68 fog_fade .3 on 1 1024 0 0 0 off
+68.4 fog_fade 4 on 1 2 0 0 0 off
+
+
+
+/////////////////////////////////////////////////////
+//	Exit the level to R4M1a  
+/////////////////////////////////////////////////////
+72 sound_ambient_off squeak
+72.5 trigger_generic CExitTrigger0
+
+
+
+
+

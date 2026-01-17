@@ -1,0 +1,11 @@
+// Midway master script
+name "midway1"
+
+Loadscript "mapdata\realm3\r3m4\r3m4a\turret1.sc"
+Loadscript "mapdata\realm3\r3m4\r3m4a\walker01.sc"
+Loadscript "mapdata\realm3\r3m4\r3m4a\grinder.sc"
+
+
+
+
+

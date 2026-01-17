@@ -1,0 +1,5 @@
+//load all scripts for level
+0 scriptload mapdata\dev\amoeba\armorstart.scr
+0 scriptload mapdata\dev\amoeba\armor.scr
+
+

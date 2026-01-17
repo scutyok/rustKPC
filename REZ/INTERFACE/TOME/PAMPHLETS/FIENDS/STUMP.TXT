@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Stump]
+[model: models/creatures/Stump.abc]
+[skin: skins/creatures/Stump.dtx]
+[anim: none]
+[scale: 1.3]
+[start]
+Every Stump is convinced it alone could devour the entire world and every Stump tries. For a horde creature it is fairly dangerous up close and it loves to empty its fiery bowels in your face. Their sharp aim allows them to be a threat at all ranges.
+
+Element: Fire

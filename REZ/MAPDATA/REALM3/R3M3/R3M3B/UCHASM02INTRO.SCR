@@ -1,0 +1,26 @@
+0 scriptload mapdata\realm3\r3m3\r3m3b\r3m3bcheat.scr
+0 scriptload mapdata\realm3\r3m3\r3m3b\urbanpick01.scr
+
+0 user_input off
+0 camera_path intro01
+0 letterbox on
+0 disable_ai true
+0 player invulnerable true
+
+0 hint realm3\r3m3\r3m3b\r3m3-introtext
+
+0.001 cheatscript mapdata\realm3\r3m3\r3m3b\r3m3bcheat.scr
+
+
+3 move_player introstand01
+
+
+5 letterbox off
+5 camera_reset
+5 user_input on
+5.5 disable_ai false
+5.5 player invulnerable false
+
+
+
+

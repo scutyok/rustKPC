@@ -1,0 +1,10 @@
+0 streamsound player sounds\tutorial\area09a-1.wav local
+// wav file length 3.32
+0 center_text 0 4.3 "Look up. Way above you is a grapple point."
+
+5.5 streamsound player sounds\tutorial\area09a-2.wav local
+// wav file length 9.88
+5.5 center_text 0 10.9 "Try to grapple up and as you release from the grapple point use your directional controls to move to the side to avoid falling back down the hole."
+
+16 trigger_door swimrooma open
+16 trigger_door swimroomb open

@@ -1,0 +1,9 @@
+0 user_input off
+0 letterbox on
+0 camera_path activate
+
+0 nmc_activate 2.5 0.0
+
+10 user_input on
+10 letterbox off
+10 camera_reset

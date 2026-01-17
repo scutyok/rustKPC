@@ -1,0 +1,7 @@
+0 stopstream mapdata\realm1\r1m4\r1m4c\R1M4-End.wav
+
+0 fog_fade 4 on 1 5000 137 107 148 on 100 1000
+1 trigger_generic exit
+
+
+

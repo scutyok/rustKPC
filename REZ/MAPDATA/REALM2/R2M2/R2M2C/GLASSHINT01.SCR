@@ -1,0 +1,11 @@
+0 user_input off
+0 letterbox on
+0 camera_path casehint01
+0 player invulnerable true
+0 disable_ai true
+4 player lookatangles 0 90
+4 user_input on
+4 letterbox off
+4 camera_reset
+4 player invulnerable false
+4 disable_ai false

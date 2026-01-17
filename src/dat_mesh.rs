@@ -305,7 +305,7 @@ impl<'a> MeshExtractor<'a> {
             }
 
             let pos = bsp.points[vert_idx];
-            // swap Y/Z
+            // swap Y/Z for whatever reason
             // don't negate X here; the mesh scale will handle mirroring
             let scaled_pos = Vector3::new(
                 pos.x * self.scale,   

@@ -1,0 +1,65 @@
+0 music boss1 intensity 4
+1 fog_fade 2 on 1 2 0 0 0 off
+4 user_input off
+4 letterbox on
+4 camera_path path5
+4 endingscript mapdata\realm1\r1m4\r1m4c\R1M4end1.scr
+
+4 model_anim_loop Raven1 UpAmb
+4 model_anim_loop Raven2 UpAmb
+4.7 model_anim_loop Raven1 Up2Hunch
+4.7 model_anim_loop Raven2 Up2Hunch
+
+5 fog_fade 4 on 1 5000 137 107 148 on 100 1000
+
+6 streamsound player mapdata\realm1\r1m4\r1m4c\r1m4-End.wav local
+6 model_anim_loop Raven1 HunchTwiddleTalk
+6 model_anim_loop Raven2 HunchTwiddleTalk
+6 subtitle 6.9 "Well done, my friend. I did well to recruit you in this time of need."
+
+10 model_anim_loop Raven1 Hunch2Up
+10 model_anim_loop Raven2 Hunch2Up
+11.3 model_anim_loop Raven1 UpAmb
+11.3 model_anim_loop Raven2 UpAmb
+12.2 model_anim_loop Raven1 Up2Hunch
+12.2 model_anim_loop Raven2 Up2Hunch
+13.5 model_anim_loop Raven1 HunchTwiddleTalk
+13.5 model_anim_loop Raven2 HunchTwiddleTalk
+13.5 subtitle 10.7 "But, if Fortunado has fallen to evil possession, then I fear Tiberius, Stargrave, and Blackwell may have done the same."
+
+23 model_anim_loop Raven1 HunchTwiddle
+23 model_anim_loop Raven2 HunchTwiddle
+25.5 model_anim_loop Raven1 HunchTwiddleTalk
+25.5 model_anim_loop Raven2 HunchTwiddleTalk
+25.5 subtitle 8.1 "Your friends will have to contend with the fallen avatars to claim their victories."
+32 model_anim_loop Raven1 HunchTwiddle
+32 model_anim_loop Raven2 HunchTwiddle
+
+
+34.1 model_anim_loop Raven1 HunchBallGaze
+34.1 model_anim_loop Raven2 HunchBallGaze
+34.5 subtitle 9.2 "And, all the while, the Nightmare Child's cocoon grows, spelling out the doom of our existence."
+38.1 model_anim_loop Raven1 HunchTwiddleTalk
+38.1 model_anim_loop Raven2 HunchTwiddleTalk
+43.7 model_anim_loop Raven1 HunchTwiddle
+43.7 model_anim_loop Raven2 HunchTwiddle
+
+45 camera_path path5a
+
+45.2 model_anim_loop Raven1 HunchRaiseHandsTalk
+45.2 model_anim_loop Raven2 HunchRaiseHands
+45.2 subtitle 9.9 "These are dark tidings. May your friends prove themselves as worthy as you have,"
+49.1 model_anim_loop Raven1 HunchTwiddleTalk
+49.1 model_anim_loop Raven2 HunchTwiddleTalk
+55.1 model_anim_loop Raven1 Idle
+55.1 model_anim_loop Raven2 Idle
+
+
+56.4 model_anim_loop Raven1 Hunch2Up
+56.4 model_anim_loop Raven2 Hunch2Up
+56.4 subtitle 4.4 "for their challenge will be no less in stature."
+57.7 model_anim_loop Raven1 UpAmb
+57.7 model_anim_loop Raven2 UpAmb
+
+62 fog_fade 1 on 1 2 0 0 0 off
+64 trigger_generic exit

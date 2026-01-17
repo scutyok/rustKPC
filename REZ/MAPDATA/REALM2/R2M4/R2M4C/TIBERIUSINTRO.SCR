@@ -1,0 +1,42 @@
+0 user_input off
+0 camera_path path1
+0 letterbox on
+0 music boss4 intensity 1
+
+0 hint realm2\r2m4\r2m4c\r2m4-introtext
+
+0 fog_fade 2 on 1 4000 22 99 46 off
+
+0 scriptload mapdata\realm2\r2m4\r2m4c\tiberiusend.scr
+0 scriptload mapdata\dev\rescoe\circus2cheat.scr
+0.001 cheatscript mapdata\dev\rescoe\circus2cheat.scr
+
+//0.5 scriptplay mapdata\realm2\r2m4\r2m4c\tiberiusend.scr
+
+5 fog_fade 1 on 1 2 0 0 0 off
+
+6 fog_fade 1 on 1 4000 22 99 46 off
+
+6 camera_path path2
+
+7.7 subtitle 4 "TIBERIUS"
+
+11 trigger_door cage1 open
+
+11.8 boss_controller tiberius start
+
+11.8 music boss4 intensity 2 transition measure
+
+12.8 trigger_door cage1 close
+
+13 letterbox off
+13 user_input on
+13 camera_reset
+
+19 sound player sounds\environment\door5open.wav
+20 sound player sounds\environment\door4open.wav
+21 trigger_generic bridge1
+23 trigger_generic bridge2
+24 trigger_generic bridge3
+24.5 trigger_generic bridge4
+

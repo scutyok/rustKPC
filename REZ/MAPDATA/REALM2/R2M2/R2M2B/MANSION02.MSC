@@ -1,0 +1,9 @@
+//Mansion 02 script
+name "mansion02"
+
+Loadscript "mapdata\realm2\r2m2\r2m2b\manlib02a.sc"
+Loadscript "mapdata\realm2\r2m2\r2m2b\manlib02b.sc"
+Loadscript "mapdata\realm2\r2m2\r2m2b\stair01.sc"
+
+
+

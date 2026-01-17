@@ -1,0 +1,8 @@
+[category: characters]
+[title: Tiberius]
+[model: models/creatures/tiberius.abc]
+[skin: skins/creatures/tiberius.dtx]
+[anim: amba]
+[scale: 0.4]
+[start]
+It is hard to imagine that the twisted horror that prowl the beast pens was once the brave animal wrangler Tiberius, avatar of the Beast King. In order to free the realm of earth and save the fallen avatar's soul this deformity must be vanquished.

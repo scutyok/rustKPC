@@ -1,0 +1,24 @@
+0 streamsound player sounds\tutorial\area07-1.wav local
+// wav file length 2.68
+0 center_text 0 3.7 "At the end of this hallway you will find a switch."
+
+2 trigger_door switchguard01 open
+2 sound switchguard01sound sounds\environment\metalslide2.wav 
+
+5 streamsound player sounds\tutorial\area07-2.wav local
+// wav file length 3.24
+5 center_text 0 4.2 "The clue box will indicate the switch is a useable object."
+
+11 streamsound player sounds\tutorial\area07-3.wav local
+// wav file length 6.22
+11 center_text 0 7.2 "Position your crosshair on the switch and press your use control to operate it. This will open the door."
+11 print_message 0 15 18
+
+20 streamsound player sounds\tutorial\area07-4.wav local
+// wav file length 5.82
+20 center_text 0 6.8 "Switches can have different appearances. Activate this second switch to open another door."
+
+21 trigger_door switchguard02 open
+21 sound switchguard02sound sounds\environment\metalslide2.wav 
+
+27 window_break Acount02

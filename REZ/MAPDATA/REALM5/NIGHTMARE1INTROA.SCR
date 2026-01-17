@@ -1,0 +1,11 @@
+0 trigger_door startdoor open
+0 fog_fade 4 on 1 3000 94 0 0 on 1 1200
+0 sound_ambient_off laugh
+0 sound_ambient_off circus
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+0 endingscript mapdata\realm5\nightmareboss-enda.scr
+0 letterbox on
+0 user_input off
+0 camera_path path4
+0 music nightmare1 intensity 1
+
+2 streamsound player mapdata\realm5\R5-End.wav local
+2 subtitle 7.7 "And so the last breath of the storm has passed, the shadows stir no more."
+
+10.7 subtitle 8.0 "The Damocles Sword has fallen, but by way of your courage it has missed its sleeping target."
+
+19.6 subtitle 7.8 "On this eve, the unknowing masses of our world owe you their souls' salvation."
+
+27.6 subtitle 10.5 "The web of terror spun by the Nightmare King is now but a faded shadow under the fresh break of day."
+
+39 subtitle 5.2 "I take my leave now. Weariness lays heavy on my brow."
+
+44.5 subtitle 5.5 "The carnival of souls must mend itself, for the road goes ever on."
+
+50.2 subtitle 11.3 "In time, our wounds will heal and become old scars that may spin fables around the campfire."
+
+61.7 subtitle 12.2 "Avatars! The elements honor your services with undying gratitude and name you as true Soul Wardens! "
+67 fog_fade 10 on 1 2 0 0 0 off 
+
+74  subtitle 11.8 "Wake now from this dark slumber! The world may dream again, for in truth, this nightmare is at an end!"
+
+77 fog_fade 10 on 1 2 255 255 255 off
+
+87 fog_fade 0 off off 
+
+87 letterbox off
+87 user_input on
+87 camera_reset
+87 trigger_generic exit
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+[category: artifact]
+[title: Blood Rose]
+[model: models/pickups/bloodrose.abc]
+[skin: skins/pickups/bloodrose.dtx]
+[anim: none]
+[scale: 2.5]
+[start]
+This powerful boon has the ability to raise your health above your normal limit. It will instantly add 100 hit points up to a maximum of 250.
+

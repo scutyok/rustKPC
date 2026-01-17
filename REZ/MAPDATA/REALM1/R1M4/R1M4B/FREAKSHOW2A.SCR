@@ -1,0 +1,10 @@
+
+0 trigger_door watergate open
+
+0 trigger_volume floodwater open
+
+1 trigger_generic spawn3
+
+1 disable_ai false
+
+1 player invulnerable false

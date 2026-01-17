@@ -1,0 +1,8 @@
+[category: armor]
+[title: Elder Mask]
+[model: models/pickups/starbearer/mask.abc]
+[skin: skins/pickups/starbearer/mask.dtx]
+[anim: none]
+[scale: 1.9]
+[start]
+Last of the armor pieces, the Elder Mask signals the avatar's ascension and the invocation of the Elder. With the mask equipped your max health increases to 250 and Hawk Eyes become a permanent ability.

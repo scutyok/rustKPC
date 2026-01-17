@@ -1,0 +1,11 @@
+0 user_input off
+0 camera_path ugatea
+0 letterbox on
+0 music intensity 2 transition beat
+
+1 trigger_door gate01 open
+
+4 letterbox off
+4 camera_reset
+4 user_input on
+

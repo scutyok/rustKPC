@@ -1,0 +1,34 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//bring down music intensity back to 2
+0 music intensity 2 transition beat
+
+//start the camera on the path
+0 camera_path beltpath
+
+//teleport player to exact spot
+0 player teleport beltspot
+0 player animate powerup 8.5
+0 player powerup
+0 player lookat beltface 100
+
+0 streamsound player sounds\pickups\armorpowerup.wav local
+
+//actually give the player the belt
+6.75 player giveitem belt
+
+//end script
+8.5 user_input on
+8.5 letterbox off
+8.5 camera_reset
+8.5 player invulnerable false
+8.5 disable_ai false
+
+//start lift moving down
+8.8 trigger_door liftpiece1 open
+8.8 trigger_door liftpiece2 open
+

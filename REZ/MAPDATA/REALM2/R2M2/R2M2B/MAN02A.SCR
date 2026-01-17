@@ -1,0 +1,18 @@
+0 endingscript mapdata\realm2\r2m2\r2m2b\man02aa.scr
+
+0 user_input off
+0 letterbox on
+
+0 camera_path first
+1 trigger_door door02 open
+3.0 camera_reset
+3.1 turn_player looker 0
+3.5 trigger_door freedoor01 open
+
+3.6 script_object_disable dining01
+
+4 music intensity 3
+4.4 trigger_generic free01
+
+4.5 letterbox off
+4.5 user_input on

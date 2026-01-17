@@ -1,0 +1,9 @@
+//	This is the default script for CRespawnTrigger.
+//	If you do not specify a script name for a CRespawnTrigger then
+//	it will run this script.  If you need a CRespawnTrigger to
+//	do something else DO NOT MODIFY THIS SCRIPT -- make a new
+//	script (based on this one, if you wish).
+0.0	cprint	"Running default.scr respawn script."
+
+0.0	player	"SetHealth 100"
+0.0 player	"AddToScore -1000"

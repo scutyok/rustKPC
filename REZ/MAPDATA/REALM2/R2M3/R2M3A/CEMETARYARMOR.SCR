@@ -1,0 +1,23 @@
+0 player lookatangles 0 0
+0 player teleport telespot
+0.1 letterbox on
+0.1 user_input off
+0.1 camera_path path3
+
+
+0.3 player animate powerup 8.5
+0.3 player powerup
+0.3 sound player sounds\pickups\armorpowerup.wav local
+6 trigger_generic debris1
+7 player giveitem breastplate 
+
+7 trigger_generic debris2
+7.5 trigger_generic debris3
+
+
+
+
+12 letterbox off
+12 user_input on
+12 camera_reset
+

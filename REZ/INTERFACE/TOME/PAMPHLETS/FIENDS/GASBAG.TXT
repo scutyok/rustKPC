@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Gasbag]
+[model: models/creatures/Gasbag.abc]
+[skin: skins/creatures/Gasbag.dtx]
+[anim: none]
+[scale: 1.0]
+[start]
+Few of the nightmare spawn are as cursed as the bloated Gasbag. Demonic acids encased in a sown-up shell keep this gib afloat. An airborne hazard is to be reckoned with so beware of their bouncing meaty missiles.
+
+Element: Air

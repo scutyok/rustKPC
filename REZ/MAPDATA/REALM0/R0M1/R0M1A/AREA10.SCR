@@ -1,0 +1,26 @@
+0 streamsound player sounds\tutorial\area10-1.wav local
+// wav file length 6.15
+0 center_text 0 7.1 "To swim, move around with your directional keys, including your move up and move down controls."
+
+8 streamsound player sounds\tutorial\area10-2.wav local
+// wav file length 2.67
+8 center_text 0 3.6 "The direction you face is the direction you will move. 
+
+13 streamsound player sounds\tutorial\area10-3.wav local
+// wav file length 7.19
+13 center_text 0 8.2 "While underwater, keep an eye on your air supply in the player state box in the bottom-left corner of your heads-up-display."
+
+22 streamsound player sounds\tutorial\area10-4.wav local
+// wav file length 2.17
+22 center_text 0 3.2 "If you run out of air, you will drown."
+
+27 streamsound player sounds\tutorial\area10-5.wav local
+// wav file length 3.61
+27 center_text 0 4.6 "It is possible to tread water and remain on the surface of the water."
+
+33 streamsound player sounds\tutorial\area10-6.wav local
+// wav file length 2.97
+33 center_text 0 5 "Practice swimming, then move on to the next area."
+
+36 trigger_door swimroomc open
+36 trigger_door swimroomd open

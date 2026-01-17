@@ -1,0 +1,45 @@
+//load all scripts
+0 scriptload "mapdata\realm3\r3m2\r3m2a\cheat.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2a\bridge.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2a\bridgeending.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2a\bigblock.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2a\bigblockending.scr"
+0 scriptload "mapdata\realm3\r3m2\r3m2a\belt.scr"
+
+0 endingscript "mapdata\realm3\r3m2\r3m2a\ending.scr"
+
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+
+0 camera_path IntroCam
+
+0 hint realm3\r3m2\r3m2a\r3m2-introtext
+
+0.001 cheatscript mapdata\realm3\r3m2\r3m2a\cheat.scr
+
+//play the intro .wav file
+.5 streamsound player mapdata\realm3\r3m2\r3m2a\r3m2-intro.wav local
+.5 subtitle 5.0 "Standing as testimony to man's pride,"
+
+4.5 sound player sounds\monsters\stump\stumambient1.wav local
+5.1 sound player sounds\monsters\stump\stumambient3.wav local
+6 subtitle 8.2 "the Poison Plant spreads its pollution in this realm as it does through all others."
+
+15 subtitle 8.8 "You must venture deep into its toxic bowels to free the two artifacts your quest requires."
+
+24.6 subtitle 9.0 "Seek out its core, and this will set you on your path to the hall of mirrors."
+
+35 camera_path introcam2
+
+
+
+40 user_input on
+40 letterbox off
+40 camera_reset
+40 player invulnerable false
+
+
+
+
+

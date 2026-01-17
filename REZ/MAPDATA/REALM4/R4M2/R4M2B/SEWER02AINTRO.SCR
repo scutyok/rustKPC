@@ -1,0 +1,7 @@
+0 endingscript mapdata\realm4\r4m2\r4m2b\sewer02aintro.scr
+0 teleport_door elev01 open
+0 player teleport stand02
+.1 hint realm4\r4m2\r4m2b\r4m2-introtext
+
+
+

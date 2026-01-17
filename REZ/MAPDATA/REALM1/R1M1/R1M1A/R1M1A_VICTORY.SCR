@@ -1,0 +1,15 @@
+0 user_input off
+0 camera_path victory
+0 letterbox on
+0 player invulnerable true
+0 endingscript mapdata\realm1\r1m1\r1m1a\r1m1a_victoryEND.scr
+0 disable_ai true
+
+
+8 trigger_generic CExitTrigger0
+8 player invulnerable false
+8 disable_ai false
+8.1 letterbox off
+8.1 camera_reset
+8.1 user_input on
+

@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Ballbuster]
+[model: models/creatures/Ballbuster.abc]
+[skin: skins/creatures/Ballbuster.dtx]
+[anim: none]
+[scale: 0.9]
+[start]
+This mound of bad meat used to eat cannonballs for breakfast even before the Nightmare Child molded him to his cannon. He still enjoys deflecting the odd incoming missile so don't fall for his cheap fashion tricks. Ballbusters by themselves are dangerous enough, but under the cover of a pack of Headless they are downright mean. Proceed with caution.
+
+Element: Earth

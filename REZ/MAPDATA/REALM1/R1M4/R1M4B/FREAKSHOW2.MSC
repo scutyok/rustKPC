@@ -1,0 +1,5 @@
+//This is the test master script for Freakshow2.dat
+Name "Freakshow2"
+LoadScript "mapdata\Realm1\r1m4\r1m4b\fs2patrol1.sc"
+LoadScript "mapdata\Realm1\r1m4\r1m4b\fs2patrol2.sc"
+LoadScript "mapdata\Realm1\r1m4\r1m4b\fs2patrol3.sc"

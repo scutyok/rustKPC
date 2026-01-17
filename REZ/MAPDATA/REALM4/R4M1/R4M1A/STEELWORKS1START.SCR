@@ -1,0 +1,37 @@
+//load all scripts
+0 scriptload "mapdata\realm4\r4m1\r4m1a\cheat.scr"
+0 scriptload "mapdata\realm4\r4m1\r4m1a\armor.scr"
+
+0 endingscript "mapdata\realm4\r4m1\r4m1a\ending.scr"
+
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+0 camera_path IntroCam
+
+0 hint realm4\r4m1\r4m1a\r4m1-introtext
+
+0.001 cheatscript mapdata\realm4\r4m1\r4m1a\cheat.scr
+
+.05 model_disappear brokebox
+
+//play the intro .wav file
+1.1 streamsound player mapdata\realm4\r4m1\r4m1a\r4m1-intro.wav local
+
+1.1 subtitle 9 "From the scorched remnants of the roadhouse you must venture deep inside the steel mill and wage furious battle to prevail."
+
+11 subtitle 8.5 "Behind the artifacts of the Elder you'll find the mirrored passage that spells success."
+
+20 subtitle 7 "But be warned mortal! I sense a new depth to the surrounding darkness."
+
+28 subtitle 3.3 "Necromancy has infested this realm."
+
+32 subtitle 5 "Beware the black hood that plays your requiem!"
+
+38 user_input on
+38 letterbox off
+38 camera_reset
+38 player invulnerable false
+38 disable_ai false

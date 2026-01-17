@@ -1,0 +1,18 @@
+
+//bring down drain gate door which is up and open sets it down
+.1 trigger_sliding_door Gatedrain open
+.1 trigger_sliding_door Gatedrain2 open
+
+
+//trigger soulsoup to start rising
+.1 trigger_volume risingsoup open
+
+//end script and start battle.
+.1 user_input on
+.1 letterbox off
+.1 camera_reset
+.1 player invulnerable false
+.1 disable_ai false
+
+
+

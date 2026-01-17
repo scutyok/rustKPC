@@ -1,0 +1,18 @@
+0 streamsound player sounds\tutorial\area03-1.wav local
+// wav file length 4.85
+0 center_text 0 5.8 "You can jump onto or over low obstacles as well as across short distances."
+
+
+7 streamsound player sounds\tutorial\area03-2.wav local
+// wav file length 6.90
+7 center_text 0 7.9 "Press your jump control as you follow the path, jumping over the beams, across the gaps and up onto the platforms."
+
+7 print_message 0 15 13
+
+16 streamsound player sounds\tutorial\area02-3.wav local
+// wav file length 3.1
+16 center_text 0 4.1 "If you fall off, return to the path and try again."
+
+20 trigger_door thirdrooma open
+20 trigger_door thirdroomb open
+

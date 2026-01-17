@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Spawner]
+[model: models/creatures/Spawner.abc]
+[skin: skins/creatures/Spawner.dtx]
+[anim: none]
+[scale: 0.7]
+[start]
+These unholy sentinels have forced themselves through the cracks in reality and represent the front of the demonic onslaught. The portals they create send the nightmare armies forth into the Elder's realms. The number of critters a Spawner can sustain vary but each takes the same amount of punishment before it folds. You effectively claim an area by destroying all the Spawners in it.
+
+Element: Nightmare

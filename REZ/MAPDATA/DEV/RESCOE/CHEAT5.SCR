@@ -1,0 +1,19 @@
+0 player class Celestial
+0 player SetHealth 250
+0 player GiveItem Gauntlets
+0 player GiveItem Boots
+0 player GiveItem Belt
+0 player GiveItem Breastplate
+0 player GiveItem Shoulderplates
+0 player GiveItem Mask
+0 player GiveItem ZeroCannon 
+0 player GiveItem Galaxion
+0 player GiveItem Scourge
+0 player GiveItem Windblade
+0 player GiveItem MagmaCannon
+0 player GiveItem MagmaAmmo 200
+0 player GiveItem AirAmmo 50
+0 player GiveItem WaterAmmo 50
+0 player GiveItem EarthAmmo 100
+0 player GiveItem BlackDiamond 10
+0 player GiveItem JackInTheBox 5

@@ -1,0 +1,4 @@
+// Wharf
+name "r3m1a"
+
+Loadscript "mapdata\realm3\r3m1\r3m1a\turret01.sc"

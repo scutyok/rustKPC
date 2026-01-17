@@ -1,0 +1,63 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//bring down music intensity back to 2
+//0 music intensity 2 transition beat
+
+//start the camera on the path
+0 camera_path finalentpath
+
+//play the rock door sound
+0 sound finalrockdoorspot sounds\environment\bigrock2.wav
+
+//open final gate
+0 trigger_door finalrockdoor open
+
+//debris for ground
+2.5 trigger_generic finaldoordebris1
+2.8 trigger_generic finaldoordebris3
+3 trigger_generic finaldoordebris2
+
+//move ticklers up from hole
+7 trigger_generic tickler1runner
+7.3 trigger_generic tickler2runner
+
+
+
+8 trigger_generic tickler3runner
+8.5 trigger_generic tickler4runner
+9.8 subtitle 4 "TICKLER"
+
+
+//start the big rock in hole moving up
+12 trigger_door bigfinalrock open
+
+//play the rock door sound
+12 sound tickler4pos3 sounds\environment\bigrock2.wav
+
+//bring in the clip door
+12 trigger_door finalclipdoor open
+
+//change music intensity to 3 for battle
+17 music intensity 3 transition beat
+
+17 player lookatangles 0 180
+
+//end script and give player control
+17 user_input on
+17 letterbox off
+17 camera_reset
+17 player invulnerable false
+17 disable_ai false
+
+35 trigger_generic tick1spawn
+
+55 trigger_generic tick2spawn
+
+
+
+
+

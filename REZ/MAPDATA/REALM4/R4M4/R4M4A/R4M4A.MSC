@@ -1,0 +1,5 @@
+// HouseOfHorror
+name "r4m4a"
+
+Loadscript "mapdata\realm4\r4m4\r4m4a\turret01.sc"
+Loadscript "mapdata\realm4\r4m4\r4m4a\turret02.sc"

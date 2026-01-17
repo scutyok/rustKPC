@@ -1,0 +1,35 @@
+0 endingscript mapdata\realm4\r4m3\r4m3a\subway1starta.scr
+
+0 fog_fade 0.1 on 1 2 0 0 0 off
+0 letterbox on
+0 user_input off
+0 camera_path path0
+ 
+0 scriptload mapdata\realm4\r4m3\r4m3a\subway1armor.scr
+0 scriptload mapdata\dev\rescoe\cheatsub1.scr
+
+0 hint realm4\r4m3\r4m3a\r4m3-introtext
+
+0.001 cheatscript mapdata\dev\rescoe\cheatsub1.scr
+
+0.1 fog_fade 1 on 1 5000 166 128 57 off
+1 camera_path path1
+2 streamsound player mapdata\realm4\r4m3\r4m3a\r4m3-intro.wav local
+2 subtitle 10.2 "Ride the haunted Nether Station, and you will find the fourth and final carnival at its end."
+
+5 fog_fade 2 on 1 2 130 0 0 off
+7 fog_fade 4 on 1 5000 166 128 57 off
+7 camera_path path2
+
+13 camera_path path4
+
+13.5 subtitle 4.5 "Look before you cross the tracks!"
+
+20 sound player sounds\environment\DemonTrain\scream1.wav
+
+20.5 fog_fade 1 on 1 2 0 0 0 off
+
+21.5 letterbox off
+21.5 user_input on
+21.5 camera_reset
+21.5 fog_fade 3 on 1 5000 166 128 57 off

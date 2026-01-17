@@ -1,0 +1,99 @@
+//load all scripts
+0 scriptload "mapdata\realm1\r1m2\r1m2a\citysquare1gasbag.scr"
+0 scriptload "mapdata\realm1\r1m2\r1m2a\citysquare1elebutton.scr"
+0 scriptload "mapdata\realm1\r1m2\r1m2a\cs1elebuttonending.scr"
+0 scriptload "mapdata\realm1\r1m2\r1m2a\cs1basecam.scr"
+0 scriptload "mapdata\realm1\r1m2\r1m2a\final.scr"
+0 scriptload "mapdata\realm1\r1m2\r1m2a\cs1belt.scr"
+0 scriptload "mapdata\realm1\r1m2\r1m2a\cheat.scr"
+0 scriptload "mapdata\realm1\r1m2\r1m2a\finalending.scr"
+
+0 hint realm1\r1m2\r1m2a\r1m2-introtext
+
+0 endingscript "mapdata\realm1\r1m2\r1m2a\ending.scr"
+
+//turn fountain off
+0 citysquare_fountain_off
+
+//stop the ambient sound from car
+0 sound_ambient_off carsound
+
+//Change water sprite graphic
+0 water_texture cswaterfall sprites\alphawater\soulsoup.spr
+
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+
+//start first camera path slow turn showing whole area
+0 camera_fov 110 .1
+0 camera_path IntroCam1
+
+0.001 cheatscript mapdata\realm1\r1m2\r1m2a\cheat.scr
+
+//fade out
+.002 fog_fade .1 on 1 2 0 0 0 off
+
+//fade back in
+1 fog_fade 3 on 1 20000 244 151 255 off
+
+//play the intro .wav file
+5 streamsound player mapdata\realm1\r1m2\r1m2a\r1m2-intro.wav local
+5 subtitle 4.5 "Do not be deceived by the apparent calm of this place."
+
+10 subtitle 4.4 "There is more to the city square than meets the eye."
+
+//fade out
+11 fog_fade 3 on 1 2 0 0 0 off
+
+15 subtitle 7.3 "Unlock the library and make your way past the colossal volumes of lore."
+
+//fade back in
+15.5 fog_fade 3 on 1 20000 244 151 255 off
+
+//stop the ambient sound from car
+15.5 sound_ambient_on carsound
+
+//start second camera path showing the car
+15.5 camera_fov 90 .1
+15.5 camera_path IntroCam2
+
+16 sound_ambient_on towerwind
+
+
+//fade out
+21 fog_fade 3 on 1 2 0 0 0 off
+
+23.3 subtitle 10.2 "You must master the flow of the fountain to snuff out the flames and reveal the labyrinthine belly of the city."
+
+//start the third camera path flying around the fountain
+24 camera_path IntroCam3
+
+//stop the ambient sound from car
+24 sound_ambient_off carsound
+
+//fade back in
+24 fog_fade 3 on 1 20000 244 151 255 off
+
+
+//fade out
+28 fog_fade 3 on 1 2 0 0 0 off
+
+//start the fourth camera path flying up to player in tower
+31 camera_path IntroCam4
+
+//fade back in
+31 fog_fade 3 on 1 20000 244 151 255 off
+
+34.7 subtitle 6.3 "It is only through this that you will find and pass through the looking glass."
+
+//start the 5th camera path showing player descending tower on elevator
+40 camera_path IntroCam5
+ 
+40 trigger_sliding_door towerlift open
+
+45.5 user_input on
+45.5 letterbox off
+45.5 camera_reset
+45.5 player invulnerable false
+

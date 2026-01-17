@@ -1,0 +1,16 @@
+0 endingscript mapdata\realm4\r4m2\r4m2b\sewer02aintro.scr
+
+0 user_input off
+0 camera_path movein02
+0 letterbox on
+
+1 trigger_door elev01 open
+
+4.5 camera_path first
+
+
+14 letterbox off
+14 camera_reset
+14 user_input on
+14 hint realm4\r4m2\r4m2b\r4m2-introtext
+

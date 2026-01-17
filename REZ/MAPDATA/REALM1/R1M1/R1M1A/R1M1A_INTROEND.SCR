@@ -1,0 +1,7 @@
+0 model_disappear brokebox
+0 batwing_off CLeveleffectBatwing0
+//0 trigger_door out01 open
+//0 trigger_door out02 open
+0 fog_fade 8 on 0 1900 15 0 26 on 0 2000
+0 camera_fov 90 0
+0 stopstream mapdata\Realm1\R1M1\R1M1a\r1m1-intro.wav

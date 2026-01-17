@@ -1,0 +1,8 @@
+[category: armor]
+[title: Elder Vest]
+[model: models/pickups/starbearer/shoulderplate.abc]
+[skin: skins/pickups/Starbearer/shoulderplate.dtx]
+[anim: none]
+[scale: 1.7]
+[start]
+With the Elder Vest in place the avatar's close-range prowess is greatly increased as melee weapons now do double damage.

@@ -1,0 +1,4 @@
+0 earthquake eq01 4
+0 sound eq01 sounds\environment\quake2.wav
+0 window_break wallblow01
+

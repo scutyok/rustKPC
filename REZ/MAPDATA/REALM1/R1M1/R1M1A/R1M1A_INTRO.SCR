@@ -1,0 +1,39 @@
+0 scriptload mapdata\realm1\r1m1\r1m1a\r1m1a_bigdoor.scr
+0 scriptload mapdata\realm1\r1m1\r1m1a\r1m1a_doorbust.scr
+0 scriptload mapdata\realm1\r1m1\r1m1a\r1m1a_doorknock.scr
+0 scriptload mapdata\realm1\r1m1\r1m1a\r1m1a_zero.scr
+0 scriptload mapdata\realm1\r1m1\r1m1a\r1m1a_microphone.scr
+0 scriptload mapdata\realm1\r1m1\r1m1a\r1m1a_gauntlets.scr
+0 scriptload mapdata\realm1\r1m1\r1m1a\r1m1a_victory.scr
+0 endingscript mapdata\realm1\r1m1\r1m1a\r1m1a_introEND.scr
+
+0 camera_fov 90 0
+0 user_input off
+0 camera_path intro
+0 letterbox on
+0 fog_fade 8 on 0 2000 15 0 26 on 0 2000
+
+0 hint realm1\r1m1\r1m1a\r1m1-introtext
+
+1 model_disappear brokebox
+
+8 streamsound player mapdata\Realm1\R1M1\R1M1a\r1m1-intro.wav local
+8 subtitle 3.9 "The roadhouse - it all begins here."
+12.5 subtitle 4.5 "To call upon the Starbearer you must master his realm,"
+17.3 subtitle 7.0 "cleansing it of evil while gathering the fragments of his shattered armor as you go."
+
+20 fog_fade 8 on 0 1900 15 0 26 on 0 2000
+25 subtitle 9.3 "You'll grow more powerful with each piece, until you've fully evoked the wrath of the old ones."
+
+35 subtitle 8.0 "Unfortunately, the soulless spawn guard these artifacts jealously."
+
+40 batwing_off CLeveleffectBatwing0
+44 subtitle 7.4 "Go now avatar, I will aid you in whatever way I can."
+47 camera_fov 30 6
+
+53 letterbox off
+53 camera_reset
+53 user_input on
+
+//60 trigger_door out01 open
+//60 trigger_door out02 open

@@ -1,0 +1,7 @@
+Name "nightmare"
+LoadScript "mapdata\realm5\nightmareturret.sc"
+LoadScript "mapdata\realm5\nightmareturret2.sc"
+LoadScript "mapdata\realm5\nightmareturret3.sc"
+LoadScript "mapdata\realm5\nightmarepatrol1.sc"
+LoadScript "mapdata\realm5\nightmarepatrol2.sc"
+LoadScript "mapdata\realm5\nightmarepatrol3.sc"

@@ -1,0 +1,14 @@
+0 scriptload mapdata\realm2\r2m4\r2m4b\r2m4bcheat.scr
+0 scriptload mapdata\realm2\r2m4\r2m4b\minitent01.scr
+0 scriptload mapdata\realm2\r2m4\r2m4b\minitent02.scr
+0 scriptload mapdata\realm2\r2m4\r2m4b\minitent03.scr
+
+0 hint realm2\r2m4\r2m4b\r2m4-introtext
+
+0.001 cheatscript mapdata\realm2\r2m4\r2m4b\r2m4bcheat.scr
+
+.25 script_object_play ranearth01 
+
+
+
+

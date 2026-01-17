@@ -1,0 +1,8 @@
+0 stopstream mapdata\realm5\R5-End.wav 
+0 fog_fade 0 off off 
+0.5 trigger_generic exit
+
+
+
+
+

@@ -1,0 +1,9 @@
+0 scriptload mapdata\realm1\r1m1\r1m1b\r1m1b_Intro2.scr
+0 scriptload mapdata\realm1\r1m1\r1m1b\r1m1b_Blademaster.scr
+0 scriptload mapdata\realm1\r1m1\r1m1b\r1m1b_Blademaster_END.scr
+0 scriptload mapdata\realm1\r1m1\r1m1b\r1m1b_Boots.scr
+0 scriptload mapdata\realm1\r1m1\r1m1b\r1m1b_Arachniclown.scr
+0 scriptload mapdata\realm1\r1m1\r1m1b\r1m1b_Arachniclown_END.scr
+0 scriptload mapdata\realm1\r1m1\r1m1b\r1m1b_Intro_END.scr
+
+0 scriptplay mapdata\realm1\r1m1\r1m1b\r1m1b_Intro2.scr

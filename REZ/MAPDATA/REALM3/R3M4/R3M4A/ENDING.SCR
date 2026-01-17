@@ -1,0 +1,40 @@
+
+
+0 stopstream mapdata\Realm3\R3M4\R3M4a\r3m4-intro.wav
+
+0 player teleport playerstartspot
+
+0 teleport_door ship open
+
+0 levelvar ticket 0
+
+//turn on firstdoor
+0 lightning_on firstdoor1
+0 lightning_on firstdoor2
+0 lightning_on firstdoor3
+0 lightning_on firstdoor4
+0 lightning_on firstdoor5
+0 damage_brush_enable firstdoordmg
+
+//turn on firstdoor
+0 lightning_on stiltdoor1
+0 lightning_on stiltdoor2
+0 lightning_on stiltdoor3
+0 damage_brush_enable stiltdoordmg
+
+//turn on maskdoor
+0 lightning_on maskdoor1
+0 lightning_on maskdoor2
+0 lightning_on maskdoor3
+0 lightning_on maskdoor4
+0 lightning_on maskdoor5
+0 lightning_on maskdoor6
+0 lightning_on maskdoor7
+0 lightning_on maskdoor8
+0 damage_brush_enable maskdoordmg 
+
+.1 user_input on
+.1 letterbox off
+.1 camera_reset
+.1 player invulnerable false
+

@@ -1,0 +1,41 @@
+0 streamsound player sounds\tutorial\area06-1.wav local
+// wav file length 2.17
+0 center_text 0 3.1 "Now you can see the first armor shard."
+
+4 streamsound player sounds\tutorial\area06-2.wav local
+// wav file length 5.64
+4 center_text 0 6.6 "Picking this up will give you the elder gauntlets and the Thornblade, a sword that is used for close combat."
+
+11.5 streamsound player sounds\tutorial\area06-3.wav local
+// wav file length 3.62
+11.5 center_text 0 4.6 "You must pick up the gauntlets to allow you to pick up any other weapon."
+
+17 streamsound player sounds\tutorial\area06-4.wav local
+// wav file length 3.94
+17 center_text 0 4.9 "Jump onto the platform and pick it up by running into the object."
+
+23 streamsound player sounds\tutorial\area06-5.wav local
+// wav file length 6.63
+23 center_text 0 7.6 "Swing your sword by using your attack control. Holding it down will continuously swing the sword."
+23 print_message 0 15 17
+
+32 streamsound player sounds\tutorial\area06-6.wav local
+// wav file length 6.47
+32 center_text 0 7.5 "Move your crosshair across the boxes in the room ahead and notice the clue box showing that some of them are breakable."
+
+41 streamsound player sounds\tutorial\area06-7.wav local
+// wav file length 4.03
+41 center_text 0 5 "Approach a breakable box and swing your sword when you are close to it."
+
+46 streamsound player sounds\tutorial\area06-8.wav local
+// wav file length 5.02
+46 center_text 0 6 "Some of the boxes cannot be destroyed and will have a different appearance than the breakable boxes."
+
+53 streamsound player sounds\tutorial\area06-9.wav local
+// wav file length 6.35
+53 center_text 0 7.3 "The glass windows can also be broken. Break the glass and enter the next area when you are ready to move on."
+
+61 window_break radiocount
+
+
+

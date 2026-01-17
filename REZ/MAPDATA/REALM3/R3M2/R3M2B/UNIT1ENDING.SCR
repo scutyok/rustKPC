@@ -1,0 +1,28 @@
+//activate the gasbag spawner
+0 trigger_spawner tank1spawn on
+
+//activate the ballbuster spawner
+0 trigger_spawner tankbuster on
+
+//end script and give player control
+0 user_input on
+0 letterbox off
+0 camera_reset
+0 player invulnerable false
+0 disable_ai false
+
+//turn off the ambient draining sound
+5.5 sound_ambient_off unit1drain
+5.7 streamsound ladyspot sounds\environment\tankpurged.wav
+6 sound_ambient_off alarm
+
+
+
+
+
+
+
+
+
+
+

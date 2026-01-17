@@ -1,0 +1,8 @@
+[category: artifact]
+[title: Hawk Eyes]
+[model: models/pickups/hawkeyes.abc]
+[skin: skins/pickups/hawkeyes.dtx]
+[anim: none]
+[scale: 2.6]
+[start]
+The Hawk Eyes allow you to zoom in on far away targets, for those times when sniping beats head-on combat. Best used with the Scourge, Windblade or Spirit Lance.

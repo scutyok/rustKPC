@@ -1,0 +1,16 @@
+0 user_input off
+0 camera_path path3
+0 letterbox on
+//0 player teleport telespot
+0 player lookatangles 0 0
+0 player invulnerable true
+
+3 fog_fade 1 on 1 20000 73 60 188 on 1 20000 
+4 fog_fade 1 off off
+
+
+7 user_input on
+7 letterbox off
+7 camera_reset
+
+8 player invulnerable false

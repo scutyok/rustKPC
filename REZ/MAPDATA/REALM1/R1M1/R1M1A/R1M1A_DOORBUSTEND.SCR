@@ -1,0 +1,7 @@
+0 trigger_door Out01 open
+0 trigger_door Out02 open
+0 trigger_generic Stumpmydump01
+0 trigger_generic Stumpmydump02
+0 trigger_generic Stumpmydump03
+0 trigger_generic Stumpy01
+0 player invulnerable false

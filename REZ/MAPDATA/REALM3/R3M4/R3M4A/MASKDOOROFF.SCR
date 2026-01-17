@@ -1,0 +1,15 @@
+//turn on facedoor
+0 lightning_off maskdoor1
+0 lightning_off maskdoor2
+0 lightning_off maskdoor3
+0 lightning_off maskdoor4
+0 lightning_off maskdoor5
+0 lightning_off maskdoor6
+0 lightning_off maskdoor7
+0 lightning_off maskdoor8
+
+0 damage_brush_disable maskdoordmg
+
+0 sound_ambient_off maskdoorsound
+
+

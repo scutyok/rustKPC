@@ -1,0 +1,76 @@
+0 streamsound player sounds\tutorial\area11-1.wav local
+// wav file length 6.00
+0 center_text 0 7 "You may change weapons by using your weapon select controls to activate a weapon in your possession."
+1 print_message 0 15 19
+1.5 print_message 0 15 20
+2 print_message 0 15 21
+2.5 print_message 0 15 22
+3 print_message 0 15 23
+3.5 print_message 0 15 24
+
+8 streamsound player sounds\tutorial\area11-2.wav local
+// wav file length 7.75
+8 center_text 0 8.7 "If you do not have the desired weapon, the icon will be grayed-out in your heads-up display and the weapon select control will do nothing."
+
+18 streamsound player sounds\tutorial\area11-3.wav local
+// wav file length 4.96
+18 center_text 0 6 "Pick up the ammo and select the Zerocannon by pressing your select weapon 3 control."
+18 print_message 0 15 21
+
+25 streamsound player sounds\tutorial\area11-4.wav local
+// wav file length 2.96
+25 center_text 0 3.9 "Break the glass surrounding the items in the room ahead."
+
+30 streamsound player sounds\tutorial\area11-5.wav local
+// wav file length 7.47
+30 center_text 0 8.5 "Pick up the Hawk Eyes and the Jack-in-the-box, to your left, noticing how these items will now appear in your inventory at the top of the screen."
+
+40 streamsound player sounds\tutorial\area11-6.wav local
+// wav file length 4.48
+40 center_text 0 5.5 "Your inventory can be toggled on and off by pressing your inventory control."
+40 print_message 0 15 31
+
+47 streamsound player sounds\tutorial\area11-7.wav local
+// wav file length 6.37
+47 center_text 0 7.3 "The chaos heart and the health vial are instant activation items and will not appear in your inventory."
+
+55.5 streamsound player sounds\tutorial\area11-8.wav local
+// wav file length 8.70
+55.5 center_text 0 9.7 "Time remaining on instant effects like the chaos heart will display in the player state box in the bottom-left corner of your heads-up display."
+
+66 streamsound player sounds\tutorial\area11-9.wav local
+// wav file length 3.65
+66 center_text 0 4.6 "If your health is at maximum, you cannot pick up any health items."
+
+72 streamsound player sounds\tutorial\area11-10.wav local
+// wav file length 5.34
+72 center_text 0 6.4 "Cycle through the items in your inventory using the next and previous inventory item controls."
+72 print_message 0 15 25
+72.5 print_message 0 15 26
+
+80 streamsound player sounds\tutorial\area11-11.wav local
+// wav file length 8.24
+80 center_text 0 9.3 "Cycle your inventory until the Jack-in-the-box is the selected item. It will say Jack-in-the-Box on the top of the screen when you have it selected."
+
+91 streamsound player sounds\tutorial\area11-12.wav local
+// wav file length 3.05
+91 center_text 0 4.2 "Move to the ledge so you can see the creature walking back and forth."
+
+97 streamsound player sounds\tutorial\area11-13.wav local
+// wav file length 6.32
+97 center_text 0 7.3 "Throw a Jack-in-the-Box down into the area where the creature walks by pressing your use inventory use control."
+97 print_message 0 15 27
+
+105 streamsound player sounds\tutorial\area11-14.wav local
+// wav file length 3.27
+105 center_text 0 4.3 "You may also throw a Jack-in-the-Box with the use jack-in-the-box control."
+105 print_message 0 15 28
+
+110.5 streamsound player sounds\tutorial\area11-15.wav local
+// wav file length 3.84
+110.5 center_text 0 4.8 "If you want to try again, you can pick up another Jack-in-the-Box."
+
+116 streamsound player sounds\tutorial\area11-16.wav local
+// wav file length 5.03
+116 center_text 0 6 "When you are done proceed to the small opening in the wall with the target at its far end."
+121 trigger_door longshot01 open

@@ -1,0 +1,92 @@
+//load all scripts for level
+0 scriptload mapdata\realm1\r1m2\r1m2c\cs3drain.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\cs3crate1.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\cs3crate2.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\cs3crate3.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\cs3crate4.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\cs3crate5.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\cs3crate6.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\cs3crate7.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\cs3BM.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\cs3crateifnot.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\cs3torso.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\citysquare3start.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\cs3headend.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\unideath.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\cheat.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\endingtorso.scr
+0 scriptload mapdata\realm1\r1m2\r1m2c\endingdg.scr
+
+//close the drain room gate for later
+0 trigger_door gatedrain open
+0 trigger_door gatedrain2 open
+
+//Change water sprite graphic
+//0 water_texture cs3water textures\liquids\&w_soulsoup.dtx
+0 water_texture cs3water sprites\alphawater\soulsoup.spr
+
+//start
+0 user_input off
+0 camera_path cam1
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+0 hint realm1\r1m2\r1m2c\r1m2-introtext
+
+0.001 cheatscript mapdata\realm1\r1m2\r1m2c\cheat.scr
+
+//open door
+1 trigger_sliding_door Gate1 open
+1 trigger_sliding_door Gate1b open
+
+//move player down the steps
+2 move_player playerdownsteps
+
+//move 1st unipsycho to top
+4 trigger_generic uni1runner
+
+//raise the steps.
+4 trigger_sliding_door step15 open
+4.1 trigger_sliding_door step14 open
+4.2 trigger_sliding_door step13 open
+4.3 trigger_sliding_door step12 open
+4.4 trigger_sliding_door step11 open
+4.5 trigger_sliding_door step10 open
+4.6 trigger_sliding_door step9 open
+4.7 trigger_sliding_door step8 open
+4.8 trigger_sliding_door step7 open
+4.9 trigger_sliding_door step6 open
+5 trigger_sliding_door step5 open                                                             
+5.1 trigger_sliding_door step4 open
+5.2 trigger_sliding_door step3 open
+5.3 trigger_sliding_door step2 open
+5.4 trigger_sliding_door step1 open
+
+5.75 subtitle 4 "UNIPSYCHO"
+
+//start new camera path
+7 camera_path uni2path
+
+//play sound for unipsycho
+8 sound player sounds\monsters\unipsycho\uniambient2.wav
+
+//player turns around to see what is behind him.
+8.2 turn_player topturn 100
+
+//close doors
+8.3 trigger_sliding_door Gate1 close
+8.3 trigger_sliding_door Gate1b close
+
+//end script and start battle.
+10.5 user_input on
+10.5 camera_reset
+10.5 letterbox off
+10.5 music intensity 2 transition beat
+10.5 player invulnerable false
+10.5 disable_ai false
+
+//spawn the headless
+11 trigger_generic topheadspawns
+
+

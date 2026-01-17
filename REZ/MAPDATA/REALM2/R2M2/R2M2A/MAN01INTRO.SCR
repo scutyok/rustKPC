@@ -1,0 +1,30 @@
+0 scriptload mapdata\realm2\r2m2\r2m2a\man01a.scr
+0 scriptload mapdata\realm2\r2m2\r2m2a\man01b.scr
+0 scriptload mapdata\realm2\r2m2\r2m2a\man01c.scr
+0 scriptload mapdata\realm2\r2m2\r2m2a\man01d.scr
+0 scriptload mapdata\realm2\r2m2\r2m2a\r2m2acheat.scr
+0 endingscript mapdata\realm2\r2m2\r2m2a\man01aintro.scr
+
+0 hint realm2\r2m2\r2m2a\r2m2-introtext
+
+0 user_input off
+0 camera_path introA
+0 letterbox on
+
+
+
+
+0.001 cheatscript mapdata\realm2\r2m2\r2m2a\r2m2acheat.scr
+
+.5 fog_fade 10 on 1 5000 64 64 64 on 1 500
+
+25 streamsound player mapdata\realm2\r2m2\r2m2a\r2m2a-1.wav local
+25 subtitle 4.5 "In the garage, you should find transportation to the circus."
+30 subtitle 6.5 "You must make your way around the outside of the mansion to gain entry."
+38 move_player start01
+
+
+40 letterbox off
+40 camera_reset
+40 user_input on
+

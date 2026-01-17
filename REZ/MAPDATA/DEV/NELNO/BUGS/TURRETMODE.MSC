@@ -1,0 +1,3 @@
+//This is the master script for ScriptWar.dat
+Name "ScriptWar"
+LoadScript "mapdata\dev\Nelno\ArachniTurret.sc"

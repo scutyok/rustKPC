@@ -1,0 +1,31 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//camera shows bigblock moving
+0 camera_path blockpath
+
+//move the block
+0 trigger_door bigblock open
+
+0.1 endingscript "mapdata\realm3\r3m2\r3m2a\bigblockending.scr"
+
+//spawn aclown
+2.3 trigger_generic aclown1
+
+//play the door sounds
+//3 sound spot sounds\environment\bigrock.wav
+
+//end script and give player control
+4 user_input on
+4 letterbox off
+4 camera_reset
+4 player invulnerable false
+4 disable_ai false
+
+
+
+
+

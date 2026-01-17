@@ -1,0 +1,4 @@
+//This is the master script for Cathedral1.dat
+Name "cathpatrol"
+LoadScript "mapdata\realm1\r1m3\r1m3a\cathturret1.sc"
+LoadScript "mapdata\realm1\r1m3\r1m3a\keyhead.sc"

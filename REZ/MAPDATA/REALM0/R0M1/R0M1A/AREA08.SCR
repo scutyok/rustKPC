@@ -1,0 +1,19 @@
+0 streamsound player sounds\tutorial\area08-1.wav local
+// wav file length 3.45
+0 center_text 0 4.4 "Pick up the weapon and ammunition on the floor in front of you."
+
+5.3 streamsound player sounds\tutorial\area08-1a.wav local
+// wav file length 1.90
+5.3 center_text 0 2.9 "This weapon is the Zerocannon."
+
+9 streamsound player sounds\tutorial\area08-2.wav local
+// wav file length 4.19
+9 center_text 0 5.2 " Take note of the weapon icon and ammo count on your heads-up display."
+
+15.5 streamsound player sounds\tutorial\area08-3.wav local
+// wav file length 6.90
+15.5 center_text 0 7.9 "Break the windows by firing the Zerocannon and then jump through the window using the boxes to reach the next room."
+15.5 print_message 0 15 18
+
+23 window_break Bcount02
+

@@ -1,0 +1,10 @@
+[category: weapons]
+[title: Scourge]
+[model: models/pickups/pu_Scourge.abc]
+[skin: skins/player/weapons/3rdScourge.dtx]
+[anim: none]
+[scale: 2.5]
+[start]
+The Beast King's whip delivers a powerful and accurate long-range strike, but has obvious speed limitations. The Scourge's true usefulness lies in its ability to provide access to hidden locations and unseen hunting grounds. In order to successfully conquer the elemental realms you must therefore learn to recognize the fixtures that it may grapple to.
+
+Element: Earth

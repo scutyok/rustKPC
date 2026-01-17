@@ -1,0 +1,19 @@
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+0 camera_path beltcin01
+0 player teleport beltspot01
+0 player lookatangles 0 180
+0 player animate powerup 8.5
+0 player powerup
+0 streamsound player sounds\pickups\armorpowerup.wav local
+
+6.5 player giveitem belt
+
+8.45 player teleport beltspot01
+8.5 camera_reset
+8.5 letterbox off
+8.5 user_input on
+8.5 player invulnerable false
+8.5 disable_ai false

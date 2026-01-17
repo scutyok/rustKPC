@@ -1,0 +1,25 @@
+//start
+//0 user_input off
+//0 letterbox on
+
+//switch camera to show first cratebuster walking out
+//2 camera_path cb1path
+
+//start cratebuster1
+0 trigger_generic cb1runner
+
+//switch camera to show second cratebuster walking out
+//5 camera_path cb2path
+
+//start cratebuster2
+0 trigger_generic cb2runner
+
+//end script
+//8 user_input on
+//8 letterbox off
+//8 camera_reset
+
+
+
+
+

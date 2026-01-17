@@ -1,0 +1,19 @@
+0 user_input off
+0 camera_path doorbust
+0 letterbox on
+0 player invulnerable true
+0 endingscript mapdata\realm1\r1m1\r1m1a\r1m1a_DoorBustEND.scr
+
+1 trigger_generic Stumpmydump01
+1 trigger_generic Stumpmydump02
+1 trigger_generic Stumpmydump03
+3 music intensity 3 transition measure
+
+9 trigger_door Out01 open
+9 trigger_door Out02 open
+9 trigger_generic Stumpy01
+
+10 letterbox off
+10 camera_reset
+10 user_input on
+12 player invulnerable false

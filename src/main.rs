@@ -155,7 +155,7 @@ impl WorldChooser {
 
     fn scan_worlds() -> Vec<String> {
         let mut worlds = Vec::new();
-        let base_path = std::path::Path::new("src/Worlds");
+        let base_path = std::path::Path::new("REZ/WORLDS");
         
         if let Ok(entries) = std::fs::read_dir(base_path) {
             for entry in entries.filter_map(|e| e.ok()) {
@@ -464,7 +464,7 @@ impl App {
         
         // Load DAT model - this populates texture names, vertices, indices, and draw groups
         // Texture dimensions are looked up during loading for UV scaling
-        load_dat_model(&mut data, "src/Worlds/REALM1/R1M1A.DAT", 0, 0.01)?;
+        load_dat_model(&mut data, "REZ/WORLDS/REALM1/R1M1A.DAT", 0, 0.01)?;
         
         // Now load textures to GPU (uses level_textures names populated by load_dat_model)
         create_texture_image(&instance, &device, &mut data)?;
@@ -478,7 +478,7 @@ impl App {
         create_descriptor_sets(&device, &mut data)?;
         create_command_buffers(&device, &mut data)?;
         create_sync_objects(&device, &mut data)?;
-        let initial_world = "src/Worlds/REALM1/R1M1A.DAT".to_string();
+        let initial_world = "REZ/WORLDS/REALM1/R1M1A.DAT".to_string();
         Ok(Self {
             entry,
             instance,
@@ -1156,9 +1156,9 @@ struct AppData {
     images_in_flight: Vec<vk::Fence>,
 }
 
-//================================================
+//
 // Instance
-//================================================
+//
 
 unsafe fn create_instance(window: &Window, entry: &Entry, data: &mut AppData) -> Result<Instance> {
     // Application Info
@@ -1263,9 +1263,9 @@ extern "system" fn debug_callback(
     vk::FALSE
 }
 
-//================================================
+//
 // Physical Device
-//================================================
+//
 
 #[derive(Debug, Error)]
 #[error("{0}")]
@@ -1339,9 +1339,9 @@ unsafe fn get_max_msaa_samples(instance: &Instance, data: &AppData) -> vk::Sampl
     .unwrap_or(vk::SampleCountFlags::_1)
 }
 
-//================================================
+//
 // Logical Device
-//================================================
+//
 
 unsafe fn create_logical_device(entry: &Entry, instance: &Instance, data: &mut AppData) -> Result<Device> {
     // Queue Create Infos
@@ -1403,9 +1403,9 @@ unsafe fn create_logical_device(entry: &Entry, instance: &Instance, data: &mut A
     Ok(device)
 }
 
-//================================================
+//
 // Swapchain
-//================================================
+//
 
 unsafe fn create_swapchain(window: &Window, instance: &Instance, device: &Device, data: &mut AppData) -> Result<()> {
     // Image
@@ -1506,9 +1506,9 @@ unsafe fn create_swapchain_image_views(device: &Device, data: &mut AppData) -> R
     Ok(())
 }
 
-//================================================
+//
 // Pipeline
-//================================================
+//
 
 unsafe fn create_render_pass(instance: &Instance, device: &Device, data: &mut AppData) -> Result<()> {
     // Attachments
@@ -1769,9 +1769,9 @@ unsafe fn create_shader_module(device: &Device, bytecode: &[u8]) -> Result<vk::S
     Ok(device.create_shader_module(&info, None)?)
 }
 
-//================================================
+//
 // Framebuffers
-//================================================
+//
 
 unsafe fn create_framebuffers(device: &Device, data: &mut AppData) -> Result<()> {
     data.framebuffers = data
@@ -1793,9 +1793,9 @@ unsafe fn create_framebuffers(device: &Device, data: &mut AppData) -> Result<()>
     Ok(())
 }
 
-//================================================
+//
 // Command Pool
-//================================================
+//
 
 unsafe fn create_command_pools(instance: &Instance, device: &Device, data: &mut AppData) -> Result<()> {
     // Global
@@ -1823,9 +1823,9 @@ unsafe fn create_command_pool(instance: &Instance, device: &Device, data: &mut A
     Ok(device.create_command_pool(&info, None)?)
 }
 
-//================================================
+//
 // Color Objects
-//================================================
+//
 
 unsafe fn create_color_objects(instance: &Instance, device: &Device, data: &mut AppData) -> Result<()> {
     // Image + Image Memory
@@ -1860,9 +1860,9 @@ unsafe fn create_color_objects(instance: &Instance, device: &Device, data: &mut 
     Ok(())
 }
 
-//================================================
+//
 // Depth Objects
-//================================================
+//
 
 unsafe fn create_depth_objects(instance: &Instance, device: &Device, data: &mut AppData) -> Result<()> {
     // Image + Image Memory
@@ -1930,9 +1930,9 @@ unsafe fn get_supported_format(
         .ok_or_else(|| anyhow!("Failed to find supported format!"))
 }
 
-//================================================
+//
 // Texture
-//================================================
+//
 
 /// Structure to hold texture data before uploading to GPU
 struct LoadedTexture {
@@ -2013,7 +2013,7 @@ fn find_texture_file(textures_root: &std::path::Path, texture_name: &str) -> Opt
 
 /// Get texture dimensions without loading full pixel data
 fn get_texture_dimensions(texture_name: &str) -> (u32, u32) {
-    let textures_path = std::path::Path::new("src/Textures");
+    let textures_path = std::path::Path::new("REZ/TEXTURES");
     
     // Try to find and load the DTX file header
     let variations = [
@@ -2037,7 +2037,7 @@ fn get_texture_dimensions(texture_name: &str) -> (u32, u32) {
 }
 
 unsafe fn create_texture_image(instance: &Instance, device: &Device, data: &mut AppData) -> Result<()> {
-    let textures_path = std::path::Path::new("src/Textures");
+    let textures_path = std::path::Path::new("REZ/TEXTURES");
     
     println!("=== LOADING LEVEL TEXTURES ===");
     println!("Textures to load: {}", data.level_textures.len());
@@ -2374,9 +2374,9 @@ unsafe fn create_texture_sampler(device: &Device, data: &mut AppData) -> Result<
     Ok(())
 }
 
-//================================================
+//
 // Model
-//================================================
+//
 
 fn load_model(data: &mut AppData) -> Result<()> {
     // Model
@@ -2674,9 +2674,9 @@ fn print_dat_info<P: AsRef<std::path::Path>>(path: P) -> Result<()> {
     Ok(())
 }
 
-//================================================
+//
 // Buffers
-//================================================
+//
 
 unsafe fn create_vertex_buffer(instance: &Instance, device: &Device, data: &mut AppData) -> Result<()> {
     // Create (staging)
@@ -2795,9 +2795,9 @@ unsafe fn create_uniform_buffers(instance: &Instance, device: &Device, data: &mu
     Ok(())
 }
 
-//================================================
+//
 // Descriptors
-//================================================
+//
 
 unsafe fn create_descriptor_pool(device: &Device, data: &mut AppData) -> Result<()> {
     // We need descriptor sets for:
@@ -2914,9 +2914,9 @@ unsafe fn create_descriptor_sets(device: &Device, data: &mut AppData) -> Result<
     Ok(())
 }
 
-//================================================
+//
 // Command Buffers
-//================================================
+//
 
 unsafe fn create_command_buffers(device: &Device, data: &mut AppData) -> Result<()> {
     let num_images = data.swapchain_images.len();
@@ -2935,9 +2935,9 @@ unsafe fn create_command_buffers(device: &Device, data: &mut AppData) -> Result<
     Ok(())
 }
 
-//================================================
+//
 // Sync Objects
-//================================================
+//
 
 unsafe fn create_sync_objects(device: &Device, data: &mut AppData) -> Result<()> {
     let semaphore_info = vk::SemaphoreCreateInfo::builder();
@@ -2957,9 +2957,9 @@ unsafe fn create_sync_objects(device: &Device, data: &mut AppData) -> Result<()>
     Ok(())
 }
 
-//================================================
+//
 // Structs
-//================================================
+//
 
 #[derive(Copy, Clone, Debug)]
 struct QueueFamilyIndices {
@@ -3081,9 +3081,9 @@ impl Hash for Vertex {
     }
 }
 
-//================================================
+//
 // Shared (Buffers)
-//================================================
+//
 
 unsafe fn create_buffer(
     instance: &Instance,
@@ -3134,9 +3134,9 @@ unsafe fn copy_buffer(
     Ok(())
 }
 
-//================================================
+//
 // Shared (Images)
-//================================================
+//
 
 unsafe fn create_image(
     instance: &Instance,
@@ -3309,9 +3309,9 @@ unsafe fn copy_buffer_to_image(
     Ok(())
 }
 
-//================================================
+//
 // Shared (Other)
-//================================================
+//
 
 unsafe fn get_memory_type_index(
     instance: &Instance,

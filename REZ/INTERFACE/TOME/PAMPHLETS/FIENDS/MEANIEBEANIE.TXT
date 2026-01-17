@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Meanie Beanie]
+[model: models/creatures/meaniebeanie.abc]
+[skin: skins/creatures/meaniebeanie.dtx]
+[anim: none]
+[scale: 1.3]
+[start]
+Once these mutated miniature menaces take to the air you had better pop them fast or run for cover. Not able to stand much punishment, the flying clown is a fearsome foe still because of his devastating missiles and diminutive size. Your best bet may be to get him to clown around with other creatures, who won't take lightly to his inconsiderate use of explosives.
+
+Element: Air

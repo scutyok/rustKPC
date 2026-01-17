@@ -1,0 +1,20 @@
+0 user_input off
+0 letterbox on
+0 camera_path path1
+0 music song1 intensity 1
+0 player invulnerable true
+0 player lookatangles 0 0
+0 disable_ai true
+
+0 sound_ambient_on watersound1
+0 sound_ambient_on watersound2
+0 sound_ambient_on watersound3
+0 sound_ambient_on watersound4
+
+0.8 trigger_volume water1 open
+
+7 letterbox off
+7 user_input on
+7 camera_reset
+8 player invulnerable false
+8 disable_ai false

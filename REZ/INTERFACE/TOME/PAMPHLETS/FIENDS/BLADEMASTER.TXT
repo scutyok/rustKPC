@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Blademaster]
+[model: models/creatures/Blademaster.abc]
+[skin: skins/creatures/Blademaster.dtx]
+[anim: none]
+[scale: 0.9]
+[start]
+Vicious blades tear at the Blademaster's cold flesh as he leaps in for the kill. His razor-sharp disks may be ducked, but have the capability to seek you on the horizontal plane. The Blademaster is vastly superior to the horde creatures in strength but ranks low on the list of circus thugs.
+
+Element: Air

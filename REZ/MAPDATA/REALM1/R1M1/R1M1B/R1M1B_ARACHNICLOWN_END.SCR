@@ -1,0 +1,4 @@
+0 sound player sounds\environment\laugh.wav local
+0 music intensity 3 transition measure
+0 trigger_generic Heathrow
+0 player invulnerable false

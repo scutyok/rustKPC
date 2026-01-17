@@ -1,0 +1,27 @@
+0 user_input off
+0 camera_path Gustav
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+0 trigger_generic strongscript
+
+
+2 sound player sounds\environment\quake2.wav local
+4.3 trigger_generic crumble2
+
+5.8 trigger_generic crumble3
+
+
+9 trigger_generic crumble4
+9 sound player sounds\environment\barrelexplode2.wav local
+9 music intensity 3 
+
+9 subtitle 4 "STRONGMAN"
+
+15 player lookatangles 0 90
+16 letterbox off
+16 camera_reset
+16 user_input on
+16 player invulnerable false
+16 disable_ai false

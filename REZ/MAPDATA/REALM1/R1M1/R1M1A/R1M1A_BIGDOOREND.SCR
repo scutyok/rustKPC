@@ -1,0 +1,7 @@
+0 trigger_door door01 open
+0 player invulnerable false
+0.2 trigger_generic Doorless01
+0.4 trigger_generic Doorless02
+0.6 trigger_generic Doorless03
+//3 music intensity 2 transition measure
+

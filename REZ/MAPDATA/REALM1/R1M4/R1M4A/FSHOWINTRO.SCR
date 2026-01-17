@@ -1,0 +1,33 @@
+0 endingscript mapdata\realm1\r1m4\r1m4a\fshowintro1.scr
+0 model_disappear sockmonkey
+0 user_input off
+0 letterbox on
+
+0 camera_path path1
+0 fog_fade 2 on 1 4000 106 116 162 on 1 600
+
+0 scriptload mapdata\dev\rescoe\cheatfreak1.scr
+
+0 hint realm1\r1m4\r1m4a\r1m4-introtext
+
+0.001 cheatscript mapdata\dev\rescoe\cheatfreak1.scr
+
+0.1 streamsound player mapdata\realm1\r1m4\r1m4a\r1m4-intro.wav local
+0.1 subtitle 8.0 "You stand at the brink of success now. Only the carnival of lost souls block your way."
+
+8 fog_fade 3 on 1 2 220 0 0 off
+8.5 subtitle 5.5 "Through the crimson fold you must go, to find the Starbearer's mask."
+9 camera_fov 30 3
+
+12 camera_fov 90 0
+12 camera_path path1a
+13 fog_fade 4 on 1 4000 106 116 162 on 1 600
+15 subtitle 6.2 "With it, you will have invoked the Elder and become a true avatar of the elements."
+22.3 subtitle 11.3  "It all rests with you now. I can do no more. May the fates look upon you favorably, my friend."
+
+26 fog_fade 2 on 1 2 0 0 0 off
+28 camera_path path2
+28 fog_fade 2 on 1 4000 106 116 162 on 1 600
+30 fog_fade 2 on 1 2 0 0 0 off
+
+33.5 scriptplay mapdata\realm1\r1m4\r1m4a\fshowintro1.scr

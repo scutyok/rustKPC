@@ -1,0 +1,32 @@
+0 user_input off
+0 letterbox on
+0 camera_path mainfilm01
+0 disable_ai true
+0 player invulnerable true
+0 player teleport stand01
+
+0 trigger_generic ssclown01
+.5 trigger_generic ssclown01run
+
+1 turn_player mm01 1
+
+2 trigger_door ddoor02a open
+
+2.5 move_player mainmove01
+
+6 trigger_door ddoor02a close
+
+8.5 sound player sounds\environment\laugh.wav local
+9 camera_path mainfilm02
+
+10 turn_player mm01 0 
+11 sound player sounds\environment\doorlocked.wav
+
+12 camera_path mainfilm03
+13 turn_player mr01 0
+
+15 camera_reset
+15 letterbox off
+15 user_input on
+15.5 disable_ai false
+15.5 player invulnerable false

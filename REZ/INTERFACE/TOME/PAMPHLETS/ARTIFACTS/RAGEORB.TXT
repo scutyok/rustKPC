@@ -1,0 +1,8 @@
+[category: artifact]
+[title: Rage Orb]
+[model: models/pickups/rageskull.abc]
+[skin: skins/pickups/rageorb.dtx]
+[anim: none]
+[scale: 2.8
+[start]
+To gain one of these you must first collect forty Black Diamonds. While the omnipotent might of the Rage Orb is in effect the avatar will possess unlimited access to the elements. Once its yours, pull out your favorite weapon and spray to your heart's content! Intact Rage Orbs do exist throughout the elemental realms, but they are always well guarded, and usually hidden far from view.

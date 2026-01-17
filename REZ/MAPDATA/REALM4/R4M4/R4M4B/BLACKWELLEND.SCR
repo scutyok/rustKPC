@@ -1,0 +1,41 @@
+0 endingscript mapdata\realm4\r4m4\r4m4b\blackwellend1.scr
+0 user_input off
+0 camera_path path4end
+0 letterbox on
+0 fog_fade 1 on 1 5000 166 128 57 off
+0 disable_ai true
+0 player invulnerable true
+0 music boss3 intensity 9
+
+
+0 model_anim_loop Raven1 HunchTwiddle
+0 model_anim_loop Raven2 HunchTwiddle
+1 music ravensong intensity 1
+1 streamsound player mapdata\realm4\r4m4\r4m4b\r4m4-end.wav local
+1 subtitle 4.0 "The Four Who Are One stand united!"
+1 model_anim_loop Raven1 HunchRaiseHandsTalk
+1 model_anim_loop Raven2 HunchRaiseHands
+4.9 model_anim_loop Raven1 HunchTwiddle
+4.9 model_anim_loop Raven2 HunchTwiddle
+
+
+5 subtitle 4.3 "Quickly now, while there is still time. The Dark One must be banished!"
+5 model_anim_loop Raven1 HunchTwiddleTalk
+5 model_anim_loop Raven2 HunchTwiddleTalk
+
+10 subtitle 10.2 "A dark dawn will begin if the new god sets its gaze upon the cosmos and realizes its own power."
+
+
+21.4 subtitle 7.0 "End this nightmare now and leave this seed of evil forever barren."
+
+26 model_anim_loop Raven1 TerribleThingsTalk
+26 model_anim_loop Raven2 TerribleThings
+27.7 model_anim_loop Raven1 Hunch2Up
+27.7 model_anim_loop Raven2 Hunch2Up
+
+28 fog_fade 2 on 1 2 255 0 0 off
+
+29 model_anim_loop Raven2 UpAmb
+
+32 player invulnerable false
+32 trigger_generic exit

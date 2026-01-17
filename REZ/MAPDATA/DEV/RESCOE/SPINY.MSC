@@ -1,0 +1,3 @@
+//This is the test master script for Freakshow.dat
+Name "spiny"
+LoadScript "mapdata\dev\Rescoe\hedgehog.sc"

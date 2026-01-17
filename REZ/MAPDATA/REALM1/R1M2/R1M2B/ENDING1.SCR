@@ -1,0 +1,24 @@
+0 music intensity 1 transition beat
+
+//get rid of secret door in fountain bottom
+0 trigger_door soupdoor open
+
+//re-populate library
+0 trigger_generic repop
+
+//start the fountain
+0 citysquare_fountain_start
+
+//trigger soulsoup to start rising
+0 trigger_volume soulsoup open
+
+//end script and give player control
+0 user_input on
+0 letterbox off
+0 camera_reset
+0 player invulnerable false
+0 disable_ai false
+
+
+
+

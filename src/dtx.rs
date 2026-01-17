@@ -154,7 +154,7 @@ impl DtxFile {
         }
 
         // Determine BPP type
-        // LT1 and LT1.5 always use 8-bit palette (per Godot reference)
+        // LT1 and LT1.5 always use 8-bit palette
         let bpp_type = if dtx.version == DTX_VERSION_LT1 || dtx.version == DTX_VERSION_LT15 {
             BppType::Bpp8Palette
         } else {

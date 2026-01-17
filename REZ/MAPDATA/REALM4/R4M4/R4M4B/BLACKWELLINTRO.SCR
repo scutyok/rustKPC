@@ -1,0 +1,39 @@
+0 endingscript mapdata\realm4\R4M4\R4M4b\Blackwellintro1.scr
+0 user_input off
+0 camera_path path1
+0 letterbox on
+0 fog_fade 2 on 1 5000 166 128 57 off
+0 damage_brush_disable lavabrush
+
+0 scriptload mapdata\realm4\r4m4\r4m4b\Blackwellend.scr
+0 scriptload mapdata\realm4\r4m4\r4m4b\SpawnA.scr
+0 scriptload mapdata\realm4\r4m4\r4m4b\SpawnB.scr
+0 scriptload mapdata\dev\rescoe\circus4cheat.scr
+0.001 cheatscript mapdata\dev\rescoe\circus4cheat.scr
+
+2.0 streamsound player sounds\monsters\blackwell\intro1.wav local
+
+2.0 subtitle 2.8 "Ladies and Gentlemen,"
+
+5.5 streamsound player sounds\monsters\blackwell\intro2.wav local
+
+5.5 subtitle 4.8 "In the center ring, we present a dazzling spectacle,"
+
+11 streamsound player sounds\monsters\blackwell\intro3.wav local
+
+11 subtitle 9.1 "featuring a menacing menagerie of carnivorous creatures, formidable foes, and everlasting evil."
+
+21 streamsound player sounds\monsters\blackwell\intro4.wav local
+
+21 subtitle 4 "Welcome to the show."
+
+25 boss_controller blackwell start
+25 letterbox off
+25 user_input on
+25 camera_reset
+
+25 damage_brush_enable lavabrush
+
+
+
+

@@ -1,0 +1,21 @@
+0 endingscript mapdata\realm2\r2m2\r2m2a\man01da.scr
+0 user_input off
+0 camera_path lastgate01
+0 letterbox on
+0 disable_ai true
+0 player invulnerable true
+
+5 trigger_door gate01 open
+5 sound player sounds\environment\door5open.wav local
+5 levelvar temp01 1
+5.5 trigger_spawner espawner02 on
+
+5.5  player lookatangles 0 270
+6 letterbox off
+6 camera_reset
+6 user_input on
+6 disable_ai false
+6 player invulnerable false
+
+
+

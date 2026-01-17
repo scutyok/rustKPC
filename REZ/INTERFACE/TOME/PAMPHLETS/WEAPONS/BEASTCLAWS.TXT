@@ -1,0 +1,10 @@
+[category: weapons]
+[title: Beast Claws]
+[model: models/pickups/beastking/gauntlets.abc]
+[skin: skins/pickups/beastking/gauntlets.dtx]
+[anim: none]
+[scale: 4.0]
+[start]
+Somewhat limited in range, the Beast Claws still tear up their opponents in a hurry once they connect.
+
+Element: Earth

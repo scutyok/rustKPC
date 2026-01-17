@@ -1,0 +1,28 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+0 sound player sounds\environment\event.wav local
+
+//bring down music intensity back to 2
+//0 music intensity 2 transition beat
+
+//start the camera on the path
+0 camera_path basecam
+
+//open final gate
+.5 trigger_door basefinaldoor2 open
+.5 trigger_door basefinaldoor1 open
+
+//throw stumps out of door
+//1 trigger_generic basestumps
+
+//end script and give player control
+2 user_input on
+2 letterbox off
+2 camera_reset
+2 player invulnerable false
+2 disable_ai false
+

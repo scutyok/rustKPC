@@ -1,0 +1,31 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//start the camera on the path
+0 camera_path torsopath
+
+//teleport player to exact spot
+0 player teleport torsospot
+0 player animate powerup 8.5
+0 player powerup
+0 player lookat torsoturn
+
+0 sound player sounds\pickups\armorpowerup.wav local
+
+6.75 player giveitem boots 
+
+//end script
+9 user_input on
+9 letterbox off
+9 camera_reset
+9 player invulnerable false
+9 disable_ai false
+
+//start earthquake scriptobjects
+10.2 script_object_play ranearth02
+10.2 trigger_generic rockfall1
+11.5 trigger_generic rockfall2
+

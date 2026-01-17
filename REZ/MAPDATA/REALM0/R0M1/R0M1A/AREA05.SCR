@@ -1,0 +1,65 @@
+0 streamsound player sounds\tutorial\area05-1.wav local
+// wav file length 4.96
+0 center_text 0 6.0 "Along the bottom of your screen are the status indicators of your heads-up display."
+
+7 streamsound player sounds\tutorial\area05-2.wav local
+// wav file length 5.58
+7 center_text 0 6.6 "The numbers show your health and ammo, while the icons display your weapons and armor pieces."
+
+15 streamsound player sounds\tutorial\area05-3.wav local
+// wav file length 6.25
+15 center_text 0 7.3 "Currently all weapons and armor are grayed-out, telling you that you have no weapons and no armor pieces yet."
+
+23 streamsound player sounds\tutorial\area05-4.wav local
+// wav file length 3.38
+23 center_text 0 4.4 "In the bottom right-hand corner, you will see the clue box."
+
+29 streamsound player sounds\tutorial\area05-5.wav local
+// wav file length 13.68
+29 center_text 0 14.7 "As you move the crosshair in the center of your screen over certain objects in the world, the crosshair itself will change appearance and icons will appear inside the clue box, showing you how you may interact with the objects."
+
+29  trigger_door ivault01 open
+29 sound ivault01sound sounds\environment\metalslide2.wav 
+
+31.5  trigger_door ivault02 open
+31.5 sound ivault02sound sounds\environment\metalslide2.wav
+
+34  trigger_door ivault03 open
+34 sound ivault03sound sounds\environment\metalslide2.wav
+
+36.5  trigger_door ivault04 open
+36.5 sound ivault04sound sounds\environment\metalslide2.wav
+
+39  trigger_door ivault05 open
+39 sound ivault05sound sounds\environment\metalslide2.wav 
+
+41.5  trigger_door ivault06 open
+41.5 sound ivault06sound sounds\environment\metalslide2.wav 
+
+45 streamsound player sounds\tutorial\area05-6.wav local
+// wav file length 6.26
+45 center_text 0 7.3 "Move your crosshair over the objects in this room and notice how the crosshair and clue box change."
+
+54 streamsound player sounds\tutorial\area05-7.wav local
+// wav file length 2.87
+54 center_text 0 3.9 "You will not be able to pick up any of these items right now."
+
+59 streamsound player sounds\tutorial\area05-8.wav local
+// wav file length 5.64
+59 center_text 0 6.6 "On the left side of the room are instant items. These will activate immediately when picked up."
+
+67 streamsound player sounds\tutorial\area05-9.wav local
+// wav file length 4.68
+67 center_text 0 5.7 "On the right side are a weapon, an armor shard, and an inventory item."
+
+74 streamsound player sounds\tutorial\area05-10.wav local
+// wav file length 4.65
+74 center_text 0 5.7 "These items are added to your inventory and some may be activated at a later time."
+
+81 streamsound player sounds\tutorial\area05-11.wav local
+// wav file length 2.76
+81 center_text 0 3.8 "When you are ready, move on to the next area."
+
+84 trigger_door itemexita open
+84 trigger_door itemexitb open
+84 sound itemexitspot sounds\environment\doorslide2.wav

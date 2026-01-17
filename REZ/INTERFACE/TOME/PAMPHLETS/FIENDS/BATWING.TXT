@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Batwing]
+[model: models/creatures/Batwing.abc]
+[skin: skins/creatures/Batwing.dtx]
+[anim: none]
+[scale: 2.0]
+[start]
+A mindless swarm of razor-sharp wings, the Batwings tear through anything that crosses their path. Their resistance to certain attacks and the large number of creatures in a single swarm can make the Batwings tough to get rid of. On the battlefield it may serve you best to observe their flight patterns and simply stay out of their way.
+
+Element: Air

@@ -1,6 +1,6 @@
-//! egui renderer for Vulkan using vulkanalia
-//!
-//! This module provides egui integration with the existing Vulkan renderer.
+//egui renderer for Vulkan using vulkanalia
+//
+//this module provides egui integration
 
 use anyhow::{anyhow, Result};
 use std::mem::size_of;

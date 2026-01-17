@@ -1,0 +1,13 @@
+0 trigger_door gate01 open
+0 levelvar temp01 1
+0 trigger_spawner espawner02 on
+
+0 player lookatangles 0 270
+.01 letterbox off
+.01 camera_reset
+.01 user_input on
+.01 disable_ai false
+.01 player invulnerable false
+
+
+

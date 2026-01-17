@@ -1,0 +1,17 @@
+0 user_input off
+0 letterbox on
+0 camera_reset
+0 camera_path dooropencin01
+0 player lookatangles 0 270
+
+0 player invulnerable true
+0 disable_ai true
+
+
+2.5 player invulnerable false
+2.5 disable_ai false
+
+2.5 user_input on
+2.5 letterbox off
+2.5 camera_reset
+

@@ -1,0 +1,26 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//camera shows lightning stop
+0 camera_path elecdoor1path
+
+0.1 endingscript mapdata\realm3\r3m2\r3m2b\elecdoor1ending.scr
+
+1 script_object_play elecdoor1off
+
+//end script and give player control
+2.7 user_input on
+2.7 letterbox off
+2.7 camera_reset
+2.7 player invulnerable false
+2.7 disable_ai false
+
+
+
+
+
+
+

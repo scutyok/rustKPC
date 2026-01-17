@@ -1,0 +1,10 @@
+0 streamsound player sounds\tutorial\area06a-1.wav local
+// wav file length 6.19
+0 center_text 0 7.1 "Other items in the world can also be destroyed. The radio in the corner of this room is one such object."
+
+9 streamsound player sounds\tutorial\area06a-2.wav local
+// wav file length 3.00
+9 center_text 0 4 "When you are ready, climb down the ladder to the next area."
+
+13 trigger_door ladderhatch open
+

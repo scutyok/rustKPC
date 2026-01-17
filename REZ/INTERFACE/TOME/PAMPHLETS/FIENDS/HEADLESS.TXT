@@ -1,0 +1,11 @@
+[category: fiends]
+[title: Headless]
+[model: models/creatures/Headless.abc]
+[skin: skins/creatures/Head.dtx]
+[anim: none]
+[scale: 0.8]
+[start]
+The razor-limbed Headless are pouring out of the shadows, signaling the arrival of a cosmic cancer. They are mindless and uncaring in their evil and have no care for the value of any life, much less their own. Alone the Headless may be feeble and confused, but a frenzied pack cannot be ignored. 
+
+Element: All
+

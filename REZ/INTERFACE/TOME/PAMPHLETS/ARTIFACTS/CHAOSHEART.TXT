@@ -1,0 +1,9 @@
+[category: artifact]
+[title: Chaos Heart]
+[model: models/pickups/chaosheart.abc]
+[skin: skins/pickups/chaosheart.dtx]
+[anim: none]
+[scale: 1.7]
+[start]
+A potent combat item, the Chaos Heart will increase the avatar's damage potential in steady pulses. Time your attack to the heart's beat to get the maximum effect.
+

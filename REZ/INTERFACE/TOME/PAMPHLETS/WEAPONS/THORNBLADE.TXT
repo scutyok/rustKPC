@@ -1,0 +1,10 @@
+[category: weapons]
+[title: Thornblade]
+[model: models/pickups/pu_Thornblade.abc]
+[skin: skins/player/weapons/3rdThornblade.dtx]
+[anim: none]
+[scale: 2.0]
+[start]
+With its powerful double-slice the Starbearer's blade slices through the hordes like a scythe through the fields. Once the rhythm of the sword has been mastered it becomes one of the most efficient death-dealers available throughout the realms.
+
+Element: Water

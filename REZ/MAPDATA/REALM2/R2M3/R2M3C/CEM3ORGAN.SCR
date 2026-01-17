@@ -1,0 +1,36 @@
+1 letterbox on
+1 user_input off
+1 camera_path path1
+1 player invulnerable true
+//1 disable_ai true
+
+8 trigger_generic grave1
+8.1 trigger_generic gravespawn1
+
+9 camera_path path2
+9.3 trigger_door grave2 open
+9.5 trigger_generic gravespawn2
+
+12 camera_path path3
+12.3 trigger_door grave3 open
+12.5 trigger_generic gravespawn3
+
+15 camera_path path4
+15 levelvar lock1 1
+15.1 trigger_door gravedoor open
+
+19 trigger_generic grave4
+19 trigger_generic spawn1
+19 trigger_generic spawn9
+
+20 script_object_disable pipeorgan1
+
+21 player lookatangles 0 180
+22 music song4 intensity 3
+22 letterbox off
+22 user_input on
+22 camera_reset
+23 disable_ai false
+23 player invulnerable false
+23 trigger_door stagetrap open
+

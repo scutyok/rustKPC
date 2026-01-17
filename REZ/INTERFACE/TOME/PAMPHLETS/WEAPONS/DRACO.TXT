@@ -1,0 +1,10 @@
+[category: weapon]
+[title: Draco]
+[model: models/pickups/pu_Draco.abc]
+[skin: skins/weapons/Draco/Draco.dtx]
+[anim: none]
+[scale: 2.1]
+[start]
+The Demon's scaled familiar is all too happy to be joining the fray by the time you find him. His breath is liquid destruction, but eats ammo like no other, so keep him chewing fire icons!
+
+Element: Fire

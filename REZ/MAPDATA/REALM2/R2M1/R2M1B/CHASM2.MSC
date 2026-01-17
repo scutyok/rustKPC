@@ -1,0 +1,12 @@
+// CitySquare2 master script
+name "Chasm2"
+
+Loadscript "mapdata\realm2\r2m1\r2m1b\BBturret1.sc"
+Loadscript "mapdata\realm2\r2m1\r2m1b\tickler2.sc"
+Loadscript "mapdata\realm2\r2m1\r2m1b\tickler3.sc"
+Loadscript "mapdata\realm2\r2m1\r2m1b\tickler4.sc"
+Loadscript "mapdata\realm2\r2m1\r2m1b\turreteasy.sc"
+
+
+
+

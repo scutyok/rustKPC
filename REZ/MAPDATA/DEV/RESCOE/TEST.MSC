@@ -1,0 +1,3 @@
+//This is the master script for polytest.dat
+Name "test"
+LoadScript "mapdata\dev\Rescoe\cathpatrol1a.sc"

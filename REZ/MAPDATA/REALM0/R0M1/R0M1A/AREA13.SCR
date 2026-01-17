@@ -1,0 +1,22 @@
+0 streamsound player sounds\tutorial\area13-1.wav local
+// wav file length 6.88
+0 center_text 0 7.9 "To guide you on your way, hints will be given to you by Madame Raven, a gypsy fortune teller, who will monitor your progress."
+
+9 streamsound player sounds\tutorial\area13-2.wav local
+// wav file length 4.24
+9 center_text 0 7.9 "As she speaks to you, a crystal ball will appear in the hint box on your screen."
+
+// wav file length 12.24 for raven hint
+14 hint realm0\r0m1\r0m1a\raven1
+
+27 streamsound player sounds\tutorial\area13-3.wav local
+// wav file length 7.16
+27 center_text 0 8.1 "To review the latest guidance from Madame Raven, use the crystal ball in your inventory or press your crystal ball control."
+
+27 print_message 0 15 30
+
+36 streamsound player sounds\tutorial\area13-4.wav local
+// wav file length 3.58
+36 center_text 0 4.6 "To stop the hint while she is speaking, use the crystal ball."
+
+42 scriptplay mapdata\realm0\r0m1\r0m1a\area13a.scr

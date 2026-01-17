@@ -1,0 +1,8 @@
+[category: armor]
+[title: Elder Boots]
+[model: models/pickups/starbearer/boots.abc]
+[skin: skins/pickups/starbearer/boots.dtx]
+[anim: none]
+[scale: 1.6]
+[start]
+After equipping the Elder Boots the avatar's jumping prowess becomes much greater than before. New areas may be discovered, dodging certain attacks becomes easier and the ability to leap over foes that could previously block your path will dramatically increase your chances of survival. As with all consecutive armor pieces, the Elder Boots also add 100 points to the avatar's capability to carry elemental ammo.

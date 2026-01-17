@@ -1,0 +1,20 @@
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+0 camera_path eledoorpath
+
+.1 endingscript "mapdata\realm1\r1m2\r1m2a\cs1elebuttonending.scr"
+
+.5 turn_player pointplayer 2
+
+1 trigger_sliding_door elevatordoor open
+
+3 trigger_generic lobbyspawn
+
+3.0 user_input on
+3.0 letterbox off
+3.0 camera_reset
+3 player invulnerable false
+3 disable_ai false

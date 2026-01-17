@@ -1,0 +1,46 @@
+//start
+//0 user_input off
+//0 letterbox on
+
+//make player invunerable
+//0 player invulnerable true
+
+//start the camera on the path to watch crates break
+//0 camera_path cratepath
+
+
+//close the gate to the room with torso
+//0 trigger_door gatetorso open
+//0 trigger_door gatetorso2 open
+
+//start the crate breaking
+.2 window_break crate4
+.6 window_break crate3
+.6 window_break crate5
+.85 window_break crate2
+1.1 window_break crate6
+1.2 window_break crate7
+
+//switch camera to show first cratebuster walking out
+//2 camera_path cb1path
+
+//start cratebuster1
+//2 trigger_generic cb1runner
+
+//switch camera to show second cratebuster walking out
+//5 camera_path cb2path
+
+//start cratebuster2
+//5 trigger_generic cb2runner
+
+//make player invunerable
+//8 player invulnerable false
+
+//end script
+//8 user_input on
+//8 letterbox off
+//8 camera_reset
+
+
+
+

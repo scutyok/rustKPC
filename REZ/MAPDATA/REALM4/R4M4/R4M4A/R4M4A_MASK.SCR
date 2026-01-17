@@ -1,0 +1,21 @@
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+0 camera_path maskpath
+0 player teleport maskspot
+0 turn_player maskfocus 1
+
+2 player animate powerup 8.5
+2 player powerup
+2 streamsound player sounds\streaming\armorpowerup.wav local
+
+8.75 player giveitem mask
+
+12.5 user_input on
+12.5 letterbox off
+12.5 camera_reset
+12.5 player invulnerable false
+12.5 disable_ai false
+
+12.8 trigger_generic eyeballs

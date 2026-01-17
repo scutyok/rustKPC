@@ -1,0 +1,19 @@
+0 scriptload mapdata\realm4\r4m2\r4m2b\sewer02a.scr
+0 scriptload mapdata\realm4\r4m2\r4m2b\sewer02b.scr
+0 scriptload mapdata\realm4\r4m2\r4m2b\sewer02b1.scr
+0 scriptload mapdata\realm4\r4m2\r4m2b\sewer02c.scr
+0 scriptload mapdata\realm4\r4m2\r4m2b\r4m2bcheat.scr
+0 scriptload mapdata\realm4\r4m2\r4m2b\shoulderpickup01.scr
+
+0 water_texture drain01 Sprites\World\lava1.spr
+0 water_texture drain02 Sprites\World\lava1.spr
+0 water_texture drain03 Sprites\World\lava1.spr
+0 water_texture drain04 Sprites\World\lava1.spr
+0 water_off drain04
+
+0 hint realm4\r4m2\r4m2b\r4m2-introtext
+
+0.001 cheatscript mapdata\realm4\r4m2\r4m2b\r4m2bcheat.scr
+
+
+.2 scriptplay  mapdata\realm4\r4m2\r4m2b\sewer02a.scr

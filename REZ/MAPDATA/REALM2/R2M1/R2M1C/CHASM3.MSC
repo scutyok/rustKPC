@@ -1,0 +1,8 @@
+// Chasm3 master script
+name "Chasm3"
+
+Loadscript "mapdata\realm2\r2m1\r2m1c\rightytickler.sc"
+
+
+
+

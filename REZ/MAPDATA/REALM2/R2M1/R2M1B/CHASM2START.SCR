@@ -1,0 +1,17 @@
+//load all scripts
+0 scriptload "mapdata\realm2\r2m1\r2m1b\finalent.scr"
+0 scriptload "mapdata\realm2\r2m1\r2m1b\cheat.scr"
+0 scriptload "mapdata\realm2\r2m1\r2m1b\armor.scr"
+
+0 hint realm2\r2m1\r2m1b\r2m1-introtext
+
+0.001 cheatscript mapdata\realm2\r2m1\r2m1b\cheat.scr
+
+//Change water sprite graphic
+//0 water_texture cswaterfall sprites\alphawater\soulsoup.spr
+
+//fade the fog to black
+//5 fog_fade 50 on 1 1000 0 0 0 on 1 500
+
+
+

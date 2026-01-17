@@ -1,0 +1,22 @@
+//load all scripts for level
+0 scriptload mapdata\realm1\r1m2\r1m2b\cs2start.scr
+0 scriptload mapdata\realm1\r1m2\r1m2b\bookcam.scr
+0 scriptload mapdata\realm1\r1m2\r1m2b\final.scr
+0 scriptload mapdata\realm1\r1m2\r1m2b\secretbook.scr
+0 scriptload mapdata\realm1\r1m2\r1m2b\cheat.scr
+0 scriptload mapdata\realm1\r1m2\r1m2b\ending1.scr
+0 scriptload mapdata\realm1\r1m2\r1m2b\cs3torso.scr
+0 scriptload mapdata\realm1\r1m2\r1m2b\bookcamending.scr
+
+//Change water sprite graphic
+0 water_texture cswaterfall sprites\alphawater\soulsoup.spr
+
+//turn on the fountain
+//0 citysquare_fountain_on
+
+0 hint realm1\r1m2\r1m2b\r1m2-introtext
+
+0.001 cheatscript mapdata\realm1\r1m2\r1m2b\cheat.scr
+
+1.24 streamsound player mapdata\realm1\r1m2\r1m2b\pablo-library.wav local
+

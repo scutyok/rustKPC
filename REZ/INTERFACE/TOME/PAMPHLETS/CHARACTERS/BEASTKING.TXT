@@ -1,0 +1,8 @@
+[category: characters]
+[title: The Beastking]
+[model: models/player/BeastKing/BeastKing_head.abc]
+[skin: skins/player/BeastKing/BeastKing_head.dtx]
+[anim: amba]
+[scale: 3]
+[start]
+Personifies the primal, animal instinct, the rough beast that stirs in each of us. Embracing instinct rather than intellect, he knows neither cruelty nor mercy. His is the realm of earth.

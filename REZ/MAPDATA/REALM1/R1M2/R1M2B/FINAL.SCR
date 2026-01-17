@@ -1,0 +1,47 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+0 endingscript mapdata\realm1\r1m2\r1m2b\ending1.scr
+
+//music intensity back to 2
+0 music intensity 2 transition beat
+
+//start the camera on the path
+0 camera_path finalcampath
+
+//get rid of secret door in fountain bottom
+0 trigger_door soupdoor open
+
+//turn on the fountain
+.1 citysquare_fountain_on
+
+//start the fountain
+3 citysquare_fountain_start
+3 streamsound player sounds/environment/fountainturn.wav local
+
+//trigger soulsoup to start rising
+4 trigger_volume soulsoup open
+
+//re-populate library
+4 trigger_generic repop
+
+9.2 sound player sounds/environment/snuff.wav local
+
+//start the camera on the path
+12 camera_path finalcampath2
+
+//turn off the fountain
+14 citysquare_fountain_off
+
+//end script and give player control
+15 user_input on
+15 letterbox off
+15 camera_reset
+15 player invulnerable false
+15 disable_ai false
+
+
+

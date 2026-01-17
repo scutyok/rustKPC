@@ -1,0 +1,704 @@
+;*****************************************************************************
+; WEAPONS
+;*****************************************************************************
+
+[Weapons]
+
+ShoulderplateMultiplier		= 2.0	; increases melee weapons by this much, when you get shoulderplates
+
+
+[Fists]
+
+MinDamage 	= 2
+MaxDamage 	= 8
+MeleeRange	= 96.0
+BaseAmmoCount = 0
+
+
+[MagmaCannon]
+
+MinDamage 	= 12
+MaxDamage 	= 16
+AmmoPerShot	= 4
+BaseAmmoCount = 40
+
+
+[Punisher]
+
+MinDamage 	= 140
+MaxDamage 	= 180
+MeleeRange	= 128.0
+BaseAmmoCount = 0
+
+
+[Thornblade]
+
+MinDamage 	= 80 
+MaxDamage 	= 120
+MeleeRange	= 112.0
+BaseAmmoCount = 0
+
+
+[ZeroCannon]
+
+MinDamage 	= 10
+MaxDamage 	= 20
+AmmoPerShot	= 1
+BaseAmmoCount = 40
+
+
+[Scourge]
+
+MinDamage 	= 50 
+MaxDamage 	= 100
+MeleeRange	= 256.0
+MaxGrappleDist = 4096.0
+AmmoPerShot	= 3
+BaseAmmoCount = 40
+
+
+[BeastClaws]
+
+MinDamage 	= 24.0
+MaxDamage 	= 36.0
+MeleeRange	= 100.0
+BaseAmmoCount 	= 0
+
+
+[Windblade]
+
+MinDamage 	= 2		; splash damage
+MaxDamage 	= 192		;    "     "
+DirectMinDamage = 200		; direct hit
+DirectMaxDamage = 300		;    "    "
+StartingVelocity = 1024.0		; speed, out of the weapon
+MaxVelocity = 1024.0			; maximum speed
+TimeToMaxSpeed = 0			; how long to reach max speed (seconds)
+DamageRadius = 200.0			; damage radius
+PushRadius = 320.0			; push radius
+SlideAngle = 50			; max collision angle that allows missile to slide on surface
+AmmoPerShot	= 5
+BaseAmmoCount = 40
+
+
+[Stargaze]
+
+MinDamage 	= 100			; damage at far end of cone
+MaxDamage	= 800			; damage at start of cone
+DamageDist	= 2000.0		; distance to far end of cone
+ConeAngle	= 60.0			;
+EffectTime	= 0.75			; how fast damage will occur (and effect will last)
+PlaneHeight = 80.0			; total height of damage area (ie: 10 == 5 above and 5 below center)
+AmmoPerShot	= 80
+BaseAmmoCount = 200
+
+
+[Galaxion]
+
+MinDamage 	= 140.0
+MaxDamage 	= 280.0
+StartDelayTime	= 0.2			; time to delay before vacuum begins
+VacuumTime	= 1.0			; amount of time objects are vacuumed to vortex
+VacuumRadius	= 192.0			; vortex radius
+VacuumMaxDist	= 1024.0		; depends on functionality of weapon
+AmmoPerShot	= 80
+BaseAmmoCount	= 200
+
+
+[Draco]
+
+MinDamage 	= 600.0				; min damage PER SECOND
+MaxDamage 	= 1200.0			; max damage PER SECOND
+StartRadius	= 3.0				; starting radius of inner cylinder
+EndRadius	= 20.0				; ending radius of inner cylinder
+OuterMult	= 1.25				; radius of outer cylinder (multiplier), compared to inner radius
+AmmoPerShot	= 12				; ammo used PER SECOND
+BaseAmmoCount 	= 200
+
+
+[SpiritLance]
+
+MinDamage 		= 300
+MaxDamage 		= 500
+DamageRadius	= 32.0
+AmmoPerShot		= 50
+BaseAmmoCount	= 200
+
+
+[Twister]
+
+MinDamage 		= 30			; min damage PER SECOND
+MaxDamage 		= 90			; max damage PER SECOND
+DamageRange		= 104			; damage range
+
+; !!! TELL MIKE IF THIS GOES HIGHER THAN 5 !!!
+MaxDamageList	= 5				; max number of creatures damaged per frame
+
+BaseAmmoCount	= 0
+
+
+;*****************************************************************************
+; Monsters
+;*****************************************************************************
+
+[BaseMonster]
+;
+; DO NOT CHANGE! These are defaults for the base monster class.
+; They are just here for reference.
+;
+MaxHealth = 100.0		; Maximum health of this monster type
+DamageToGib = 40.0		; How much damage is required to gib this monster type
+SightRange = 512.0		; How far (in texels) this monster type can see
+Infravision = 1.0		; 1.0 = sees in total darkness
+FieldOfView = 0.0		; 0.7071 = 90 degrees, 1.0 = 0 degrees, 0.0 = 180 degrees
+YawRate =  6.28318		; rate that monster turns on the Y axis.  WARNING! CHANGING THIS CAN DRASTICALLY
+						; AFFECT MONSTER PATHING PERFORMANCE IN A BAD WAY!!!
+InnerZone = 0.0			; inner reaction zone
+MiddleZone = 128.0		; middle reaction zone
+OuterZone = 256.0		; outer reaction zone
+RunSpeed = 400.0		; 
+WalkSpeed = 160.0		; 
+AirResistance = 1.0		; damage modifier from air attacks, 1.0 = full damage, 0.5 = half damage, etc.
+WaterResistance = 1.0	; damage modifier from water attacks, 1.0 = full damage, 0.5 = half damage, etc.
+EarthResistance = 1.0	; damage modifier from earth attacks, 1.0 = full damage, 0.5 = half damage, etc.
+FireResistance = 1.0	; damage modifier from fire attacks, 1.0 = full damage, 0.5 = half damage, etc.
+PainChance = 90			; percentage of time monster will go into pain
+MinPainTime = 2.0		; minimum time before monster can go into pain again IF YOU MAKE THIS TOO SMALL, GUNS LIKE THE
+						; ZERO CANNON CAN COMPLETELY DISABLE A MONSTER BY KEEPING IT IN PAIN.  USE CAREFULLY!!
+MinFireTime = 2.0		; minimum time monster will wait before firing another ranged attack
+MaxFireTime = 5.0		; maximum time monster will wait before firing another ranged attack
+DropItemType = 17		; number of item (itemType_t) to drop when killed, 17 = fire, 18 = water, 19 = air, 20 = earth
+DropItemChance = 1.0	; chance monster will drop an item (1.0 = 100%, 0.5 = 50%, etc)
+DropItemCount = 10		; amount of item dropped
+PointValue = 0			; points awarded for killing this monster
+
+[Headless]
+
+MaxHealth = 40.0
+DamageToGib = 40.0
+SightRange = 1024.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 0.0
+MiddleZone = 128.0
+OuterZone = 256.0
+RunSpeed = 400.0
+WalkSpeed = 120.0
+AirResistance = 1.0
+WaterResistance = 1.0
+EarthResistance = 1.0
+FireResistance = 1.0
+PainChance = 75
+MinPainTime = 0.1
+MinFireTime = 0.0
+MaxFireTime = 0.0
+MeleeDamage = 10.0
+RangedDamage = 0.0
+DropItemType = 20	
+DropItemChance = 0.0
+DropItemCount = 20
+PointValue = 30
+GibHealth = 80.0
+
+[Stump]
+
+MaxHealth = 60.0
+DamageToGib = 40.0
+SightRange = 1024.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 80.0
+MiddleZone = 256.0
+OuterZone = 1024.0
+RunSpeed = 360.0
+WalkSpeed = 120.0
+AirResistance = 1.0
+WaterResistance = 1.0
+EarthResistance = 1.0
+FireResistance = 0.75
+PainChance = 65
+MinPainTime = 0.1
+MinFireTime = 0.0
+MaxFireTime = 2.0
+MinMunchTime = 0.5
+MaxMunchTime = 2.5
+MinJumpTime = 0.8	;	don't change without asking Nelno!
+MaxJumpTime = 0.8	;	don't change without asking Nelno!
+MeleeDamage = 8.0
+RangedDamage = 10.0
+FireballSpeed = 600.0
+DropItemType = 17	
+DropItemChance = 0.0
+DropItemCount = 20
+PointValue = 45
+GibHealth = 80.0
+
+[BallBuster]
+
+MaxHealth = 480.0
+DamageToGib = 170.0
+SightRange = 2048.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 128.0
+MiddleZone = 1024.0
+OuterZone = 2048.0
+RunSpeed = 320.0
+WalkSpeed = 70.0
+AirResistance = 1.0
+WaterResistance = 1.0
+EarthResistance = 0.85
+FireResistance = 1.0
+PainChance = 8
+MinPainTime = 0.1
+MinFireTime = 1.0
+MaxFireTime = 5.0
+RangedDamage = 40.0
+MeleeDamage = 30.0
+DropItemType = 20
+DropItemChance = 1.0
+DropItemCount = 40
+PointValue = 700
+GibHealth = 100.0
+
+[UniPsycho]
+
+MaxHealth = 650.0
+DamageToGib = 40.0
+SightRange = 2048.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 128.0
+MiddleZone = 1024.0
+OuterZone = 2048.0
+RunSpeed = 240.0
+WalkSpeed = 70.0
+AirResistance = 1.0
+WaterResistance = 1.25
+EarthResistance = 1.0
+FireResistance = 0.5
+PainChance = 4
+MinPainTime = 0.1
+MinFireTime = 0.5
+MaxFireTime = 2.0
+MeleeDamage = 20.0
+RangedDamage = 15.0
+FireballSpeed = 320.0 
+DropItemType = 17	
+DropItemChance = 1.0
+DropItemCount = 40
+PointValue = 650
+
+[GasBag]
+
+MaxHealth = 100.0
+DamageToGib = 40.0
+SightRange = 1024.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 192.0
+MiddleZone = 512.0
+OuterZone = 1024.0
+RunSpeed = 180.0
+WalkSpeed = 70.0
+AirResistance = 0.75
+WaterResistance = 1.0
+EarthResistance = 1.0
+FireResistance = 1.0
+PainChance = 50
+MinPainTime = 0.1
+MinFireTime = 0.0
+MaxFireTime = 4.0
+MeleeDamage = 10.0		;	damage for poison cloud
+RangedDamage = 20.0
+DropItemType = 19	
+DropItemChance = 0.5
+DropItemCount = 20
+PointValue = 125
+
+[ArachniClown]
+
+MaxHealth = 575.0
+DamageToGib = 40.0
+SightRange = 2048.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 128.0
+MiddleZone = 1024.0
+OuterZone = 2048.0
+RunSpeed = 300.0
+WalkSpeed = 120.0
+AirResistance = 1.0
+WaterResistance = 0.75
+EarthResistance = 1.0
+FireResistance = 1.0
+PainChance = 10
+MinPainTime = 0.1
+MeleeDamage = 12.0
+RangedDamage = 5.0
+MinFireTime = 1.0
+MaxFireTime = 4.0
+DropItemType = 18
+DropItemChance = 1.0
+DropItemCount = 40
+PointValue = 500
+GibHealth = 300.0
+
+[BladeMaster]
+
+MaxHealth = 350.0
+DamageToGib = 40.0
+SightRange = 2048.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 128.0
+MiddleZone = 1024.0
+OuterZone = 2048.0
+RunSpeed = 280.0
+WalkSpeed = 200.0
+AirResistance = 0.75
+WaterResistance = 1.0
+EarthResistance = 1.25
+FireResistance = 1.0
+PainChance = 20
+MinPainTime = 0.1
+MeleeDamage = 20.0
+RangedDamage = 12.0
+MinFireTime = 1.0
+MaxFireTime = 3.0
+DiscSpeed = 520.0
+DiscTurnRate = 2.3561944	;	radians per second (pi/2 = 1.57 = 90 degrees per second)
+DropItemType = 19
+DropItemChance = 1.0
+DropItemCount = 20
+PointValue = 250
+GibHealth = 150.0
+
+[FatLady]
+
+MaxHealth = 1200.0
+DamageToGib = 400.0
+SightRange = 2048.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 128.0
+MiddleZone = 1024.0
+OuterZone = 2048.0
+RunSpeed = 140.0
+WalkSpeed = 70.0
+AirResistance = 1.0
+WaterResistance = 0.75
+EarthResistance = 1.5
+FireResistance = 1.0
+PainChance = 20
+MinPainTime = 0.1
+MinFireTime = 1.0
+MaxFireTime = 3.0
+MeleeDamage = 20.0
+RangedDamage = 20.0
+DropItemType = 18
+DropItemChance = 1.0
+DropItemCount = 80
+PointValue = 400
+GubWait = 0.75		;	how long a gub waits before relaunchin at the enemy
+GibHealth = 300.0
+
+[RotSack]
+
+MaxHealth = 200.0
+DamageToGib = 40.0
+SightRange = 1024.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 256.0
+MiddleZone = 512.0
+OuterZone = 2048.0
+RunSpeed = 200.0
+WalkSpeed = 100.0
+AirResistance = 1.0
+WaterResistance = 0.75
+EarthResistance = 1.0
+FireResistance = 2.0	;	takes 2 times damage from fire attacks
+PainChance = 50
+MinPainTime = 0.1
+MinFireTime = 2.0
+MaxFireTime = 5.0
+MinBirthTime = 2.0
+MaxBirthTime = 5.0
+MeleeDamage = 12.0
+RangedDamage = 10.0
+DropItemType = 18
+DropItemChance = 1.0
+DropItemCount = 40
+PointValue = 75
+GibHealth = 100.0
+
+[Larva]
+
+MaxHealth = 40.0
+DamageToGib = 40.0
+SightRange = 1024.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  3.14159265359
+InnerZone = 128.0
+MiddleZone = 208.0
+OuterZone = 1024.0
+RunSpeed = 120.0
+WalkSpeed = 60.0
+AirResistance = 1.0
+WaterResistance = 0.75
+EarthResistance = 1.0
+FireResistance = 1.5
+PainChance = 90
+MinPainTime = 0.1
+MinFireTime = 0.0
+MaxFireTime = 2.0
+RangedDamage = 10.0
+MeleeDamage = 12.0
+MinRegenTime = 0.0
+MaxRegenTime = 3.0
+MinMeleeTime = 1.0
+MaxMeleetime = 2.0
+DropItemType = 18	
+DropItemChance = 0.5
+DropItemCount = 20
+PointValue = 40
+GibHealth = 100.0
+
+[Lavabug]
+MaxHealth = 100.0
+DamageToGib = 50.0
+SightRange = 2048.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 80.0
+MiddleZone = 256.0
+OuterZone = 1024.0
+RunSpeed = 220.0
+WalkSpeed = 100.0
+AirResistance = 1.0
+WaterResistance = 1.0
+EarthResistance = 1.0
+FireResistance = 0.75
+PainChance = 70
+MinPainTime = 0.1
+MinFireTime = 1.0
+MaxFireTime = 3.0
+MeleeDamage = 5.0
+RangedDamage = 4.0
+DropItemType = 17
+DropItemChance = 0.0
+DropItemCount = 20
+PointValue = 50
+GibHealth = 100.0
+
+[Hailbug]
+MaxHealth = 90.0
+DamageToGib = 50.0
+SightRange = 2048.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 80.0
+MiddleZone = 512.0
+OuterZone = 1024.0
+RunSpeed = 280.0
+WalkSpeed = 100.0
+AirResistance = 1.0
+WaterResistance = 0.75
+EarthResistance = 1.0
+FireResistance = 1.0
+PainChance = 50
+MinPainTime = 0.1
+MinFireTime = 1.0
+MaxFireTime = 3.0
+MeleeDamage = 5.0
+RangedDamage = 5.0
+DropItemType = 18
+DropItemChance = 0.0
+DropItemCount = 20
+PointValue = 45
+GibHealth = 100.0
+
+[Strongman]
+MaxHealth = 1300.0
+DamageToGib = 150.0
+SightRange = 2048.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 128.0
+MiddleZone = 1024.0
+OuterZone = 2048.0
+RunSpeed = 320.0
+WalkSpeed = 50.0
+AirResistance = 1.0
+WaterResistance = 1.0
+EarthResistance = 0.75
+FireResistance = 1.0
+PainChance = 5
+MinPainTime = 0.1
+MinFireTime = 1.0
+MaxFireTime = 3.0
+MeleeDamage = 66.0
+RangedDamage = 120.0		;	damage per second when in arc
+DropItemType = 20
+DropItemChance = 1.0
+DropItemCount = 80
+PointValue = 2000
+GibHealth = 250.0
+
+[Tickler]
+MaxHealth = 500.0
+DamageToGib = 250.0
+SightRange = 2048.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 128.0
+MiddleZone = 1024.0
+OuterZone = 2048.0
+RunSpeed = 420.0
+WalkSpeed = 160.0
+AirResistance = 0.75
+WaterResistance = 1.0
+EarthResistance = 1.0
+FireResistance = 1.0
+PainChance = 15
+MinPainTime = 0.1
+MinFireTime = 1.0
+MaxFireTime = 2.5
+MeleeDamage = 30.0
+RangedDamage = 50.0	;	damage per second when in beam
+DropItemType = 19
+DropItemChance = 1.0
+DropItemCount = 40
+PointValue = 600
+ChargeMultiplier = 3.0	;	this * runspeed = charging speed
+MinChargeTime = 1.0
+MaxChargeTime = 3.0
+ChargeChance = 30
+GibHealth = 150.0
+
+[MeanieBeanie]
+MaxHealth = 400.0
+DamageToGib = 150.0
+SightRange = 2048.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 128.0
+MiddleZone = 1024.0
+OuterZone = 2048.0
+RunSpeed = 240.0
+WalkSpeed = 120.0
+AirResistance = 0.95
+WaterResistance = 1.1
+EarthResistance = 1.25
+FireResistance = 0.9
+PainChance = 25
+MinPainTime = 0.1
+MinFireTime = 0.5
+MaxFireTime = 2.0
+MeleeDamage = 7.0
+RangedDamage = 25.0	//	explosion damage
+DropItemType = 19
+DropItemChance = 1.0
+DropItemCount = 40
+PointValue = 750
+GibHealth = 100.0
+PinRadius = 192.0
+PinSpeed = 1000.0
+GibHealth = 150.0
+
+[Grinder]
+MaxHealth = 1000.0
+DamageToGib = 200.0
+SightRange = 2048.0
+Infravision = 1.0
+FieldOfView = 0.0
+YawRate =  6.28318
+InnerZone = 128.0
+MiddleZone = 1024.0
+OuterZone = 2048.0
+RunSpeed = 320.0
+WalkSpeed = 180.0
+AirResistance = 1.0
+WaterResistance = 1.0
+EarthResistance = 0.75
+FireResistance = 1.0
+PainChance = 3
+MinPainTime = 0.1
+MinFireTime = 0.5
+MaxFireTime = 3.0
+MeleeDamage = 12.0
+RangedDamage = 15.0	
+DropItemType = 17
+DropItemChance = 1.0
+DropItemCount = 80
+PointValue = 2000
+GibHealth = 0.0
+AimLagTime = 0.25
+
+;*****************************************************************************
+; Misc
+;*****************************************************************************
+
+[Player]
+
+ElderJumpVel = 479.5
+AvatarJumpVel = 380.0		; old = 339
+ElderRunVel = 520.0			; old = 640
+AvatarRunVel = 400.0		; old = 480
+ElderWalkVel = 200.0
+AvatarWalkVel = 200.0
+
+[Spawner]
+CRotSack = 250.0
+CLarva = 250.0
+CFatLady = 250.0
+CArachniClown = 250.0
+CUniPsycho = 250.0
+CStump = 250.0
+CBladeMaster = 250.0
+CHeadless = 250.0
+CBallBuster = 250.0
+CGasBag = 250.0
+CStrutterIce = 250.0
+CStrutterFire = 250.0
+CStrongman = 250.0
+CTickler = 250.0
+CGrinder = 250.0
+CLarva = 250.0
+CMeanieBeanie = 250.0
+
+[JackInTheBox]
+DamageRange = 220
+MinDamage = 2
+MaxDamage = 120
+ActivateRange = 200
+PlayerActivateRange = 200
+
+[WorldOrder]
+; Index of first world for each realm in WorldOrder.txt
+WaterStart = 0
+EarthStart = 12
+AirStart = 25
+FireStart = 35
+NightmareStart = 46
+
+[AvatarCam]
+CameraDist = 125
+CameraPitch = 0.1963
+

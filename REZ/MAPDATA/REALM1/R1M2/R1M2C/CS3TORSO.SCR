@@ -1,0 +1,42 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//--------------------------------
+// drain part of script
+//--------------------------------
+
+//teleport player to exact spot
+0 player teleport torsospot
+
+//start the camera on the path
+0 camera_path drainpath
+
+//change music intensity to highest
+0 music intensity 3 transition beat
+
+//endingscript command
+0 endingscript mapdata\realm1\r1m2\r1m2c\endingtorso.scr 
+
+//turn the player towards the action
+1 turn_player drainturn 1
+
+//bring down drain gate door which is up and open sets it down
+3 trigger_sliding_door Gatedrain open
+3 trigger_sliding_door Gatedrain2 open
+
+
+//trigger soulsoup to start rising
+6.8 trigger_volume risingsoup open
+
+//end script and start battle.
+9 user_input on
+9 letterbox off
+9 camera_reset
+9 player invulnerable false
+9 disable_ai false
+
+
+

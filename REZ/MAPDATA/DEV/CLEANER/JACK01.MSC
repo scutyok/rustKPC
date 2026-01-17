@@ -1,0 +1,6 @@
+// Sewer 01 script
+name "Sewer01"
+
+Loadscript "mapdata\dev\cleaner\jumper01.sc"
+Loadscript "mapdata\dev\cleaner\jumper02.sc"
+Loadscript "mapdata\dev\cleaner\thrower01.sc"

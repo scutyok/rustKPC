@@ -1,0 +1,3 @@
+Name "turrettest"
+LoadScript "mapdata\realm5\nightmareturret.sc"
+LoadScript "mapdata\realm5\nightmareturret3.sc"

@@ -1,0 +1,10 @@
+[category: weapons]
+[title: Spirit Lance]
+[model: models/pickups/pu_SpiritLance.abc]
+[skin: skins/player/weapons/3rdSpiritLance.dtx]
+[anim: none]
+[scale: 2.5]
+[start]
+On its path of destruction the Beast King's omnipotent spear will pierce through any number of enemies you are able to line up. Once launched the weapon does not halt until it reaches solid structure, where it will impact with considerable force.
+
+Element: Earth

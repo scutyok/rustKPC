@@ -1,0 +1,5 @@
+0 scriptload mapdata\dev\rescoe\cheatfreak2.scr
+
+0 hint realm1\r1m4\r1m4b\r1m4-introtext
+
+0.001 cheatscript mapdata\dev\rescoe\cheatfreak2.scr

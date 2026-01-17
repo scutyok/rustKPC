@@ -1,0 +1,20 @@
+0 scriptload mapdata\realm3\r3m3\r3m3c\r3m3ccheat.scr
+0 scriptload mapdata\realm3\r3m3\r3m3c\urbandoor01.scr
+0 user_input off
+0 camera_path intro01
+0 letterbox on
+0 trigger_door lift open
+
+0 hint realm3\r3m3\r3m3c\r3m3-introtext
+
+0.001 cheatscript mapdata\realm3\r3m3\r3m3c\r3m3ccheat.scr
+
+5 camera_path intro02
+
+7 letterbox off
+7 camera_reset
+7 user_input on
+
+
+
+

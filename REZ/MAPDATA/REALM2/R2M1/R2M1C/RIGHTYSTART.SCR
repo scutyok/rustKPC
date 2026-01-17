@@ -1,0 +1,39 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//start the camera on the path
+0 camera_path rightstartpath
+
+//teleport player to spot
+0 player teleport plate2spot
+
+1 trigger_generic righttickler
+
+1.5 trigger_generic rightyscriptrunner
+
+//turn player to face tickler
+3 player lookatangles 0 90
+
+//play the door sounds
+//0 sound spot sounds\environment\.wav
+
+//spikes block path
+5.5 trigger_door rightyclipdoor open
+5.5 trigger_door rightspike1 open
+5.6 trigger_door rightspike2 open
+5.8 trigger_door rightspike3 open
+
+//end script and give player control
+6.5 user_input on
+6.5 letterbox off
+6.5 camera_reset
+6.5 player invulnerable false
+6.5 disable_ai false
+
+
+
+
+

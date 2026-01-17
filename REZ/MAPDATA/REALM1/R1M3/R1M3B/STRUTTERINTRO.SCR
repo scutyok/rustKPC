@@ -1,0 +1,24 @@
+0 trigger_generic leftdoor
+1 user_input off
+1 letterbox on
+1 camera_path path4
+1 player invulnerable true
+1 disable_ai true
+
+2 trigger_generic spawn5a
+2 trigger_generic spawn5b
+2 trigger_generic spawn5c
+
+4 trigger_volume CWater2 open
+8 subtitle 4 "STRUTTER"
+
+12 sound_ambient_off CSoundAmbient7
+13 sound_ambient_off CSoundAmbient8
+16 player lookatangles 0 350
+17 letterbox off
+17 user_input on
+17 camera_reset
+
+18 disable_ai false
+18 player invulnerable false
+

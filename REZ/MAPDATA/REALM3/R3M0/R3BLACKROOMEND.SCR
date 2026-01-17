@@ -1,0 +1,8 @@
+0 stopstream mapdata\Realm3\R3M0\r3-ravenintro-1.wav
+0 stopstream mapdata\Realm3\R3M0\r3-ravenintro-2.wav
+0 stopstream mapdata\Realm3\R3M0\r3-ravenintro-3.wav 
+0 stopstream mapdata\Realm3\R3M0\r3-ravenintro-4.wav 
+0 stopstream mapdata\Realm3\R3M0\r3-ravenintro-5.wav
+0 stopstream mapdata\Realm3\R3M0\r3-ravenintro-6.wav 
+0 camera_fov 90 0
+0 trigger_generic CExitTrigger0

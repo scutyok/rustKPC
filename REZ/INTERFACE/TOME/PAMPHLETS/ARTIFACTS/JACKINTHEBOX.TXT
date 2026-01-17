@@ -1,0 +1,8 @@
+[category: artifact]
+[title: Jack-in-the-Box]
+[model: models/pickups/jackinbox.abc]
+[skin: skins/pickups/jackinbox.dtx]
+[anim: none]
+[scale: 2.3]
+[start]
+Once you've thrown it out, this wicked boom box will lie gleefully in wait for someone to pop up on. Jacks are triggered by the proximity of any moving creature, so make sure they don't detonate while you're around!

@@ -1,0 +1,7 @@
+0 endingscript mapdata\dev\rescoe\cintest2.scr
+0 user_input off
+0 camera_path path1
+0 letterbox on
+
+
+5 scriptplay mapdata\dev\rescoe\cintest2.scr

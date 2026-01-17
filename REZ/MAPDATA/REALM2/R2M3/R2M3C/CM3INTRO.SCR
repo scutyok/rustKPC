@@ -1,0 +1,10 @@
+0 scriptload mapdata\realm2\r2m3\r2m3c\cem3organ.scr
+0 scriptload mapdata\dev\rescoe\cheatcem3.scr
+
+
+0 hint realm2\r2m3\r2m3c\r2m3-introtext
+
+0.001 cheatscript mapdata\dev\rescoe\cheatcem3.scr
+0.1 trigger_door tent2 open
+0.1 trigger_door tent1 open
+

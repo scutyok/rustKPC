@@ -1,0 +1,8 @@
+[category: artifact]
+[title: Angel Charm]
+[model: models/pickups/angelcharm.abc]
+[skin: skins/pickups/angelcharm.dtx]
+[anim: none]
+[scale: 2.6]
+[start]
+This rare and ancient artifact will for a limited time render you invulnerable to anything but a fall into an endless abyss. The Angel Charm may sometimes be used to reach otherwise inaccessible areas.

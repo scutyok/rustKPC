@@ -1,0 +1,30 @@
+0 scriptload mapdata\realm2\r2m4\r2m4a\r2m4acheat.scr
+0 scriptload mapdata\realm2\r2m4\r2m4a\mask01.scr
+0 endingscript mapdata\realm2\r2m4\r2m4a\beast01astart.scr
+0 user_input off
+0 camera_path introcam01
+0 letterbox on
+
+0 hint realm2\r2m4\r2m4a\r2m4-introtext
+
+0.001 cheatscript mapdata\realm2\r2m4\r2m4a\r2m4acheat.scr
+.002 script_object_play ranearth01 
+.05 streamsound player mapdata\realm2\r2m4\r2m4a\r2m4-intro.wav local
+.05 subtitle 4.7 "Beyond the tents and pens, lies your final challenge."
+//.25 fog_fade 3 on 300 2200 0 0 0 off
+5.1 subtitle 6.1 "Quick thinking will be necessary to save you from the challenge of the cannon blast."
+
+
+//6 fog_fade 2 on 1 2 0 0 0 off
+8 camera_path introcam02
+12 subtitle 6.5 "Beat it, and you face even greater peril at the fury of Tiberius' revenant."
+
+12 camera_path introcam03
+19 subtitle 6.5 "Banish the evil, invoke the Beast King, and recant the land!"
+26 camera_reset
+//11 fog_fade 2 on 300 2200 0 0 0 off
+26 letterbox off
+
+26 user_input on
+
+

@@ -1,0 +1,5 @@
+// Ruins
+name "r2m1a"
+
+Loadscript "mapdata\realm2\r2m1\r2m1a\turret01.sc"
+Loadscript "mapdata\realm2\r2m1\r2m1a\strong.sc"

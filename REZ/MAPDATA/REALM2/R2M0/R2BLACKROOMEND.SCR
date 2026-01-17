@@ -1,0 +1,10 @@
+0 stopstream mapdata\Realm2\R2M0\r2-ravenintro-1.wav
+0 stopstream mapdata\Realm2\R2M0\r2-ravenintro-2.wav
+0 stopstream mapdata\Realm2\R2M0\r2-ravenintro-3.wav 
+0 stopstream mapdata\Realm2\R2M0\r2-ravenintro-4.wav 
+0 stopstream mapdata\Realm2\R2M0\r2-ravenintro-5.wav
+0 stopstream mapdata\Realm2\R2M0\r2-ravenintro-6.wav 
+0 stopstream mapdata\Realm2\R2M0\r2-ravenintro-7.wav
+0 stopstream mapdata\Realm2\R2M0\r2-ravenintro-8.wav
+0 camera_fov 90 0
+0 trigger_generic CExitTrigger0

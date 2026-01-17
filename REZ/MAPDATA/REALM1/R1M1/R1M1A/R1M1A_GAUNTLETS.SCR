@@ -1,0 +1,19 @@
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+0 camera_path gauntletpath
+0 player teleport gauntletspot
+0 turn_player gauntletfocus 1
+
+2 player animate powerup 8.5
+2 player powerup
+2 streamsound player sounds\streaming\armorpowerup.wav local
+
+8.75 player giveitem gauntlets 
+
+12.5 user_input on
+12.5 letterbox off
+12.5 camera_reset
+12.5 player invulnerable false
+12.5 disable_ai false

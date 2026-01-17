@@ -1,0 +1,11 @@
+//open drain gate doors
+0 trigger_door gatedrain close
+0 trigger_door gatedrain2 close
+
+//end script
+0 user_input on
+0 letterbox off
+0 camera_reset
+0 player invulnerable false
+0 disable_ai false
+

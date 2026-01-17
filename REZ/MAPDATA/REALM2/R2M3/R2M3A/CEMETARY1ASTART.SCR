@@ -1,0 +1,4 @@
+0 trigger_generic patrol1
+0.1 fog_fade 2 on 1 4000 82 124 88 on 1 1200
+1 stopstream mapdata\realm2\r2m3\r2m3a\r2m3-intro.wav
+24 batwing_off bats

@@ -1,0 +1,8 @@
+[category: armor]
+[title: Elder Gauntlets]
+[model: models/pickups/Starbearer/gauntlets.abc]
+[skin: skins/pickups/Starbearer/gauntlets.dtx]
+[anim: none]
+[scale: 1.8]
+[start]
+The first armor piece baptizes the avatar into the awesome power of the Elder, providing super-human endurance and a unique melee weapon. The gauntlets are also what enable an avatar to pick up Elemental Icons and wield the mighty Elder Arms.

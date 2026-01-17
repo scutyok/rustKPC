@@ -1,0 +1,25 @@
+0 player lookatangles 0 90
+0 player invulnerable true
+0 disable_ai true
+0 letterbox on
+0 user_input off
+0 camera_path path3
+
+0.1 player animate powerup 8.5
+0.1 player powerup
+0.1 sound player sounds\pickups\armorpowerup.wav local
+6.75 player giveitem breastplate 
+
+13 trigger_spark spark1 on
+13 script_object_play scfire1
+13 script_object_play sc2fire1
+
+13.5 trigger_door firedoor1 open
+14 trigger_spark spark1 off
+
+15 letterbox off
+15 user_input on
+15 camera_reset
+
+16 player invulnerable false
+16 disable_ai false

@@ -1,0 +1,73 @@
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//start first camera path slow turn showing indigo palace
+0 camera_fov 110 0
+0 camera_path IntroCam1
+
+//fade out
+.001 fog_fade .1 on 1 2 0 0 0 on 0 1
+
+.1 endingscript mapdata\realm1\r1m1\r1m1b\r1m1b_Intro_END.scr
+
+//fade back in
+1 fog_fade 3 on -256 2600 15 0 26 on 0 2000
+
+3 hint realm1\r1m1\r1m1b\r1m1bintro
+3 streamsound player mapdata\Realm1\R1M1\R1M1b\r1m1b-1.wav local
+
+3 subtitle 5 "The second armor shard is far more elusive."
+// wav length 5.68 seconds
+
+9 subtitle 11 "In the depths of the city lies the Indigo Palace, where a twisted foe awaits your challenge."
+// wav length 11.1 seconds
+
+//fade out
+17 fog_fade 3 on 1 2 0 0 0 on 0 1
+
+//fade back in
+20 fog_fade 3.5 on -256 2600 15 0 26 on 0 2000
+
+//start second camera path showing skull + dock sign to player
+20 camera_fov 90 0
+20 camera_path IntroCam2
+
+21 subtitle 12 "Once the second shard is yours, you will be able to enter the docks, where the golden mirror will guide your way to safety."
+// wav length 11.9 seconds
+
+//start third camera path showing player to stump intro
+32 camera_fov 90 0
+//32 camera_path IntroCam3
+
+32 music intensity 2 transition measure
+
+37 trigger_generic stumprunner
+
+37 subtitle 5 "STUMP"
+
+37 camera_fov 110 4
+
+//39.5 sound player sounds\monsters\stump\stumambient5.wav local
+
+
+//fade out
+40 fog_fade 3 on 1 2 0 0 0 on 0 1
+
+40.1 disable_ai false
+
+40.2 sound player sounds\monsters\stump\stumambientspecial.wav local
+//40.5 sound player sounds\monsters\stump\stumsight2.wav local
+40.8 wake_monster_group thug1
+40.9 wake_monster_group thug2
+
+
+//fade back in
+43 fog_fade 3 on -256 2600 15 0 26 on 0 2000
+
+43 camera_fov 90 .1
+43 camera_reset
+43 user_input on
+43 letterbox off
+43 player invulnerable false

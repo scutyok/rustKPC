@@ -1,0 +1,15 @@
+0 user_input off
+0 letterbox on
+0 camera_path atticmovie01
+
+1 trigger_door atticdoor01 open
+1 trigger_door atticdoor02 open
+2 trigger_generic doormon01
+
+3 trigger_spawner box01 on
+3 trigger_spawner box02 on
+3 trigger_spawner box03 on
+
+4 camera_reset
+4 user_input on
+4 letterbox off

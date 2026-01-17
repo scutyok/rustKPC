@@ -1,0 +1,8 @@
+[category: characters]
+[title: Blackwell]
+[model: models/creatures/blackwell.abc]
+[skin: skins/creatures/blackwell.dtx]
+[anim: amba]
+[scale: 0.6]
+[start]
+The former Ringmaster now governs nothing but haunted ruins and molten rock, which serves his soulless fury well. Although Blackwell is but a shadow of his old self he has been the avatar of fire for over 300 years! You would be well warned to keep from getting scorched.

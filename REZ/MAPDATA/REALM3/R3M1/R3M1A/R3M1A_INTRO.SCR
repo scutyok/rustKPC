@@ -1,0 +1,39 @@
+0 endingscript mapdata\realm3\r3m1\r3m1a\r3m1a_intro_END.scr
+0 scriptload mapdata\realm3\r3m1\r3m1a\r3m1a_gauntlets.scr
+0 scriptload mapdata\realm3\r3m1\r3m1a\r3m1a_boots.scr
+0 scriptload mapdata\realm3\r3m1\r3m1a\r3m1a_piper01.scr
+0 scriptload mapdata\realm3\r3m1\r3m1a\r3m1a_piper02.scr
+0 scriptload mapdata\realm3\r3m1\r3m1a\r3m1a_victory.scr
+
+0 hint realm3\r3m1\r3m1a\r3m1-introtext
+
+0 user_input off
+0 camera_path smogflight
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+3.5 camera_fov 50 6
+
+10 camera_fov 90 6
+
+13 streamsound player mapdata\Realm3\R3M1\R3M1a\r3m1-intro.wav local
+13 subtitle 5.7 "As the tide of time churns, we lose precious ground."
+19.3 subtitle 4.5 "The old realms are slipping into the void."
+24.3 subtitle 6.3 "Thus, the first armor shard is out of your immediate reach."
+31.2 subtitle 8.0 "Without the blessing of the Elder, you won't stand a chance against the formless horde."
+
+40 subtitle 10.0 "You must make a mad dash through the Gargoyle's arches to reach the salvation that lies at its end."
+
+43 trigger_door Takethiswaltz01 open
+43 trigger_door Takethiswaltz02 open
+
+45.5 trigger_door Leveliquid01 open
+45.5 trigger_door Leveliquid02 open
+
+55 letterbox off
+55 camera_reset
+55 user_input on
+55 player invulnerable false
+55 disable_ai false
+

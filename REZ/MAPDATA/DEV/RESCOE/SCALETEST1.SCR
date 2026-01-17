@@ -1,0 +1,16 @@
+
+0 fog_fade 2 on 1 2 0 0 0 off
+
+2 fog_fade 4 on 1 2000 255 0 0 off
+
+6 fog_fade 2 on 1 2 0 0 0 off
+
+8 fog_fade 4 on 1 2000 0 255 0 off
+
+12 fog_fade 2 on 1 2 0 0 0 off
+
+14 fog_fade 4 on 1 2000 0 0 255 off
+
+18 fog_fade 2 on 1 2 0 0 0 off
+
+20 fog_fade 4 on 1 5000 120 120 120 off

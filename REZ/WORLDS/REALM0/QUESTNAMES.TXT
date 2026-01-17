@@ -1,0 +1,36 @@
+//	QuestNames.txt
+//
+//	This file stores the world map names for each quest in the game.  If you
+//	want a space in the name, you must enclose the name in quotation marks.
+
+//	water realm
+//	"Water Realm Intro"
+"Bad Streets"
+"Pain Plaza"
+"Cathedral"
+"Freak Show"
+
+//	earth realm (demo)
+//	"Earth Realm Intro"
+"Earth Rift"
+"Morbid Manor"
+"Unholy Ground"
+"Beast Pens"
+
+//	air realm (demo)
+//	"Air Realm Intro"
+"Waste Wharf"
+"Poison Plant"
+"Acropolis"
+"Midway"
+
+//	fire realm (demo)
+//	"Fire Realm Intro"
+"Doom Forge"
+"Molten Vein"
+"Netherstation"
+"Gloomvale"
+
+//	nightmare realm (demo == no maps)
+//	"Nightmare Realm Intro"
+"Nucleus"

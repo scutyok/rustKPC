@@ -1,0 +1,5 @@
+//This is the master script for Freakshow1.dat
+Name "Freakshow1"
+LoadScript "mapdata\Realm1\r1m4\r1m4a\introscript.sc"
+LoadScript "mapdata\Realm1\r1m4\r1m4a\fs1turret1.sc"
+

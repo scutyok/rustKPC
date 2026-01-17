@@ -1,0 +1,33 @@
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+0 camera_path gasbagcampath
+
+0 player teleport playerspot
+
+0 player lookatangles 0 0
+
+//1.0 move_player playerpath1
+
+1 trigger_sliding_door gasbagdoor open
+
+2 camera_path gasbagcampath2
+
+2 trigger_generic Gasbag1Runner
+2 trigger_generic Gasbag3Runner
+2.1 trigger_generic Gasbag2Runner
+
+3 subtitle 4 "GASBAG"
+
+7.5 trigger_generic gasstumps
+
+//turn the player to face out while camera shows the belt 
+7.5 turn_player gasface 100
+
+8.7 user_input on
+8.7 letterbox off
+8.7 camera_reset
+8.7 player invulnerable false
+8.7 disable_ai false

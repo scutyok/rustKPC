@@ -1,0 +1,24 @@
+0 streamsound player sounds\tutorial\area04-1.wav local
+// wav file length 6.97
+0 center_text 0 8 "To ascend a ladder, move close to it, face the ladder, look up and move forward. 
+
+9 streamsound player sounds\tutorial\area04-2.wav local
+// wav file length 3.24
+9 center_text 0 4.2 "You can also climb the ladder by using your move up control."
+9 print_message 0 15 15
+
+16 streamsound player sounds\tutorial\area04-3.wav local
+// wav file length 5.91
+16 center_text 0 7 "To descend a ladder move onto it, look down and move forward."
+
+24 streamsound player sounds\tutorial\area04-4.wav local
+// wav file length 3.13
+24 center_text 0 4.1 "You can also descend by using your move down control.
+24 print_message 0 15 16
+
+29 streamsound player sounds\tutorial\area04-5.wav local
+// wav file length 2.56
+29 center_text 0 3.5 "To get off of a ladder move away from it."
+
+32 trigger_door itemdoora open
+32 trigger_door itemdoorb open

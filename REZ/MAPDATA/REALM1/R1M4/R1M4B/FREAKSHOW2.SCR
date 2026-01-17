@@ -1,0 +1,17 @@
+0 endingscript mapdata\realm1\r1m4\r1m4b\freakshow2a.scr
+0 user_input off
+0 letterbox on
+0 camera_path path1
+0 disable_ai true
+0 player invulnerable true
+
+1.2 trigger_door watergate open
+1.2 trigger_volume floodwater open
+
+6.5 trigger_generic spawn3
+
+6.5 letterbox off
+6.5 user_input on
+6.5 camera_reset
+7 disable_ai false
+7 player invulnerable false

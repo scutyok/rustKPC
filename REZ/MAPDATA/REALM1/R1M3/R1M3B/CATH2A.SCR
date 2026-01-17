@@ -1,0 +1,16 @@
+0 user_input off
+0 letterbox on
+0 camera_path path1
+0 player invulnerable true
+0 disable_ai true
+
+7 trigger_generic spawn1
+
+8 player lookatangles 0 90
+
+10.5 letterbox off
+10.5 user_input on
+10.5 camera_reset
+12 disable_ai false
+12 player invulnerable false
+

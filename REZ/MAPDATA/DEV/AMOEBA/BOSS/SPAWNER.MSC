@@ -1,0 +1,5 @@
+//This is the master script for Spawner.dat
+Name "SpawnerMasterScript"
+LoadScript "mapdata\dev\amoeba\headless_route.sc"
+LoadScript "mapdata\dev\amoeba\turret1.sc"
+

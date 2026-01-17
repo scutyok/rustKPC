@@ -1,0 +1,4 @@
+//This is the master script for GasbagAIscript.dat
+Name "GasbagAIscript"
+LoadScript "mapdata\dev\Nelno\GasbagTest.sc"
+

@@ -1,0 +1,33 @@
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+
+0 camera_path Bootpath
+0 player teleport bootspot
+0 turn_player bootfocus 1
+0 disable_ai true
+
+4 player animate powerup 8.5
+4 player powerup
+4 streamsound player sounds\pickups\armorpowerup.wav local
+
+10.75 player giveitem Boots
+//10.75 sound player sounds\environment\glassbreak4.wav local 
+//10.75 window_break roundwin
+//10.76 window_break fargaglass01
+//10.77 window_break fargaglass02
+//10.78 window_break fargaglass03
+//10.79 window_break fargaglass04
+//10.80 window_break fargaglass05
+//10.81 window_break fargaglass06
+//10.82 window_break fargaglass07
+//10.83 window_break fargaglass08
+
+12.5 user_input on
+12.5 letterbox off
+12.5 camera_reset
+12.5 disable_ai false
+13 hint realm1\r1m1\r1m1b\r1m1b-2
+14.5 player invulnerable false
+
+

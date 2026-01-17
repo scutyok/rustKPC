@@ -1,0 +1,42 @@
+0 streamsound player sounds\tutorial\area09-1.wav local
+// wav file length 11.33
+0 center_text 0 12.3 "On the floor to your left is the Scourge, a dual-function magical whip which also acts as a grappling device that allows you to climb to grapple points in special areas of the world."
+
+
+ 
+13 streamsound player sounds\tutorial\area09-2.wav local
+// wav file length 3.45
+13 center_text 0 4.5 "The flashing rings hanging from the ceiling are the grapple points."
+
+17 trigger_door whipgate01 open
+17 sound whipgate01sound sounds\environment\metalslide2.wav
+
+18.5 streamsound player sounds\tutorial\area09-3.wav local
+// wav file length 4.65
+18.5 center_text 0 5.7 "Pick up the Scourge and select it by pressing your weapon 2 control."
+18.5 print_message 0 10 20
+
+26 streamsound player sounds\tutorial\area09-4.wav local
+// wav file length 4.33
+26 center_text 0 5.3 "Targeting a grapple point will bring up the appropriate icon in the clue box."
+
+33 streamsound player sounds\tutorial\area09-5.wav local
+// wav file length 7.32
+33 center_text 0 8.3 "Pressing your attack control while the grapple point is targeted will initiate the grapple maneuver and pull you to the grapple point."
+33 print_message 0 15 17
+
+42 streamsound player sounds\tutorial\area09-6.wav local
+// wav file length 4.90
+42 center_text 0 5.9 "Holding attack will keep you hanging onto the grapple point until you release it."
+
+49 streamsound player sounds\tutorial\area09-7.wav local
+// wav file length 4.84
+49 center_text 0 5.8 "Practice grappling back and forth over the pit until you are comfortable enough to move on."
+
+56 streamsound player sounds\tutorial\area09-8.wav local
+// wav file length 3.92
+56 center_text 0 4.9 "If you fall into the pit, you will be teleported back into this hall."
+
+60 trigger_door hookhatch01 open
+60 sound hhookspot sounds\environment\metalslide3.wav 
+

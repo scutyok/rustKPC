@@ -1,0 +1,4 @@
+// Bay
+name "r3m1b"
+
+Loadscript "mapdata\realm3\r3m1\r3m1b\turret01.sc"

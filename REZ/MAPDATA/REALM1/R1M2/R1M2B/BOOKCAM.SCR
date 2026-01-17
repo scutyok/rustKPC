@@ -1,0 +1,28 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//start the camera on the path
+0 camera_path bookcampath
+
+0.01 endingscript mapdata\realm1\r1m2\r1m2b\bookcamending.scr
+
+//music intensity back to 2
+0.02 music intensity 2 transition beat
+
+//zoom in to shoulderplates
+12 camera_fov 15 4
+
+//end script and give player control
+17 user_input on
+17 letterbox off
+17 camera_reset
+17 player invulnerable false
+17 disable_ai false
+
+17 camera_fov 90 0
+
+
+

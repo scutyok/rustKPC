@@ -1,0 +1,26 @@
+0 camera_path fuckedup02
+
+1.75 switch_use hammer01
+
+
+2.8 subtitle 4 "MEANIE BEANIE"
+
+5 trigger_generic demo01run
+
+16 script_object_play butreset01
+16.1 script_object_play butreset02
+16.2 script_object_play butreset03
+16.3 script_object_play penreset01
+16.4 script_object_play timer02
+16.5 sound_ambient_on clocktime01
+
+17 letterbox off
+17 camera_reset
+17 user_input on
+17 disable_ai false
+
+
+
+
+
+

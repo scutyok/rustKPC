@@ -1,0 +1,32 @@
+0 endingscript mapdata\realm3\r3m4\r3m4b\exita.scr
+0 user_input off
+0 camera_path path4
+0 letterbox on
+
+0 fog_fade 2 on 1 4000 73 60 188 on 1 300
+
+0 model_anim_loop Raven1 HunchTwiddle
+0 model_anim_loop Raven2 HunchTwiddle
+4 model_anim_loop Raven1 TerribleThingsTalk
+4 model_anim_loop Raven2 TerribleThings
+4 streamsound player mapdata\realm3\r3m4\r3m4b\R3m4-End.wav local
+4 subtitle 5.5 "You've smashed the opposition and turned the tide on the spawn of doom."
+5.7 model_anim_loop Raven1 HunchTwiddleTalk
+5.7 model_anim_loop Raven2 HunchTwiddleTalk
+9 model_anim_loop Raven1 Idle
+9 model_anim_loop Raven2 Idle
+
+
+10.4 model_anim_loop Raven1 HunchTwiddleTalk
+10.4 model_anim_loop Raven2 HunchTwiddleTalk
+10.4 subtitle 8.2 "For this, you have my eternal gratitude, but still the realm of fire lies in shackles."
+
+
+19 subtitle 6.5 "We cannot celebrate yet. The fiercest battle still remains."
+
+23 model_anim_loop Raven1 Hunch2Up
+23 model_anim_loop Raven2 Hunch2Up
+24 fog_fade 2 on 1 2 0 0 0 off
+24.3 model_anim_loop Raven1 UpAmb
+24.3 model_anim_loop Raven2 UpAmb
+26 trigger_generic exit

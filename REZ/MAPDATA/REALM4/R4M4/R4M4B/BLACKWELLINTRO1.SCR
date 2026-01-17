@@ -1,0 +1,16 @@
+//endingscript for certain people(Ronn) that can't handle this game :) 
+
+0 stopstream sounds\monsters\blackwell\intro1.wav
+0 stopstream sounds\monsters\blackwell\intro2.wav
+0 stopstream sounds\monsters\blackwell\intro3.wav
+0 stopstream sounds\monsters\blackwell\intro4.wav
+
+0 fog_fade 2 on 1 5000 166 128 57 off
+
+1 boss_controller blackwell start
+
+1 damage_brush_enable lavabrush
+
+
+
+

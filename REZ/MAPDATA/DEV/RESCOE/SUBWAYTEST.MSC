@@ -1,0 +1,3 @@
+Name "subwaytest"
+LoadScript "mapdata\dev\Rescoe\sbtestpatrol2.sc"
+LoadScript "mapdata\dev\Rescoe\sbtestpatrol3.sc"

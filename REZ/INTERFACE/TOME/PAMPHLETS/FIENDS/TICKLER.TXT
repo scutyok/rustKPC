@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Tickler]
+[model: models/creatures/Tickler.abc]
+[skin: skins/creatures/Tickler.dtx]
+[anim: none]
+[scale: 0.823]
+[start]
+Floating on hot fumes and bad temper, the drooling Tickler is not a friendly customer. Stay out of sight or this brain-ball will light you up with its burning hate-ray.
+
+Element: Air

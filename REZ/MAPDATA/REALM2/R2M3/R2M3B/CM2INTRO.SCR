@@ -1,0 +1,10 @@
+0 scriptload mapdata\realm2\r2m3\r2m3b\openwall.scr
+0 scriptload mapdata\dev\rescoe\cheatcem2.scr
+0 trigger_door crush1 open
+0 trigger_door crush2 open
+0 trigger_door crush3 open
+0 trigger_door crush4 open
+
+0 hint realm2\r2m3\r2m3b\r2m3-introtext
+
+0.001 cheatscript mapdata\dev\rescoe\cheatcem2.scr

@@ -1,0 +1,9 @@
+0 scriptload mapdata\realm2\r2m2\r2m2c\man03a.scr
+0 scriptload mapdata\realm2\r2m2\r2m2c\man03b.scr
+0 scriptload mapdata\realm2\r2m2\r2m2c\chestpick.scr
+0 scriptload mapdata\realm2\r2m2\r2m2c\glasshint01.scr
+0 scriptload mapdata\realm2\r2m2\r2m2c\r2m2ccheat.scr
+
+0 hint realm2\r2m2\r2m2c\r2m2-introtext
+
+0.001 cheatscript mapdata\realm2\r2m2\r2m2c\r2m2ccheat.scr

@@ -1,0 +1,10 @@
+0 scriptload mapdata\realm3\r3m3\r3m3a\urbanchasm01a.scr
+0 scriptload mapdata\realm3\r3m3\r3m3a\r3m3acheat.scr
+
+
+0.001 cheatscript mapdata\realm3\r3m3\r3m3a\r3m3acheat.scr
+.1 stopstream mapdata\realm3\r3m3\r3m3a\r3m3-intro.wav
+.5 trigger_generic ledge01
+
+
+

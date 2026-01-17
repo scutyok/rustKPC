@@ -1,0 +1,75 @@
+//	WorldOrder.txt
+//
+//	This file specifies the order that maps play in in the single player game.
+//	The second parameter specifies whether or not the world map should display
+//	after the map is completed and before going to the next map.  The third
+//	parameter is the number of the realm the maps is in (0 = water, 1 = earth,
+//	2 = air, 3 = fire, 4 = nightmare) and the fourth parameter is the number
+//	of the stage (or group of sublevels) this map belongs to.  Maps with the
+//	same realm and stage numbers have their tallys added together in the 
+//	worldmap screen.
+
+//	Map Name				Show			Realm #	Stage #	First Map
+//							WorldMap?						In Stage?
+
+//	Water Realm
+worlds/realm1/r1m0 			:	INTRO		:	0	:	0	:	1
+worlds/realm1/r1m1a 		:	0			:	0	:	0	:	0
+worlds/realm1/r1m1b 		:	WORLDMAP	:	0	:	0	:	0
+worlds/realm1/r1m2a 		:	0			:	0	:	1	:	1
+worlds/realm1/r1m2b 		:	0			:	0	:	1	:	0
+worlds/realm1/r1m2c 		:	WORLDMAP	:	0	:	1	:	0
+worlds/realm1/r1m3a 		:	0			:	0	:	2	:	1
+worlds/realm1/r1m3b 		:	0			:	0	:	2	:	0
+worlds/realm1/r1m3c 		:	WORLDMAP	:	0	:	2	:	0
+worlds/realm1/r1m4a 		:	0			:	0	:	3	:	1
+worlds/realm1/r1m4b 		:	0			:	0	:	3	:	0
+worlds/realm1/r1m4c 		:	WORLDMAP	:	0	:	3	:	0
+							
+//	Earth Realm 			
+//	Index = 12
+worlds/realm2/r2m0 			:	INTRO		:	1	:	0	:	1
+worlds/realm2/r2m1a 		:	0			:	1	:	0	:	0	
+worlds/realm2/r2m1b 		:	0			:	1	:	0	:	0
+worlds/realm2/r2m1c 		:	WORLDMAP	:	1	:	0	:	0
+worlds/realm2/r2m2a 		:	0			:	1	:	1	:	1
+worlds/realm2/r2m2b 		:	0			:	1	:	1	:	0
+worlds/realm2/r2m2c 		:	WORLDMAP	:	1	:	1	:	0
+worlds/realm2/r2m3a 		:	0			:	1	:	2	:	1
+worlds/realm2/r2m3b 		:	0			:	1	:	2	:	0
+worlds/realm2/r2m3c 		:	WORLDMAP	:	1	:	2	:	0
+worlds/realm2/r2m4a 		:	0			:	1	:	3	:	1
+worlds/realm2/r2m4b 		:	0			:	1	:	3	:	0
+worlds/realm2/r2m4c 		:	WORLDMAP	:	1	:	3	:	0
+
+//	Air Realm				
+//	Index = 25
+worlds/realm3/r3m0 			:	INTRO		:	2	:	0	:	1
+worlds/realm3/r3m1a 		:	0			:	2	:	0	:	0
+worlds/realm3/r3m1b 		:	WORLDMAP	:	2	:	0	:	0
+worlds/realm3/r3m2a 		:	0			:	2	:	1	:	1
+worlds/realm3/r3m2b 		:	WORLDMAP	:	2	:	1	:	0
+worlds/realm3/r3m3a 		:	0			:	2	:	2	:	1
+worlds/realm3/r3m3b 		:	0			:	2	:	2	:	0
+worlds/realm3/r3m3c 		:	WORLDMAP	:	2	:	2	:	0
+worlds/realm3/r3m4a 		:	0			:	2	:	3	:	1
+worlds/realm3/r3m4b 		:	WORLDMAP	:	2	:	3	:	0
+
+//	Fire Realm				
+//	Index = 35
+worlds/realm4/r4m0 			:	INTRO		:	3	:	0	:	1
+worlds/realm4/r4m1a 		:	0			:	3	:	0	:	0
+worlds/realm4/r4m1b 		:	0			:	3	:	0	:	0
+worlds/realm4/r4m1c 		:	WORLDMAP	:	3	:	0	:	0
+worlds/realm4/r4m2a 		:	0			:	3	:	1	:	1
+worlds/realm4/r4m2b 		:	0			:	3	:	1	:	0
+worlds/realm4/r4m2c 		:	WORLDMAP	:	3	:	1	:	0
+worlds/realm4/r4m3a 		:	0			:	3	:	2	:	1
+worlds/realm4/r4m3b 		:	WORLDMAP	:	3	:	2	:	0
+worlds/realm4/r4m4a 		:	0			:	3	:	3	:	1
+worlds/realm4/r4m4b 		:	WORLDMAP	:	3	:	3	:	0
+
+//	Nightmare Realm 		
+//	Index = 46
+worlds/realm5/r5m1a 		:	0			:	4	:	0	:	1
+worlds/realm5/r5m1b			:	0			:	4	:	1	:	0

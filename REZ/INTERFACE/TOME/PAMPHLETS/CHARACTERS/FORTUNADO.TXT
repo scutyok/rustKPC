@@ -1,0 +1,8 @@
+[category: characters]
+[title: Fortunado]
+[model: models/creatures/fortunado.abc]
+[skin: skins/creatures/fortunado.dtx]
+[anim: bounce]
+[scale: 1.6]
+[start]
+Fortunado served as the avatar of water for centuries, but was shackled into evil upon the Nightmare child's arrival. At the heart of the Freak Show this wraith impatiently awaits your arrival, eager to show you new heights in horror.

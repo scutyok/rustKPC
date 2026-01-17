@@ -1,0 +1,11 @@
+0 earthquake quake2 3
+0 sound quake2 sounds\environment\quake2.wav
+
+1 player invulnerable false
+1 disable_ai false
+
+1 trigger_generic quakewall2
+1 trigger_generic quakewall3
+2 trigger_door quakewall1 open
+
+

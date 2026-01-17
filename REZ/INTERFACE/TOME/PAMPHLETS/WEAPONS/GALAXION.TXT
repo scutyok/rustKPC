@@ -1,0 +1,10 @@
+[category: weapons]
+[title: Galaxion]
+[model: models/pickups/pu_Galaxion.abc]
+[skin: skins/player/weapons/3rdGalaxion.dtx]
+[anim: none]
+[scale: 2.3]
+[start]
+This heavy weapon opens a violent rift to an uninhabitable part of the air realm. From the surface perpendicular to its impact point the Galaxion creates a spinning vortex cone that sucks all nearby matter into the void. The Celestial's weapon of choice spells doom for the unprepared avatar, but a true master will use it to extend the reach of his wrath into uncharted territory.
+
+Element: Air

@@ -1,0 +1,47 @@
+
+0 user_input off
+0 camera_path path1
+0 letterbox on
+
+0 trigger_door curtain1 close
+0 trigger_door curtain2 close
+
+1 player teleport telespot
+
+2 trigger_door curtain5 close
+2 trigger_door curtain6 close
+
+3.9 trigger_door curtain3 open
+3.9 trigger_door curtain4 open
+
+4.2 model_anim clowncar amb
+4.3 model_anim clowncar test
+
+4.3 model_appear clowncar
+4.3 sound soundspot sounds\streaming\clowncar.wav 
+
+4.8 trigger_door curtain3 close
+4.8 trigger_door curtain4 close
+
+8.3 boss_controller fortunado appear
+
+10.1 explosion path1 240 100
+
+11 trigger_door curtain3 open
+11 trigger_door curtain4 open
+
+11.5 trigger_door curtain3 close
+11.5 trigger_door curtain4 close
+
+11.7 model_disappear clowncar
+
+12 player lookat lookatmeclownywowny
+13 subtitle 4 "FORTUNADO"
+14.8 sound lookatmeclownywowny "sounds\monsters\fortunado\fortlaugh1.wav"
+16 sound lookatmeclownywowny "sounds\monsters\fortunado\fortlaugh2.wav"
+
+19 boss_controller fortunado start
+
+19 letterbox off
+19 user_input on
+19 camera_reset

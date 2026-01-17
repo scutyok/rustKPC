@@ -1,0 +1,4 @@
+0 disable_ai false
+0 player invulnerable false
+.1 trigger_generic CExitTrigger0
+

@@ -1,0 +1,25 @@
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+0 camera_path bootpath
+0 player teleport bootspot
+0 turn_player bootfocus 1
+
+5 player animate powerup 8.5
+5 player powerup
+5 streamsound player sounds\streaming\armorpowerup.wav local
+
+11.5 camera_fov 120 2
+
+11.75 player giveitem boots 
+
+13 trigger_generic TicklemeNOW
+
+14.5 user_input on
+14.5 letterbox off
+14.5 camera_reset
+14.5 player invulnerable false
+14.5 disable_ai false
+
+15 music intensity 2 transition measure

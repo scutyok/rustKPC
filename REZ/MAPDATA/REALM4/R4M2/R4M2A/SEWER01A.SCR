@@ -1,0 +1,30 @@
+0 user_input off
+0 letterbox on
+0 camera_path intro01
+
+
+0 streamsound player mapdata\realm4\r4m2\r4m2a\r4m2-intro.wav local
+0 subtitle 5.1 "The lava stream that flows beneath the city is your next battleground, "
+0 endingscript mapdata\realm4\r4m2\r4m2a\sewer01aintro.scr
+.1 trigger_generic intromon01
+
+5.5 subtitle 4.5 "which holds two more shards of the Demon's armor."
+
+10.6 subtitle 5.4 "Through a steady ascent, you will in time be free of the sewers."
+
+16.6 subtitle 6.8 "But beware! The flows of lava are far from stable."
+
+20 camera_path intro02
+
+
+22 trigger_door entrydoor01 open
+23 move_player entrymove01
+24 subtitle 7.2 "Should the sewers erupt, your time in this cosmos will be dangerously short."
+
+25 trigger_door entrydoor01 close
+
+
+33 letterbox off
+33 camera_reset
+33 user_input on
+

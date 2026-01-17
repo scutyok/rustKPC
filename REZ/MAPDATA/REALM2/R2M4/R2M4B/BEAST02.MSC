@@ -1,0 +1,9 @@
+// Beast Pens 02 script
+name "Beast02"
+
+Loadscript "mapdata\realm2\r2m4\r2m4b\balltur01.sc"
+Loadscript "mapdata\realm2\r2m4\r2m4b\ballpat01.sc"
+Loadscript "mapdata\realm2\r2m4\r2m4b\fatwalk01.sc"
+Loadscript "mapdata\realm2\r2m4\r2m4b\jumper01.sc"
+Loadscript "mapdata\realm2\r2m4\r2m4b\pusher01.sc"
+Loadscript "mapdata\realm2\r2m4\r2m4b\killer01.sc"

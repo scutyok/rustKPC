@@ -1,0 +1,12 @@
+0 streamsound player sounds\tutorial\area03a-1.wav local
+// wav file length 5.12
+0 center_text 0 6.1 "Use your crouch control to duck under obstacles or crawl into areas with low ceilings."
+
+0 print_message 0 15 14
+
+7.5 streamsound player sounds\tutorial\area03a-2.wav local
+// wav file length 1.8
+7.5 center_text 0 2.8 "Move through this area by crouching."
+
+10.4 trigger_door brokendoor open
+10.4 sound brokendoorspot sounds\environment\metalslide3.wav

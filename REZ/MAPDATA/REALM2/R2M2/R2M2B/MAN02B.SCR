@@ -1,0 +1,14 @@
+0 user_input off
+0 letterbox on
+0 trigger_door Hordehall01 close
+
+
+0 camera_path second
+0 player lookatangles 0 270
+
+4 trigger_generic HallHorth02
+4 window_break picture01
+
+4.5 camera_reset
+4.5 letterbox off
+4.5 user_input on

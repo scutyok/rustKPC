@@ -1,0 +1,75 @@
+//load all scripts for level
+//0 scriptload mapdata
+
+//start the camera on the path
+//0 camera_path ravenpath
+
+//start
+//0 user_input off
+//0 letterbox on
+//0 player invulnerable true
+
+//fade out the music
+//0 music intensity 8 transition beat
+
+//fade the green fog in
+10 fog_fade 6 on 1 20000 78 134 2 off
+
+//fade the blue fog in
+20 fog_fade 6 on 1 20000 0 183 198 off
+
+//fade the redish fog in
+30 fog_fade 6 on 1 20000 198 104 0 off
+
+//fade the purple fog in
+40 fog_fade 6 on 1 20000 244 151 255 off
+
+//fade the green fog in
+50 fog_fade 6 on 1 20000 78 134 2 off
+
+//fade the blue fog in
+60 fog_fade 6 on 1 20000 0 183 198 off
+
+//fade the redish fog in
+70 fog_fade 6 on 1 20000 198 104 0 off
+
+//fade the purple fog in
+80 fog_fade 6 on 1 20000 244 151 255 off
+
+//fade the green fog in
+90 fog_fade 6 on 1 20000 78 134 2 off
+
+//fade the blue fog in
+100 fog_fade 6 on 1 20000 0 183 198 off
+
+//fade the redish fog in
+110 fog_fade 6 on 1 20000 198 104 0 off
+
+//fade the purple fog in
+120 fog_fade 6 on 1 20000 244 151 255 off
+
+//fade the green fog in
+130 fog_fade 6 on 1 20000 78 134 2 off
+
+//fade the blue fog in
+140 fog_fade 6 on 1 20000 0 183 198 off
+
+//fade the redish fog in
+150 fog_fade 6 on 1 20000 198 104 0 off
+
+//fade the purple fog in
+160 fog_fade 6 on 1 20000 244 151 255 off
+
+//bring music back
+//0 music intensity 2 transition beat
+
+//start
+//0 user_input on
+//0 letterbox off
+//0 player invulnerable false
+
+
+
+
+
+

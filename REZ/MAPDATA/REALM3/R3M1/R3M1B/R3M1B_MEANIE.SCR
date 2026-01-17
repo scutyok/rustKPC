@@ -1,0 +1,14 @@
+0 user_input off
+0 camera_path meanie
+0 letterbox on
+0 player invulnerable true
+0 endingscript mapdata\realm3\r3m1\r3m1a\r3m1a_Meanie_END.scr
+
+4.9 window_break scroodle
+5 trigger_generic Potnoodle01
+5.2 trigger_generic Potnoodle02
+
+16 letterbox off
+16 camera_reset
+16 user_input on
+16 player invulnerable false

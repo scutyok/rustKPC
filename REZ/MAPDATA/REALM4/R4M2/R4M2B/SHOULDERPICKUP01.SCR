@@ -1,0 +1,19 @@
+0 user_input off
+0 disable_ai true
+0 letterbox on
+0 camera_reset
+0 player invulnerable true
+0 player powerup
+0 streamsound player sounds\pickups\armorpowerup.wav local
+0 camera_path shpickup01
+
+0 player lookatangles 0 90
+.001 player animate powerup 8.5
+
+6.5 player GiveItem Shoulderplates
+
+8.5 user_input on
+8.5 letterbox off
+8.5 camera_reset
+8.5 player invulnerable false
+8.5 disable_ai false

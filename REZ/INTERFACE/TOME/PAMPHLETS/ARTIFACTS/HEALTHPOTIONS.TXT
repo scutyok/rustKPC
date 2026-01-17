@@ -1,0 +1,9 @@
+[category: artifact]
+[title: Health Potions]
+[model: models/pickups/health_small.abc]
+[skin: skins/pickups/health_small.dtx]
+[anim: none]
+[scale: 3.0]
+[start]
+The dying elemental realms produce these for you, providing much needed healing. The potions come in three variations, vial (+10), flask (+30) and bottle (+60), and are all instant-use.
+

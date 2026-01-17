@@ -1,0 +1,24 @@
+//bring down music intensity back to 2
+0 music intensity 2 transition beat
+
+//turn on the fountain
+//0 citysquare_fountain_on
+0 model_anim_loop fountain StaticB
+
+//end script and give player control
+0 user_input on
+0 letterbox off
+0 camera_reset
+0 player invulnerable false
+0 disable_ai false
+
+//open final gate
+0 trigger_door basefinaldoor2 close
+0 trigger_door basefinaldoor1 close
+
+//break basement exit window and spawn headless in
+1 window_break basewindow
+1 trigger_generic basewindowspawn
+
+
+

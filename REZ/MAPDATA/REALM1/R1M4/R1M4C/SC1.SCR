@@ -1,0 +1,18 @@
+0 letterbox on
+0 user_input off
+0 camera_path path3
+0 music boss1 intensity 2
+0 player teleport telespot
+
+//play fortunado's death sound
+0 sound lookatmeclownywowny "sounds\monsters\fortunado\fortdeath.wav"
+
+1 player lookat lookatmeclownywowny
+
+//play expanding sound.
+3 sound lookatmeclownywowny "sounds\monsters\fortunado\fortexpand.wav"
+
+7.5 boss_controller fortunado medium
+8 letterbox off
+8 user_input on
+8 camera_reset

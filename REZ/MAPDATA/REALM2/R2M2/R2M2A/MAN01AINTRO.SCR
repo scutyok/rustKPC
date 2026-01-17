@@ -1,0 +1,4 @@
+.01 player teleport walk01
+.01 fog_fade 0 on 1 5000 64 64 64 on 1 500
+.01 stopstream mapdata\realm2\r2m2\r2m2a\r2m2a-1.wav
+.01 hint realm2\r2m2\r2m2a\r2m2-introtext

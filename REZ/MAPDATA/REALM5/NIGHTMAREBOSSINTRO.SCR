@@ -1,0 +1,35 @@
+0 endingscript mapdata\realm5\nightmarebossintroa.scr
+0 letterbox on
+0 user_input off
+0 camera_path path1
+
+0 scriptload mapdata\realm5\nightmareboss-2.scr
+0 scriptload mapdata\realm5\nightmareboss-3.scr
+0 scriptload mapdata\realm5\nightmareboss-end.scr
+0 scriptload mapdata\dev\rescoe\cheat5.scr
+0.001 cheatscript mapdata\dev\rescoe\cheat5.scr
+
+2 streamsound player mapdata\realm5\R5-Intro.wav local
+2 subtitle 10 "It was from this dark nucleus that the evil domain was unleashed, spreading around us like a cloud of locust."
+
+2 trigger_door teethgate1 open
+2.2 trigger_door teethgate2 open
+
+4 trigger_door teethgate1 close
+4.2 trigger_door teethgate2 close
+
+13.4 subtitle 8.8 "You now stand at the heart of darkness, where the very walls scream for your blood."
+
+23.2 subtitle 7.0 "The final test is at hand. Steel yourself!"
+
+31 player teleport  bloodstart
+32 letterbox off
+32 user_input on
+32 camera_reset
+
+ 
+
+
+
+
+

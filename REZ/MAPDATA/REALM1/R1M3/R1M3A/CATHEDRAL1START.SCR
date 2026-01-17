@@ -1,0 +1,54 @@
+0 endingscript mapdata\realm1\r1m3\r1m3a\cathedral1astart.scr
+
+0 water_off "adamwater"
+
+0 letterbox on
+0 user_input off
+0 player invulnerable true
+//0 fog_fade 2 on 1 4000 106 116 162 on 1 600
+0 scriptload mapdata\realm1\r1m3\r1m3a\scourge.scr
+0 scriptload mapdata\realm1\r1m3\r1m3a\frontdoorhint.scr
+0 scriptload mapdata\realm1\r1m3\r1m3a\cath1exit.scr
+0 scriptload mapdata\dev\rescoe\cheatcath1.scr
+
+0 hint realm1\r1m3\r1m3a\r1m3-introtext
+
+0.001 cheatscript mapdata\dev\rescoe\cheatcath1.scr
+
+1 camera_path path3
+1 streamsound player mapdata\realm1\r1m3\r1m3a\r1m3-intro.wav local
+
+1 subtitle 7.0 "You've come far. You're closing in on the core of the Water Realm's corruption."
+8.5 subtitle 10.3 "To countless before you, the hallowed halls within have been a place of salvation, a pit of damnation to others."
+
+10 fog_fade 1 on 1 500 0 0 0 off
+11 fog_fade 1 on 1 4000 106 116 162 on 1 600
+11 camera_path path7
+
+20 subtitle 10 "To be a master of this realm you must cleanse the ancient cathedral in a trial of blood and wits."
+
+25 fog_fade 1 on 1 500 0 0 0 off
+26 fog_fade 1 on 1 4000 106 116 162 on 1 600
+26 camera_path path6
+
+31.2 subtitle 7.2 "By way of the Scourge, the earth element will be a useful ally for you here,"
+38.9 subtitle 7.2 "as the way in is not as straight as it first seems."
+
+39 fog_fade 1 on 1 500 0 0 0 off
+40 fog_fade 1 on 1 4000 106 116 162 on 1 600
+40 camera_path path3a
+
+47.7 music song1 intensity 3
+47.8 window_break wind1
+47.8 sound player sounds\environment\glassbreak2.wav local
+47.9 trigger_generic spawn6
+
+50.5 disable_ai true
+51.7 disable_ai false
+
+51.7 letterbox off
+51.7 user_input on
+51.7 camera_reset
+
+53 player invulnerable false
+

@@ -1,0 +1,32 @@
+//0 player class StarBearer
+	0 player class BeastKing
+//0 player class Celestial
+//0 player class Demon
+
+	0 player SetHealth 200
+
+	0 player GiveItem MagmaAmmo 200
+	0 player GiveItem AirAmmo 100
+	0 player GiveItem WaterAmmo 200
+	0 player GiveItem EarthAmmo 100
+
+	0 player GiveItem Gauntlets
+	0 player GiveItem Boots
+	0 player GiveItem Belt
+	0 player GiveItem Breastplate
+	0 player GiveItem Shoulderplates
+//0 player GiveItem Mask
+
+	0 player GiveItem ZeroCannon
+	0 player GiveItem MagmaCannon
+	0 player GiveItem Scourge
+	0 player GiveItem Windblade
+//0 player GiveItem Stargaze
+	0 player GiveItem SpiritLance
+//0 player GiveItem Galaxion
+//0 player GiveItem Draco
+
+
+	0 player GiveItem BlackDiamond 80
+	0 player GiveItem JackInTheBox 5
+//0 player GiveItem RageOrb 1

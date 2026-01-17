@@ -1,0 +1,38 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+
+//bring down music intensity back to 2
+0 music intensity 2 transition beat
+
+//start the camera on the path
+0 camera_path finalcampath
+
+.1 endingscript "mapdata\realm1\r1m2\r1m2a\finalending.scr"
+
+//turn on the fountain
+//1.5 citysquare_fountain_on
+
+//play the fountains animation
+1.5 model_anim fountain Move
+1.5 streamsound player sounds/environment/fountainraise.wav local
+
+//end script and give player control
+5 user_input on
+5 letterbox off
+5 camera_reset
+5 player invulnerable false
+
+//open final gate
+5 trigger_door basefinaldoor2 close
+5 trigger_door basefinaldoor1 close
+
+5.1 model_anim_loop fountain StaticB
+
+//break basement exit window and spawn headless in
+7 window_break basewindow
+7 trigger_generic basewindowspawn
+
+
+

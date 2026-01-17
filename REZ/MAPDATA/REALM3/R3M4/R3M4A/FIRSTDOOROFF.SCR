@@ -1,0 +1,12 @@
+//turn off lightning door
+0 lightning_off firstdoor1
+0 lightning_off firstdoor2
+0 lightning_off firstdoor3
+0 lightning_off firstdoor4
+0 lightning_off firstdoor5
+
+0 damage_brush_disable firstdoordmg
+
+0 sound_ambient_off firstdoorsound
+
+

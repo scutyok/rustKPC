@@ -1,0 +1,8 @@
+[category: artifact]
+[title: Black Diamond]
+[model: models/pickups/blackdiamond.abc]
+[skin: skins/pickups/blackdiamond.dtx]
+[anim: none]
+[scale: 2.0]
+[start]
+These nuggets of crystallized fury will assemble into a mighty Rage Orb once a full forty have been found. The diamonds can be activated before turning into a Rage Orb, but will yield less impressive results if spent prematurely. They often lie scattered in hidden nooks and crannies so be on the lookout.

@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Fat Lady]
+[model: models/creatures/FatLady.abc]
+[skin: skins/creatures/FatLady.dtx]
+[anim: none]
+[scale: 0.6]
+[start]
+A walking hill of possessed blubber, the Fat Lady's tortured head watches in horror as her unholy flesh wrecks havoc. She is always growing in mass and must dispatch excess blubber from time to time. These sentient gibs are out to make a demonic career of their own and you're the first step up the ladder! 
+
+Element: Water

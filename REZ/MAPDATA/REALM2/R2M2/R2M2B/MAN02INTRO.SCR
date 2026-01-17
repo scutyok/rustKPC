@@ -1,0 +1,47 @@
+0 scriptload mapdata\realm2\r2m2\r2m2b\man02a.scr
+0 scriptload mapdata\realm2\r2m2\r2m2b\man02aa.scr
+0 scriptload mapdata\realm2\r2m2\r2m2b\man02b.scr
+0 scriptload mapdata\realm2\r2m2\r2m2b\man02c.scr
+
+0 scriptload mapdata\realm2\r2m2\r2m2b\man02e.scr
+0 scriptload mapdata\realm2\r2m2\r2m2b\man02f.scr
+0 scriptload mapdata\realm2\r2m2\r2m2b\man02g.scr
+0 endingscript mapdata\realm2\r2m2\r2m2b\man02aintro.scr
+0 scriptload mapdata\realm2\r2m2\r2m2b\r2m2bcheat.scr
+
+0 hint realm2\r2m2\r2m2b\r2m2-introtext
+
+0 user_input off
+0 letterbox on
+0 camera_path baseintro01
+
+0.001 cheatscript mapdata\realm2\r2m2\r2m2b\r2m2bcheat.scr
+
+.5 trigger_door basedoor01 open
+2 streamsound player mapdata\realm2\r2m2\r2m2b\r2m2b-1.wav local
+2 subtitle 3.5 "It seems this path was not meant to be." 
+
+6.5 subtitle 4 "You'll have to find another way to the circus now."
+
+7 move_player basemove01
+
+7 fog_fade 3 on 1 2 0 0 0 off
+
+10.5 camera_path baseintro02
+10.5 fog_fade 2 on 1 3000 52 88 56 off
+
+11 subtitle 3.5 "Seek the library inside the mansion."
+
+15 subtitle 6.2 "The knowledge held there should allow your journey to continue onward and upward."
+
+20 fog_fade 3 on 1 2 0 0 0 off
+
+
+24.3  fog_fade 1 on 1 3000 52 88 56 off
+24.3 letterbox off
+24.3 camera_reset
+24.5 trigger_door basedoor01 close
+
+24.6 sound player sounds\environment\door4close.wav
+24.7  hint realm2\r2m2\r2m2b\r2m2-introtext
+24.75 user_input on

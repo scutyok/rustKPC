@@ -1,0 +1,8 @@
+0 scriptload mapdata\dev\rescoe\cheatsub2.scr
+0 trigger_door trap1 open
+0 trigger_door trap2 open
+0 trigger_door trap3 open
+
+0 hint realm4\r4m3\r4m3b\r4m3-introtext
+
+0.001 cheatscript mapdata\dev\rescoe\cheatsub2.scr

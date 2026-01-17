@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Grinder]
+[model: models/creatures/Grinder.abc]
+[skin: skins/creatures/Grinder.dtx]
+[anim: none]
+[scale: 0.8]
+[start]
+A mysterious hooded reaper with a deadly music box, the Grinder is a villain to be feared.
+
+Element: Fire

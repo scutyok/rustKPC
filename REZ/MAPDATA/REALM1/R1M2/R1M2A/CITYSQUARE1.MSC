@@ -1,0 +1,6 @@
+// CitySquare1 master script
+
+name "CitySquare1"
+Loadscript "mapdata\realm1\r1m2\r1m2a\Gasbag1CS1.sc"
+Loadscript "mapdata\realm1\r1m2\r1m2a\Gasbag2CS1.sc"
+Loadscript "mapdata\realm1\r1m2\r1m2a\Gasbag3CS1.sc"

@@ -1,0 +1,6 @@
+//This is the master script for Cemetary2.dat
+Name "Cemetary2"
+
+LoadScript "mapdata\Realm2\r2m3\r2m3b\cm2patrol2.sc"
+LoadScript "mapdata\Realm2\r2m3\r2m3b\cm2turret.sc"
+

@@ -1,0 +1,14 @@
+0 user_input off
+0 camera_path doorknock
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+0 endingscript mapdata\realm1\r1m1\r1m1a\r1m1a_DoorknockEND.scr
+0 script_object_enable Revenge
+
+12 letterbox off
+12 camera_reset
+12 user_input on
+12 player invulnerable false
+12 disable_ai false
+

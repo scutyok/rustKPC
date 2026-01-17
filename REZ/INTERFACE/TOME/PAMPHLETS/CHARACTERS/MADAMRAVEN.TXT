@@ -1,0 +1,8 @@
+[category: characters]
+[title: Madam Raven]
+[model: models/player/raven/ravenhead.abc]
+[skin: skins/player/raven/ravenhead.dtx]
+[anim: HunchRaiseHandsTalk]
+[scale: 2.2]
+[start]
+Madam Raven is the ancient gypsy sorceress that safe-keeps the carnival of souls. The circus' first and last link to the Elder, she alone has managed to keep the Nightmare Child's perverting presence at bay, using her wits to bind four new avatars down the path of a desperate quest. Through the eyes of her black-feathered familiars the blind old crone watches over your path, providing aid wherever she can.

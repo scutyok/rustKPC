@@ -1,0 +1,39 @@
+0 user_input off
+0 camera_path path1
+0 letterbox on
+0 scriptload mapdata\realm3\r3m4\r3m4b\recharge1.scr
+0 scriptload mapdata\realm3\r3m4\r3m4b\recharge2.scr
+0 scriptload mapdata\realm3\r3m4\r3m4b\exit.scr
+0 scriptload mapdata\dev\rescoe\circus3cheat.scr
+0 fog_fade 2 on 1 5000 73 60 188 on 1 1000
+
+0 hint realm3\r3m4\r3m4b\r3m4-introtext
+
+0 trigger_door curtain open
+0.001 cheatscript mapdata\dev\rescoe\circus3cheat.scr
+0.001 stargrave_animate "stand" 8.5 TRUE
+0.5 trigger_door curtain close
+0.5 player teleport telespot
+0.5 player lookatangles 0 0
+
+5 subtitle 4 "STARGRAVE"
+
+9 lightning_on barlightning1
+9.2 lightning_off barlightning1
+9.2 lightning_on barlightning2
+9.3 trigger_door bar1 open 
+9.4 lightning_on barlightning1
+9.5 lightning_off barlightning2
+9.7 lightning_off barlightning1
+
+10 stargrave_animate "Awaken" 1.2 FALSE
+
+10.1 trigger_generic exitstairs
+
+
+
+15.5 user_input on
+15.5 letterbox off
+15.5 camera_reset
+
+

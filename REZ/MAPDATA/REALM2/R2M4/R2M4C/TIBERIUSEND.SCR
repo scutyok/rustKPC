@@ -1,0 +1,38 @@
+0 endingscript mapdata\realm2\r2m4\r2m4c\tiberiusend1.scr
+1 fog_fade 3 on 1 2 0 0 0 off
+4 fog_fade 1 on 1 4000 22 99 46 off
+4 player invulnerable true
+4 disable_ai true
+4 user_input off
+4 camera_path path3
+4 letterbox on
+4 music boss4 intensity 4 transition measure
+
+
+4 model_anim_loop Raven1 HunchTwiddleTalk
+4 model_anim_loop Raven2 HunchTwiddleTalk
+5 streamsound player mapdata\realm2\r2m4\r2m4c\r2m4-End.wav local
+5 subtitle 6.8 "Beyond the odds, you have regained control of Elemental Earth!"
+11.4 model_anim_loop Raven1 HunchTwiddle
+11.4 model_anim_loop Raven2 HunchTwiddle
+
+
+12 model_anim_loop Raven1 HunchRaiseHandsTalk
+12 model_anim_loop Raven2 HunchRaiseHands
+12 subtitle 10.2 "The Beast King joins the Starbearer, but still two elements remain before the four can again be one."
+15.9 model_anim_loop Raven1 HunchTwiddleTalk
+15.9 model_anim_loop Raven2 HunchTwiddleTalk
+15.9 camera_path path3a
+
+22 model_anim_loop Raven1 HunchTwiddle
+22 model_anim_loop Raven2 HunchTwiddle
+23.4 model_anim_loop Raven1 HunchTwiddleTalk
+23.4 model_anim_loop Raven2 HunchTwiddleTalk
+23.4 subtitle 9.7 "Might your friends do as well as you, although I fear the tide of time is against them."
+30.7 model_anim_loop Raven1 Hunch2Up
+30.7 model_anim_loop Raven2 Hunch2Up
+32 model_anim_loop Raven1 UpAmb
+32 model_anim_loop Raven2 UpAmb
+
+33 fog_fade 2 on 1 2 0 0 0 off
+35 trigger_generic exit

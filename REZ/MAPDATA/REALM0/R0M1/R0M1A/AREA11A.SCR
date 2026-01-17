@@ -1,0 +1,29 @@
+0 script_object_disable longobject
+
+0 streamsound player sounds\tutorial\area11a-1.wav local
+// wav file length 2.66
+0 center_text 0 3.7 "Select the Hawk Eyes in your inventory."
+
+5 streamsound player sounds\tutorial\area11a-2.wav local
+// wav file length 8.33
+5 center_text 0 9.3 "Position your crosshair on the target and use the Hawk Eyes to zoom in for a precision shot. Zoom back out by using them again."
+
+15 streamsound player sounds\tutorial\area11a-3.wav local
+// wav file length 5.80
+15 center_text 0 6.8 "The Hawk Eyes will only work for a limited amount of time. The time remaining will show up in the player state box."
+
+23 streamsound player sounds\tutorial\area11a-4.wav local
+// wav file length 3.45
+23 center_text 0 4.5 "You may also use the Hawk Eyes with the use Hawk Eyes control."
+23 print_message 0 15 29
+
+29 streamsound player sounds\tutorial\area11a-5.wav local
+// wav file length 3.98
+29 center_text 0 5 "Zoom in with your Hawk Eyes and shoot the target with the Zerocannon."
+
+36 streamsound player sounds\tutorial\area11a-6.wav local
+// wav file length 4.03
+36 center_text 0 5 "When you have hit the target and opened the door, move to the next area."
+
+37 trigger_door dd02a open
+37 trigger_door dd02b open

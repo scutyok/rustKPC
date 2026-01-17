@@ -1,0 +1,5 @@
+0 stopstream mapdata\Realm4\R4M4\R4M4a\r4m4-intro.wav
+0 letterbox off
+0 camera_reset
+0 user_input on
+0 disable_AI false

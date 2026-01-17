@@ -1,0 +1,56 @@
+//	MapMessage.txt
+//
+//	This is a list of messages that are used for any messages that are 
+//	specified by a map designer in the .ed file.  Its sole purpose is
+//	to ease localization so that text messages can be changed to another
+//	language without recompiling maps.
+//
+//	Specify the message first.  If you want spaces in the message, you
+//	must put the message inside of quotes.  If you want a quote to be
+//	printed in your message, use \", as in the following example:
+//
+//	"The peanut exclaimed, \"You are a fool, Captain Spismo!\""
+//
+//	This will print:
+//
+//	The peanut exclaimed, "You are a fool, Captain Spismo!"
+//
+//	After the text, you can add a comment indicating the index of the
+//	message for easy reference.  Not that the index you specify is
+//	really based on the order of the messages in this file and has
+//	nothing to do with the comments, so if you screw up the numbering
+//	in the comments, you still have to specify the message by it's
+//	order in this file.
+
+"This door is locked."					//	0
+"The doors are jammed."					//	1
+"Correct"						//	2
+"Incorrect - Start Again"				//	3
+"Next show starts in 1 minute."				//	4
+"Sequence completed."					//	5
+"You don't have a ticket."				//	6
+"Move Forward : ##Forward"				//	7
+"Move Backward : ##Backward"				//	8
+"Move Slow : Hold ##Slow"				//	9
+"Toggle Run/Walk : ##WalkRunToggle"			//	10
+"Strafe Left  : ##StrafeLeft"				//	11
+"Strafe Right : ##StrafeRight"				//	12
+"Jump : ##Jump"						//	13
+"Crouch or Move Down : ##Duck"				//	14
+"Move Up : ##MoveUp"					//	15
+"Move Down or Crouch : ##Duck"				//	16
+"Attack : ##Fire"					//	17
+"Use Targeted Item : ##Use"				//	18
+"Select Weapon 1 : ##Weapon_1"				//	19
+"Select Weapon 2 : ##Weapon_2"				//	20
+"Select Weapon 3 : ##Weapon_3"				//	21
+"Select Weapon 4 : ##Weapon_4"				//	22
+"Select Weapon 5 : ##Weapon_5"				//	23
+"Select Weapon 6 : ##Weapon_6"				//	24
+"Next Inventory Item : ##NextInv"			//	25
+"Previous Inventory Item : ##PrevInv"			//	26
+"Use Inventory Item : ##UseInventoryItem"		//	27
+"Use Jack-in-the-Box : ##UseJackInTheBox"		//	28
+"Use Hawk Eyes : ##UseHawkEyes"				//	29
+"Use Crystal Ball : ##UseCrystalBall"			//	30
+"Toggle Inventory : ##Toggle_Inventory_Display"		//	31

@@ -1,0 +1,31 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//start the camera on the path
+0 camera_path torsopath
+
+//change music intensity to highest
+0 music intensity 2 transition beat 
+
+//teleport player to exact spot
+0 player teleport torsospot
+0 player animate powerup 8.5
+0 player powerup
+0 player lookat torsoturn2 100
+
+0 streamsound player sounds\pickups\armorpowerup.wav local
+
+6.75 player giveitem shoulderplates
+
+//end script and start battle.
+19 user_input on
+19 letterbox off
+19 camera_reset
+19 player invulnerable false
+19 disable_ai false
+
+
+

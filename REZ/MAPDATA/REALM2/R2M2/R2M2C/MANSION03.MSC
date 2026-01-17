@@ -1,0 +1,12 @@
+// Mansion 03 script
+name "mansion03"
+
+Loadscript "mapdata\realm2\r2m2\r2m2c\waiter01.sc"
+Loadscript "mapdata\realm2\r2m2\r2m2c\waker01.sc"
+Loadscript "mapdata\realm2\r2m2\r2m2c\mandance.sc"
+Loadscript "mapdata\realm2\r2m2\r2m2c\patrol01.sc"
+Loadscript "mapdata\realm2\r2m2\r2m2c\patrol02.sc"
+Loadscript "mapdata\realm2\r2m2\r2m2c\patrol03.sc"
+Loadscript "mapdata\realm2\r2m2\r2m2c\fatdance.sc"
+
+Loadscript "mapdata\realm2\r2m2\r2m2c\turret01.sc"

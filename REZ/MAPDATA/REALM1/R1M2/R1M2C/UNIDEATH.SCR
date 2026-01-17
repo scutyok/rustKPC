@@ -1,0 +1,23 @@
+//start
+.75 user_input off
+.75 letterbox on
+.75 player invulnerable true
+.75 disable_ai true
+
+.75 sound player sounds\environment\event.wav local
+
+//start the camera on the path
+.75 camera_path dooropencam
+
+//open the door
+1.25 trigger_sliding_door Gate1b open
+1.25 trigger_sliding_door Gate1 open
+
+//end script and start battle.
+3.2 disable_ai false
+3.2 user_input on
+3.2 letterbox off
+3.2 camera_reset
+3.2 player invulnerable false
+
+

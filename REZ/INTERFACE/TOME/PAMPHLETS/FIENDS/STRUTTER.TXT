@@ -1,0 +1,10 @@
+[category: fiends]
+[title: Strutter]
+[model: models/creatures/Strutter.abc]
+[skin: skins/creatures/Strutter2.dtx]
+[anim: none]
+[scale: 0.9]
+[start]
+These bloated battle-bugs come in two variants, lava and hail. Their saliva glands are bad news, as they spit tainted elemental fury like no other horde creature.
+
+Elements: Fire or Water

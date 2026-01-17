@@ -1,0 +1,9 @@
+0 sound player sounds\monsters\blademaster\bladeambient3.wav local
+0 trigger_door 5MinutesAlone01 open
+0 trigger_door 5MinutesAlone02 open
+0 trigger_door Nelnoz01 open
+0 trigger_door Nelnoz02 open
+0 trigger_generic BMBoss01
+0 music intensity 3 transition measure
+0 disable_ai false
+0 player invulnerable false

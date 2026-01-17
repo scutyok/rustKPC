@@ -1,0 +1,8 @@
+0 trigger_door FFTScore open
+0 trigger_generic Adios
+0 player invulnerable false
+0 disable_ai false
+0 wake_monster_group satan
+6 wake_monster_group Wrenme
+12 wake_monster_group Wrenme
+

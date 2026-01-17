@@ -1,0 +1,61 @@
+0 player lookatangles 0 180
+0 player teleport telearmor
+
+0.1 user_input off
+0.1 camera_path path4a
+0.1 letterbox on
+
+
+0.1 disable_ai true
+0.1 player invulnerable true
+
+0.1 music song1 intensity 0
+
+0.1 player animate powerup 8.5
+0.1 player powerup
+0.1 sound player sounds\pickups\armorpowerup.wav local
+6.75 player giveitem breastplate 
+
+
+8.5 camera_path path4
+
+11.1 trigger_generic debris1
+11.2 sound_ambient_on insiderain
+11.2 sound_ambient_on drainage
+11.3 leak_on leak1a
+11.3 leak_on leak1b
+11.3 leak_on leak1c
+11.3 leak_on leak1d
+11.3 leak_on leak1e
+11.6 leak_on leak1f
+11.6 leak_on leak1g
+11.6 leak_on leak1h
+11.6 leak_on leak1i
+11.6 leak_on leak1j
+11.6 leak_on leak1k
+11.7 water_on "adamwater"
+11.7 water_texture "adamwater" sprites\world\waterplain.spr
+
+14.9 water_frame "adamwater" 1 0.5
+
+15.4 trigger_door door9 open
+15.4 trigger_door door10 open
+
+15.4 trigger_generic debris3
+15.5 trigger_generic debris5
+
+19.9 water_off "adamwater"
+
+19.9 letterbox off
+19.9 camera_reset
+19.9 user_input on
+
+20 sound_ambient_on lastsong 
+
+21 sound_ambient_off drainage
+21 disable_ai false
+
+21 player invulnerable false
+22 trigger_door leftdoor open
+22 trigger_door rightdoor open
+22 trigger_door frontdoor open

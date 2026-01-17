@@ -1,0 +1,7 @@
+// Backstreets
+name "r1m1b"
+
+Loadscript "mapdata\realm1\r1m1\r1m1b\turret01.sc"
+Loadscript "mapdata\realm1\r1m1\r1m1b\turret02.sc"
+Loadscript "mapdata\realm1\r1m1\r1m1b\Arach.sc"
+Loadscript "mapdata\realm1\r1m1\r1m1b\Stump.sc"

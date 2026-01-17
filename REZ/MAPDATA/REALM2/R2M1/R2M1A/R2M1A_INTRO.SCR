@@ -1,0 +1,32 @@
+0 scriptload mapdata\realm2\r2m1\r2m1a\r2m1a_gauntlets.scr
+0 scriptload mapdata\realm2\r2m1\r2m1a\r2m1a_flipruin.scr
+0 scriptload mapdata\realm2\r2m1\r2m1a\r2m1a_Strongman.scr
+0 endingscript mapdata\realm2\r2m1\r2m1a\r2m1a_introEND.scr
+
+0 user_input off
+0 camera_path intro
+0 letterbox on
+0 camera_fov 20 0
+
+0 hint realm2\r2m1\r2m1a\r2m1-introtext
+
+0 fog_fade 3 on -512 4000 0 36 19 on 1 1000
+0.1 camera_fov 90 1.9
+
+1 model_disappear brokebox
+
+10.2 subtitle 4.5 "The ruins of the roadhouse hold the first shard you seek, hunter."
+10.5 streamsound player mapdata\Realm2\R2M1\R2M1a\r2m1-intro.wav local
+
+15.5 subtitle 5.9 "Once it's yours, make your way into the treacherous chasms below."
+
+22.0 subtitle 4.3 "You are well advised to master the arms of your element."
+
+26.7 subtitle 7.9 "They're not just tools for battle, but also a necessary means of traversal."
+
+34 camera_fov 65 3
+
+36.5 letterbox off
+36.5 camera_reset
+36.5 user_input on
+

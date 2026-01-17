@@ -1,0 +1,37 @@
+0 player invulnerable true
+0 player teleport telespot1
+0 user_input off
+0 camera_path ringcenter
+0 letterbox on
+0 disable_ai true
+
+1.5 boss_controller blackwell anim_appear
+
+4.75 boss_controller blackwell anim_summon
+
+6 camera_path pathA
+
+7 leak_on smoke1
+7 sound player sounds\weapons\draco\attackloop.wav
+8 leak_off smoke1
+8 leak_on fire1
+8 leak_on fire2
+8 leak_on fire3
+8 leak_on fire4
+8.5 trigger_generic spawn1
+8.5 trigger_generic spawn2
+8.5 trigger_generic spawn3
+8.5 trigger_generic spawn4
+//9 leak_off fire1
+
+
+12 boss_controller blackwell stage_done
+
+12 letterbox off
+12 user_input on
+12 camera_reset
+12 player invulnerable false
+12 player lookat spawn1
+12 music boss3 intensity 2 transition measure
+
+13 disable_ai false

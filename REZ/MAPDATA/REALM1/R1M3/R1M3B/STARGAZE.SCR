@@ -1,0 +1,14 @@
+0 user_input off
+0 letterbox on
+0 camera_path path3
+0 player invulnerable true
+0 disable_ai true
+
+3 trigger_door floor1 open
+
+5 letterbox off
+5 user_input on
+5 camera_reset
+
+6 player invulnerable false
+6 disable_ai false

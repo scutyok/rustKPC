@@ -1,0 +1,11 @@
+// Midway master script
+name "SteelWorks3"
+
+Loadscript "mapdata\realm4\r4m1\r4m1c\turret1.sc"
+
+
+
+
+
+
+

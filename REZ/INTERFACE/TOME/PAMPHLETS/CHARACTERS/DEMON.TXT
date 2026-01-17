@@ -1,0 +1,8 @@
+[category: characters]
+[title: The Demon]
+[model: models/player/Demon/demon_head.abc]
+[skin: skins/player/Demon/demon_head.dtx]
+[anim: amba]
+[scale: 3.0]
+[start]
+Creature of fire and shadow, blood and thunder. He embodies vengeance and terror, the darkest impulses of mortal soul, but also the purgative flames of rebirth: the destruction that precedes creation. His is the element of fire. 

@@ -1,0 +1,18 @@
+0 streamsound player sounds\tutorial\area02-1.wav local
+// wav file length 2.83
+0 center_text 0 3.8 "Sliding from side-to-side is called strafing."
+
+5 streamsound player sounds\tutorial\area02-2.wav local
+// wav file length 7.93
+5 center_text 0 8.9 "Using your strafing controls to slide left and right, move along the path while constantly facing the poster at the opposite end of the room."
+
+5 print_message 0 15 11
+5.5 print_message 0 15 12
+
+
+15 streamsound player sounds\tutorial\area02-3.wav local
+// wav file length 3.11
+15 center_text 0 4.1 "If you fall off, return to the path and try again."
+
+19 trigger_door secondrooma open
+19 trigger_door secondroomb open

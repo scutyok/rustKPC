@@ -1,0 +1,11 @@
+0 streamsound player sounds\tutorial\area12-1.wav local
+// wav file length 7.16
+0 center_text 0 8.2 "Making sure you are a safe distance away from the barrels, destroy them with the Zerocannon and take note of their explosive power."
+
+10 streamsound player sounds\tutorial\area12-2.wav local
+// wav file length 7.19
+10 center_text 0 8.2 "Spend some time shooting the creatures and when you are ready to continue, pick up the key and move through the door on the left wall."
+
+17.5 trigger_door lastdoor01 open
+17.5 trigger_door lastdoor02 open
+

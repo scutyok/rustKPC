@@ -1,0 +1,16 @@
+0 user_input off
+0 camera_path piper02
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+0 endingscript mapdata\realm3\r3m1\r3m1a\r3m1a_Piper02END.scr
+0 player lookatangles 0 90
+
+3 trigger_door Whatsmyname open
+
+6 letterbox off
+6 camera_reset
+6 user_input on
+6 player invulnerable false
+6 disable_ai false
+

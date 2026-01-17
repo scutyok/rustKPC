@@ -1,0 +1,12 @@
+0 user_input off
+0 letterbox on
+0 camera_path drainout01
+// 0 water_texture downlava Sprites\World\lava1.spr
+.1 trigger_door sewerdrain01 open
+
+//9 water_off downlava
+
+7 letterbox off
+7 camera_reset
+7 user_input on
+

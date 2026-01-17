@@ -1,0 +1,8 @@
+0 hint realm1\r1m3\r1m3c\r1m3-introtext
+0 scriptload mapdata\realm1\r1m3\r1m3c\cath3.scr
+0 scriptload mapdata\dev\rescoe\cheatcath3.scr
+0.001 cheatscript mapdata\dev\rescoe\cheatcath3.scr
+
+
+
+

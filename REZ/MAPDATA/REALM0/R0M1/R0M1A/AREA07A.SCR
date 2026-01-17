@@ -1,0 +1,13 @@
+0 streamsound player sounds\tutorial\area07-5.wav local
+// wav file length 2.76
+0 center_text 0 3.7 "Most doors won't require activating a switch."
+
+4 trigger_door doorgate01 open
+4 sound doorgate01sound sounds\environment\metalslide3.wav 
+
+5 streamsound player sounds\tutorial\area07-6.wav local
+// wav file length 7.60
+5 center_text 0 8.6 "Target the next door in your crosshair. Notice that this door can be used directly. Use the door to open it."
+
+14 window_break Ccount02
+

@@ -1,0 +1,15 @@
+//turn on firstdoor
+0 lightning_off stiltdoor1
+0 lightning_off stiltdoor2
+0 lightning_off stiltdoor3
+0 lightning_off stiltdoor4
+0 lightning_off stiltdoor5
+
+//remove ticket from inventory
+0 inventory remove ticket
+
+0 damage_brush_disable stiltdoordmg
+
+0 sound_ambient_off stiltdoorsound
+
+

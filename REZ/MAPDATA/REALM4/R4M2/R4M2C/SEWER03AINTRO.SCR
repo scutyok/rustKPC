@@ -1,0 +1,12 @@
+0 scriptload mapdata\realm4\r4m2\r4m2c\r4m2ccheat.scr
+0 water_texture drain01 Sprites\World\lava1.spr
+0 script_object_play flametime01a 
+
+0.001 cheatscript mapdata\realm4\r4m2\r4m2c\r4m2ccheat.scr
+0.1 player invulnerable false
+0.1 trigger_spawner spawn01 on
+0.1 trigger_spawner spawn01a on
+0.1 trigger_spawner spawn01b on
+0.1 trigger_generic stumpy01
+
+

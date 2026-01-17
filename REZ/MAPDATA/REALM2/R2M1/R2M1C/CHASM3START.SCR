@@ -1,0 +1,25 @@
+//load all scripts
+0 scriptload "mapdata\realm2\r2m1\r2m1c\truck.scr"
+0 scriptload "mapdata\realm2\r2m1\r2m1c\endtruck.scr"
+0 scriptload "mapdata\realm2\r2m1\r2m1c\leftystart.scr"
+0 scriptload "mapdata\realm2\r2m1\r2m1c\lstartending.scr"
+0 scriptload "mapdata\realm2\r2m1\r2m1c\leftyfinish.scr"
+0 scriptload "mapdata\realm2\r2m1\r2m1c\lfinending.scr"
+0 scriptload "mapdata\realm2\r2m1\r2m1c\rightystart.scr"
+0 scriptload "mapdata\realm2\r2m1\r2m1c\rightyfinish.scr"
+0 scriptload "mapdata\realm2\r2m1\r2m1c\rfinending.scr"
+0 scriptload "mapdata\realm2\r2m1\r2m1c\cheat.scr"
+
+
+0 hint realm2\r2m1\r2m1c\r2m1-introtext
+
+0.001 cheatscript mapdata\realm2\r2m1\r2m1c\cheat.scr
+
+//Change water sprite graphic
+//0 water_texture cswaterfall sprites\alphawater\soulsoup.spr
+
+//fade the fog to black
+//5 fog_fade 50 on 1 1000 0 0 0 on 1 500
+
+
+

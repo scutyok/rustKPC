@@ -1,0 +1,36 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+
+0 endingscript mapdata\realm2\r2m1\r2m1c\endtruck.scr
+
+//start the camera on the path
+0 camera_path truckpath
+
+//look towards truck
+1 player lookatangle 0 0 
+
+//play the truck doors sounds
+6.5 sound truckdoorspot sounds\environment\door4open.wav
+
+//open truck doors
+6.5 trigger_door truckdoorright open
+6.5 trigger_door truckdoorleft open
+
+//bring down music intensity back to 2
+7.3 music intensity 3 transition beat
+
+7.5 trigger_generic truckspawns
+7.5 trigger_generic truckBMspawn
+
+//end script and give player control
+8 user_input on
+8 letterbox off
+8 camera_reset
+8 player invulnerable false
+
+
+
+
+

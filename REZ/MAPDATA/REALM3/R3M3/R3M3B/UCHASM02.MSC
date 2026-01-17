@@ -1,0 +1,15 @@
+// Urban Chasm 02 script
+name "Uchasm02"
+
+
+Loadscript "mapdata\realm3\r3m3\r3m3b\walker01.sc"
+Loadscript "mapdata\realm3\r3m3\r3m3b\walker02.sc"
+Loadscript "mapdata\realm3\r3m3\r3m3b\walker03.sc"
+Loadscript "mapdata\realm3\r3m3\r3m3b\walker04.sc"
+Loadscript "mapdata\realm3\r3m3\r3m3b\walker04b.sc"
+Loadscript "mapdata\realm3\r3m3\r3m3b\walker05.sc"
+Loadscript "mapdata\realm3\r3m3\r3m3b\walker05b.sc"
+Loadscript "mapdata\realm3\r3m3\r3m3b\turret01.sc"
+Loadscript "mapdata\realm3\r3m3\r3m3b\walker07.sc"
+Loadscript "mapdata\realm3\r3m3\r3m3b\walker08.sc"
+Loadscript "mapdata\realm3\r3m3\r3m3b\walker09.sc"

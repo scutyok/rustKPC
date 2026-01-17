@@ -1,0 +1,8 @@
+// Nuke 1 master script
+name "Nuke1"
+
+Loadscript "mapdata\realm3\r3m2\r3m2a\BBturret1.sc"
+
+
+
+

@@ -1,0 +1,5 @@
+//This is the test master script for Subway2.dat
+Name "Subway2"
+LoadScript "mapdata\Realm4\r4m3\r4m3b\sb2patrol1.sc"
+LoadScript "mapdata\Realm4\r4m3\r4m3b\sb2patrol2.sc"
+LoadScript "mapdata\Realm4\r4m3\r4m3b\sb2patrol3.sc"

@@ -1,0 +1,22 @@
+//start
+0 user_input off
+0 letterbox on
+0 player invulnerable true
+0 disable_ai true
+
+//start the camera on the path
+0 camera_path limedoorpath
+
+.1 endingscript "mapdata\realm4\r4m1\r4m1b\limeending.scr"
+
+2 trigger_door secondliftdoor open
+
+//end script
+5 user_input on
+5 letterbox off
+5 camera_reset
+5 player invulnerable false
+5 disable_ai false
+
+
+

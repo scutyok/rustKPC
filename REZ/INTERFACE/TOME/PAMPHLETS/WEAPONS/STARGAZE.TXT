@@ -1,0 +1,10 @@
+[category: weapons]
+[title: Stargaze]
+[model: models/pickups/pu_Stargaze.abc]
+[skin: skins/player/weapons/3rdStargaze.dtx]
+[anim: none]
+[scale: 1.5]
+[start]
+Woe unto he who crosses the Starbearer's path while he is holding his ultimate weapon. The mega-blast attacks up to five enemies that are within the Starbearer's field of vision at both the start and conclusion of the attack. Also, the closer your target is at the end of the spell, the more damage they will take.
+
+Element: Water
