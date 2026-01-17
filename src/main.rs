@@ -11,6 +11,7 @@
 mod dat;
 mod dat_mesh;
 mod dtx;
+mod egui_renderer;
 
 use std::collections::{HashMap, HashSet};
 use std::ffi::CStr;
@@ -117,59 +118,243 @@ struct InputState {
     down: bool,
 }
 
+/// Application loading state
+#[derive(Clone, Debug, PartialEq)]
+enum LoadingState {
+    Loading(String),  // Currently loading a map
+    Ready,            // Map loaded and ready
+}
+
+impl Default for LoadingState {
+    fn default() -> Self {
+        LoadingState::Ready
+    }
+}
+
+/// World chooser UI state
+#[derive(Clone, Debug)]
+struct WorldChooser {
+    visible: bool,
+    worlds: Vec<String>,  // List of world file paths
+    selected_index: usize,
+    pending_load: Option<String>,  // World to load on next frame
+    scroll_offset: f32,  // For scrolling through long lists
+}
+
+impl WorldChooser {
+    fn new() -> Self {
+        let worlds = Self::scan_worlds();
+        Self {
+            visible: false,
+            worlds,
+            selected_index: 0,
+            pending_load: None,
+            scroll_offset: 0.0,
+        }
+    }
+
+    fn scan_worlds() -> Vec<String> {
+        let mut worlds = Vec::new();
+        let base_path = std::path::Path::new("src/Worlds");
+        
+        if let Ok(entries) = std::fs::read_dir(base_path) {
+            for entry in entries.filter_map(|e| e.ok()) {
+                let path = entry.path();
+                if path.is_dir() {
+                    if let Ok(files) = std::fs::read_dir(&path) {
+                        for file in files.filter_map(|f| f.ok()) {
+                            let file_path = file.path();
+                            if let Some(ext) = file_path.extension() {
+                                if ext.eq_ignore_ascii_case("dat") {
+                                    if let Some(path_str) = file_path.to_str() {
+                                        worlds.push(path_str.replace('\\', "/"));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        worlds.sort();
+        worlds
+    }
+
+    fn toggle(&mut self) {
+        self.visible = !self.visible;
+    }
+
+    fn select_index(&mut self, index: usize) {
+        if index < self.worlds.len() {
+            self.selected_index = index;
+        }
+    }
+
+    fn confirm_selection(&mut self) -> Option<String> {
+        if let Some(world) = self.worlds.get(self.selected_index) {
+            self.visible = false;
+            Some(world.clone())
+        } else {
+            None
+        }
+    }
+
+    fn get_world_display_name(path: &str) -> String {
+        std::path::Path::new(path)
+            .file_name()
+            .and_then(|n| n.to_str())
+            .unwrap_or(path)
+            .to_string()
+    }
+
+    fn take_pending_load(&mut self) -> Option<String> {
+        self.pending_load.take()
+    }
+}
+
 #[rustfmt::skip]
 fn main() -> Result<()> {
     pretty_env_logger::init();
 
     // Window
-
     let event_loop = EventLoop::new()?;
     let window = WindowBuilder::new()
-        .with_title("KISS Psycho Circus: The Nightmare Child")
+        .with_title("Loading: R1M1A.DAT...")
         .with_inner_size(LogicalSize::new(1024, 768))
         .build(&event_loop)?;
 
-    // Capture mouse cursor
+    // Set up egui for UI
+    let egui_ctx = egui::Context::default();
+    let viewport_id = egui_ctx.viewport_id();
+    let mut egui_state = egui_winit::State::new(egui_ctx.clone(), viewport_id, &window, None, None);
+
+    // Run egui once to initialize fonts (required before accessing font texture)
+    let _ = egui_ctx.run(egui::RawInput::default(), |_ctx| {});
+
+    // Capture mouse cursor initially
     let _ = window.set_cursor_grab(CursorGrabMode::Confined);
     window.set_cursor_visible(false);
 
-    // App
-
+    // Create App
     let mut app = unsafe { App::create(&window)? };
+    
+    // Create egui renderer (after app is created so we have Vulkan resources)
+    let mut egui_renderer = unsafe {
+        egui_renderer::EguiRenderer::new(
+            &app.instance,
+            &app.device,
+            app.data.physical_device,
+            &app.data.swapchain_image_views,
+            app.data.swapchain_format,
+            app.data.command_pool,
+            app.data.graphics_queue,
+            &egui_ctx,
+            app.data.swapchain_extent.width,
+            app.data.swapchain_extent.height,
+        )?
+    };
+    
     let mut minimized = false;
     let mut last_time = Instant::now();
-    let mut mouse_locked = true; // Track if mouse is locked
+    let mut mouse_locked = true;
+    
+    // Set initial title after load
+    window.set_title("KISS Psycho Circus: The Nightmare Child [F1: World Select]");
     
     event_loop.run(move |event, elwt| {
+        // Let egui handle events when UI is visible
+        if app.world_chooser.visible {
+            if let Event::WindowEvent { event: ref window_event, .. } = event {
+                let response = egui_state.on_window_event(&window, window_event);
+                if response.consumed {
+                    return;
+                }
+            }
+        }
+        
         match event {
-            // Request a redraw when all events were processed.
             Event::AboutToWait => window.request_redraw(),
             
-            // Handle raw mouse motion (only when mouse is locked)
+            // Handle raw mouse motion (only when mouse is locked and UI not visible)
             Event::DeviceEvent { event: DeviceEvent::MouseMotion { delta }, .. } => {
-                if mouse_locked {
-                    // Inverted: negative for yaw (left/right)
+                if mouse_locked && !app.world_chooser.visible && app.loading_state == LoadingState::Ready {
                     app.camera.yaw -= delta.0 as f32 * MOUSE_SENSITIVITY;
                     app.camera.pitch -= delta.1 as f32 * MOUSE_SENSITIVITY;
-                    // Clamp pitch to avoid gimbal lock
                     app.camera.pitch = app.camera.pitch.clamp(-89.0, 89.0);
                 }
             }
             
             Event::WindowEvent { event, .. } => match event {
-                // Render a frame if our Vulkan app is not being destroyed.
                 WindowEvent::RedrawRequested if !elwt.exiting() && !minimized => {
-                    // Calculate delta time
                     let now = Instant::now();
                     let dt = (now - last_time).as_secs_f32();
                     last_time = now;
                     
-                    // Update camera position based on input
-                    app.update_camera(dt);
+                    // Check for pending world load
+                    if let Some(world_path) = app.world_chooser.take_pending_load() {
+                        let map_name = WorldChooser::get_world_display_name(&world_path);
+                        app.loading_state = LoadingState::Loading(map_name.clone());
+                        window.set_title(&format!("Loading: {}...", map_name));
+                        
+                        // Run egui for loading screen
+                        let raw_input = egui_state.take_egui_input(&window);
+                        let full_output = egui_ctx.run(raw_input, |ctx| {
+                            app.run_ui(ctx, &mut mouse_locked);
+                        });
+                        egui_state.handle_platform_output(&window, full_output.platform_output);
+                        let clipped_primitives = egui_ctx.tessellate(full_output.shapes, full_output.pixels_per_point);
+                        
+                        // Render loading screen
+                        unsafe { app.render(&window, &mut egui_renderer, &clipped_primitives, full_output.pixels_per_point) }.unwrap();
+                        
+                        // Load the world
+                        if let Err(e) = unsafe { app.reload_world(&world_path, &mut egui_renderer) } {
+                            error!("Failed to load world {}: {}", world_path, e);
+                        }
+                        app.loading_state = LoadingState::Ready;
+                        window.set_title("KISS Psycho Circus: The Nightmare Child [F1: World Select]");
+                    }
                     
-                    unsafe { app.render(&window) }.unwrap();
+                    // Run egui UI
+                    let raw_input = egui_state.take_egui_input(&window);
+                    let full_output = egui_ctx.run(raw_input, |ctx| {
+                        app.run_ui(ctx, &mut mouse_locked);
+                    });
+                    egui_state.handle_platform_output(&window, full_output.platform_output);
+                    
+                    // Tessellate egui shapes into primitives for rendering
+                    let clipped_primitives = egui_ctx.tessellate(full_output.shapes, full_output.pixels_per_point);
+                    
+                    // Update window title based on UI state
+                    if app.world_chooser.visible {
+                        let selected_name = app.world_chooser.worlds
+                            .get(app.world_chooser.selected_index)
+                            .map(|p| WorldChooser::get_world_display_name(p))
+                            .unwrap_or_default();
+                        window.set_title(&format!(
+                            "World Chooser [{}/{}]: {} | Click to select, double-click to load | F1/Esc to close",
+                            app.world_chooser.selected_index + 1,
+                            app.world_chooser.worlds.len(),
+                            selected_name
+                        ));
+                    }
+                    
+                    // Update mouse grab based on UI state
+                    if app.world_chooser.visible && mouse_locked {
+                        mouse_locked = false;
+                        let _ = window.set_cursor_grab(CursorGrabMode::None);
+                        window.set_cursor_visible(true);
+                    }
+                    
+                    // Update camera (only when UI is hidden)
+                    if !app.world_chooser.visible && app.loading_state == LoadingState::Ready {
+                        app.update_camera(dt);
+                    }
+                    
+                    unsafe { app.render(&window, &mut egui_renderer, &clipped_primitives, full_output.pixels_per_point) }.unwrap();
                 },
-                // Mark the window as having been resized.
+                
                 WindowEvent::Resized(size) => {
                     if size.width == 0 || size.height == 0 {
                         minimized = true;
@@ -178,30 +363,53 @@ fn main() -> Result<()> {
                         app.resized = true;
                     }
                 }
-                // Destroy our Vulkan app.
+                
                 WindowEvent::CloseRequested => {
                     elwt.exit();
+                    unsafe { egui_renderer.destroy(&app.device); }
                     unsafe { app.destroy(); }
                 }
-                // Handle keyboard events.
+                
                 WindowEvent::KeyboardInput { event, .. } => {
+                    if app.loading_state != LoadingState::Ready {
+                        return;
+                    }
+                    
                     let pressed = event.state == ElementState::Pressed;
                     match event.physical_key {
-                        PhysicalKey::Code(KeyCode::KeyW) => app.input.forward = pressed,
-                        PhysicalKey::Code(KeyCode::KeyS) => app.input.backward = pressed,
-                        PhysicalKey::Code(KeyCode::KeyA) => app.input.left = pressed,
-                        PhysicalKey::Code(KeyCode::KeyD) => app.input.right = pressed,
-                        PhysicalKey::Code(KeyCode::Space) => app.input.up = pressed,
-                        PhysicalKey::Code(KeyCode::ShiftLeft) | PhysicalKey::Code(KeyCode::ShiftRight) => app.input.down = pressed,
+                        PhysicalKey::Code(KeyCode::F1) if pressed => {
+                            app.world_chooser.toggle();
+                            if app.world_chooser.visible {
+                                mouse_locked = false;
+                                let _ = window.set_cursor_grab(CursorGrabMode::None);
+                                window.set_cursor_visible(true);
+                            } else {
+                                mouse_locked = true;
+                                let _ = window.set_cursor_grab(CursorGrabMode::Confined);
+                                window.set_cursor_visible(false);
+                            }
+                        }
+                        PhysicalKey::Code(KeyCode::KeyW) if !app.world_chooser.visible => app.input.forward = pressed,
+                        PhysicalKey::Code(KeyCode::KeyS) if !app.world_chooser.visible => app.input.backward = pressed,
+                        PhysicalKey::Code(KeyCode::KeyA) if !app.world_chooser.visible => app.input.left = pressed,
+                        PhysicalKey::Code(KeyCode::KeyD) if !app.world_chooser.visible => app.input.right = pressed,
+                        PhysicalKey::Code(KeyCode::Space) if !app.world_chooser.visible => app.input.up = pressed,
+                        PhysicalKey::Code(KeyCode::ShiftLeft) | PhysicalKey::Code(KeyCode::ShiftRight) if !app.world_chooser.visible => app.input.down = pressed,
                         PhysicalKey::Code(KeyCode::Escape) if pressed => {
-                            // Toggle mouse lock
-                            mouse_locked = !mouse_locked;
-                            if mouse_locked {
+                            if app.world_chooser.visible {
+                                app.world_chooser.visible = false;
+                                mouse_locked = true;
                                 let _ = window.set_cursor_grab(CursorGrabMode::Confined);
                                 window.set_cursor_visible(false);
                             } else {
-                                let _ = window.set_cursor_grab(CursorGrabMode::None);
-                                window.set_cursor_visible(true);
+                                mouse_locked = !mouse_locked;
+                                if mouse_locked {
+                                    let _ = window.set_cursor_grab(CursorGrabMode::Confined);
+                                    window.set_cursor_visible(false);
+                                } else {
+                                    let _ = window.set_cursor_grab(CursorGrabMode::None);
+                                    window.set_cursor_visible(true);
+                                }
                             }
                         }
                         _ => { }
@@ -229,6 +437,9 @@ struct App {
     models: usize,
     camera: Camera,
     input: InputState,
+    world_chooser: WorldChooser,
+    current_world: String,
+    loading_state: LoadingState,
 }
 
 impl App {
@@ -267,6 +478,7 @@ impl App {
         create_descriptor_sets(&device, &mut data)?;
         create_command_buffers(&device, &mut data)?;
         create_sync_objects(&device, &mut data)?;
+        let initial_world = "src/Worlds/REALM1/R1M1A.DAT".to_string();
         Ok(Self {
             entry,
             instance,
@@ -278,11 +490,20 @@ impl App {
             models: 1,
             camera: Camera::default(),
             input: InputState::default(),
+            world_chooser: WorldChooser::new(),
+            current_world: initial_world,
+            loading_state: LoadingState::Ready,
         })
     }
 
     /// Renders a frame for our Vulkan app.
-    unsafe fn render(&mut self, window: &Window) -> Result<()> {
+    unsafe fn render(
+        &mut self,
+        window: &Window,
+        egui_renderer: &mut egui_renderer::EguiRenderer,
+        egui_primitives: &[egui::ClippedPrimitive],
+        pixels_per_point: f32,
+    ) -> Result<()> {
         let in_flight_fence = self.data.in_flight_fences[self.frame];
 
         self.device.wait_for_fences(&[in_flight_fence], true, u64::MAX)?;
@@ -296,7 +517,7 @@ impl App {
 
         let image_index = match result {
             Ok((image_index, _)) => image_index as usize,
-            Err(vk::ErrorCode::OUT_OF_DATE_KHR) => return self.recreate_swapchain(window),
+            Err(vk::ErrorCode::OUT_OF_DATE_KHR) => return self.recreate_swapchain(window, egui_renderer),
             Err(e) => return Err(anyhow!(e)),
         };
 
@@ -307,7 +528,7 @@ impl App {
 
         self.data.images_in_flight[image_index] = in_flight_fence;
 
-        self.update_command_buffer(image_index)?;
+        self.update_command_buffer(image_index, egui_renderer, egui_primitives, pixels_per_point)?;
         self.update_uniform_buffer(image_index)?;
 
         // Wait on the semaphore that was signaled by acquire, signal the render_finished for this frame
@@ -337,7 +558,7 @@ impl App {
         let changed = result == Ok(vk::SuccessCode::SUBOPTIMAL_KHR) || result == Err(vk::ErrorCode::OUT_OF_DATE_KHR);
         if self.resized || changed {
             self.resized = false;
-            self.recreate_swapchain(window)?;
+            self.recreate_swapchain(window, egui_renderer)?;
         } else if let Err(e) = result {
             return Err(anyhow!(e));
         }
@@ -350,7 +571,13 @@ impl App {
 
     /// Updates a command buffer for our Vulkan app.
     #[rustfmt::skip]
-    unsafe fn update_command_buffer(&mut self, image_index: usize) -> Result<()> {
+    unsafe fn update_command_buffer(
+        &mut self,
+        image_index: usize,
+        egui_renderer: &mut egui_renderer::EguiRenderer,
+        egui_primitives: &[egui::ClippedPrimitive],
+        pixels_per_point: f32,
+    ) -> Result<()> {
         // Reset
 
         let command_pool = self.data.command_pools[image_index];
@@ -359,7 +586,6 @@ impl App {
         let command_buffer = self.data.command_buffers[image_index];
 
         // Commands
-
         let info = vk::CommandBufferBeginInfo::builder().flags(vk::CommandBufferUsageFlags::ONE_TIME_SUBMIT);
 
         self.device.begin_command_buffer(command_buffer, &info)?;
@@ -368,9 +594,16 @@ impl App {
             .offset(vk::Offset2D::default())
             .extent(self.data.swapchain_extent);
 
+        // Use different clear color for loading screen
+        let clear_color = if matches!(self.loading_state, LoadingState::Loading(_)) {
+            [0.08, 0.08, 0.12, 1.0]  // Dark blue-ish for loading
+        } else {
+            [0.0, 0.0, 0.0, 1.0]  // Black for normal rendering
+        };
+
         let color_clear_value = vk::ClearValue {
             color: vk::ClearColorValue {
-                float32: [0.0, 0.0, 0.0, 1.0],
+                float32: clear_color,
             },
         };
 
@@ -387,12 +620,26 @@ impl App {
 
         self.device.cmd_begin_render_pass(command_buffer, &info, vk::SubpassContents::SECONDARY_COMMAND_BUFFERS);
 
-        let secondary_command_buffers = (0..self.models)
-            .map(|i| self.update_secondary_command_buffer(image_index, i))
-            .collect::<Result<Vec<_>, _>>()?;
-        self.device.cmd_execute_commands(command_buffer, &secondary_command_buffers[..]);
+        // Only render geometry when not loading
+        if self.loading_state == LoadingState::Ready {
+            let secondary_command_buffers = (0..self.models)
+                .map(|i| self.update_secondary_command_buffer(image_index, i))
+                .collect::<Result<Vec<_>, _>>()?;
+            self.device.cmd_execute_commands(command_buffer, &secondary_command_buffers[..]);
+        }
 
         self.device.cmd_end_render_pass(command_buffer);
+
+        // Render egui UI (in its own render pass that loads existing content)
+        egui_renderer.render(
+            &self.instance,
+            &self.device,
+            self.data.physical_device,
+            command_buffer,
+            image_index,
+            egui_primitives,
+            pixels_per_point,
+        )?;
 
         self.device.end_command_buffer(command_buffer)?;
 
@@ -536,6 +783,167 @@ impl App {
         }
     }
 
+    /// Run the egui UI
+    fn run_ui(&mut self, ctx: &egui::Context, mouse_locked: &mut bool) {
+        // Loading screen
+        if let LoadingState::Loading(ref map_name) = self.loading_state {
+            egui::CentralPanel::default()
+                .frame(egui::Frame::none().fill(egui::Color32::from_rgb(20, 20, 30)))
+                .show(ctx, |ui| {
+                    ui.centered_and_justified(|ui| {
+                        ui.vertical_centered(|ui| {
+                            ui.add_space(ui.available_height() / 2.0 - 40.0);
+                            ui.heading(egui::RichText::new("Loading...").size(32.0).color(egui::Color32::WHITE));
+                            ui.add_space(10.0);
+                            ui.label(egui::RichText::new(map_name).size(24.0).color(egui::Color32::LIGHT_GRAY));
+                        });
+                    });
+                });
+            return;
+        }
+
+        // World chooser panel
+        if self.world_chooser.visible {
+            egui::TopBottomPanel::top("world_chooser")
+                .frame(egui::Frame::none()
+                    .fill(egui::Color32::from_rgba_unmultiplied(30, 30, 40, 240))
+                    .inner_margin(egui::Margin::same(10.0)))
+                .show(ctx, |ui| {
+                    ui.horizontal(|ui| {
+                        ui.heading(egui::RichText::new("World Select").color(egui::Color32::WHITE));
+                        ui.add_space(20.0);
+                        ui.label(egui::RichText::new("Select a map to load:").color(egui::Color32::LIGHT_GRAY));
+                        
+                        ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                            if ui.button("Close (F1)").clicked() {
+                                self.world_chooser.visible = false;
+                                *mouse_locked = true;
+                            }
+                        });
+                    });
+                    
+                    ui.add_space(5.0);
+                    ui.separator();
+                    ui.add_space(5.0);
+                    
+                    // Scrollable list of worlds
+                    egui::ScrollArea::vertical()
+                        .max_height(300.0)
+                        .show(ui, |ui| {
+                            let worlds = self.world_chooser.worlds.clone();
+                            for (i, world_path) in worlds.iter().enumerate() {
+                                let display_name = WorldChooser::get_world_display_name(world_path);
+                                let is_selected = i == self.world_chooser.selected_index;
+                                let is_current = *world_path == self.current_world;
+                                
+                                let text = if is_current {
+                                    egui::RichText::new(format!("{} (current)", display_name))
+                                        .color(egui::Color32::LIGHT_GREEN)
+                                } else {
+                                    egui::RichText::new(&display_name)
+                                        .color(if is_selected { egui::Color32::YELLOW } else { egui::Color32::WHITE })
+                                };
+                                
+                                let response = ui.selectable_label(is_selected, text);
+                                
+                                if response.clicked() {
+                                    self.world_chooser.select_index(i);
+                                    println!("Selected: {}", display_name);
+                                }
+                                
+                                if response.double_clicked() {
+                                    println!("Loading: {}", display_name);
+                                    if let Some(path) = self.world_chooser.confirm_selection() {
+                                        self.world_chooser.pending_load = Some(path);
+                                        *mouse_locked = true;
+                                    }
+                                }
+                            }
+                        });
+                    
+                    ui.add_space(5.0);
+                    ui.separator();
+                    ui.add_space(5.0);
+                    
+                    ui.horizontal(|ui| {
+                        if ui.button("Load Selected").clicked() {
+                            if let Some(path) = self.world_chooser.confirm_selection() {
+                                self.world_chooser.pending_load = Some(path);
+                                *mouse_locked = true;
+                            }
+                        }
+                        
+                        ui.add_space(10.0);
+                        
+                        let selected_name = self.world_chooser.worlds
+                            .get(self.world_chooser.selected_index)
+                            .map(|p| WorldChooser::get_world_display_name(p))
+                            .unwrap_or_default();
+                        ui.label(egui::RichText::new(format!("Selected: {}", selected_name)).color(egui::Color32::GRAY));
+                    });
+                });
+        }
+    }
+
+    /// Reloads a new world file
+    unsafe fn reload_world(&mut self, world_path: &str, _egui_renderer: &mut egui_renderer::EguiRenderer) -> Result<()> {
+        info!("Loading world: {}", world_path);
+        
+        // Wait for device to be idle before modifying resources
+        self.device.device_wait_idle()?;
+
+        // Destroy old level textures
+        for texture in &self.data.level_textures {
+            self.device.destroy_image_view(texture.view, None);
+            self.device.free_memory(texture.memory, None);
+            self.device.destroy_image(texture.image, None);
+        }
+        self.data.level_textures.clear();
+
+        // Destroy old vertex/index buffers
+        self.device.free_memory(self.data.index_buffer_memory, None);
+        self.device.destroy_buffer(self.data.index_buffer, None);
+        self.device.free_memory(self.data.vertex_buffer_memory, None);
+        self.device.destroy_buffer(self.data.vertex_buffer, None);
+
+        // Destroy old texture resources
+        self.device.destroy_sampler(self.data.texture_sampler, None);
+        self.device.destroy_image_view(self.data.texture_image_view, None);
+        self.device.free_memory(self.data.texture_image_memory, None);
+        self.device.destroy_image(self.data.texture_image, None);
+
+        // Clear old data
+        self.data.vertices.clear();
+        self.data.indices.clear();
+        self.data.draw_groups.clear();
+
+        // Load new world
+        load_dat_model(&mut self.data, world_path, 0, 0.01)?;
+
+        // Recreate texture resources
+        create_texture_image(&self.instance, &self.device, &mut self.data)?;
+        create_texture_image_view(&self.device, &mut self.data)?;
+        create_texture_sampler(&self.device, &mut self.data)?;
+
+        // Recreate buffers
+        create_vertex_buffer(&self.instance, &self.device, &mut self.data)?;
+        create_index_buffer(&self.instance, &self.device, &mut self.data)?;
+
+        // Recreate descriptor sets (they reference the new textures)
+        self.device.destroy_descriptor_pool(self.data.descriptor_pool, None);
+        create_descriptor_pool(&self.device, &mut self.data)?;
+        create_descriptor_sets(&self.device, &mut self.data)?;
+
+        // Reset camera to default position
+        self.camera = Camera::default();
+        
+        // Update current world
+        self.current_world = world_path.to_string();
+
+        info!("World loaded successfully: {}", world_path);
+        Ok(())
+    }
+
     /// Updates the uniform buffer object for our Vulkan app.
     unsafe fn update_uniform_buffer(&self, image_index: usize) -> Result<()> {
         // Use camera view matrix
@@ -577,7 +985,7 @@ impl App {
 
     /// Recreates the swapchain for our Vulkan app.
     #[rustfmt::skip]
-    unsafe fn recreate_swapchain(&mut self, window: &Window) -> Result<()> {
+    unsafe fn recreate_swapchain(&mut self, window: &Window, egui_renderer: &mut egui_renderer::EguiRenderer) -> Result<()> {
         self.device.device_wait_idle()?;
         self.destroy_swapchain();
         create_swapchain(window, &self.instance, &self.device, &mut self.data)?;
@@ -592,6 +1000,15 @@ impl App {
         create_descriptor_sets(&self.device, &mut self.data)?;
         create_command_buffers(&self.device, &mut self.data)?;
         self.data.images_in_flight.resize(self.data.swapchain_images.len(), vk::Fence::null());
+        
+        // Resize egui renderer framebuffers
+        egui_renderer.resize(
+            &self.device,
+            &self.data.swapchain_image_views,
+            self.data.swapchain_extent.width,
+            self.data.swapchain_extent.height,
+        )?;
+        
         Ok(())
     }
 
