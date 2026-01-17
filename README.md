@@ -13,14 +13,15 @@
 
 <h2>Keybinds</h2>
 
-| Key           | Function        |
-| ------------- | --------------- |
-| W             | Move forward    |
-| S             | Move backwards  |
-| A             | Strafe left     |
-| D             | Strafe right    |
-| Space         | Ascend          |
-| Shift         | Descend         |
+| Key           | Function               |
+| ------------- | ---------------------- |
+| W             | Move forward           |
+| S             | Move backwards         |
+| A             | Strafe left            |
+| D             | Strafe right           |
+| Space         | Ascend                 |
+| Shift         | Descend                |
+| F1            | Open World Select menu |
 
 <h2>Thanks to</h2>
 
