@@ -7,11 +7,12 @@
     clippy::unnecessary_wraps
 )]
 
-// DAT reader modules
-mod dat;
-mod dat_mesh;
-mod dtx;
-mod egui_renderer;
+// DAT reader modules (import from the library crate)
+use rustKPC::dat;
+use rustKPC::dat_mesh;
+use rustKPC::dtx;
+use rustKPC::egui_renderer;
+use rustKPC::collision;
 
 use std::collections::{HashMap, HashSet};
 use std::ffi::CStr;
@@ -55,8 +56,9 @@ const PORTABILITY_MACOS_VERSION: Version = Version::new(1, 3, 216);
 /// The maximum number of frames that can be processed concurrently.
 const MAX_FRAMES_IN_FLIGHT: usize = 2;
 
-/// Camera movement speed
-const CAMERA_SPEED: f32 = 10.0;
+/// Movement speeds
+const WALK_SPEED: f32 = 6.0; // player walking speed
+const FLY_SPEED: f32 = 10.0; // free camera / flying speed (original)
 /// Mouse sensitivity
 const MOUSE_SENSITIVITY: f32 = 0.1;
 
@@ -75,7 +77,7 @@ struct Camera {
 impl Default for Camera {
     fn default() -> Self {
         Self {
-            position: vec3(0.0, -50.0, 10.0), // Start position
+            position: vec3(0.0, -50.0, 12.0), // Start position (slightly higher)
             yaw: 90.0,   // Looking forward (+Y)
             pitch: 0.0,  // Level
         }
@@ -98,9 +100,15 @@ impl Camera {
     }
 
     fn view_matrix(&self) -> Mat4 {
-        let target = self.position + self.front();
+        self.view_matrix_with_offset(0.0)
+    }
+
+    fn view_matrix_with_offset(&self, offset_z: f32) -> Mat4 {
+        let eye = vec3(self.position.x, self.position.y, self.position.z + offset_z);
+        let front = self.front();
+        let target = eye + front;
         Mat4::look_at_rh(
-            cgmath::Point3::new(self.position.x, self.position.y, self.position.z),
+            cgmath::Point3::new(eye.x, eye.y, eye.z),
             cgmath::Point3::new(target.x, target.y, target.z),
             vec3(0.0, 0.0, 1.0),
         )
@@ -226,6 +234,17 @@ fn main() -> Result<()> {
 
     // Set up egui for UI
     let egui_ctx = egui::Context::default();
+    // Set global visuals to fully transparent backgrounds and selection highlights
+    let mut visuals = egui::Visuals::dark();
+    visuals.widgets.noninteractive.bg_fill = egui::Color32::from_rgba_unmultiplied(0, 0, 0, 0);
+    visuals.widgets.inactive.bg_fill = egui::Color32::from_rgba_unmultiplied(0, 0, 0, 0);
+    visuals.widgets.hovered.bg_fill = egui::Color32::from_rgba_unmultiplied(0, 0, 0, 0);
+    visuals.widgets.active.bg_fill = egui::Color32::from_rgba_unmultiplied(0, 0, 0, 0);
+    visuals.selection.bg_fill = egui::Color32::from_rgba_unmultiplied(0, 0, 0, 0);
+    visuals.faint_bg_color = egui::Color32::from_rgba_unmultiplied(0, 0, 0, 0);
+    visuals.extreme_bg_color = egui::Color32::from_rgba_unmultiplied(0, 0, 0, 0);
+    visuals.window_fill = egui::Color32::from_rgba_unmultiplied(0, 0, 0, 0);
+    egui_ctx.set_visuals(visuals);
     let viewport_id = egui_ctx.viewport_id();
     let mut egui_state = egui_winit::State::new(egui_ctx.clone(), viewport_id, &window, None, None);
 
@@ -290,6 +309,8 @@ fn main() -> Result<()> {
                     let now = Instant::now();
                     let dt = (now - last_time).as_secs_f32();
                     last_time = now;
+                    let fps = if dt > 0.0 { 1.0 / dt } else { 0.0 };
+                    app.fps = fps;
                     
                     // Check for pending world load
                     if let Some(world_path) = app.world_chooser.take_pending_load() {
@@ -351,9 +372,8 @@ fn main() -> Result<()> {
                     if !app.world_chooser.visible && app.loading_state == LoadingState::Ready {
                         app.update_camera(dt);
                     }
-                    
                     unsafe { app.render(&window, &mut egui_renderer, &clipped_primitives, full_output.pixels_per_point) }.unwrap();
-                },
+                }
                 
                 WindowEvent::Resized(size) => {
                     if size.width == 0 || size.height == 0 {
@@ -378,11 +398,14 @@ fn main() -> Result<()> {
                     let pressed = event.state == ElementState::Pressed;
                     match event.physical_key {
                         PhysicalKey::Code(KeyCode::F1) if pressed => {
+                            // Open/close the world chooser (F1)
                             app.world_chooser.toggle();
                             if app.world_chooser.visible {
                                 mouse_locked = false;
                                 let _ = window.set_cursor_grab(CursorGrabMode::None);
                                 window.set_cursor_visible(true);
+                                // ensure collisions are active so player doesn't fall through while UI open
+                                app.player_mode = collision::PlayerMode::Walk;
                             } else {
                                 mouse_locked = true;
                                 let _ = window.set_cursor_grab(CursorGrabMode::Confined);
@@ -425,7 +448,6 @@ fn main() -> Result<()> {
 }
 
 /// Our Vulkan app.
-#[derive(Clone, Debug)]
 struct App {
     entry: Entry,
     instance: Instance,
@@ -440,6 +462,16 @@ struct App {
     world_chooser: WorldChooser,
     current_world: String,
     loading_state: LoadingState,
+    player_mode: collision::PlayerMode,
+    height_provider: Box<dyn collision::HeightProvider>,
+    show_collision_debug: bool,
+    mesh_provider: Option<collision::MeshHeightProvider>,
+    // Physics
+    z_vel: f32,
+    is_free_cam: bool,
+    eye_offset_walk: f32,
+    player_fov: f32,
+    fps: f32,
 }
 
 impl App {
@@ -479,6 +511,17 @@ impl App {
         create_command_buffers(&device, &mut data)?;
         create_sync_objects(&device, &mut data)?;
         let initial_world = "REZ/WORLDS/REALM1/R1M1A.DAT".to_string();
+
+        // Prepare mesh-backed provider if possible (clone only position/index arrays)
+        let (initial_height_provider, initial_mesh_provider) = if !data.vertices.is_empty() && !data.indices.is_empty() {
+            let positions = data.vertices.iter().map(|v| v.pos).collect::<Vec<_>>();
+            let indices = data.indices.clone();
+            let mesh = collision::MeshHeightProvider::new(positions.clone(), indices.clone());
+            (Box::new(mesh.clone()) as Box<dyn collision::HeightProvider>, Some(mesh))
+        } else {
+            (Box::new(collision::FlatGround) as Box<dyn collision::HeightProvider>, None)
+        };
+
         Ok(Self {
             entry,
             instance,
@@ -493,6 +536,15 @@ impl App {
             world_chooser: WorldChooser::new(),
             current_world: initial_world,
             loading_state: LoadingState::Ready,
+            player_mode: collision::PlayerMode::Walk,
+            height_provider: initial_height_provider,
+            show_collision_debug: false,
+            mesh_provider: initial_mesh_provider,
+            z_vel: 0.0,
+            is_free_cam: false,
+            eye_offset_walk: 0.4,
+            player_fov: 60.0,
+            fps: 0.0,
         })
     }
 
@@ -759,10 +811,11 @@ impl App {
 
     /// Updates camera position based on input state
     fn update_camera(&mut self, dt: f32) {
-        let speed = CAMERA_SPEED * dt;
+        let speed = if self.player_mode == collision::PlayerMode::Flying { FLY_SPEED * dt } else { WALK_SPEED * dt };
         let front = self.camera.front();
         let right = self.camera.right();
-        
+        let prev_pos = self.camera.position;
+
         if self.input.forward {
             self.camera.position = self.camera.position + front * speed;
         }
@@ -775,11 +828,62 @@ impl App {
         if self.input.right {
             self.camera.position = self.camera.position + right * speed;
         }
-        if self.input.up {
-            self.camera.position.z += speed;
+        // vertical movement only in Flying mode
+        // Flying mode: direct vertical control (free cam)
+        if self.player_mode == collision::PlayerMode::Flying {
+            if self.input.up {
+                self.camera.position.z += speed;
+            }
+            if self.input.down {
+                self.camera.position.z -= speed;
+            }
+            // reset gravity while flying
+            self.z_vel = 0.0;
+        } else {
+            // Walk mode: apply gravity to vertical velocity and integrate
+            const GRAVITY: f32 = 9.8 * 3.0; // scaled up for game units
+            self.z_vel -= GRAVITY * dt;
+            self.camera.position.z += self.z_vel * dt;
         }
-        if self.input.down {
-            self.camera.position.z -= speed;
+
+        // Apply wall collisions (horizontal) then ground collision when in Walk mode
+        if self.player_mode == collision::PlayerMode::Walk {
+            // let mut did_step = false;
+            if let Some(mesh) = &self.mesh_provider {
+                let before = self.camera.position;
+                mesh.resolve_player_movement(prev_pos, &mut self.camera.position, 0.35);
+                // If horizontal movement was blocked, try stair-step up
+                let horiz_blocked = (before.x != self.camera.position.x || before.y != self.camera.position.y)
+                    && (self.camera.position.x == prev_pos.x && self.camera.position.y == prev_pos.y);
+                if horiz_blocked {
+                    // Try to step up by step_height
+                    let step_height = 0.4; // You can tweak this value
+                    let mut try_pos = prev_pos;
+                    try_pos.z += step_height;
+                    let mut stepped_pos = try_pos;
+                    mesh.resolve_player_movement(prev_pos, &mut stepped_pos, 0.35);
+                    // Check the ground height at the new position
+                    let ground_z = self.height_provider.ground_height(stepped_pos.x, stepped_pos.y, Some(stepped_pos.z));
+                    let min_z = ground_z + 0.35;
+                    let dz = min_z - prev_pos.z;
+                    // Only allow the step if the new ground is within the step height
+                    if (stepped_pos.x != prev_pos.x || stepped_pos.y != prev_pos.y)
+                        && dz > 0.0 && dz <= step_height + 1e-3
+                    {
+                        self.camera.position = stepped_pos;
+                        self.camera.position.z = min_z;
+                    }
+                }
+            }
+            // After horizontal pushback, resolve vertical against ground and zero velocity when on ground
+            let before_z = self.camera.position.z;
+            collision::resolve_player_collision(&mut self.camera.position, self.height_provider.as_ref(), 0.35, 0.35);
+            let ground_z = self.height_provider.ground_height(self.camera.position.x, self.camera.position.y, Some(self.camera.position.z));
+            let min_z = ground_z + 0.35;
+            if (self.camera.position.z - min_z).abs() < 1e-3 || self.camera.position.z <= min_z + 0.01 {
+                // on (or very near) ground
+                self.z_vel = 0.0;
+            }
         }
     }
 
@@ -806,27 +910,52 @@ impl App {
         if self.world_chooser.visible {
             egui::TopBottomPanel::top("world_chooser")
                 .frame(egui::Frame::none()
-                    .fill(egui::Color32::from_rgba_unmultiplied(30, 30, 40, 240))
+                    .fill(egui::Color32::from_rgba_unmultiplied(0, 0, 0, 0)) // fully transparent
                     .inner_margin(egui::Margin::same(10.0)))
                 .show(ctx, |ui| {
                     ui.horizontal(|ui| {
                         ui.heading(egui::RichText::new("World Select").color(egui::Color32::WHITE));
                         ui.add_space(20.0);
                         ui.label(egui::RichText::new("Select a map to load:").color(egui::Color32::LIGHT_GRAY));
-                        
+                        // FPS label inside the F1 menu
+                        ui.add_space(20.0);
+                        ui.label(egui::RichText::new(format!("FPS: {:.1}", self.fps)).color(egui::Color32::YELLOW));
                         ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
                             if ui.button("Close (F1)").clicked() {
                                 self.world_chooser.visible = false;
                                 *mouse_locked = true;
+                                // Do not reset is_free_cam or player_mode here, preserve toggle state
                             }
                         });
+                    });
+
+                    // Player mode controls (Free Camera toggle)
+                    ui.horizontal(|ui| {
+                        ui.label(egui::RichText::new("Player Mode:").color(egui::Color32::LIGHT_GRAY));
+                        let prev = self.is_free_cam;
+                        if ui.checkbox(&mut self.is_free_cam, "Free Camera").changed() {
+                            if self.is_free_cam != prev {
+                                self.player_mode = if self.is_free_cam { collision::PlayerMode::Flying } else { collision::PlayerMode::Walk };
+                                if !self.is_free_cam { self.z_vel = 0.0; }
+                            }
+                        }
+                    });
+
+                    // Collision debug toggle
+                    ui.horizontal(|ui| {
+                        ui.checkbox(&mut self.show_collision_debug, "Show Collision Debug");
+                        if self.show_collision_debug {
+                            ui.label(egui::RichText::new(format!("Player: {:.2},{:.2},{:.2}", self.camera.position.x, self.camera.position.y, self.camera.position.z)).color(egui::Color32::LIGHT_GRAY));
+                            let ground = self.height_provider.ground_height(self.camera.position.x, self.camera.position.y, Some(self.camera.position.z));
+                            ui.label(egui::RichText::new(format!("Ground Z: {:.2}", ground)).color(egui::Color32::LIGHT_GRAY));
+                        }
                     });
                     
                     ui.add_space(5.0);
                     ui.separator();
                     ui.add_space(5.0);
                     
-                    // Scrollable list of worlds
+                    // Scrollable list of worlds, with fully transparent background
                     egui::ScrollArea::vertical()
                         .max_height(300.0)
                         .show(ui, |ui| {
@@ -844,7 +973,14 @@ impl App {
                                         .color(if is_selected { egui::Color32::YELLOW } else { egui::Color32::WHITE })
                                 };
                                 
+                                // Remove blue selection background for this label
+                                let orig_style = ui.style().clone();
+                                let mut style = (*orig_style).clone();
+                                style.visuals.selection.bg_fill = egui::Color32::from_rgba_unmultiplied(0, 0, 0, 0);
+                                ui.set_style(std::sync::Arc::new(style));
                                 let response = ui.selectable_label(is_selected, text);
+                                // Restore visuals after
+                                ui.set_style(orig_style);
                                 
                                 if response.clicked() {
                                     self.world_chooser.select_index(i);
@@ -866,7 +1002,7 @@ impl App {
                     ui.add_space(5.0);
                     
                     ui.horizontal(|ui| {
-                        if ui.button("Load Selected").clicked() {
+                        if ui.add(egui::Button::new("Load Selected").fill(egui::Color32::TRANSPARENT)).clicked() {
                             if let Some(path) = self.world_chooser.confirm_selection() {
                                 self.world_chooser.pending_load = Some(path);
                                 *mouse_locked = true;
@@ -883,6 +1019,8 @@ impl App {
                     });
                 });
         }
+
+        // ...overlay removed...
     }
 
     /// Reloads a new world file
@@ -920,6 +1058,18 @@ impl App {
         // Load new world
         load_dat_model(&mut self.data, world_path, 0, 0.01)?;
 
+        // Install mesh-backed height provider from loaded model
+        if !self.data.vertices.is_empty() && !self.data.indices.is_empty() {
+            let positions = self.data.vertices.iter().map(|v| v.pos).collect::<Vec<_>>();
+            let indices = self.data.indices.clone();
+            let mesh = collision::MeshHeightProvider::new(positions.clone(), indices.clone());
+            self.height_provider = Box::new(mesh.clone());
+            self.mesh_provider = Some(mesh);
+        } else {
+            self.height_provider = Box::new(collision::FlatGround);
+            self.mesh_provider = None;
+        }
+
         // Recreate texture resources
         create_texture_image(&self.instance, &self.device, &mut self.data)?;
         create_texture_image_view(&self.device, &mut self.data)?;
@@ -946,8 +1096,11 @@ impl App {
 
     /// Updates the uniform buffer object for our Vulkan app.
     unsafe fn update_uniform_buffer(&self, image_index: usize) -> Result<()> {
-        // Use camera view matrix
-        let view = self.camera.view_matrix();
+        // Use camera view matrix; raise eye when in player mode (walk) and not free-cam
+        let eye_offset = if self.player_mode == collision::PlayerMode::Walk && !self.is_free_cam {
+            self.eye_offset_walk
+        } else { 0.0 };
+        let view = self.camera.view_matrix_with_offset(eye_offset);
 
         #[rustfmt::skip]
         let correction = Mat4::new(
@@ -957,12 +1110,16 @@ impl App {
             0.0,  0.0, 1.0 / 2.0, 1.0,
         );
 
+        let fov_deg = if self.player_mode == collision::PlayerMode::Walk && !self.is_free_cam {
+            self.player_fov
+        } else { 45.0 };
+
         let proj = correction
             * cgmath::perspective(
-                Deg(45.0),
+                Deg(fov_deg),
                 self.data.swapchain_extent.width as f32 / self.data.swapchain_extent.height as f32,
                 0.01,   // Near plane
-                1000.0, // Far plane - increased for large Lithtech levels
+                1000.0, // Far plane
             );
 
         let ubo = UniformBufferObject { view, proj };

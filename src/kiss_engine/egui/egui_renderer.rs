@@ -102,12 +102,18 @@ impl EguiRenderer {
         let pipeline = create_egui_pipeline(device, render_pass, pipeline_layout)?;
 
         // Get font texture from egui
+
         let font_image_data = egui_ctx.fonts(|fonts| {
             let image = fonts.image();
-            image
-                .srgba_pixels(None)
-                .flat_map(|c| [c.r(), c.g(), c.b(), c.a()])
-                .collect::<Vec<u8>>()
+            let mut out = Vec::with_capacity(image.width() * image.height() * 4);
+            for &a in image.pixels.iter() {
+                let alpha = (a * 255.0).round().clamp(0.0, 255.0) as u8;
+                out.push(255);   // R
+                out.push(255);   // G
+                out.push(255);   // B
+                out.push(alpha); // A (alpha)
+            }
+            out
         });
 
         let font_dimensions = egui_ctx.fonts(|fonts| {
@@ -467,8 +473,8 @@ unsafe fn create_egui_pipeline(
     pipeline_layout: vk::PipelineLayout,
 ) -> Result<vk::Pipeline> {
     // Load shader modules
-    let vert_code: &[u8] = include_bytes!("../shaders/egui_vert.spv");
-    let frag_code: &[u8] = include_bytes!("../shaders/egui_frag.spv");
+    let vert_code: &[u8] = include_bytes!("../../../shaders/egui_vert.spv");
+    let frag_code: &[u8] = include_bytes!("../../../shaders/egui_frag.spv");
 
     println!("egui shader sizes: vert={}, frag={}", vert_code.len(), frag_code.len());
 
@@ -540,11 +546,11 @@ unsafe fn create_egui_pipeline(
         .sample_shading_enable(false)
         .rasterization_samples(vk::SampleCountFlags::_1);
 
-    // Alpha blending (premultiplied)
+    // Alpha blending (standard alpha blending for UI transparency)
     let color_blend_attachment = vk::PipelineColorBlendAttachmentState::builder()
         .color_write_mask(vk::ColorComponentFlags::all())
         .blend_enable(true)
-        .src_color_blend_factor(vk::BlendFactor::ONE)
+        .src_color_blend_factor(vk::BlendFactor::SRC_ALPHA)
         .dst_color_blend_factor(vk::BlendFactor::ONE_MINUS_SRC_ALPHA)
         .color_blend_op(vk::BlendOp::ADD)
         .src_alpha_blend_factor(vk::BlendFactor::ONE)

@@ -21,7 +21,8 @@
 | D             | Strafe right           |
 | Space         | Ascend                 |
 | Shift         | Descend                |
-| F1            | Open World Select menu |
+| F1            | Open Debug menu        |
+| ESC           | Unlock the cursor      |
 
 <h2>Thanks to</h2>
 
