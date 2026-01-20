@@ -1,10 +1,11 @@
 use cgmath::{Vector3, InnerSpace};
+use std::io::Write;
 
 // Reduce iterations to cut CPU cost; still iterative but cheaper.
 const MAX_INTERSECT_PUSHBACK_ITERATIONS: usize = 12;
 const EXTRA_PENETRATION_ADD: f32 = 0.02;
 // Step-up parameters (stairs)
-const STEP_HEIGHT: f32 = 0.5;
+const STEP_HEIGHT: f32 = 0.9; // Match main.rs for reliable stepping and ground detection
 const MAX_STEP_SLOPE_COS: f32 = 0.64; // ~50 degrees
 const STEP_CLEARANCE: f32 = 0.02;
 
@@ -247,17 +248,26 @@ impl MeshHeightProvider {
 					let mut stepped_pos = *pos;
 					stepped_pos.z = foot_ground_z + delta + STEP_CLEARANCE;
 
-					// Build box from previous pos to stepped pos and query overlaps
-					if let Some((_s0, _s1, _whole, step_box)) = self.setup_box(prev_pos, stepped_pos, dims, offset, radius) {
-						let mut overlaps: Vec<usize> = Vec::new();
+					// For very small steps, skip headroom check entirely (for spiral/tight stairs)
+					let skip_headroom = delta < 0.2;
+					let headroom = if skip_headroom { 0.0 } else { 0.2 };
+					let _head_clear = true;
+					let head_top = stepped_pos.z + headroom;
+					// Check for any triangle intersecting a vertical AABB above stepped_pos using BVH if available
+					let mut head_clear = true;
+					if !skip_headroom {
+						let _head_top = stepped_pos.z + headroom;
+						let head_aabb = Aabb {
+							min: Vector3::new(stepped_pos.x - radius, stepped_pos.y - radius, stepped_pos.z),
+							max: Vector3::new(stepped_pos.x + radius, stepped_pos.y + radius, head_top),
+						};
+						let mut head_overlaps: Vec<usize> = Vec::new();
 						if let Some(ref bv) = self.bvh {
-							bv.query_aabb(&step_box, &mut overlaps);
+							bv.query_aabb(&head_aabb, &mut head_overlaps);
 						} else {
-							overlaps = (0..(idx.len() / 3)).collect();
+							head_overlaps = (0..(idx.len() / 3)).collect();
 						}
-						let mut blocked = false;
-						for &ot in overlaps.iter() {
-							// ignore the triangle we're attempting to step onto
+						for &ot in head_overlaps.iter() {
 							if ot == t { continue; }
 							let oi0 = idx[ot*3] as usize;
 							let oi1 = idx[ot*3 + 1] as usize;
@@ -266,23 +276,69 @@ impl MeshHeightProvider {
 							let oa = posv[oi0];
 							let ob = posv[oi1];
 							let oc = posv[oi2];
-							// full 3D distance from stepped sphere center to triangle
-							let closest = closest_point_on_triangle(stepped_pos, oa, ob, oc);
-							let diff = stepped_pos - closest;
-							let dist = diff.magnitude();
-							// if triangle penetrates sphere beyond a small epsilon, it's blocked
-							if dist < (radius - 0.01) {
-								blocked = true;
-								// debug: print blocking triangle and metrics
-								println!("[collision] step blocked t={} dist={:.3} radius={:.3}", ot, dist, radius);
+							let tri_min = Vector3::new(oa.x.min(ob.x).min(oc.x), oa.y.min(ob.y).min(oc.y), oa.z.min(ob.z).min(oc.z));
+							let tri_max = Vector3::new(oa.x.max(ob.x).max(oc.x), oa.y.max(ob.y).max(oc.y), oa.z.max(ob.z).max(oc.z));
+							let tri_box = Aabb { min: tri_min, max: tri_max };
+							if head_aabb.intersects(&tri_box) {
+								head_clear = false;
 								break;
 							}
 						}
-					if !blocked {
-						pos.z = stepped_pos.z;
-						println!("[collision] step accepted t={} new_z={:.3}", t, pos.z);
-						continue;
 					}
+
+					if delta < 0.2 {
+						// For micro steps, if horizontal move is possible, allow step-up
+						if stepped_pos.x != prev_pos.x || stepped_pos.y != prev_pos.y {
+							pos.z = stepped_pos.z;
+							if let Ok(mut file) = std::fs::OpenOptions::new().create(true).append(true).open("collision_log.txt") {
+								let _ = writeln!(file, "[collision] step accepted t={} new_z={:.3}", t, pos.z);
+							}
+							continue;
+						}
+					}
+					// For larger steps, do full step box collision check
+					if delta >= 0.2 {
+						let step_dims = dims;
+						if let Some((_s0, _s1, _whole, step_box)) = self.setup_box(prev_pos, stepped_pos, step_dims, offset, radius) {
+							let mut overlaps: Vec<usize> = Vec::new();
+							if let Some(ref bv) = self.bvh {
+								bv.query_aabb(&step_box, &mut overlaps);
+							} else {
+								overlaps = (0..(idx.len() / 3)).collect();
+							}
+							let mut blocked = false;
+							for &ot in overlaps.iter() {
+								// ignore the triangle we're attempting to step onto
+								if ot == t { continue; }
+								let oi0 = idx[ot*3] as usize;
+								let oi1 = idx[ot*3 + 1] as usize;
+								let oi2 = idx[ot*3 + 2] as usize;
+								if oi0 >= posv.len() || oi1 >= posv.len() || oi2 >= posv.len() { continue; }
+								let oa = posv[oi0];
+								let ob = posv[oi1];
+								let oc = posv[oi2];
+								// full 3D distance from stepped sphere center to triangle
+								let closest = closest_point_on_triangle(stepped_pos, oa, ob, oc);
+								let diff = stepped_pos - closest;
+								let dist = diff.magnitude();
+								// if triangle penetrates sphere beyond a small epsilon, it's blocked
+								if dist < (radius - 0.01) {
+									blocked = true;
+									// debug: log blocking triangle and metrics to file
+									if let Ok(mut file) = std::fs::OpenOptions::new().create(true).append(true).open("collision_log.txt") {
+										let _ = writeln!(file, "[collision] step blocked t={} dist={:.3} radius={:.3}", ot, dist, radius);
+									}
+									break;
+								}
+							}
+							if !blocked && head_clear {
+								pos.z = stepped_pos.z;
+								if let Ok(mut file) = std::fs::OpenOptions::new().create(true).append(true).open("collision_log.txt") {
+									let _ = writeln!(file, "[collision] step accepted t={} new_z={:.3}", t, pos.z);
+								}
+								continue;
+							}
+						}
 					}
 				}
 

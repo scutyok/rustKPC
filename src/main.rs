@@ -459,12 +459,12 @@ struct App {
     models: usize,
     camera: Camera,
     input: InputState,
+    on_ground: bool,
     world_chooser: WorldChooser,
     current_world: String,
     loading_state: LoadingState,
     player_mode: collision::PlayerMode,
     height_provider: Box<dyn collision::HeightProvider>,
-    show_collision_debug: bool,
     mesh_provider: Option<collision::MeshHeightProvider>,
     // Physics
     z_vel: f32,
@@ -538,13 +538,13 @@ impl App {
             loading_state: LoadingState::Ready,
             player_mode: collision::PlayerMode::Walk,
             height_provider: initial_height_provider,
-            show_collision_debug: false,
             mesh_provider: initial_mesh_provider,
             z_vel: 0.0,
             is_free_cam: false,
             eye_offset_walk: 0.4,
             player_fov: 60.0,
             fps: 0.0,
+            on_ground: false,
         })
     }
 
@@ -671,6 +671,7 @@ impl App {
             .clear_values(clear_values);
 
         self.device.cmd_begin_render_pass(command_buffer, &info, vk::SubpassContents::SECONDARY_COMMAND_BUFFERS);
+
 
         // Only render geometry when not loading
         if self.loading_state == LoadingState::Ready {
@@ -812,15 +813,20 @@ impl App {
     /// Updates camera position based on input state
     fn update_camera(&mut self, dt: f32) {
         let speed = if self.player_mode == collision::PlayerMode::Flying { FLY_SPEED * dt } else { WALK_SPEED * dt };
-        let front = self.camera.front();
+        let front_flat = {
+            let f = self.camera.front();
+            vec3(f.x, f.y, 0.0).normalize()
+        };
         let right = self.camera.right();
         let prev_pos = self.camera.position;
 
+        self.on_ground = false;
+        // ...existing code...
         if self.input.forward {
-            self.camera.position = self.camera.position + front * speed;
+            self.camera.position = self.camera.position + front_flat * speed;
         }
         if self.input.backward {
-            self.camera.position = self.camera.position - front * speed;
+            self.camera.position = self.camera.position - front_flat * speed;
         }
         if self.input.left {
             self.camera.position = self.camera.position - right * speed;
@@ -829,7 +835,6 @@ impl App {
             self.camera.position = self.camera.position + right * speed;
         }
         // vertical movement only in Flying mode
-        // Flying mode: direct vertical control (free cam)
         if self.player_mode == collision::PlayerMode::Flying {
             if self.input.up {
                 self.camera.position.z += speed;
@@ -837,36 +842,37 @@ impl App {
             if self.input.down {
                 self.camera.position.z -= speed;
             }
-            // reset gravity while flying
             self.z_vel = 0.0;
         } else {
             // Walk mode: apply gravity to vertical velocity and integrate
-            const GRAVITY: f32 = 9.8 * 3.0; // scaled up for game units
+            const GRAVITY: f32 = 9.8 * 3.0;
             self.z_vel -= GRAVITY * dt;
+            // Jumping (use on_ground flag)
+            if self.input.up && self.on_ground {
+                self.z_vel = 7.5; // jump velocity, tweak as needed
+                self.input.up = false; // prevent holding space from multi-jumping
+                self.on_ground = false;
+            }
             self.camera.position.z += self.z_vel * dt;
         }
 
         // Apply wall collisions (horizontal) then ground collision when in Walk mode
         if self.player_mode == collision::PlayerMode::Walk {
-            // let mut did_step = false;
             if let Some(mesh) = &self.mesh_provider {
                 let before = self.camera.position;
-                mesh.resolve_player_movement(prev_pos, &mut self.camera.position, 0.35);
-                // If horizontal movement was blocked, try stair-step up
+                // Only pass 3 arguments: prev_pos, &mut self.camera.position, 0.25 (width)
+                mesh.resolve_player_movement(prev_pos, &mut self.camera.position, 0.25);
                 let horiz_blocked = (before.x != self.camera.position.x || before.y != self.camera.position.y)
                     && (self.camera.position.x == prev_pos.x && self.camera.position.y == prev_pos.y);
                 if horiz_blocked {
-                    // Try to step up by step_height
-                    let step_height = 0.4; // You can tweak this value
+                    let step_height = 0.9; // Further increased for small ledges
                     let mut try_pos = prev_pos;
                     try_pos.z += step_height;
                     let mut stepped_pos = try_pos;
-                    mesh.resolve_player_movement(prev_pos, &mut stepped_pos, 0.35);
-                    // Check the ground height at the new position
+                    mesh.resolve_player_movement(prev_pos, &mut stepped_pos, 0.25);
                     let ground_z = self.height_provider.ground_height(stepped_pos.x, stepped_pos.y, Some(stepped_pos.z));
-                    let min_z = ground_z + 0.35;
+                    let min_z = ground_z + 0.5; // keep hitbox tall for vertical offset
                     let dz = min_z - prev_pos.z;
-                    // Only allow the step if the new ground is within the step height
                     if (stepped_pos.x != prev_pos.x || stepped_pos.y != prev_pos.y)
                         && dz > 0.0 && dz <= step_height + 1e-3
                     {
@@ -875,14 +881,20 @@ impl App {
                     }
                 }
             }
-            // After horizontal pushback, resolve vertical against ground and zero velocity when on ground
             let before_z = self.camera.position.z;
-            collision::resolve_player_collision(&mut self.camera.position, self.height_provider.as_ref(), 0.35, 0.35);
+            collision::resolve_player_collision(&mut self.camera.position, self.height_provider.as_ref(), 0.25, 0.5);
             let ground_z = self.height_provider.ground_height(self.camera.position.x, self.camera.position.y, Some(self.camera.position.z));
-            let min_z = ground_z + 0.35;
-            if (self.camera.position.z - min_z).abs() < 1e-3 || self.camera.position.z <= min_z + 0.01 {
-                // on (or very near) ground
+            let min_z = ground_z + 0.5;
+            if self.camera.position.z < min_z - 0.05 {
+                // Only snap down if clearly below ground
+                self.camera.position.z = min_z;
                 self.z_vel = 0.0;
+                self.on_ground = true;
+            } else if (self.camera.position.z - min_z).abs() < 0.1 || self.camera.position.z < min_z + 0.01 {
+                // On or very near ground: stabilize position and velocity, no gravity
+                self.camera.position.z = min_z;
+                self.z_vel = 0.0;
+                self.on_ground = true;
             }
         }
     }
@@ -938,16 +950,6 @@ impl App {
                                 self.player_mode = if self.is_free_cam { collision::PlayerMode::Flying } else { collision::PlayerMode::Walk };
                                 if !self.is_free_cam { self.z_vel = 0.0; }
                             }
-                        }
-                    });
-
-                    // Collision debug toggle
-                    ui.horizontal(|ui| {
-                        ui.checkbox(&mut self.show_collision_debug, "Show Collision Debug");
-                        if self.show_collision_debug {
-                            ui.label(egui::RichText::new(format!("Player: {:.2},{:.2},{:.2}", self.camera.position.x, self.camera.position.y, self.camera.position.z)).color(egui::Color32::LIGHT_GRAY));
-                            let ground = self.height_provider.ground_height(self.camera.position.x, self.camera.position.y, Some(self.camera.position.z));
-                            ui.label(egui::RichText::new(format!("Ground Z: {:.2}", ground)).color(egui::Color32::LIGHT_GRAY));
                         }
                     });
                     
@@ -1297,6 +1299,12 @@ struct AppData {
     vertex_buffer_memory: vk::DeviceMemory,
     index_buffer: vk::Buffer,
     index_buffer_memory: vk::DeviceMemory,
+    // Debug line rendering
+    debug_line_vertex_buffer: vk::Buffer,
+    debug_line_vertex_buffer_memory: vk::DeviceMemory,
+    debug_line_vertex_capacity: usize,
+    debug_line_pipeline: vk::Pipeline,
+    debug_line_pipeline_layout: vk::PipelineLayout,
     uniform_buffers: Vec<vk::Buffer>,
     uniform_buffers_memory: Vec<vk::DeviceMemory>,
     // Descriptors
@@ -2283,7 +2291,7 @@ unsafe fn create_texture_image(instance: &Instance, device: &Device, data: &mut 
 unsafe fn upload_texture_to_gpu(
     instance: &Instance,
     device: &Device,
-    data: &AppData,
+    data: &mut AppData,
     texture: &LoadedTexture,
 ) -> Result<(vk::Image, vk::DeviceMemory)> {
     let width = texture.width;
@@ -2312,7 +2320,7 @@ unsafe fn upload_texture_to_gpu(
         data,
         width,
         height,
-        1, // Only 1 mip level
+        1,
         vk::SampleCountFlags::_1,
         vk::Format::R8G8B8A8_SRGB,
         vk::ImageTiling::OPTIMAL,
@@ -2378,9 +2386,10 @@ unsafe fn generate_mipmaps(
 
     let subresource = vk::ImageSubresourceRange::builder()
         .aspect_mask(vk::ImageAspectFlags::COLOR)
+        .base_mip_level(0)
+        .level_count(1)
         .base_array_layer(0)
-        .layer_count(1)
-        .level_count(1);
+        .layer_count(1);
 
     let mut barrier = vk::ImageMemoryBarrier::builder()
         .image(image)
@@ -3245,7 +3254,7 @@ impl Hash for Vertex {
 unsafe fn create_buffer(
     instance: &Instance,
     device: &Device,
-    data: &AppData,
+    data: &mut AppData,
     size: vk::DeviceSize,
     usage: vk::BufferUsageFlags,
     properties: vk::MemoryPropertyFlags,
@@ -3276,7 +3285,7 @@ unsafe fn create_buffer(
 
 unsafe fn copy_buffer(
     device: &Device,
-    data: &AppData,
+    data: &mut AppData,
     source: vk::Buffer,
     destination: vk::Buffer,
     size: vk::DeviceSize,
@@ -3298,7 +3307,7 @@ unsafe fn copy_buffer(
 unsafe fn create_image(
     instance: &Instance,
     device: &Device,
-    data: &AppData,
+    data: &mut AppData,
     width: u32,
     height: u32,
     mip_levels: u32,
@@ -3368,7 +3377,7 @@ unsafe fn create_image_view(
 
 unsafe fn transition_image_layout(
     device: &Device,
-    data: &AppData,
+    data: &mut AppData,
     image: vk::Image,
     format: vk::Format,
     old_layout: vk::ImageLayout,
@@ -3427,7 +3436,7 @@ unsafe fn transition_image_layout(
 
 unsafe fn copy_buffer_to_image(
     device: &Device,
-    data: &AppData,
+    data: &mut AppData,
     buffer: vk::Buffer,
     image: vk::Image,
     width: u32,
