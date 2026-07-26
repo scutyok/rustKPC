@@ -179,6 +179,14 @@ pub struct DrawGroup {
     // None = identity (world-geometry default). Set by game_objects system for
     // animated objects (doors, fans) and cleared for destroyed objects.
     pub model_matrix: Option<[[f32; 4]; 4]>,
+    /// Negative values select the unlit sky shader path.  `None` is regular
+    /// world geometry; sky layers use their own per-model opacity.
+    pub sky_opacity: Option<f32>,
+    /// Draw order among sky groups only (ignored for non-sky geometry).
+    /// 0 = base sky dome (drawn first, furthest back), 1 = translucent
+    /// cloud overlay (drawn over the dome), 2 = opaque foreground skybox
+    /// models such as mountains/buildings (drawn last, on top of clouds).
+    pub sky_draw_layer: u8,
 }
 
 #[derive(Clone, Debug, Default)]

@@ -13,7 +13,7 @@
 //   `Index`         (Float / LongInt) — draw order within the sky pass.
 //
 // Animation implemented here:
-//   * Models containing "cloud" in their name receive slow horizontal UV-panning
+//   * Models containing "cloud" in their name receive slow diagonal panning
 //     via a model-matrix translation applied each frame.
 //   * Models containing "moon" receive a very slow orbital rotation.
 //   * All other sky models (sky dome, ground, buildings) are static.
@@ -27,15 +27,17 @@ use crate::types::DrawGroup;
 
 //******************************************************************/
 //
-// Pan speeds (Vulkan units per second in sky-camera space)
+// Pan speeds (UV repeats per second)
 //
-// These are aesthetic values calibrated to feel like the original game.
-// Because sky models are camera-relative they behave like UV-scroll at horizon.
+// The texture sampler repeats, so these continuously scroll each cloud layer
+// without moving its sky geometry or opening seams in a bounded skybox.
 //
 //******************************************************************/
 
-const CLOUD_PAN_SPEED_X: f32 = 0.04;  // cloud layer 1 drifts along +X
-const CLOUD2_PAN_SPEED_Y: f32 = 0.025; // cloud layer 2 drifts along +Y (perpendicular)
+const CLOUD_PAN_SPEED_X: f32 = 0.10;
+const CLOUD_PAN_SPEED_Y: f32 = 0.065;
+const CLOUD2_PAN_SPEED_X: f32 = -0.075;
+const CLOUD2_PAN_SPEED_Y: f32 = 0.095;
 const MOON_ROT_SPEED: f32 = 0.002;     // radians/s — slow orbit
 
 //******************************************************************/
@@ -99,11 +101,11 @@ impl SkyWorldModelObject {
         let name_lc = info.name.to_lowercase();
         // DAT-specified values override name-based defaults when present.
         let default = if name_lc.contains("cloud2") || name_lc == "clouds2" {
-            // Second cloud layer drifts orthogonally
-            (CLOUD_PAN_SPEED_X * 0.0, CLOUD2_PAN_SPEED_Y, 0.0)
+            // Counter-diagonal movement keeps the overlay distinct.
+            (CLOUD2_PAN_SPEED_X, CLOUD2_PAN_SPEED_Y, 0.0)
         } else if name_lc.contains("cloud") {
-            // Main cloud layer drifts along X
-            (CLOUD_PAN_SPEED_X, 0.0, 0.0)
+            // Main cloud layer drifts diagonally across the sky.
+            (CLOUD_PAN_SPEED_X, CLOUD_PAN_SPEED_Y, 0.0)
         } else if name_lc.contains("moon") {
             // Moon slowly orbits
             (0.0, 0.0, MOON_ROT_SPEED)

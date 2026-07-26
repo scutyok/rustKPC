@@ -15,7 +15,7 @@ use crate::LightObj;
 use crate::types::*;
 use crate::vulkan::texture::get_texture_dimensions;
 use crate::DemoSkyWorldModel::SkyModelInfo;
-use crate::trigger::TriggerInfo;
+use crate::triggers::TriggerInfo;
 
 //******************************************************************/
 //
@@ -237,6 +237,8 @@ pub fn load_dat_model<P: AsRef<std::path::Path>>(
             index_count: textured_mesh.indices.len() as u32,
             vertex_offset: 0,
             model_matrix: None,
+            sky_opacity: None,
+            sky_draw_layer: 0,
         });
 
         current_vertex_offset += textured_mesh.vertices.len() as u32;
@@ -370,6 +372,8 @@ pub fn load_dat_model<P: AsRef<std::path::Path>>(
             index_count: abc_obj.mesh.indices.len() as u32,
             vertex_offset: 0,
             model_matrix: None,
+            sky_opacity: None,
+            sky_draw_layer: 0,
         });
 
         // Add extra keyframe meshes for animated creatures
@@ -418,16 +422,6 @@ pub fn load_dat_model<P: AsRef<std::path::Path>>(
     // Dynamically gather sky model names from DemoSkyWorldModel and SkyPointer objects
     // Also collect optional pan/rotation properties from DemoSkyWorldModel objects
     let mut sky_model_props: std::collections::HashMap<String, (Option<f32>, Option<f32>, Option<f32>)> = std::collections::HashMap::new();
-
-    // Read global PanSky world property (if present). When false, suppress
-    // name-based default panning (but respect explicit per-model pan props).
-    let pan_sky_enabled: bool = dat_file.objects.iter()
-        .find(|o| o.type_name == "WorldProperties")
-        .and_then(|wp| match wp.get_property("PanSky") {
-            Some(PropertyValue::Bool(b)) => Some(*b != 0),
-            _ => None,
-        })
-        .unwrap_or(true);
 
     let sky_model_names: std::collections::HashSet<String> = {
         let mut set = std::collections::HashSet::new();
@@ -483,6 +477,11 @@ pub fn load_dat_model<P: AsRef<std::path::Path>>(
         set.insert("sky".to_string());
         set.insert("clouds".to_string());
         set.insert("clouds2".to_string());
+        // These are additional BSP pieces of the authored skybox, not world
+        // geometry.  Leaving them in the normal pass makes them intersect the
+        // playable map as the large green/black silhouettes.
+        set.insert("ground".to_string());
+        set.insert("skybuildings".to_string());
         set
     };
     debug!("Sky model names for this level: {:?}", sky_model_names);
@@ -540,6 +539,11 @@ pub fn load_dat_model<P: AsRef<std::path::Path>>(
                 || name_lower.starts_with("ckillvolume")
                 || name_lower.starts_with("trigger")
                 || name_lower.starts_with("ctrigger")
+                // Exit brushes are named CExitTriggerN, which does not match
+                // the CTrigger prefix above. They must contribute their BSP
+                // AABB so the DAT CExitTrigger can activate across the full
+                // end-of-level volume rather than a tiny point fallback.
+                || name_lower.starts_with("cexittrigger")
                 || name_lower.starts_with("cpickuptrigger")
                 || name_lower.starts_with("lava")
                 || name_lower.starts_with("clava")
@@ -641,6 +645,8 @@ pub fn load_dat_model<P: AsRef<std::path::Path>>(
                     index_count: textured_mesh.indices.len() as u32,
                     vertex_offset: 0,
                     model_matrix: None,
+                    sky_opacity: None,
+                    sky_draw_layer: 0,
                 });
                 this_model_dgs.push(dg_idx);
                 if is_trigger {
@@ -832,6 +838,8 @@ pub fn load_dat_model<P: AsRef<std::path::Path>>(
             index_count: 6,
             vertex_offset: 0,
             model_matrix: None,
+            sky_opacity: None,
+            sky_draw_layer: 0,
         });
 
         torch_flames.push((i, flame_dg, flame_base_tex_index));
@@ -941,12 +949,39 @@ pub fn load_dat_model<P: AsRef<std::path::Path>>(
                         data.indices.push(group_vert_base + idx);
                     }
 
+                    // Sky world models fall into three draw layers so they
+                    // composite correctly with no depth writes:
+                    //   0 = "sky" — the solid background dome. Drawn first
+                    //       (furthest back) so every other sky layer paints
+                    //       over it.
+                    //   1 = cloud layers — translucent overlays (blend at
+                    //       30%) drawn over the dome but still beneath the
+                    //       foreground skybox models.
+                    //   2 = everything else (ground, skybuildings, and any
+                    //       other named skybox models such as mountains) —
+                    //       opaque foreground silhouettes drawn last, so
+                    //       they occlude the clouds/dome where they overlap.
+                    // Previously clouds and foreground models were lumped
+                    // into one "opaque" bucket that always drew after
+                    // clouds; if the dome itself ended up in that bucket
+                    // (which it did) it could redraw after the clouds and
+                    // paint over them, making the clouds invisible.
+                    let (sky_opacity, sky_draw_layer): (f32, u8) =
+                        if name_lower == "sky" {
+                            (-1.0, 0)
+                        } else if name_lower.contains("cloud") {
+                            (-0.3, 1)
+                        } else {
+                            (-1.0, 2)
+                        };
                     data.draw_groups.push(DrawGroup {
                         texture_index: tex_index,
                         first_index: group_idx_base,
                         index_count: textured_mesh.indices.len() as u32,
                         vertex_offset: 0,
                         model_matrix: None,
+                        sky_opacity: Some(sky_opacity),
+                        sky_draw_layer,
                     });
                 }
 
@@ -955,16 +990,12 @@ pub fn load_dat_model<P: AsRef<std::path::Path>>(
                 if dg_count > 0 {
                     let name_lc = wm.world_name.to_lowercase();
                     let (raw_pan_x, raw_pan_y, raw_rot_speed) = sky_model_props.get(&name_lc).copied().unwrap_or((None, None, None));
-                    // If global PanSky is disabled, suppress name-based defaults by
-                    // forcing pan values to 0 unless explicitly present in the DAT.
-                    let pan_x = match raw_pan_x {
-                        Some(v) => Some(v),
-                        None => if pan_sky_enabled { None } else { Some(0.0) },
-                    };
-                    let pan_y = match raw_pan_y {
-                        Some(v) => Some(v),
-                        None => if pan_sky_enabled { None } else { Some(0.0) },
-                    };
+                    // Always use the renderer's animated defaults when a
+                    // level omits explicit values.  Several original maps
+                    // disable PanSky even though their layered cloud BSPs
+                    // still need to scroll in this renderer.
+                    let pan_x = raw_pan_x;
+                    let pan_y = raw_pan_y;
                     let rot_speed = raw_rot_speed; // rotation not controlled by PanSky
                     sky_model_infos.push(SkyModelInfo {
                         name: name_lc,
@@ -1329,11 +1360,12 @@ pub fn load_dat_model<P: AsRef<std::path::Path>>(
             }
         }
 
-        game_objects.triggers = crate::trigger::TriggerFactory::new(
+        game_objects.triggers = crate::triggers::TriggerFactory::new(
             file_stem,
             &dat_file,
             &trigger_volumes,
             &bsp_submodels,
+            scale,
         )
         .build();
 
@@ -1376,8 +1408,8 @@ pub fn load_dat_model<P: AsRef<std::path::Path>>(
         .collect();
     log::info!("Built {} entity cylinders for collision", entity_cylinders.len());
 
-    let triggers = crate::trigger::collect_triggers(&dat_file, &trigger_volumes, scale);
-    if let Err(e) = crate::trigger::export_triggers_json(&triggers, &path) {
+    let triggers = crate::triggers::collect_triggers(&dat_file, &trigger_volumes, scale);
+    if let Err(e) = crate::triggers::export_triggers_json(&triggers, &path) {
         warn!("Failed to export triggers JSON: {}", e);
     }
 
@@ -1533,6 +1565,8 @@ pub fn subdivide_draw_groups(
                 index_count,
                 vertex_offset: 0,
                 model_matrix: None,
+                sky_opacity: None,
+                sky_draw_layer: 0,
             });
         }
     }

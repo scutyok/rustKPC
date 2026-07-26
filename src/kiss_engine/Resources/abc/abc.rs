@@ -1411,11 +1411,29 @@ fn find_floor_y(pos: &Vector3, floor_tris: &[FloorTri]) -> Option<f32> {
 // In the original Lithtech engine, these objects call MoveToFloor() at spawn.
 //
 //******************************************************************/
+//******************************************************************/
+//
+// How far pickup items float above the surface they're snapped to,
+// in world (post-scale) units. The bob animation in CPickupItem.rs only
+// oscillates a few centimeters around this baseline, so this constant is
+// what actually controls how high pickups sit above the ground/table/
+// whatever they landed on.
+//
+//******************************************************************/
+const PICKUP_HOVER_HEIGHT_WORLD: f32 = 0.15;
+
+fn is_pickup_item_type(type_name: &str) -> bool {
+    type_name.ends_with("Item_t") || type_name == "CPickupTrigger"
+}
+
 fn should_snap_to_floor(type_name: &str) -> bool {
     // Barrels
     if type_name == "CBarrel" { return true; }
-    // Creatures
-    if type_name == "CHeadless" { return true; }
+    // Creatures: every enemy type spawns on the floor below it, not just
+    // CHeadless. Previously only CHeadless was listed here, so every other
+    // enemy type placed above the floor in the editor (a very common
+    // authoring shortcut) never got dropped down to the surface at all.
+    if type_name == "CHeadless" || is_creature_type(type_name) { return true; }
     // Pickup items (health, ammo, weapons, armor, quest)
     if type_name.ends_with("Item_t") || type_name == "CPickupTrigger" { return true; }
     // Crates
@@ -1423,6 +1441,43 @@ fn should_snap_to_floor(type_name: &str) -> bool {
     // Deco / generic models (drums, guitars, props, etc.)
     if type_name == "CModel" || type_name == "CModelDeco" { return true; }
     false
+}
+
+//******************************************************************/
+//
+// Some CModel/CModelDeco (and occasionally item) placements are authored to
+// hang or float in place — light bulbs, skulls on chains, chandeliers,
+// lanterns, hanging banners, etc. — rather than rest on the floor below
+// them. should_snap_to_floor() alone can't tell those apart from a barrel
+// or crate sitting on the ground, so this checks two extra signals before
+// a floor-snappable object is actually snapped:
+//
+//   1. An explicit "Gravity" property on the DAT object. Mappers uncheck
+//      this in WorldEdit for anything meant to hang in place, so Gravity
+//      == false always wins and skips snapping.
+//   2. A name/model-filename keyword hint for common hanging fixtures,
+//      for levels that never set the Gravity property explicitly.
+//
+//******************************************************************/
+fn is_floating_decor(obj: &WorldObject, filename: &str) -> bool {
+    if let Some(PropertyValue::Bool(gravity)) = obj.get_property("Gravity") {
+        if *gravity == 0 {
+            return true;
+        }
+    }
+
+    const FLOATING_HINTS: [&str; 9] = [
+        "bulb", "skull", "lantern", "chandelier", "hanging",
+        "hang_", "lamp", "chain", "banner",
+    ];
+    let name_lc = obj
+        .get_property("Name")
+        .and_then(|v| if let PropertyValue::String(s) = v { Some(s.to_ascii_lowercase()) } else { None })
+        .unwrap_or_default();
+    let filename_lc = filename.to_ascii_lowercase();
+    FLOATING_HINTS
+        .iter()
+        .any(|hint| name_lc.contains(hint) || filename_lc.contains(hint))
 }
 
 //******************************************************************/
@@ -1479,13 +1534,13 @@ pub fn extract_abc_objects(
         radius_xz: f32,    // horizontal bounding radius
         top_y: f32,         // top surface Y in Lithtech space
     }
-    let snapped_entities: Vec<SnappedEntity> = Vec::new();
+    let mut snapped_entities: Vec<SnappedEntity> = Vec::new();
 
     for (obj_index, obj) in objects.iter().enumerate() {
         let tn = obj.type_name.as_str();
 
         // ── Position (required) ────────────────────────────────────
-        let pos = match obj.get_position() {
+        let mut pos = match obj.get_position() {
             Some(p) => p,
             None => continue,
         };
@@ -1577,6 +1632,11 @@ pub fn extract_abc_objects(
 
         let filename = filename_opt.unwrap();
 
+        // Whether this object drops to a surface at all. The actual snap
+        // happens further down, once the mesh and rotation are known — see
+        // the "Drop to floor / stack on other objects" block below.
+        let wants_floor_snap = should_snap_to_floor(tn) && !is_floating_decor(obj, &filename);
+
         let resolved_skin = if !skin.is_empty() {
             resolve_rez_path(rez_root, &skin)
         } else if let Some(hardcoded_skin) = hardcoded_item_skin(tn, obj, &realm) {
@@ -1659,6 +1719,83 @@ pub fn extract_abc_objects(
         let r20 = -sy * cr + cy * sp * sr;
         let r21 = sy * sr + cy * sp * cr;
         let r22 = cy * cp;
+
+        // ── Drop to floor / stack on other objects (once, at load time) ──
+        // Ports the original engine's MoveToFloor()-at-spawn behavior:
+        // barrels, crates, pickups, deco props, and enemies are commonly
+        // placed a bit above the floor in the editor and expected to land
+        // on it. This only ever adjusts pos.y here, before it's baked into
+        // both the mesh vertices and the object's stored `position` below —
+        // it runs once per placement at level-load time, not every frame,
+        // and nothing here prevents the object from animating afterwards
+        // (pickups still bob, doors still slide, etc. all apply their own
+        // motion on top of this baked starting position).
+        //
+        // Two things this needs the mesh for, so it can't happen any
+        // earlier than here:
+        //   1. Snap the model's actual lowest vertex to the surface, not
+        //      its pivot/origin — those aren't the same for most models,
+        //      so snapping the pivot left objects partly buried or
+        //      floating above the floor depending on where the artist put
+        //      the origin.
+        //   2. Check for other already-placed snappable objects directly
+        //      underneath this one's footprint (e.g. a barrel placed on
+        //      top of another barrel in the editor) and rest on top of the
+        //      highest one found, instead of always falling through to the
+        //      BSP floor beneath both of them.
+        if wants_floor_snap {
+            let mut min_ry = f32::INFINITY;
+            let mut max_ry = f32::NEG_INFINITY;
+            let mut max_r_xz: f32 = 0.0;
+            for v in &base_mesh.vertices {
+                let px = v.pos[0] * obj_scale;
+                let py = v.pos[1] * obj_scale;
+                let pz = v.pos[2] * obj_scale;
+                let rx = r00 * px + r01 * py + r02 * pz;
+                let ry = r10 * px + r11 * py + r12 * pz;
+                let rz = r20 * px + r21 * py + r22 * pz;
+                min_ry = min_ry.min(ry);
+                max_ry = max_ry.max(ry);
+                max_r_xz = max_r_xz.max((rx * rx + rz * rz).sqrt());
+            }
+
+            if min_ry.is_finite() {
+                // Highest surface at/below this object: the BSP floor, or
+                // the top of any already-placed snapped object whose
+                // footprint this one's center falls within.
+                let mut target_y = find_floor_y(&pos, floor_tris);
+                for se in &snapped_entities {
+                    let dx = pos.x - se.x;
+                    let dz = pos.z - se.z;
+                    let within_footprint = (dx * dx + dz * dz).sqrt() <= se.radius_xz;
+                    // Same "slightly above is fine" tolerance find_floor_y uses,
+                    // so a stacked object still counts as underneath even if it
+                    // sits a bit higher than this object's authored position.
+                    let plausibly_below = se.top_y <= pos.y + 20.0;
+                    if within_footprint && plausibly_below {
+                        target_y = Some(target_y.map_or(se.top_y, |t| t.max(se.top_y)));
+                    }
+                }
+
+                if let Some(target_y) = target_y {
+                    pos.y = target_y - min_ry;
+                    // Record the object's true physical resting position
+                    // before any visual hover offset, so anything placed on
+                    // top of it later stacks on its real surface rather
+                    // than on a floating pickup's raised height.
+                    snapped_entities.push(SnappedEntity {
+                        x: pos.x,
+                        z: pos.z,
+                        radius_xz: max_r_xz,
+                        top_y: pos.y + max_ry,
+                    });
+
+                    if is_pickup_item_type(tn) {
+                        pos.y += PICKUP_HOVER_HEIGHT_WORLD / scale;
+                    }
+                }
+            }
+        }
 
         let mut world_verts = base_mesh.vertices.clone();
         for v in &mut world_verts {

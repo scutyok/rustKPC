@@ -200,7 +200,27 @@ pub unsafe fn create_pipeline(device: &Device, data: &mut AppData) -> Result<()>
         .depth_bounds_test_enable(false)
         .stencil_test_enable(false);
 
-    let attachment = vk::PipelineColorBlendAttachmentState::builder()
+    // World geometry is opaque: it must fully overwrite whatever the sky
+    // pass already wrote to the color buffer, not blend with it. Textures
+    // that carry partial alpha (masked/cutout textures) are already
+    // handled by the fragment shader's `discard` on alpha < 0.5 — anything
+    // that survives that test should be drawn fully opaque, not partially
+    // blended with the sky behind it (that blending was the source of the
+    // green wash bleeding through walls/floors).
+    let world_attachment = vk::PipelineColorBlendAttachmentState::builder()
+        .color_write_mask(vk::ColorComponentFlags::all())
+        .blend_enable(false);
+
+    let world_attachments = &[world_attachment];
+    let color_blend_state = vk::PipelineColorBlendStateCreateInfo::builder()
+        .logic_op_enable(false)
+        .logic_op(vk::LogicOp::COPY)
+        .attachments(world_attachments)
+        .blend_constants([0.0, 0.0, 0.0, 0.0]);
+
+    // The sky pass is the only one that actually wants alpha blending
+    // (translucent cloud layers compositing over opaque skybox layers).
+    let sky_attachment = vk::PipelineColorBlendAttachmentState::builder()
         .color_write_mask(vk::ColorComponentFlags::all())
         .blend_enable(true)
         .src_color_blend_factor(vk::BlendFactor::SRC_ALPHA)
@@ -210,11 +230,11 @@ pub unsafe fn create_pipeline(device: &Device, data: &mut AppData) -> Result<()>
         .dst_alpha_blend_factor(vk::BlendFactor::ZERO)
         .alpha_blend_op(vk::BlendOp::ADD);
 
-    let attachments = &[attachment];
-    let color_blend_state = vk::PipelineColorBlendStateCreateInfo::builder()
+    let sky_attachments = &[sky_attachment];
+    let sky_color_blend_state = vk::PipelineColorBlendStateCreateInfo::builder()
         .logic_op_enable(false)
         .logic_op(vk::LogicOp::COPY)
-        .attachments(attachments)
+        .attachments(sky_attachments)
         .blend_constants([0.0, 0.0, 0.0, 0.0]);
 
     let vert_push_constant_range = vk::PushConstantRange::builder()
@@ -225,7 +245,7 @@ pub unsafe fn create_pipeline(device: &Device, data: &mut AppData) -> Result<()>
     let frag_push_constant_range = vk::PushConstantRange::builder()
         .stage_flags(vk::ShaderStageFlags::FRAGMENT)
         .offset(64)
-        .size(4);
+        .size(12);
 
     let set_layouts = &[data.descriptor_set_layout];
     let push_constant_ranges = &[vert_push_constant_range, frag_push_constant_range];
@@ -253,22 +273,30 @@ pub unsafe fn create_pipeline(device: &Device, data: &mut AppData) -> Result<()>
         .create_graphics_pipelines(vk::PipelineCache::null(), &[info], None)?
         .0[0];
 
-    // Sky pipeline: depth test ON so sky faces occlude each other correctly,
-    // depth write OFF so world geometry always draws over sky.
-    // Front-face culling: sky BSP normals face outward; viewer is inside the
-    // dome, so we want the back-faces (inward-facing) rendered. Culling front
-    // faces avoids modifying mesh winding and preserves original UV mapping.
+    // Sky layers are translucent and need to composite in their model order.
+    // Disable depth testing/writes: overlapping or coplanar sky BSP layers
+    // otherwise disappear unpredictably, while the later world pass still
+    // draws over the sky.
+    // NOTE: this used to cull_mode(FRONT) to draw only the inward-facing
+    // side of the (now-opaque) skybox models. But sky BSPs ported from the
+    // original data don't have consistent winding across every face/layer,
+    // so front-face culling was silently dropping any face whose winding
+    // didn't match assumptions — that's what produced the black
+    // triangular/wedge-shaped voids cutting through the sky and mountains.
+    // Sky geometry is small in triangle count and is drawn with depth
+    // testing off anyway, so there's no correctness or performance reason
+    // to cull it — render both sides.
     let sky_rasterization_state = vk::PipelineRasterizationStateCreateInfo::builder()
         .depth_clamp_enable(false)
         .rasterizer_discard_enable(false)
         .polygon_mode(vk::PolygonMode::FILL)
         .line_width(1.0)
-        .cull_mode(vk::CullModeFlags::FRONT)
+        .cull_mode(vk::CullModeFlags::NONE)
         .front_face(vk::FrontFace::COUNTER_CLOCKWISE)
         .depth_bias_enable(false);
 
     let sky_depth_stencil_state = vk::PipelineDepthStencilStateCreateInfo::builder()
-        .depth_test_enable(true)
+        .depth_test_enable(false)
         .depth_write_enable(false)
         .depth_compare_op(vk::CompareOp::LESS)
         .depth_bounds_test_enable(false)
@@ -282,7 +310,7 @@ pub unsafe fn create_pipeline(device: &Device, data: &mut AppData) -> Result<()>
         .rasterization_state(&sky_rasterization_state)
         .multisample_state(&multisample_state)
         .depth_stencil_state(&sky_depth_stencil_state)
-        .color_blend_state(&color_blend_state)
+        .color_blend_state(&sky_color_blend_state)
         .layout(data.pipeline_layout)
         .render_pass(data.render_pass)
         .subpass(0);

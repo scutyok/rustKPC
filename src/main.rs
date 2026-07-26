@@ -9,6 +9,8 @@
 
 mod app;
 mod settings;
+#[path = "kiss_engine/Mechanics/state/KGameState.rs"]
+mod k_game_state;
 
 use std::time::Instant;
 
@@ -18,7 +20,7 @@ use winit::dpi::LogicalSize;
 use winit::event::{DeviceEvent, ElementState, Event, WindowEvent};
 use winit::event_loop::EventLoop;
 use winit::keyboard::{KeyCode, PhysicalKey};
-use winit::window::{CursorGrabMode, WindowBuilder};
+use winit::window::{CursorGrabMode, Window, WindowBuilder};
 
 use vulkanalia::prelude::v1_0::*;
 
@@ -27,6 +29,8 @@ use rustKPC::egui_renderer;
 use rustKPC::pcx;
 use rustKPC::types::*;
 use rustKPC::world_chooser::{LoadingState, WorldChooser};
+
+use crate::k_game_state::LevelTransition;
 
 use crate::app::App;
 
@@ -144,58 +148,9 @@ fn main() -> Result<()> {
                     smooth_fps = if smooth_fps < 1.0 { fps } else { smooth_fps + (fps - smooth_fps) * SMOOTH };
                     app.fps = smooth_fps;
                     
-                    // Check for pending world load
-                    if let Some(world_path) = app.world_chooser.take_pending_load() {
-                        let map_name = WorldChooser::get_world_display_name(&world_path);
-                        app.loading_state = LoadingState::Loading(map_name.clone());
-                        let new_title = format!("Loading: {}...", map_name);
-                        if new_title != last_window_title {
-                            window.set_title(&new_title);
-                            last_window_title = new_title;
-                        }
-
-                        // Try to load a level-specific loading screen image
-                        {
-                            let stem = std::path::Path::new(&world_path)
-                                .file_stem()
-                                .and_then(|s| s.to_str())
-                                .unwrap_or("")
-                                .to_uppercase();
-                            // Strip trailing alpha to get e.g. "R2M1" from "R2M1A"
-                            let level_key = stem.trim_end_matches(|c: char| c.is_ascii_alphabetic());
-                            let pcx_path = format!("REZ/SCREENS/LOADINGBACKGROUNDS/{}.PCX", level_key);
-                            if let Ok(img) = pcx::load_pcx(std::path::Path::new(&pcx_path)) {
-                                match unsafe {
-                                    egui_renderer.set_user_texture(
-                                        &app.instance, &app.device, app.data.physical_device,
-                                        app.data.command_pool, app.data.graphics_queue,
-                                        &img.pixels, img.width, img.height,
-                                    )
-                                } {
-                                    Ok(tex_id) => { app.loading_texture_id = Some(tex_id); }
-                                    Err(e) => { warn!("Failed to set loading texture: {}", e); }
-                                }
-                            }
-                        }
-                        
-                        // Run egui for loading screen
-                        let raw_input = egui_state.take_egui_input(&window);
-                        let full_output = egui_ctx.run(raw_input, |ctx| {
-                            app.run_ui(ctx, &mut mouse_locked);
-                        });
-                        egui_state.handle_platform_output(&window, full_output.platform_output);
-                        let clipped_primitives = egui_ctx.tessellate(full_output.shapes, full_output.pixels_per_point);
-                        
-                        // Render loading screen
-                        unsafe { app.render(&window, &mut egui_renderer, &clipped_primitives, full_output.pixels_per_point) }.unwrap();
-                        
-                        // Load the world
-                        if let Err(e) = unsafe { app.reload_world(&world_path, &mut egui_renderer) } {
-                            error!("Failed to load world {}: {}", world_path, e);
-                        }
-                        app.loading_state = LoadingState::Ready;
-                        app.loading_texture_id = None;
-                        unsafe { egui_renderer.clear_user_texture(&app.device); }
+                    // Check for pending world load (world chooser or exit-trigger transition)
+                    if let Some(world_path) = app.world_chooser.take_pending_load().or_else(|| app.pending_world_load.take()) {
+                        LevelTransition::load_world_with_loading_screen(&mut app, &window, &egui_ctx, &mut egui_state, &mut egui_renderer, &world_path, &mut mouse_locked);
                         let new_title = String::from("KISS Psycho Circus: The Nightmare Child [F1: World Select]");
                         if new_title != last_window_title {
                             window.set_title(&new_title);
@@ -275,7 +230,7 @@ fn main() -> Result<()> {
                     // Update camera (only when UI is hidden)
                     if !app.world_chooser.visible && app.loading_state == LoadingState::Ready {
                         app.update_camera(dt);
-                        unsafe { app.update_objects(dt); }
+                        unsafe { app.update_objects(dt, &mut egui_renderer); }
                     }
                     unsafe { app.render(&window, &mut egui_renderer, &clipped_primitives, full_output.pixels_per_point) }.unwrap();
                 }

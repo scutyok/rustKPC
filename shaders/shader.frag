@@ -41,13 +41,21 @@ layout(binding = 2) uniform LightingData {
 // Push constants for opacity
 layout(push_constant) uniform PushConstants {
     layout(offset = 64) float opacity;
+    // Sky-only UV offsets.  Kept as scalar floats so their byte layout is
+    // explicit after the opacity float.
+    layout(offset = 68) float skyUOffset;
+    layout(offset = 72) float skyVOffset;
 } push;
 
 // Output
 layout(location = 0) out vec4 outColor;
 
 void main() {
-    vec4 texColor = texture(texSampler, fragTexCoord);
+    vec2 texCoord = fragTexCoord;
+    if (push.opacity < 0.0) {
+        texCoord += vec2(push.skyUOffset, push.skyVOffset);
+    }
+    vec4 texColor = texture(texSampler, texCoord);
 
     // Alpha test: discard fully transparent fragments (fences, grates, etc.)
     if (texColor.a < 0.5) {
@@ -57,11 +65,17 @@ void main() {
     // Sky mode: negative opacity = sky (no lighting), magnitude = alpha
     if (push.opacity < 0.0) {
         vec4 skyColor = vec4(texColor.rgb, texColor.a * abs(push.opacity));
-        // Apply heavy distance fog to the sky, matching the original engine where
-        if (lighting.fogParams.z > 0.5) {
-            vec3 skyDir = normalize(fragWorldPos - lighting.cameraPos.xyz);
-            float heightFactor = clamp(skyDir.z, 0.0, 1.0);
-            float skyFogAmount = 1.0 - 0.4 * pow(heightFactor, 1.5);
+        // Only the opaque skybox receives fog.  Its geometry is scaled far
+        // beyond the playable map, so use a much longer range than world fog
+        // and calculate the fade from the player's actual distance.
+        if (abs(push.opacity) > 0.99 && lighting.fogParams.z > 0.5) {
+            float baseFar = max(lighting.fogParams.y, lighting.fogParams.w);
+            // Start beyond normal map fog, but well before the outer sky
+            // faces, so bounded skyboxes visibly receive the distance fade.
+            float skyFogNear = baseFar * 2.0;
+            float skyFogFar = baseFar * 25.0;
+            float skyDistance = length(fragWorldPos - lighting.cameraPos.xyz);
+            float skyFogAmount = smoothstep(skyFogNear, skyFogFar, skyDistance);
             skyColor.rgb = mix(skyColor.rgb, lighting.fogColor.rgb, skyFogAmount);
         }
         outColor = skyColor;

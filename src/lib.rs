@@ -17,11 +17,28 @@ pub mod game_objects;
 #[path = "kiss_engine/Mechanics/objects/object_utils.rs"]
 pub(crate) mod object_utils;
 
-#[path = "kiss_engine/Mechanics/objects/CBarrel.rs"]
+// Object implementations are grouped in `objects/Objects`, but retain their
+// established module names so the object manager does not need path knowledge.
+#[path = "kiss_engine/Mechanics/objects/Objects/KBarrel.rs"]
 pub mod CBarrel;
 
-#[path = "kiss_engine/Mechanics/objects/CCrate.rs"]
+#[path = "kiss_engine/Mechanics/objects/Objects/KCrate.rs"]
 pub mod CCrate;
+
+#[path = "kiss_engine/Mechanics/objects/Objects/KLadder.rs"]
+pub mod CLadder;
+
+#[path = "kiss_engine/Mechanics/objects/Objects/KRotatingCeilingFan.rs"]
+pub mod CRotatingCeilingFan;
+
+#[path = "kiss_engine/Mechanics/objects/Objects/KTorch.rs"]
+pub mod CTorch;
+
+#[path = "kiss_engine/Mechanics/objects/Objects/KWindow.rs"]
+pub mod CWindow;
+
+#[path = "kiss_engine/Mechanics/triggers/mods.rs"]
+pub mod triggers;
 
 #[path = "kiss_engine/Mechanics/objects/CDoorSliding.rs"]
 pub mod CDoorSliding;
@@ -32,20 +49,8 @@ pub mod CSwitchRotating;
 #[path = "kiss_engine/Mechanics/objects/CSwitchSlide.rs"]
 pub mod CSwitchSlide;
 
-#[path = "kiss_engine/Mechanics/objects/CTorch.rs"]
-pub mod CTorch;
-
-#[path = "kiss_engine/Mechanics/objects/CRotatingCeilingFan.rs"]
-pub mod CRotatingCeilingFan;
-
-#[path = "kiss_engine/Mechanics/objects/CWindow.rs"]
-pub mod CWindow;
-
 #[path = "kiss_engine/Mechanics/objects/CWater.rs"]
 pub mod CWater;
-
-#[path = "kiss_engine/Mechanics/objects/CLadder.rs"]
-pub mod CLadder;
 
 #[path = "kiss_engine/Mechanics/objects/DemoSkyWorldModel.rs"]
 pub mod DemoSkyWorldModel;
@@ -66,9 +71,6 @@ pub mod CCreature;
 
 #[path = "kiss_engine/Mechanics/levelscripting/scripted_sequence.rs"]
 pub mod scripted_sequence;
-
-#[path = "kiss_engine/Mechanics/levelscripting/trigger.rs"]
-pub mod trigger;
 
 #[path = "kiss_engine/Resources/dat/world_loader.rs"]
 pub mod world_loader;

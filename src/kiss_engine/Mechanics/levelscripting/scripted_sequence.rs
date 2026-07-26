@@ -40,6 +40,8 @@ pub enum ScriptCommand {
     /// Fire a generic target. This is commonly used for spawners, script runners,
     /// exits, and other named DAT objects.
     TriggerGeneric { target_name: String },
+    /// Transition to another world/level using the target path and optional start-point name.
+    TransitionLevel { next_world: String, start_point: String },
     /// Spawn an item by object name.
     ItemSpawn { target_name: String },
     /// Enable or disable a named script/object.

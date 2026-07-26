@@ -7,6 +7,7 @@
 )]
 
 use std::mem::size_of;
+use std::path::{Path, PathBuf};
 use std::ptr::copy_nonoverlapping as memcpy;
 use std::time::Instant;
 
@@ -37,6 +38,16 @@ use rustKPC::util::math::*;
 
 const SKYBOX_HORIZONTAL_SIZE: f32 = 5000.0;
 const SKYBOX_Z_RAISE: f32 = 1.0;
+// The bounded-world sky is deliberately scaled up to occupy a volume
+// SKYBOX_HORIZONTAL_SIZE units wide, centered on the camera — so a sky
+// vertex can end up roughly SKYBOX_HORIZONTAL_SIZE/2 units out. The old
+// far plane (1000.0) was smaller than that reach, so the GPU's mandatory
+// frustum clipping was slicing the scaled skybox off in a straight line
+// right at the far plane (independent of depth testing, which is off for
+// the sky anyway — this clip happens earlier, in clip space). Used for
+// the render projection, the culling frustum, and the debug FOV overlay
+// so all three stay consistent with each other.
+const RENDER_FAR_PLANE: f32 = 20_000.0;
 
 //******************************************************************/
 //
@@ -100,6 +111,55 @@ pub struct App {
     pub show_triggers: bool,
     /// Draw-group indices + original index counts for trigger volumes.
     pub trigger_draw_groups: Vec<(usize, u32)>,
+    /// Pending world load triggered by an exit trigger or other transition.
+    pub pending_world_load: Option<String>,
+}
+
+fn resolve_world_path(spec: &str) -> Option<String> {
+    let trimmed = spec.trim();
+    if trimmed.is_empty() {
+        return None;
+    }
+
+    let normalized = trimmed.replace('\\', "/");
+    let without_prefix = normalized
+        .strip_prefix("worlds/")
+        .unwrap_or(&normalized);
+    let without_rez = without_prefix
+        .strip_prefix("REZ/WORLDS/")
+        .unwrap_or(without_prefix);
+
+    let mut candidates = Vec::new();
+    if without_rez.to_ascii_lowercase().starts_with("rez/worlds/") {
+        candidates.push(without_rez.to_string());
+    } else {
+        let mut path = PathBuf::from("REZ/WORLDS");
+        for part in without_rez.split('/') {
+            if part.is_empty() {
+                continue;
+            }
+            path.push(part);
+        }
+        let path_str = path.to_string_lossy().replace('\\', "/");
+        candidates.push(path_str.clone());
+        candidates.push(format!("{}.DAT", path_str));
+        candidates.push(format!("{}.dat", path_str));
+    }
+
+    if !normalized.to_ascii_lowercase().starts_with("rez/worlds/") {
+        let root_candidate = format!("REZ/WORLDS/{}", normalized);
+        candidates.push(root_candidate.clone());
+        candidates.push(format!("{}.DAT", root_candidate));
+        candidates.push(format!("{}.dat", root_candidate));
+    }
+
+    for candidate in candidates {
+        if Path::new(&candidate).exists() {
+            return Some(candidate);
+        }
+    }
+
+    None
 }
 
 impl App {
@@ -235,6 +295,7 @@ impl App {
             sky_fog_far,
             show_triggers: false,
             trigger_draw_groups: loaded.trigger_draw_groups,
+            pending_world_load: None,
         };
 
         // Hide trigger draw groups by default
@@ -429,8 +490,18 @@ impl App {
             .offset(vk::Offset2D::default())
             .extent(self.data.swapchain_extent);
 
+        // The clear color is what shows through wherever nothing was drawn
+        // this frame — gaps between bounded-sky BSP pieces, or simply
+        // looking past the edge of the world/sky geometry. Previously this
+        // was hardcoded pure black, so it stood out as a stark void even
+        // when fog was active and every fogged surface was fading to a
+        // lighter fog color instead. Tinting the clear color to match the
+        // current fog color makes the void blend seamlessly with the
+        // fogged-out sky/world instead of reading as a hole.
         let clear_color = if matches!(self.loading_state, LoadingState::Loading(_)) {
             [0.08, 0.08, 0.12, 1.0]
+        } else if self.fog_enabled {
+            [self.fog_color[0], self.fog_color[1], self.fog_color[2], 1.0]
         } else {
             [0.0, 0.0, 0.0, 1.0]
         };
@@ -480,7 +551,7 @@ impl App {
                     Deg(cull_fov),
                     self.data.swapchain_extent.width as f32 / self.data.swapchain_extent.height as f32,
                     0.01,
-                    1000.0,
+                    RENDER_FAR_PLANE,
                 );
             let vp = raw_proj * cull_view;
             let frustum = OcclusionCulling::Frustum::from_view_proj(&vp);
@@ -535,9 +606,6 @@ impl App {
 
         let command_buffer = command_buffers[model_index];
 
-        // Negative opacity = sky mode; use -1.0 for fully opaque sky/buildings
-        let sky_opacity: f32 = -1.0;
-        let sky_opacity_bytes = &sky_opacity.to_ne_bytes()[..];
         let world_flag: f32 = 1.0;
         let world_flag_bytes = &world_flag.to_ne_bytes()[..];
 
@@ -562,19 +630,25 @@ impl App {
         if has_sky_groups {
             self.device.cmd_bind_pipeline(command_buffer, vk::PipelineBindPoint::GRAPHICS, self.data.sky_pipeline);
 
-            // Push negative opacity so the fragment shader uses sky mode (no lighting, alpha = |opacity|)
-            self.device.cmd_push_constants(
-                command_buffer,
-                self.data.pipeline_layout,
-                vk::ShaderStageFlags::FRAGMENT,
-                64,
-                sky_opacity_bytes,
-            );
+            // Camera eye position, shared by every sky branch below. The sky
+            // model is always re-anchored on this every frame — for a
+            // bounded world it used to be anchored on a *static* world
+            // center instead, which meant the (finite, fixed-size) skybox
+            // mesh could be outrun as the camera moved far enough from that
+            // fixed point, exposing the raw clear color as a black void
+            // that seemed to "cut" through the sky. Re-centering on the
+            // camera every frame means the skybox can never be left behind.
+            let eye_z = if self.player_mode == collision::PlayerMode::Walk && !self.is_free_cam {
+                self.eye_offset_walk
+            } else {
+                0.0
+            };
+            let cam_eye = self.camera.position + Vector3::new(0.0, 0.0, eye_z);
 
             // Source-style 3D sky projection: treat the loaded sky BSPs as a
-            // small model, scale them into a fixed-size volume, then center
-            // that volume over the actual level.
-            if self.bounded_world {
+            // small model, scale them into a fixed-size volume, then keep
+            // that volume centered on the camera.
+            let sky_base_model: Mat4 = if self.bounded_world {
                 let sky_min = self.data.sky_bounds_min;
                 let sky_max = self.data.sky_bounds_max;
                 let sky_extent_x = (sky_max[0] - sky_min[0]).abs();
@@ -582,49 +656,89 @@ impl App {
                 let sky_extent = sky_extent_x.max(sky_extent_y);
 
                 let sky_model = if sky_extent > 0.001 {
-                    let sky_center = vec3(
-                        (sky_min[0] + sky_max[0]) * 0.5,
-                        (sky_min[1] + sky_max[1]) * 0.5,
-                        (sky_min[2] + sky_max[2]) * 0.5,
-                    );
-                    let world_center = vec3(
-                        (self.world_bounds_min[0] + self.world_bounds_max[0]) * 0.5,
-                        (self.world_bounds_min[1] + self.world_bounds_max[1]) * 0.5,
-                        (self.world_bounds_min[2] + self.world_bounds_max[2]) * 0.5 + SKYBOX_Z_RAISE,
-                    );
                     let sky_scale = SKYBOX_HORIZONTAL_SIZE / sky_extent;
-                    Mat4::from_translation(world_center)
+                    // All layers are authored relative to the primary sky
+                    // world's origin, not to the combined vertex bounds.  A
+                    // combined-bounds centre shifts the individual planes by
+                    // different amounts, causing the black seams in bounded
+                    // skies.  Anchor every layer to this shared origin.
+                    let sky_origin = self.data.sky_translation;
+                    Mat4::from_translation((cam_eye + Vector3::new(0.0, 0.0, SKYBOX_Z_RAISE)).into())
                         * Mat4::from_scale(sky_scale)
-                        * Mat4::from_translation(-sky_center)
+                        * Mat4::from_translation(-vec3(sky_origin[0], sky_origin[1], sky_origin[2]))
                 } else {
                     let sky_t = self.data.sky_translation;
-                    Mat4::from_translation(vec3(sky_t[0], sky_t[1], sky_t[2] + SKYBOX_Z_RAISE))
+                    Mat4::from_translation((cam_eye + Vector3::new(0.0, 0.0, SKYBOX_Z_RAISE)).into())
+                        * Mat4::from_translation(-vec3(sky_t[0], sky_t[1], sky_t[2]))
                 };
-                let sky_model_bytes = std::slice::from_raw_parts(
-                    &sky_model as *const Mat4 as *const u8,
-                    size_of::<Mat4>(),
-                );
-                self.device.cmd_push_constants(
-                    command_buffer,
-                    self.data.pipeline_layout,
-                    vk::ShaderStageFlags::VERTEX,
-                    0,
-                    sky_model_bytes,
-                );
+                sky_model
             } else {
                 let sky_t = self.data.sky_translation;
                 let sky_scale = 1.0;
-                let eye_z = if self.player_mode == collision::PlayerMode::Walk && !self.is_free_cam {
-                    self.eye_offset_walk
-                } else {
-                    0.0
-                };
-                let cam_eye = self.camera.position + Vector3::new(0.0, 0.0, eye_z);
                 let sky_model = Mat4::from_translation((cam_eye + Vector3::new(0.0, 0.0, SKYBOX_Z_RAISE)).into())
                     * Mat4::from_scale(sky_scale)
                     * Mat4::from_translation(-vec3(sky_t[0], sky_t[1], sky_t[2]));
-                let sky_model_bytes = std::slice::from_raw_parts(
-                    &sky_model as *const Mat4 as *const u8,
+                sky_model
+            };
+
+            // A sky world can list its layers in any order in the DAT, so
+            // draw order is never taken from file order or from camera
+            // distance. A distance-based sort was tried here, but the AABBs
+            // it compared come from each sky mesh's raw, untransformed local
+            // coordinates (computed once at load time), while the sky model
+            // itself is recentered on the camera every frame — so "distance
+            // to centroid" wasn't actually comparable to real camera
+            // distance, and could flip layer order the wrong way depending
+            // on where the camera was. Instead every sky group is tagged
+            // at load time with an explicit sky_draw_layer: 0 = base dome
+            // (drawn first, furthest back), 1 = translucent cloud overlay
+            // (drawn over the dome), 2 = opaque foreground skybox models
+            // such as mountains/buildings (drawn last, occluding the
+            // clouds/dome wherever they overlap). Sorting on that layer
+            // guarantees the dome can never redraw after — and hide — the
+            // clouds, which is what happened when dome and foreground
+            // models shared a single "opaque, draw last" bucket.
+            let mut sky_group_indices: Vec<usize> =
+                (sky_start..self.data.draw_groups.len()).collect();
+            sky_group_indices.sort_by_key(|&group_idx| {
+                self.data.draw_groups[group_idx].sky_draw_layer
+            });
+
+            for group_idx in sky_group_indices {
+                let group = &self.data.draw_groups[group_idx];
+                if group.index_count == 0 {
+                    continue;
+                }
+
+                let sky_opacity = group.sky_opacity.unwrap_or(-1.0);
+                self.device.cmd_push_constants(
+                    command_buffer,
+                    self.data.pipeline_layout,
+                    vk::ShaderStageFlags::FRAGMENT,
+                    64,
+                    &sky_opacity.to_ne_bytes(),
+                );
+
+                // Apply the per-layer animation matrix as well as the shared
+                // bounded/camera-relative sky transform.  The animation was
+                // previously updated every frame but never submitted here.
+                let layer_model: Mat4 = if let Some(mat) = group.model_matrix {
+                    // Sky animation translations represent UV scrolling, not
+                    // mesh movement.  Keep rotations (e.g. the moon) but
+                    // strip translation so a bounded sky cannot develop gaps
+                    // between its BSP layers.
+                    Mat4::new(
+                        mat[0][0], mat[0][1], mat[0][2], mat[0][3],
+                        mat[1][0], mat[1][1], mat[1][2], mat[1][3],
+                        mat[2][0], mat[2][1], mat[2][2], mat[2][3],
+                        0.0, 0.0, 0.0, mat[3][3],
+                    )
+                } else {
+                    Mat4::from_scale(1.0)
+                };
+                let model = sky_base_model * layer_model;
+                let model_bytes = std::slice::from_raw_parts(
+                    &model as *const Mat4 as *const u8,
                     size_of::<Mat4>(),
                 );
                 self.device.cmd_push_constants(
@@ -632,12 +746,29 @@ impl App {
                     self.data.pipeline_layout,
                     vk::ShaderStageFlags::VERTEX,
                     0,
-                    sky_model_bytes,
+                    model_bytes,
                 );
-            }
 
-            for group_idx in sky_start..self.data.draw_groups.len() {
-                let group = &self.data.draw_groups[group_idx];
+                // The model animation stores the running cloud offsets in
+                // its translation.  Feed those to the fragment shader as UV
+                // offsets instead of translating the bounded sky geometry.
+                let (sky_u_offset, sky_v_offset) = group.model_matrix
+                    .map(|mat| (mat[3][0], mat[3][1]))
+                    .unwrap_or((0.0, 0.0));
+                self.device.cmd_push_constants(
+                    command_buffer,
+                    self.data.pipeline_layout,
+                    vk::ShaderStageFlags::FRAGMENT,
+                    68,
+                    &sky_u_offset.to_ne_bytes(),
+                );
+                self.device.cmd_push_constants(
+                    command_buffer,
+                    self.data.pipeline_layout,
+                    vk::ShaderStageFlags::FRAGMENT,
+                    72,
+                    &sky_v_offset.to_ne_bytes(),
+                );
                 let descriptor_set = if group.texture_index < self.data.level_textures.len()
                     && !self.data.level_textures[group.texture_index].descriptor_sets.is_empty()
                 {
@@ -1006,7 +1137,7 @@ impl App {
     // Tick all game objects, apply physics state-machines, and upload dynamic lights if needed.
     //
     //******************************************************************/
-    pub unsafe fn update_objects(&mut self, dt: f32) {
+    pub unsafe fn update_objects(&mut self, dt: f32, egui_renderer: &mut egui_renderer::EguiRenderer) {
         self.elapsed_time += dt;
         let player_pos = [
             self.camera.position.x,
@@ -1014,6 +1145,17 @@ impl App {
             self.camera.position.z,
         ];
         self.game_objects.update(dt, self.elapsed_time, player_pos, &mut self.data.draw_groups);
+
+        if let Some(transition) = self.game_objects.take_pending_level_transition() {
+            if let Some(next_world) = transition.next_world.as_deref() {
+                if let Some(target_world) = resolve_world_path(next_world) {
+                    println!("Transitioning to level: {}", target_world);
+                    self.pending_world_load = Some(target_world);
+                } else {
+                    warn!("Unable to resolve next world '{}' from exit trigger", next_world);
+                }
+            }
+        }
 
         // Update door collision vertices to follow sliding doors
         if let Some(mesh) = &mut self.mesh_provider {
@@ -1184,7 +1326,7 @@ impl App {
                     0.0,  0.0, 1.0 / 2.0, 1.0,
                 );
                 let free_proj =
-                    correction * cgmath::perspective(Deg(45.0), aspect, 0.01, 1000.0);
+                    correction * cgmath::perspective(Deg(45.0), aspect, 0.01, RENDER_FAR_PLANE);
                 let vp = free_proj * free_view;
 
                 let saved_eye = vec3(
@@ -1699,6 +1841,22 @@ impl App {
         info!("World loaded successfully: {}", world_path);
         Ok(())
     }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::resolve_world_path;
+
+    #[test]
+    fn resolves_realm_world_paths() {
+        let resolved = resolve_world_path("worlds\\realm1\\R1M1b");
+        assert!(resolved.is_some());
+        let resolved = resolved.unwrap();
+        assert!(resolved.to_ascii_lowercase().ends_with("r1m1b.dat"));
+    }
+}
+
+impl App {
 
     //******************************************************************/
     //
@@ -1735,7 +1893,7 @@ impl App {
                 self.data.swapchain_extent.width as f32
                     / self.data.swapchain_extent.height as f32,
                 0.01,
-                1000.0,
+                RENDER_FAR_PLANE,
             );
 
         let ubo = UniformBufferObject { view, proj };

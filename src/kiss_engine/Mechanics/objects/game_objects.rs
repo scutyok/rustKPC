@@ -32,7 +32,7 @@ use crate::OutsideDef::OutsideDefObject;
 use crate::CPickupItem::{self, PickupItemObject};
 use crate::CCreature::{self, CreatureObject};
 use crate::scripted_sequence::{BspDoor, BspDoorState, DoorOp, ScriptCommand, ScriptRunner};
-use crate::trigger::{TriggerActivation, TriggerDef};
+use crate::triggers::{TriggerActivation, TriggerDef};
 
 //******************************************************************/
 //
@@ -126,6 +126,12 @@ pub struct ScriptTrigger {
     pub activated: bool,
 }
 
+#[derive(Debug, Clone)]
+pub struct PendingLevelTransition {
+    pub next_world: Option<String>,
+    pub start_point: String,
+}
+
 impl ScriptTrigger {
     pub fn contains(&self, pos: [f32; 3]) -> bool {
         pos[0] >= self.min[0] && pos[0] <= self.max[0]
@@ -161,6 +167,7 @@ pub struct GameObjectManager {
     pub triggers: Vec<TriggerDef>,
     pub script_triggers: Vec<ScriptTrigger>,
     pub bsp_switches: Vec<BspSwitch>,
+    pub pending_level_transition: Option<PendingLevelTransition>,
     // Reusable temporaries to avoid per-frame heap allocations
     pub tmp_pending: Vec<([f32; 3], f32, f32, [f32; 3])>,
     pub tmp_fired_commands: Vec<ScriptCommand>,
@@ -183,6 +190,7 @@ impl GameObjectManager {
             triggers: Vec::new(),
             script_triggers: Vec::new(),
             bsp_switches: Vec::new(),
+            pending_level_transition: None,
             tmp_pending: Vec::new(),
             tmp_fired_commands: Vec::new(),
             tmp_targets_to_open: Vec::new(),
@@ -250,12 +258,18 @@ impl GameObjectManager {
                     mgr.objects.push(GameObject::Switch(sw));
                 }
                 "CTorch" => {
-                    let (fdg, fti) = torch_flames
+                    let (flame_draw_group, flame_texture_index) = torch_flames
                         .iter()
-                        .find(|&&(ai, _, _)| ai == i)
-                        .map(|&(_, fdg, fti)| (fdg, fti))
+                        .find(|&&(abc_index, _, _)| abc_index == i)
+                        .map(|&(_, draw_group, texture_index)| (draw_group, texture_index))
                         .unwrap_or((0, 0));
-                    mgr.objects.push(GameObject::Torch(CTorch::parse(pos, props, dg, fdg, fti)));
+                    mgr.objects.push(GameObject::Torch(CTorch::parse(
+                        pos,
+                        props,
+                        dg,
+                        flame_draw_group,
+                        flame_texture_index,
+                    )));
                 }
                 "CWindow" | "CWindowShattering" => {
                     mgr.objects.push(GameObject::Window(CWindow::parse(pos, props, dg)));
@@ -465,16 +479,21 @@ impl GameObjectManager {
 
         for obj in &mut self.objects {
             match obj {
-                GameObject::Barrel(b) => {
-                    if let Some(expl) = CBarrel::update(b, dt) {
-                        hide_draw_group(draw_groups, b.draw_group);
-                        self.tmp_pending.push((expl.position, expl.radius, expl.damage, expl.color));
+                GameObject::Barrel(barrel) => {
+                    if let Some(explosion) = CBarrel::update(barrel, dt) {
+                        hide_draw_group(draw_groups, barrel.draw_group);
+                        self.tmp_pending.push((
+                            explosion.position,
+                            explosion.radius,
+                            explosion.damage,
+                            explosion.color,
+                        ));
                     }
                 }
                 GameObject::Door(d) => CDoorSliding::update(d, dt, player_pos, draw_groups),
                 GameObject::Switch(sw) => CSwitchRotating::update(sw, dt, draw_groups),
-                GameObject::Fan(f) => CRotatingCeilingFan::update(f, dt, draw_groups),
-                GameObject::Torch(t) => CTorch::update(t, dt, player_pos, draw_groups),
+                GameObject::Fan(fan) => CRotatingCeilingFan::update(fan, dt, draw_groups),
+                GameObject::Torch(torch) => CTorch::update(torch, dt, player_pos, draw_groups),
                 GameObject::SkyModel(sky) => sky.update(dt, draw_groups),
                 GameObject::Pickup(p) => CPickupItem::update(p, dt, _time, draw_groups),
                 GameObject::Headless(h) => {
@@ -517,7 +536,7 @@ impl GameObjectManager {
                 position: pos,
                 color,
                 radius: radius * 2.5,
-                time_remaining: EXPLOSION_FLASH_DURATION,
+                time_remaining: 0.75,
             });
             self.apply_area_damage(pos, radius, damage, draw_groups);
         }
@@ -569,7 +588,7 @@ impl GameObjectManager {
         for obj in &self.objects {
             match obj {
                 GameObject::Water(w) if w.contains(player_pos) => { self.player_in_water = true; }
-                GameObject::Ladder(l) if l.contains(player_pos) => { self.player_on_ladder = true; }
+                GameObject::Ladder(ladder) if ladder.contains(player_pos) => { self.player_on_ladder = true; }
                 GameObject::Outside(o) if o.contains(player_pos) => { self.player_outside = true; }
                 _ => {}
             }
@@ -641,6 +660,10 @@ impl GameObjectManager {
         }
     }
 
+    pub fn take_pending_level_transition(&mut self) -> Option<PendingLevelTransition> {
+        self.pending_level_transition.take()
+    }
+
     fn dispatch_script_command(&mut self, command: ScriptCommand, draw_groups: &mut Vec<DrawGroup>) {
         match command {
             ScriptCommand::StartScript { script_name } => self.start_script(&script_name),
@@ -651,6 +674,12 @@ impl GameObjectManager {
             ScriptCommand::TriggerGeneric { target_name } => {
                 self.start_script(&target_name);
                 self.open_named_door(&target_name);
+            }
+            ScriptCommand::TransitionLevel { next_world, start_point } => {
+                self.pending_level_transition = Some(PendingLevelTransition {
+                    next_world: Some(next_world),
+                    start_point,
+                });
             }
             ScriptCommand::ItemSpawn { target_name } => {
                 log::info!("item_spawn '{}' is not implemented yet", target_name);
@@ -713,36 +742,30 @@ impl GameObjectManager {
         // Collect which indices are barrels that just exploded so we can chain.
         self.tmp_newly_exploding.clear();
 
-        for (idx, obj) in self.objects.iter_mut().enumerate() {
+        for (index, obj) in self.objects.iter_mut().enumerate() {
             match obj {
-                GameObject::Barrel(b) => {
-                    if b.state != BarrelState::Intact {
-                        continue;
-                    }
-                    if dist3(origin, b.position) < radius {
-                            if b.apply_damage(damage) {
-                                self.tmp_newly_exploding.push(idx);
-                            }
+                GameObject::Barrel(barrel) => {
+                    if barrel.state == BarrelState::Intact
+                        && dist3(origin, barrel.position) < radius
+                        && barrel.apply_damage(damage)
+                    {
+                        self.tmp_newly_exploding.push(index);
                     }
                 }
-                GameObject::Crate(c) => {
-                    if c.state != CrateState::Intact {
-                        continue;
-                    }
-                    if dist3(origin, c.position) < radius {
-                        if c.apply_damage(damage) {
-                            CCrate::on_destroy(c, draw_groups);
-                        }
+                GameObject::Crate(crate_object) => {
+                    if crate_object.state == CrateState::Intact
+                        && dist3(origin, crate_object.position) < radius
+                        && crate_object.apply_damage(damage)
+                    {
+                        CCrate::on_destroy(crate_object, draw_groups);
                     }
                 }
-                GameObject::Window(w) => {
-                    if w.state != WindowState::Intact {
-                        continue;
-                    }
-                    if dist3(origin, w.position) < radius {
-                        if w.apply_damage(damage) {
-                            CWindow::on_break(w, draw_groups);
-                        }
+                GameObject::Window(window) => {
+                    if window.state == WindowState::Intact
+                        && dist3(origin, window.position) < radius
+                        && window.apply_damage(damage)
+                    {
+                        CWindow::on_break(window, draw_groups);
                     }
                 }
                 GameObject::Headless(h) => {
@@ -759,26 +782,15 @@ impl GameObjectManager {
             }
         }
 
-        // Trigger chain explosions immediately (they'll be processed next frame).
-        for idx in self.tmp_newly_exploding.drain(..) {
-            if let GameObject::Barrel(b) = &mut self.objects[idx] {
-                // Already set to Exploding by apply_damage above; light will be
-                // emitted in the next update() call.
-                let expl_pos = b.position;
-                let expl_rad = b.explosion_radius;
-                let expl_dmg = b.explosion_damage;
-                let expl_col = b.element.flash_color();
-                b.state = BarrelState::Exploding { timer: 0.0 };
-                hide_draw_group(draw_groups, b.draw_group);
+        for index in self.tmp_newly_exploding.drain(..) {
+            if let GameObject::Barrel(barrel) = &mut self.objects[index] {
+                hide_draw_group(draw_groups, barrel.draw_group);
                 self.explosion_lights.push(ExplosionLight {
-                    position: expl_pos,
-                    color: expl_col,
-                    radius: expl_rad * 2.5,
+                    position: barrel.position,
+                    color: barrel.element.flash_color(),
+                    radius: barrel.explosion_radius * 2.5,
                     time_remaining: EXPLOSION_FLASH_DURATION,
                 });
-                // Recursing here would cause borrow issues; caller will call
-                // update() which drains pending explosions via area damage.
-                let _ = (expl_pos, expl_rad, expl_dmg); // used above
             }
         }
     }

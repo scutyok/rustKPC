@@ -63,5 +63,6 @@ pub fn parse(pos: [f32; 3], props: Option<&WorldObject>, draw_group: usize) -> W
 //******************************************************************/
 
 pub fn on_break(window: &WindowObject, draw_groups: &mut Vec<DrawGroup>) {
+    // Run animation, spawn particles, etc. (not implemented yet)
     hide_draw_group(draw_groups, window.draw_group);
 }
