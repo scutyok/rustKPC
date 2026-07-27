@@ -6,6 +6,8 @@
 
 It started as a [DLL injection project/D3D9 hook](http://https://github.com/scutyok/KPCmemoryHook "DLL injection project/D3D9 hook") but it has transpired into being a full KPC:TNC remake project. The original Lithtech 1.5 engine had it's physics FPS based, which led to speedruns of this game being very frustrating, locking to 24FPS being mandatory. This remake is made to address these issues as well to preserve the game in a modern, playable state.
 
+[![Watch the video](https://img.youtube.com/vi/Jf_tdTb3GlY/maxresdefault.jpg)](https://youtu.be/Jf_tdTb3GlY)
+
 <h2>Engine Capabilities</h2>
 
 - Reading .DAT world files
