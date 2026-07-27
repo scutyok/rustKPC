@@ -15,6 +15,7 @@ https://github.com/user-attachments/assets/413c1559-ead3-4899-ad97-ca549fca8e11
 	-	Reading and rendering the BSP tree
 	-	Reading objects
 	-	Reading and applying world proprieties
+	- 	Reading and applying triggers over objects, enemies, surfaces, etc.
 - Reading, rendering and assigning .ABC models to objects
 - Reading, rendering and assigning .DTX textures to surfaces and models
 - Dynamic Lighting
@@ -22,6 +23,7 @@ https://github.com/user-attachments/assets/413c1559-ead3-4899-ad97-ca549fca8e11
 - Simple Skyboxes (six-sided)
 - Complex Skyboxes (mirroring of models)
 - Occlusion culling
+- Frustum culling
 - Lithtech 1.0 Fog
 
 <h2>Roadmap</h2>
