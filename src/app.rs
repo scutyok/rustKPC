@@ -40,14 +40,23 @@ const SKYBOX_HORIZONTAL_SIZE: f32 = 5000.0;
 const SKYBOX_Z_RAISE: f32 = 1.0;
 // The bounded-world sky is deliberately scaled up to occupy a volume
 // SKYBOX_HORIZONTAL_SIZE units wide, centered on the camera — so a sky
-// vertex can end up roughly SKYBOX_HORIZONTAL_SIZE/2 units out. The old
-// far plane (1000.0) was smaller than that reach, so the GPU's mandatory
-// frustum clipping was slicing the scaled skybox off in a straight line
-// right at the far plane (independent of depth testing, which is off for
-// the sky anyway — this clip happens earlier, in clip space). Used for
-// the render projection, the culling frustum, and the debug FOV overlay
-// so all three stay consistent with each other.
-const RENDER_FAR_PLANE: f32 = 20_000.0;
+// vertex can end up roughly SKYBOX_HORIZONTAL_SIZE/2 (~2500) units out.
+// This must clear that reach with margin, or the GPU's mandatory frustum
+// clipping slices the scaled skybox off in a straight line at the far
+// plane. Used for the render projection, the culling frustum, and the
+// debug FOV overlay so all three stay consistent with each other.
+//
+// NOTE on near plane: raising it from 0.01 to 1.0 was tried here too, to
+// fix a depth-precision problem with the sky's own foreground layer (see
+// sky_foreground_pipeline) — but the world is scaled by 0.01 in
+// load_dat_model, so a "1.0" near plane clips away roughly the nearest
+// 2-3 meters of *everything*, including normal world geometry in
+// first-person view. Reverted to 0.01. The roof/wall depth-precision
+// issue may still occasionally resurface for the sky's foreground layer;
+// the correct fix for that without breaking world rendering is to give
+// the sky its own separate, tighter-fit near/far projection instead of
+// sharing this one — bigger change, not done here.
+const RENDER_FAR_PLANE: f32 = 6_000.0;
 
 //******************************************************************/
 //
@@ -704,10 +713,24 @@ impl App {
                 self.data.draw_groups[group_idx].sky_draw_layer
             });
 
+            let mut using_foreground_pipeline = false;
             for group_idx in sky_group_indices {
                 let group = &self.data.draw_groups[group_idx];
                 if group.index_count == 0 {
                     continue;
+                }
+
+                // sky_group_indices is sorted by sky_draw_layer, so once we
+                // reach layer 2 (opaque foreground: mountains/skybuildings),
+                // every remaining group is also layer 2 — switch to the
+                // pipeline with depth test/write enabled so these pieces
+                // correctly occlude each other instead of drawing in
+                // whatever order the DAT happened to list them, which is
+                // what let a piece meant to be hidden behind a wall paint
+                // over it ("inside out" buildings).
+                if group.sky_draw_layer == 2 && !using_foreground_pipeline {
+                    self.device.cmd_bind_pipeline(command_buffer, vk::PipelineBindPoint::GRAPHICS, self.data.sky_foreground_pipeline);
+                    using_foreground_pipeline = true;
                 }
 
                 let sky_opacity = group.sky_opacity.unwrap_or(-1.0);
@@ -2031,6 +2054,7 @@ impl App {
         self.data.framebuffers.iter().for_each(|f| self.device.destroy_framebuffer(*f, None));
         self.device.destroy_pipeline(self.data.pipeline, None);
         self.device.destroy_pipeline(self.data.sky_pipeline, None);
+        self.device.destroy_pipeline(self.data.sky_foreground_pipeline, None);
         self.device.destroy_pipeline_layout(self.data.pipeline_layout, None);
         self.device.destroy_render_pass(self.data.render_pass, None);
         self.data.swapchain_image_views.iter().for_each(|v| self.device.destroy_image_view(*v, None));

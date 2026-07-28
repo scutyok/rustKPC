@@ -65,18 +65,30 @@ void main() {
     // Sky mode: negative opacity = sky (no lighting), magnitude = alpha
     if (push.opacity < 0.0) {
         vec4 skyColor = vec4(texColor.rgb, texColor.a * abs(push.opacity));
-        // Only the opaque skybox receives fog.  Its geometry is scaled far
-        // beyond the playable map, so use a much longer range than world fog
-        // and calculate the fade from the player's actual distance.
-        if (abs(push.opacity) > 0.99 && lighting.fogParams.z > 0.5) {
-            float baseFar = max(lighting.fogParams.y, lighting.fogParams.w);
-            // Start beyond normal map fog, but well before the outer sky
-            // faces, so bounded skyboxes visibly receive the distance fade.
-            float skyFogNear = baseFar * 2.0;
-            float skyFogFar = baseFar * 25.0;
-            float skyDistance = length(fragWorldPos - lighting.cameraPos.xyz);
-            float skyFogAmount = smoothstep(skyFogNear, skyFogFar, skyDistance);
-            skyColor.rgb = mix(skyColor.rgb, lighting.fogColor.rgb, skyFogAmount);
+        if (abs(push.opacity) > 0.99) {
+            // Opaque skybox layers (the base dome and foreground models
+            // like mountains/buildings) must always be fully solid. Their
+            // ported textures don't reliably carry a clean 255 alpha on
+            // every pixel, and skyColor.a above inherits whatever's there —
+            // that partial alpha was blending with the cloud/dome behind
+            // it through the sky pipeline's alpha blending, making solid
+            // silhouettes look translucent/washed out. Force it opaque.
+            skyColor.a = 1.0;
+
+            // Only the opaque skybox receives fog.  Its geometry is scaled
+            // far beyond the playable map, so use a much longer range than
+            // world fog and calculate the fade from the player's actual
+            // distance.
+            if (lighting.fogParams.z > 0.5) {
+                float baseFar = max(lighting.fogParams.y, lighting.fogParams.w);
+                // Start beyond normal map fog, but well before the outer sky
+                // faces, so bounded skyboxes visibly receive the distance fade.
+                float skyFogNear = baseFar * 2.0;
+                float skyFogFar = baseFar * 25.0;
+                float skyDistance = length(fragWorldPos - lighting.cameraPos.xyz);
+                float skyFogAmount = smoothstep(skyFogNear, skyFogFar, skyDistance);
+                skyColor.rgb = mix(skyColor.rgb, lighting.fogColor.rgb, skyFogAmount);
+            }
         }
         outColor = skyColor;
         return;

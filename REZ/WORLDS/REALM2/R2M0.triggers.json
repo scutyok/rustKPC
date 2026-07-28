@@ -1,0 +1,4787 @@
+[
+  {
+    "source": "object",
+    "name": "Madam1",
+    "position": [
+      -0.71999997,
+      0.79999995,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      1.579523,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "solid": false,
+      "alpha_skin": false,
+      "initial_animation": "",
+      "show_in_mirrors": true,
+      "envmap": false,
+      "use_command1": "",
+      "box_corner1": [
+        -8.0,
+        151.99998474121094,
+        1104.0
+      ],
+      "box_corner2": [
+        -8.0,
+        151.99998474121094,
+        1104.0
+      ],
+      "use_command4": "",
+      "damage_script_obj": "",
+      "gouraud_shade": true,
+      "scale": 1.5,
+      "use_command3": "",
+      "Pos": [
+        -72.0,
+        344.0,
+        80.0
+      ],
+      "model_name": "models\\player\\raven\\ravenhead.abc",
+      "use_command2": "",
+      "GroupName": "Madam1",
+      "damaged_by_weapons": false,
+      "Rotation": [
+        0.0,
+        1.579522967338562,
+        0.0,
+        1.0
+      ],
+      "play_use_script_once": true,
+      "Name": "Madam1",
+      "skin_name": "skins\\player\\raven\\ravenhead.dtx",
+      "gravity": false
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModelDeco1",
+    "position": [
+      -0.71999997,
+      0.79999995,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      1.5812683,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "use_command1": "",
+      "show_in_mirrors": true,
+      "Name": "CModelDeco1",
+      "box_corner1": [
+        -8.0,
+        151.99998474121094,
+        1104.0
+      ],
+      "use_command4": "",
+      "play_use_script_once": true,
+      "gouraud_shade": true,
+      "scale": 1.5,
+      "Rotation": [
+        0.0,
+        1.581268310546875,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "solid": false,
+      "box_corner2": [
+        -8.0,
+        151.99998474121094,
+        1104.0
+      ],
+      "use_command3": "",
+      "model_name": "models\\player\\raven\\ravenchair.abc",
+      "envmap": false,
+      "use_command2": "",
+      "initial_animation": "",
+      "gravity": false,
+      "alpha_skin": false,
+      "Pos": [
+        -72.0,
+        344.0,
+        80.0
+      ],
+      "damaged_by_weapons": false,
+      "damage_script_obj": "",
+      "skin_name": "skins\\player\\raven\\ravenchair.dtx"
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModelDeco2",
+    "position": [
+      -0.71999997,
+      0.79999995,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      1.5812683,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "GroupName": "",
+      "play_use_script_once": true,
+      "Rotation": [
+        0.0,
+        1.581268310546875,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        -72.0,
+        344.0,
+        80.0
+      ],
+      "use_command4": "",
+      "scale": 1.5,
+      "gravity": false,
+      "model_name": "models\\player\\raven\\raventable.abc",
+      "show_in_mirrors": true,
+      "use_command1": "",
+      "alpha_skin": false,
+      "Name": "CModelDeco2",
+      "solid": false,
+      "initial_animation": "",
+      "use_command2": "",
+      "box_corner1": [
+        -8.0,
+        151.99998474121094,
+        1104.0
+      ],
+      "skin_name": "skins\\player\\raven\\raventable.dtx",
+      "use_command3": "",
+      "damaged_by_weapons": false,
+      "damage_script_obj": "",
+      "envmap": false,
+      "box_corner2": [
+        -8.0,
+        151.99998474121094,
+        1104.0
+      ],
+      "gouraud_shade": true
+    }
+  },
+  {
+    "source": "object",
+    "name": "CTrapSwinging0",
+    "position": [
+      0.07,
+      0.55,
+      5.7999997
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "GroupName": "",
+      "swing_bottom": [
+        7.0,
+        488.0,
+        55.0
+      ],
+      "swing_end": [
+        10.0,
+        488.0,
+        55.0
+      ],
+      "pivot_point": [
+        7.0,
+        580.0,
+        63.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        7.0,
+        580.0,
+        55.0
+      ],
+      "period": 3.0,
+      "Name": "CTrapSwinging0"
+    }
+  },
+  {
+    "source": "object",
+    "name": "OutsideDef0",
+    "position": [
+      -7.04,
+      -5.12,
+      3.8400002
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Name": "OutsideDef0",
+      "Pos": [
+        -704.0,
+        384.0000305175781,
+        -512.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "PlayerStart0",
+    "position": [
+      -4.56,
+      -2.24,
+      3.3999999
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "BoundingBox": [
+        20.0,
+        46.0,
+        20.0
+      ],
+      "Name": "PlayerStart0",
+      "TriggerTarget": "",
+      "TriggerMessage": "",
+      "Pos": [
+        -456.0,
+        340.0,
+        -224.0
+      ],
+      "GameType": 0
+    }
+  },
+  {
+    "source": "object",
+    "name": "DirLight0",
+    "position": [
+      0.07,
+      0.55,
+      5.3399997
+    ],
+    "rotation": [
+      1.5812683,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Time": 0.0,
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Name": "DirLight0",
+      "ClipLight": true,
+      "InnerColor": [
+        241.0,
+        206.0,
+        255.0
+      ],
+      "BrightScale": 0.5,
+      "Pos": [
+        7.0,
+        534.0,
+        55.0
+      ],
+      "LightRadius": 600.0,
+      "LightObjects": true,
+      "Rotation": [
+        1.581268310546875,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "FOV": 75.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "DirLight2",
+    "position": [
+      0.32,
+      7.52,
+      5.12
+    ],
+    "rotation": [
+      0.7853982,
+      3.3248522,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "LightObjects": true,
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Rotation": [
+        0.7853981852531433,
+        3.324852228164673,
+        0.0,
+        1.0
+      ],
+      "Name": "DirLight2",
+      "ClipLight": true,
+      "LightRadius": 1000.0,
+      "Time": 0.0,
+      "Pos": [
+        32.0,
+        512.0,
+        752.0
+      ],
+      "InnerColor": [
+        188.0,
+        223.0,
+        233.0
+      ],
+      "FOV": 60.0,
+      "BrightScale": 0.30000001192092896
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light0",
+    "position": [
+      0.0,
+      2.6,
+      4.48
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Pos": [
+        0.0,
+        448.0000305175781,
+        260.0
+      ],
+      "LightColor": [
+        237.0,
+        234.0,
+        194.0
+      ],
+      "LightRadius": 100.0,
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "ClipLight": true,
+      "BrightScale": 0.25,
+      "Time": 0.0,
+      "Name": "Light0",
+      "LightObjects": true
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light0",
+    "position": [
+      0.07,
+      0.55,
+      5.18
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "LightObjects": true,
+      "Name": "Light0",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "LightRadius": 70.0,
+      "Pos": [
+        7.0,
+        518.0,
+        55.0
+      ],
+      "ClipLight": true,
+      "LightColor": [
+        0.0,
+        255.0,
+        0.0
+      ],
+      "BrightScale": 1.0,
+      "Time": 0.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "clouds",
+    "position": [
+      0.64,
+      38.399998,
+      -18.88
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Pos": [
+        64.0,
+        -1888.0,
+        3840.0
+      ],
+      "Flags": 1065353216,
+      "SkyDims": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Name": "clouds",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Index": 1077936128,
+      "InnerPercentY": 0.10000000149011612,
+      "InnerPercentZ": 0.10000000149011612,
+      "InnerPercentX": 0.10000000149011612
+    }
+  },
+  {
+    "source": "object",
+    "name": "ground",
+    "position": [
+      0.16,
+      37.92,
+      -19.039999
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "SkyDims": [
+        256.0,
+        256.0,
+        256.0
+      ],
+      "Flags": 1065353216,
+      "Index": 0,
+      "InnerPercentY": 0.10000000149011612,
+      "InnerPercentZ": 0.20000000298023224,
+      "InnerPercentX": 0.20000000298023224,
+      "Name": "ground",
+      "Pos": [
+        16.0,
+        -1904.0,
+        3792.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "sky",
+    "position": [
+      0.0,
+      39.36,
+      -18.56
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "InnerPercentZ": 0.10000000149011612,
+      "Flags": 1065353216,
+      "SkyDims": [
+        1024.0,
+        1024.0,
+        1024.0
+      ],
+      "Index": 1065353216,
+      "InnerPercentX": 0.10000000149011612,
+      "InnerPercentY": 0.10000000149011612,
+      "Name": "sky",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        0.0,
+        -1856.0,
+        3936.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "moon",
+    "position": [
+      -3.28,
+      44.16,
+      -23.0
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Flags": 1065353216,
+      "Index": 1073741824,
+      "InnerPercentX": 0.10000000149011612,
+      "InnerPercentY": 0.10000000149011612,
+      "InnerPercentZ": 0.10000000149011612,
+      "SkyDims": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Name": "moon",
+      "Pos": [
+        -328.0,
+        -2300.0,
+        4416.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "moon",
+    "position": [
+      -4.48,
+      44.16,
+      -23.0
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        -448.0,
+        -2300.0,
+        4416.0
+      ],
+      "Name": "moon",
+      "Flags": 1065353216
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light5",
+    "position": [
+      0.0,
+      38.399998,
+      -20.64
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "LightObjects": true,
+      "ClipLight": true,
+      "Name": "Light5",
+      "Pos": [
+        0.0,
+        -2064.0,
+        3840.0
+      ],
+      "LightRadius": 2000.0,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "BrightScale": 1.0,
+      "Time": 0.0,
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "LightColor": [
+        0.0,
+        255.0,
+        255.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light5",
+    "position": [
+      -3.1599998,
+      38.28,
+      -22.88
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "LightObjects": true,
+      "LightColor": [
+        0.0,
+        255.0,
+        255.0
+      ],
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Time": 0.0,
+      "ClipLight": true,
+      "LightRadius": 2000.0,
+      "BrightScale": 1.0,
+      "Pos": [
+        -316.0,
+        -2288.0,
+        3828.0
+      ],
+      "Name": "Light5",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "sky",
+    "position": [
+      0.0,
+      37.12,
+      -23.519999
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Name": "sky",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Flags": 1065353216,
+      "Pos": [
+        0.0,
+        -2352.0,
+        3712.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "ground",
+    "position": [
+      -1.92,
+      38.399998,
+      -21.439999
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Name": "ground",
+      "Flags": 1065353216,
+      "Pos": [
+        -192.0,
+        -2144.0,
+        3840.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "clouds",
+    "position": [
+      1.92,
+      39.68,
+      -20.8
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "ShootThrough": false,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Name": "clouds",
+      "GroupName": "",
+      "Pos": [
+        192.0,
+        -2080.0,
+        3968.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "LightFlare0",
+    "position": [
+      -0.45999998,
+      0.79999995,
+      3.52
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "FadeInAndOut": true,
+      "TimeOff": 2.0,
+      "GroupName": "",
+      "TimeOn": 2.0,
+      "Pos": [
+        -46.0,
+        352.0,
+        80.0
+      ],
+      "Blinking": false,
+      "Name": "LightFlare0",
+      "Scale": 2.0,
+      "Color": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "SpriteName": "sprites/flares/BlueFlare.spr"
+    }
+  },
+  {
+    "source": "object",
+    "name": "mirror1",
+    "position": [
+      -4.855,
+      1.365,
+      4.2200003
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "XRotationSpeed": 1.5707963705062866,
+      "RotateX": false,
+      "Pos": [
+        -485.5,
+        422.0000305175781,
+        136.5
+      ],
+      "RotateY": false,
+      "GroupName": "",
+      "RotateZ": false,
+      "Name": "mirror1",
+      "ZRotationSpeed": 1.5709999799728394,
+      "YRotationSpeed": 1.5707963705062866
+    }
+  },
+  {
+    "source": "object",
+    "name": "CMode98",
+    "position": [
+      -4.9449997,
+      1.375,
+      4.9
+    ],
+    "rotation": [
+      0.0,
+      1.5812683,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Name": "CMode98",
+      "solid": false,
+      "gouraud_shade": false,
+      "gravity": false,
+      "envmap": false,
+      "show_in_mirrors": false,
+      "Rotation": [
+        0.0,
+        1.581268310546875,
+        0.0,
+        1.0
+      ],
+      "skin_name": "skins\\decos\\exit.dtx",
+      "model_name": "models\\decos\\exit_b.abc",
+      "scale": 1.0,
+      "alpha_skin": false,
+      "Pos": [
+        -494.5,
+        490.0,
+        137.5
+      ],
+      "GroupName": "",
+      "initial_animation": ""
+    }
+  },
+  {
+    "source": "object",
+    "name": "CMode98",
+    "position": [
+      -4.9449997,
+      1.355,
+      4.9
+    ],
+    "rotation": [
+      0.0,
+      1.553343,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        1.5533430576324463,
+        0.0,
+        1.0
+      ],
+      "scale": 1.0,
+      "initial_animation": "",
+      "Name": "CMode98",
+      "model_name": "models\\decos\\exit_c.abc",
+      "envmap": false,
+      "gouraud_shade": false,
+      "skin_name": "skins\\decos\\exit.dtx",
+      "GroupName": "",
+      "gravity": false,
+      "alpha_skin": false,
+      "Pos": [
+        -494.5,
+        490.0,
+        135.5
+      ],
+      "show_in_mirrors": false,
+      "solid": false
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModelDeco1",
+    "position": [
+      -4.9449997,
+      1.365,
+      4.9
+    ],
+    "rotation": [
+      0.0,
+      1.5812683,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "scale": 1.0,
+      "gravity": false,
+      "play_use_script_once": true,
+      "show_in_mirrors": false,
+      "GroupName": "",
+      "skin_name": "skins\\decos\\exit.dtx",
+      "Rotation": [
+        0.0,
+        1.581268310546875,
+        0.0,
+        1.0
+      ],
+      "use_command4": "",
+      "envmap": false,
+      "model_name": "models\\decos\\exit_a.abc",
+      "alpha_skin": true,
+      "initial_animation": "",
+      "use_command1": "0 trigger_generic Gubba",
+      "use_command3": "",
+      "damaged_by_weapons": false,
+      "damage_script_obj": "",
+      "box_corner2": [
+        -448.0,
+        415.9999694824219,
+        80.0
+      ],
+      "solid": false,
+      "gouraud_shade": false,
+      "Name": "CModelDeco1",
+      "box_corner1": [
+        -496.0,
+        560.0,
+        192.0
+      ],
+      "use_command2": "",
+      "Pos": [
+        -494.5,
+        490.0,
+        136.5
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light1",
+    "position": [
+      -4.64,
+      1.36,
+      4.96
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Pos": [
+        -464.0,
+        496.0,
+        136.0
+      ],
+      "LightRadius": 380.0,
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "BrightScale": 0.25,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "ClipLight": true,
+      "Name": "Light1",
+      "LightObjects": true,
+      "LightColor": [
+        255.0,
+        226.0,
+        138.0
+      ],
+      "Time": 0.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light1",
+    "position": [
+      -4.56,
+      1.36,
+      4.96
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Time": 0.0,
+      "ClipLight": false,
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Pos": [
+        -456.0,
+        496.0,
+        136.0
+      ],
+      "Name": "Light1",
+      "LightRadius": 250.0,
+      "BrightScale": 0.5,
+      "LightObjects": true,
+      "LightColor": [
+        255.0,
+        226.0,
+        138.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "WorldProperties0",
+    "position": [
+      -5.2799997,
+      2.72,
+      6.24
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "SkyFogFarZ": 1000.0,
+      "PanSkyOffsetX": 10.0,
+      "PanSkyScaleZ": 10.0,
+      "starting_cinematic": "Mapdata\\Realm2\\R2M0\\R2blackroom.scr",
+      "PanSkyTexture": "Textures\\SkyPan.dtx",
+      "FogFarZ": 15000.0,
+      "FogColor": [
+        116.0,
+        255.0,
+        108.0
+      ],
+      "FogNearZ": 1.0,
+      "MusicDirectory": "ravensong intensity 1",
+      "EnableFog": true,
+      "PanSkyScaleX": 10.0,
+      "Saturate": false,
+      "FogClipping": false,
+      "GroupName": "",
+      "FarZ": 5000.0,
+      "EnvironmentMap": "Textures\\Metal2.dtx",
+      "Name": "WorldProperties0",
+      "SoftSky": "",
+      "SkyFog": false,
+      "SkyFogNearZ": 100.0,
+      "Wind": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "SkyPanning": 0,
+      "LightScale": [
+        255.0,
+        255.0,
+        255.0
+      ],
+      "PanSky": false,
+      "PanSkyOffsetZ": 10.0,
+      "Pos": [
+        -528.0,
+        624.0,
+        272.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR00",
+    "position": [
+      -0.28,
+      3.54,
+      4.3199997
+    ],
+    "rotation": [
+      5.3407073,
+      5.8311453,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        5.340707302093506,
+        5.831145286560059,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        -28.0,
+        432.0,
+        354.0
+      ],
+      "travel_time": 3.0,
+      "Name": "MR00",
+      "GroupName": "",
+      "sequence_number": 1092616192,
+      "make_smooth": false,
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR00",
+    "position": [
+      0.17999999,
+      2.52,
+      4.4
+    ],
+    "rotation": [
+      5.853834,
+      5.8311453,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "GroupName": "",
+      "sequence_number": 1101004800,
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "make_smooth": true,
+      "travel_time": 3.0,
+      "Name": "MR00",
+      "Pos": [
+        18.0,
+        440.0,
+        252.0
+      ],
+      "Rotation": [
+        5.85383415222168,
+        5.831145286560059,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR00",
+    "position": [
+      2.12,
+      1.8399999,
+      5.4
+    ],
+    "rotation": [
+      0.6230826,
+      4.923574,
+      0.10471976,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "make_smooth": true,
+      "Rotation": [
+        0.6230825781822205,
+        4.923573970794678,
+        0.10471975803375244,
+        1.0
+      ],
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "Name": "MR00",
+      "GroupName": "",
+      "Pos": [
+        212.0,
+        540.0,
+        184.0
+      ],
+      "travel_time": 6.0,
+      "sequence_number": 1103626240
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR00",
+    "position": [
+      3.22,
+      -1.5999999,
+      5.72
+    ],
+    "rotation": [
+      0.52883476,
+      5.3127823,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "sequence_number": 1109393408,
+      "make_smooth": true,
+      "GroupName": "",
+      "Name": "MR00",
+      "Pos": [
+        322.0,
+        572.0,
+        -160.0
+      ],
+      "travel_time": 5.0,
+      "Rotation": [
+        0.5288347601890564,
+        5.312782287597656,
+        0.0,
+        1.0
+      ],
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR00",
+    "position": [
+      0.08,
+      -2.6299999,
+      5.8799996
+    ],
+    "rotation": [
+      0.7627089,
+      6.1575212,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.7627089023590088,
+        6.1575212478637695,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "Name": "MR00",
+      "sequence_number": 1112014848,
+      "travel_time": 8.0,
+      "make_smooth": true,
+      "Pos": [
+        8.0,
+        588.0,
+        -263.0
+      ],
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR00",
+    "position": [
+      3.26,
+      0.71999997,
+      5.56
+    ],
+    "rotation": [
+      0.52534413,
+      4.756022,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "GroupName": "",
+      "travel_time": 3.0,
+      "sequence_number": 1106247680,
+      "Name": "MR00",
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "make_smooth": true,
+      "Rotation": [
+        0.5253441333770752,
+        4.756021976470947,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        326.0,
+        556.0,
+        72.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR07",
+    "position": [
+      2.1599998,
+      -2.26,
+      3.1999998
+    ],
+    "rotation": [
+      6.2674775,
+      5.5274577,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "sequence_number": 1144258560,
+      "make_smooth": false,
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "Name": "MR07",
+      "Rotation": [
+        6.267477512359619,
+        5.5274577140808105,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        216.0,
+        320.0,
+        -226.0
+      ],
+      "travel_time": 4.0,
+      "GroupName": ""
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR07",
+    "position": [
+      1.76,
+      -1.78,
+      3.48
+    ],
+    "rotation": [
+      6.2674775,
+      5.5274577,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Name": "MR07",
+      "make_smooth": true,
+      "travel_time": 2.0,
+      "Pos": [
+        176.0,
+        348.0,
+        -178.0
+      ],
+      "Rotation": [
+        6.267477512359619,
+        5.5274577140808105,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "sequence_number": 1144012800,
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR04",
+    "position": [
+      -0.56,
+      0.78999996,
+      3.36
+    ],
+    "rotation": [
+      5.068436,
+      4.712389,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        5.068436145782471,
+        4.71238899230957,
+        0.0,
+        1.0
+      ],
+      "sequence_number": 1137508352,
+      "Pos": [
+        -56.0,
+        336.0,
+        79.0
+      ],
+      "travel_time": 0.0,
+      "GroupName": "",
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "Name": "MR04",
+      "make_smooth": false
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR04",
+    "position": [
+      -0.56,
+      0.78999996,
+      3.34
+    ],
+    "rotation": [
+      5.068436,
+      4.712389,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "travel_time": 4.0,
+      "sequence_number": 1137836032,
+      "GroupName": "",
+      "Name": "MR04",
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "Pos": [
+        -56.0,
+        334.0,
+        79.0
+      ],
+      "make_smooth": false,
+      "Rotation": [
+        5.068436145782471,
+        4.71238899230957,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR03",
+    "position": [
+      1.88,
+      1.04,
+      4.16
+    ],
+    "rotation": [
+      0.49043754,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "travel_time": 2.0,
+      "Pos": [
+        188.0,
+        416.0,
+        104.0
+      ],
+      "Rotation": [
+        0.4904375374317169,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "sequence_number": 1134231552,
+      "make_smooth": true,
+      "GroupName": "",
+      "Name": "MR03"
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR03",
+    "position": [
+      -3.24,
+      -0.24,
+      4.64
+    ],
+    "rotation": [
+      0.49043754,
+      0.7627089,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Name": "MR03",
+      "make_smooth": true,
+      "Rotation": [
+        0.4904375374317169,
+        0.7627089023590088,
+        0.0,
+        1.0
+      ],
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "Pos": [
+        -324.0,
+        464.0,
+        -24.0
+      ],
+      "sequence_number": 1134559232,
+      "travel_time": 5.0,
+      "GroupName": ""
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR03",
+    "position": [
+      -3.24,
+      1.92,
+      5.12
+    ],
+    "rotation": [
+      0.49043754,
+      1.553343,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "GroupName": "",
+      "travel_time": 5.0,
+      "make_smooth": true,
+      "Rotation": [
+        0.4904375374317169,
+        1.5533430576324463,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        -324.0,
+        512.0,
+        192.0
+      ],
+      "Name": "MR03",
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "sequence_number": 1134886912
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR06",
+    "position": [
+      1.9599999,
+      1.5,
+      3.9199998
+    ],
+    "rotation": [
+      0.5183628,
+      4.195771,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "travel_time": 8.0,
+      "make_smooth": false,
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "sequence_number": 1142620160,
+      "Name": "MR06",
+      "Rotation": [
+        0.518362820148468,
+        4.195771217346191,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "Pos": [
+        196.0,
+        392.0,
+        150.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR06",
+    "position": [
+      3.52,
+      2.1599998,
+      4.3199997
+    ],
+    "rotation": [
+      0.5183628,
+      4.195771,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "sequence_number": 1142456320,
+      "Name": "MR06",
+      "make_smooth": false,
+      "Pos": [
+        352.0,
+        432.0,
+        216.0
+      ],
+      "Rotation": [
+        0.518362820148468,
+        4.195771217346191,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "travel_time": 0.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR05",
+    "position": [
+      0.5,
+      1.4399999,
+      5.3199997
+    ],
+    "rotation": [
+      0.95294976,
+      4.2202063,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "Rotation": [
+        0.9529497623443604,
+        4.220206260681152,
+        0.0,
+        1.0
+      ],
+      "Name": "MR05",
+      "Pos": [
+        50.0,
+        532.0,
+        144.0
+      ],
+      "travel_time": 6.0,
+      "make_smooth": false,
+      "GroupName": "",
+      "sequence_number": 1141145600
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR05",
+    "position": [
+      2.04,
+      -2.48,
+      3.9599998
+    ],
+    "rotation": [
+      6.1854467,
+      5.536185,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Pos": [
+        204.0,
+        396.0,
+        -248.0
+      ],
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "Name": "MR05",
+      "make_smooth": false,
+      "GroupName": "",
+      "sequence_number": 1140785152,
+      "travel_time": 11.0,
+      "Rotation": [
+        6.185446739196777,
+        5.536184787750244,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR08",
+    "position": [
+      0.53999996,
+      -0.17999999,
+      3.28
+    ],
+    "rotation": [
+      6.1959186,
+      5.529203,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "GroupName": "",
+      "make_smooth": true,
+      "travel_time": 4.0,
+      "Rotation": [
+        6.195918560028076,
+        5.529202938079834,
+        0.0,
+        1.0
+      ],
+      "sequence_number": 1146552320,
+      "Pos": [
+        54.0,
+        328.0,
+        -18.0
+      ],
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "Name": "MR08"
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR08",
+    "position": [
+      0.88,
+      0.24,
+      3.1999998
+    ],
+    "rotation": [
+      6.108652,
+      5.230752,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "sequence_number": 1146388480,
+      "Rotation": [
+        6.108652114868164,
+        5.230751991271973,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "travel_time": 4.0,
+      "Pos": [
+        88.0,
+        320.0,
+        24.0
+      ],
+      "Name": "MR08",
+      "make_smooth": true
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR08",
+    "position": [
+      0.97999996,
+      0.79999995,
+      3.12
+    ],
+    "rotation": [
+      6.0213857,
+      4.712389,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Name": "MR08",
+      "GroupName": "",
+      "Pos": [
+        98.0,
+        312.0,
+        80.0
+      ],
+      "Rotation": [
+        6.021385669708252,
+        4.71238899230957,
+        0.0,
+        1.0
+      ],
+      "travel_time": 4.0,
+      "make_smooth": true,
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "sequence_number": 1146224640
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR08",
+    "position": [
+      0.84,
+      1.4,
+      3.04
+    ],
+    "rotation": [
+      5.934119,
+      4.2219515,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "sequence_number": 1146060800,
+      "travel_time": 4.0,
+      "make_smooth": true,
+      "Name": "MR08",
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "Rotation": [
+        5.93411922454834,
+        4.221951484680176,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "Pos": [
+        84.0,
+        304.0,
+        140.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR08",
+    "position": [
+      0.52,
+      1.8,
+      3.04
+    ],
+    "rotation": [
+      5.846853,
+      3.9043014,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Pos": [
+        52.0,
+        304.0,
+        180.0
+      ],
+      "travel_time": 4.0,
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "sequence_number": 1145896960,
+      "make_smooth": true,
+      "Rotation": [
+        5.846852779388428,
+        3.904301404953003,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "Name": "MR08"
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR08",
+    "position": [
+      0.06,
+      2.1,
+      2.96
+    ],
+    "rotation": [
+      5.77704,
+      3.5971236,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "travel_time": 4.0,
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "Pos": [
+        6.0,
+        296.0,
+        210.0
+      ],
+      "sequence_number": 1145733120,
+      "make_smooth": true,
+      "Name": "MR08",
+      "Rotation": [
+        5.777040004730225,
+        3.597123622894287,
+        0.0,
+        1.0
+      ],
+      "GroupName": ""
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR08",
+    "position": [
+      0.07,
+      -0.52,
+      3.36
+    ],
+    "rotation": [
+      6.265732,
+      5.857325,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        6.2657318115234375,
+        5.857325077056885,
+        0.0,
+        1.0
+      ],
+      "sequence_number": 1146716160,
+      "Name": "MR08",
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "make_smooth": true,
+      "GroupName": "",
+      "Pos": [
+        7.0,
+        336.0,
+        -52.0
+      ],
+      "travel_time": 4.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR08",
+    "position": [
+      -0.48,
+      -0.62,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      6.2639866,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "travel_time": 4.0,
+      "sequence_number": 1146880000,
+      "Name": "MR08",
+      "Pos": [
+        -48.0,
+        344.0,
+        -62.0
+      ],
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "GroupName": "",
+      "Rotation": [
+        0.0,
+        6.263986587524414,
+        0.0,
+        1.0
+      ],
+      "make_smooth": true
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR01",
+    "position": [
+      -5.44,
+      -1.36,
+      4.48
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "end_number": 1128726528,
+      "GroupName": "",
+      "start_number": 1120534528,
+      "Name": "MR01",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        -544.0,
+        448.0,
+        -136.0
+      ],
+      "point_base_name": "MR01"
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR03",
+    "position": [
+      -5.44,
+      -1.68,
+      4.48
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Name": "MR03",
+      "Pos": [
+        -544.0,
+        448.0,
+        -168.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "point_base_name": "MR03",
+      "start_number": 1133936640,
+      "end_number": 1137147904
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR02",
+    "position": [
+      -5.44,
+      -1.52,
+      4.48
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Name": "MR02",
+      "point_base_name": "MR02",
+      "Pos": [
+        -544.0,
+        448.0,
+        -152.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "start_number": 1128857600,
+      "end_number": 1133871104
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR04",
+    "position": [
+      -5.44,
+      -1.8399999,
+      4.48
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "end_number": 1140424704,
+      "start_number": 1137213440,
+      "GroupName": "",
+      "point_base_name": "MR04",
+      "Name": "MR04",
+      "Pos": [
+        -544.0,
+        448.0,
+        -184.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR05",
+    "position": [
+      -5.44,
+      -2.0,
+      4.48
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "GroupName": "",
+      "point_base_name": "MR05",
+      "start_number": 1140490240,
+      "end_number": 1142276096,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        -544.0,
+        448.0,
+        -200.0
+      ],
+      "Name": "MR05"
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR06",
+    "position": [
+      -5.44,
+      -2.1599998,
+      4.48
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "start_number": 1142308864,
+      "point_base_name": "MR06",
+      "end_number": 1143914496,
+      "Name": "MR06",
+      "Pos": [
+        -544.0,
+        448.0,
+        -216.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR07",
+    "position": [
+      -5.44,
+      -2.32,
+      4.48
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "GroupName": "",
+      "Pos": [
+        -544.0,
+        448.0,
+        -232.0
+      ],
+      "Name": "MR07",
+      "start_number": 1143947264,
+      "point_base_name": "MR07",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "end_number": 1145552896
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR08",
+    "position": [
+      -5.44,
+      -2.48,
+      4.48
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Name": "MR08",
+      "point_base_name": "MR08",
+      "start_number": 1145585664,
+      "end_number": 1147191296,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "Pos": [
+        -544.0,
+        448.0,
+        -248.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR00",
+    "position": [
+      -5.44,
+      -1.1999999,
+      4.48
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "end_number": 1112014848,
+      "GroupName": "",
+      "point_base_name": "MR00",
+      "Pos": [
+        -544.0,
+        448.0,
+        -120.0
+      ],
+      "start_number": 1065353216,
+      "Name": "MR00",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR09",
+    "position": [
+      -0.28,
+      0.79999995,
+      3.4199998
+    ],
+    "rotation": [
+      5.2324967,
+      4.7403145,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        5.232496738433838,
+        4.740314483642578,
+        0.0,
+        1.0
+      ],
+      "sequence_number": 1147371520,
+      "GroupName": "",
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "Name": "MR09",
+      "travel_time": 0.0,
+      "make_smooth": false,
+      "Pos": [
+        -28.0,
+        342.0,
+        80.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR01",
+    "position": [
+      0.08,
+      0.79999995,
+      3.0
+    ],
+    "rotation": [
+      5.1766467,
+      4.686209,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Pos": [
+        8.0,
+        300.0,
+        80.0
+      ],
+      "Rotation": [
+        5.176646709442139,
+        4.686209201812744,
+        0.0,
+        1.0
+      ],
+      "travel_time": 1.0,
+      "sequence_number": 1126170624,
+      "Name": "MR01",
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "GroupName": "",
+      "make_smooth": false
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR09",
+    "position": [
+      -5.44,
+      -2.6399999,
+      4.48
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "point_base_name": "MR09",
+      "start_number": 1147224064,
+      "end_number": 1148829696,
+      "Pos": [
+        -544.0,
+        448.0,
+        -264.0
+      ],
+      "Name": "MR09",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "GroupName": ""
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      0.0,
+      1.9599999,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "alpha_skin": false,
+      "initial_animation": "",
+      "solid": false,
+      "show_in_mirrors": true,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "model_name": "models\\decos\\candle.abc",
+      "gouraud_shade": false,
+      "GroupName": "",
+      "Pos": [
+        0.0,
+        376.0,
+        196.0
+      ],
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "scale": 1.0,
+      "Name": "CModel8",
+      "envmap": false,
+      "gravity": true
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      0.0,
+      1.9599999,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Pos": [
+        0.0,
+        344.0,
+        196.0
+      ],
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Time": 0.0,
+      "LightObjects": true,
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "LightRadius": 50.0,
+      "Name": "Light3",
+      "BrightScale": 1.0,
+      "ClipLight": true
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      0.39999998,
+      1.68,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "show_in_mirrors": true,
+      "solid": false,
+      "gouraud_shade": false,
+      "Pos": [
+        40.0,
+        376.0,
+        168.0
+      ],
+      "envmap": false,
+      "Name": "CModel8",
+      "GroupName": "",
+      "gravity": true,
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "alpha_skin": false,
+      "model_name": "models\\decos\\candle.abc",
+      "scale": 1.0,
+      "initial_animation": ""
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      0.39999998,
+      1.68,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "BrightScale": 1.0,
+      "Name": "Light3",
+      "Pos": [
+        40.0,
+        344.0,
+        168.0
+      ],
+      "LightObjects": true,
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "ClipLight": true,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "LightRadius": 50.0,
+      "Time": 0.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      0.68,
+      1.3199999,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "gravity": true,
+      "envmap": false,
+      "alpha_skin": false,
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "initial_animation": "",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "solid": false,
+      "gouraud_shade": false,
+      "Name": "CModel8",
+      "show_in_mirrors": true,
+      "GroupName": "",
+      "model_name": "models\\decos\\candle.abc",
+      "Pos": [
+        68.0,
+        376.0,
+        132.0
+      ],
+      "scale": 1.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      0.68,
+      1.3199999,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Time": 0.0,
+      "BrightScale": 1.0,
+      "LightObjects": true,
+      "ClipLight": true,
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "Name": "Light3",
+      "Pos": [
+        68.0,
+        344.0,
+        132.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "LightRadius": 50.0,
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      0.79999995,
+      0.79999995,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "solid": false,
+      "GroupName": "",
+      "show_in_mirrors": true,
+      "Name": "CModel8",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "alpha_skin": false,
+      "gouraud_shade": false,
+      "gravity": true,
+      "model_name": "models\\decos\\candle.abc",
+      "scale": 1.0,
+      "initial_animation": "",
+      "Pos": [
+        80.0,
+        376.0,
+        80.0
+      ],
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "envmap": false
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      0.79999995,
+      0.79999995,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "LightObjects": true,
+      "BrightScale": 1.0,
+      "LightRadius": 50.0,
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "Pos": [
+        80.0,
+        344.0,
+        80.0
+      ],
+      "ClipLight": true,
+      "Name": "Light3",
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Time": 0.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      0.71999997,
+      0.32,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Pos": [
+        72.0,
+        376.0,
+        32.0
+      ],
+      "scale": 1.0,
+      "initial_animation": "",
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "gouraud_shade": false,
+      "show_in_mirrors": true,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Name": "CModel8",
+      "GroupName": "",
+      "solid": false,
+      "envmap": false,
+      "gravity": true,
+      "model_name": "models\\decos\\candle.abc",
+      "alpha_skin": false
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      0.71999997,
+      0.32,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "LightObjects": true,
+      "ClipLight": true,
+      "LightRadius": 50.0,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "BrightScale": 1.0,
+      "Pos": [
+        72.0,
+        344.0,
+        32.0
+      ],
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "Time": 0.0,
+      "Name": "Light3"
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      0.44,
+      -0.08,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Pos": [
+        44.0,
+        376.0,
+        -8.0
+      ],
+      "initial_animation": "",
+      "alpha_skin": false,
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "GroupName": "",
+      "Name": "CModel8",
+      "scale": 1.0,
+      "gravity": true,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "model_name": "models\\decos\\candle.abc",
+      "envmap": false,
+      "show_in_mirrors": true,
+      "solid": false,
+      "gouraud_shade": false
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      0.44,
+      -0.08,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "BrightScale": 1.0,
+      "Name": "Light3",
+      "LightObjects": true,
+      "LightRadius": 50.0,
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        44.0,
+        344.0,
+        -8.0
+      ],
+      "ClipLight": true,
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Time": 0.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      0.0,
+      -0.35999998,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "scale": 1.0,
+      "alpha_skin": false,
+      "gouraud_shade": false,
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "solid": false,
+      "model_name": "models\\decos\\candle.abc",
+      "Name": "CModel8",
+      "GroupName": "",
+      "gravity": true,
+      "envmap": false,
+      "show_in_mirrors": true,
+      "initial_animation": "",
+      "Pos": [
+        0.0,
+        376.0,
+        -36.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      0.0,
+      -0.35999998,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "LightObjects": true,
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "BrightScale": 1.0,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Time": 0.0,
+      "Pos": [
+        0.0,
+        344.0,
+        -36.0
+      ],
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ClipLight": true,
+      "Name": "Light3",
+      "LightRadius": 50.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      -0.48,
+      -0.48,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "gouraud_shade": false,
+      "solid": false,
+      "GroupName": "",
+      "Name": "CModel8",
+      "gravity": true,
+      "alpha_skin": false,
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "initial_animation": "",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        -48.0,
+        376.0,
+        -48.0
+      ],
+      "show_in_mirrors": true,
+      "envmap": false,
+      "scale": 1.0,
+      "model_name": "models\\decos\\candle.abc"
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      -0.48,
+      -0.48,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Name": "Light3",
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "LightRadius": 50.0,
+      "Time": 0.0,
+      "Pos": [
+        -48.0,
+        344.0,
+        -48.0
+      ],
+      "ClipLight": true,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "LightObjects": true,
+      "BrightScale": 1.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      -0.96,
+      -0.35999998,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "gravity": true,
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "gouraud_shade": false,
+      "Name": "CModel8",
+      "Pos": [
+        -96.0,
+        376.0,
+        -36.0
+      ],
+      "envmap": false,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "alpha_skin": false,
+      "scale": 1.0,
+      "GroupName": "",
+      "model_name": "models\\decos\\candle.abc",
+      "show_in_mirrors": true,
+      "initial_animation": "",
+      "solid": false
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      -0.96,
+      -0.35999998,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "LightObjects": true,
+      "BrightScale": 1.0,
+      "Name": "Light3",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "ClipLight": true,
+      "LightRadius": 50.0,
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "Time": 0.0,
+      "Pos": [
+        -96.0,
+        344.0,
+        -36.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      -1.36,
+      -0.12,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "alpha_skin": false,
+      "show_in_mirrors": true,
+      "Pos": [
+        -136.0,
+        376.0,
+        -12.0
+      ],
+      "initial_animation": "",
+      "GroupName": "",
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "model_name": "models\\decos\\candle.abc",
+      "Name": "CModel8",
+      "scale": 1.0,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "gravity": true,
+      "envmap": false,
+      "solid": false,
+      "gouraud_shade": false
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      -1.36,
+      -0.12,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        -136.0,
+        344.0,
+        -12.0
+      ],
+      "LightObjects": true,
+      "Name": "Light3",
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "BrightScale": 1.0,
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Time": 0.0,
+      "ClipLight": true,
+      "LightRadius": 50.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      -1.68,
+      0.32,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "model_name": "models\\decos\\candle.abc",
+      "gravity": true,
+      "gouraud_shade": false,
+      "alpha_skin": false,
+      "initial_animation": "",
+      "show_in_mirrors": true,
+      "Name": "CModel8",
+      "envmap": false,
+      "solid": false,
+      "scale": 1.0,
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "Pos": [
+        -168.0,
+        376.0,
+        32.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      -1.68,
+      0.32,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "LightObjects": true,
+      "Time": 0.0,
+      "Name": "Light3",
+      "Pos": [
+        -168.0,
+        344.0,
+        32.0
+      ],
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "ClipLight": true,
+      "LightRadius": 50.0,
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "BrightScale": 1.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      -1.76,
+      0.79999995,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Name": "CModel8",
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "gouraud_shade": false,
+      "solid": false,
+      "envmap": false,
+      "scale": 1.0,
+      "Pos": [
+        -176.0,
+        376.0,
+        80.0
+      ],
+      "gravity": true,
+      "alpha_skin": false,
+      "GroupName": "",
+      "initial_animation": "",
+      "show_in_mirrors": true,
+      "model_name": "models\\decos\\candle.abc",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      -1.76,
+      0.79999995,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Name": "Light3",
+      "Pos": [
+        -176.0,
+        344.0,
+        80.0
+      ],
+      "ClipLight": true,
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "BrightScale": 1.0,
+      "LightObjects": true,
+      "Time": 0.0,
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "LightRadius": 50.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      -1.64,
+      1.3199999,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "alpha_skin": false,
+      "initial_animation": "",
+      "scale": 1.0,
+      "solid": false,
+      "envmap": false,
+      "gouraud_shade": false,
+      "gravity": true,
+      "show_in_mirrors": true,
+      "Name": "CModel8",
+      "Pos": [
+        -164.0,
+        376.0,
+        132.0
+      ],
+      "model_name": "models\\decos\\candle.abc"
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      -1.64,
+      1.3199999,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "LightObjects": true,
+      "BrightScale": 1.0,
+      "ClipLight": true,
+      "Name": "Light3",
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "Time": 0.0,
+      "Pos": [
+        -164.0,
+        344.0,
+        132.0
+      ],
+      "LightRadius": 50.0
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      -1.36,
+      1.7199999,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "gravity": true,
+      "Name": "CModel8",
+      "initial_animation": "",
+      "gouraud_shade": false,
+      "model_name": "models\\decos\\candle.abc",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "envmap": false,
+      "alpha_skin": false,
+      "show_in_mirrors": true,
+      "GroupName": "",
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "scale": 1.0,
+      "solid": false,
+      "Pos": [
+        -136.0,
+        376.0,
+        172.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      -1.36,
+      1.7199999,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "LightObjects": true,
+      "LightRadius": 50.0,
+      "BrightScale": 1.0,
+      "Name": "Light3",
+      "Pos": [
+        -136.0,
+        344.0,
+        172.0
+      ],
+      "Time": 0.0,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ClipLight": true
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      -0.96,
+      2.0,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "alpha_skin": false,
+      "solid": false,
+      "show_in_mirrors": true,
+      "Name": "CModel8",
+      "gravity": true,
+      "envmap": false,
+      "scale": 1.0,
+      "gouraud_shade": false,
+      "model_name": "models\\decos\\candle.abc",
+      "GroupName": "",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "initial_animation": "",
+      "Pos": [
+        -96.0,
+        376.0,
+        200.0
+      ],
+      "skin_name": "skins\\decos\\candlegreen.dtx"
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      -0.96,
+      2.0,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Pos": [
+        -96.0,
+        344.0,
+        200.0
+      ],
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Time": 0.0,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "LightRadius": 50.0,
+      "BrightScale": 1.0,
+      "LightObjects": true,
+      "ClipLight": true,
+      "Name": "Light3",
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "CModel8",
+    "position": [
+      -0.48,
+      2.08,
+      3.76
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "initial_animation": "",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "skin_name": "skins\\decos\\candlegreen.dtx",
+      "scale": 1.0,
+      "show_in_mirrors": true,
+      "solid": false,
+      "gouraud_shade": false,
+      "Name": "CModel8",
+      "model_name": "models\\decos\\candle.abc",
+      "gravity": true,
+      "envmap": false,
+      "alpha_skin": false,
+      "Pos": [
+        -48.0,
+        376.0,
+        208.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light3",
+    "position": [
+      -0.48,
+      2.08,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Time": 0.0,
+      "LightObjects": true,
+      "LightRadius": 90.0,
+      "LightColor": [
+        241.0,
+        221.0,
+        255.0
+      ],
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "BrightScale": 0.699999988079071,
+      "Name": "Light3",
+      "Pos": [
+        -48.0,
+        344.0,
+        208.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "ClipLight": true
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light1",
+    "position": [
+      0.0,
+      6.8799996,
+      5.04
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "LightRadius": 600.0,
+      "BrightScale": 0.5,
+      "Time": 0.0,
+      "LightObjects": true,
+      "ClipLight": true,
+      "Pos": [
+        0.0,
+        504.0,
+        688.0
+      ],
+      "LightColor": [
+        255.0,
+        255.0,
+        255.0
+      ],
+      "Name": "Light1",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "CExitTrigger0",
+    "position": [
+      -4.96,
+      3.1999998,
+      2.1599998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "NextWorld": "worlds\\realm2\\R2M1a",
+      "Pos": [
+        -496.0,
+        216.0,
+        320.0
+      ],
+      "GroupName": "CExitTrigger0",
+      "Name": "CExitTrigger0",
+      "StartPointName": "PlayerStart0",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "Ball01",
+    "position": [
+      -0.45999998,
+      0.79999995,
+      3.52
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "scale": 1.0,
+      "envmap": true,
+      "damage_script_obj": "",
+      "gravity": false,
+      "alpha_skin": true,
+      "Pos": [
+        -46.0,
+        352.0,
+        80.0
+      ],
+      "model_name": "models\\player\\raven\\ravenball.abc",
+      "skin_name": "skins\\player\\raven\\raventable.dtx",
+      "gouraud_shade": true,
+      "use_command4": "",
+      "play_use_script_once": true,
+      "Name": "Ball01",
+      "show_in_mirrors": true,
+      "initial_animation": "",
+      "box_corner2": [
+        -14.0,
+        -6.0,
+        0.0
+      ],
+      "solid": false,
+      "use_command1": "",
+      "GroupName": "",
+      "use_command2": "",
+      "box_corner1": [
+        -14.0,
+        -6.0,
+        0.0
+      ],
+      "use_command3": "",
+      "damaged_by_weapons": false,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "Ball02",
+    "position": [
+      -0.45999998,
+      0.79999995,
+      3.52
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Name": "Ball02",
+      "damage_script_obj": "",
+      "scale": 1.0,
+      "envmap": false,
+      "gouraud_shade": false,
+      "use_command3": "",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "initial_animation": "",
+      "alpha_skin": false,
+      "use_command2": "",
+      "solid": false,
+      "show_in_mirrors": true,
+      "box_corner2": [
+        -14.0,
+        -6.0,
+        0.0
+      ],
+      "damaged_by_weapons": false,
+      "Pos": [
+        -46.0,
+        352.0,
+        80.0
+      ],
+      "GroupName": "",
+      "gravity": false,
+      "use_command1": "",
+      "use_command4": "",
+      "play_use_script_once": true,
+      "box_corner1": [
+        -14.0,
+        -6.0,
+        0.0
+      ],
+      "skin_name": "skins\\player\\raven\\raventable.dtx",
+      "model_name": "models\\player\\raven\\ravenball.abc"
+    }
+  },
+  {
+    "source": "object",
+    "name": "CDynamicLight0",
+    "position": [
+      -5.06,
+      1.36,
+      3.6
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Radius": 128.0,
+      "ModifyColor": false,
+      "FastDraw": false,
+      "LightWorldOnly": false,
+      "Name": "CDynamicLight0",
+      "GroupName": "",
+      "UpdateFast": false,
+      "UserStyle": "abcdefedcb",
+      "CastShadows": true,
+      "Pos": [
+        -506.0,
+        360.0,
+        136.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ModifyRadius": true,
+      "StyleNumber": 1091567616
+    }
+  },
+  {
+    "source": "object",
+    "name": "CDynamicLight0",
+    "position": [
+      -0.45999998,
+      0.76,
+      2.9199998
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "StyleNumber": 1091567616,
+      "UserStyle": "aabbccbb",
+      "ModifyColor": false,
+      "LightWorldOnly": false,
+      "CastShadows": true,
+      "Radius": 72.0,
+      "FastDraw": false,
+      "ModifyRadius": true,
+      "Pos": [
+        -46.0,
+        292.0,
+        76.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "GroupName": "",
+      "Color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Name": "CDynamicLight0",
+      "UpdateFast": false
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR05",
+    "position": [
+      1.4,
+      -0.16,
+      4.6
+    ],
+    "rotation": [
+      0.49043754,
+      5.204572,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Pos": [
+        140.0,
+        460.0,
+        -16.0
+      ],
+      "GroupName": "",
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "Rotation": [
+        0.4904375374317169,
+        5.2045722007751465,
+        0.0,
+        1.0
+      ],
+      "travel_time": 7.0,
+      "Name": "MR05",
+      "sequence_number": 1140981760,
+      "make_smooth": false
+    }
+  },
+  {
+    "source": "object",
+    "name": "Fatima",
+    "position": [
+      3.04,
+      0.79999995,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      4.714134,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "damaged_by_weapons": false,
+      "gravity": false,
+      "show_in_mirrors": true,
+      "use_command1": "",
+      "damage_script_obj": "",
+      "GroupName": "Fatima",
+      "gouraud_shade": true,
+      "solid": false,
+      "model_name": "models\\creatures\\Fatlady.abc",
+      "use_command3": "",
+      "Name": "Fatima",
+      "alpha_skin": false,
+      "Pos": [
+        304.0,
+        344.0,
+        80.0
+      ],
+      "use_command4": "",
+      "Rotation": [
+        0.0,
+        4.714134216308594,
+        0.0,
+        1.0
+      ],
+      "skin_name": "skins\\creatures\\Fatlady.dtx",
+      "box_corner2": [
+        368.0,
+        151.99998474121094,
+        1104.0
+      ],
+      "use_command2": "",
+      "scale": 1.0,
+      "envmap": false,
+      "play_use_script_once": true,
+      "initial_animation": "fall",
+      "box_corner1": [
+        368.0,
+        151.99998474121094,
+        1104.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "Madam2",
+    "position": [
+      -0.71999997,
+      0.79999995,
+      3.4399998
+    ],
+    "rotation": [
+      0.0,
+      1.579523,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "gravity": false,
+      "damage_script_obj": "",
+      "use_command1": "",
+      "use_command4": "",
+      "gouraud_shade": true,
+      "Name": "Madam2",
+      "model_name": "models\\player\\raven\\ravenbody.abc",
+      "play_use_script_once": true,
+      "skin_name": "skins\\player\\raven\\ravenbody.dtx",
+      "envmap": false,
+      "damaged_by_weapons": false,
+      "scale": 1.5,
+      "solid": false,
+      "Pos": [
+        -72.0,
+        344.0,
+        80.0
+      ],
+      "use_command2": "",
+      "show_in_mirrors": true,
+      "initial_animation": "",
+      "GroupName": "Madam2",
+      "box_corner1": [
+        -8.0,
+        151.99998474121094,
+        1104.0
+      ],
+      "use_command3": "",
+      "alpha_skin": false,
+      "Rotation": [
+        0.0,
+        1.579522967338562,
+        0.0,
+        1.0
+      ],
+      "box_corner2": [
+        -8.0,
+        151.99998474121094,
+        1104.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR05",
+    "position": [
+      -4.22,
+      1.76,
+      3.9599998
+    ],
+    "rotation": [
+      5.368633,
+      4.2202063,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "travel_time": 6.0,
+      "Name": "MR05",
+      "Pos": [
+        -422.0,
+        396.0,
+        176.0
+      ],
+      "Rotation": [
+        5.368632793426514,
+        4.220206260681152,
+        0.0,
+        1.0
+      ],
+      "sequence_number": 1141309440,
+      "GroupName": "",
+      "make_smooth": false,
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR05",
+    "position": [
+      -2.54,
+      1.76,
+      3.56
+    ],
+    "rotation": [
+      5.77704,
+      4.4645524,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "Rotation": [
+        5.777040004730225,
+        4.464552402496338,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        -254.0,
+        356.0,
+        176.0
+      ],
+      "GroupName": "",
+      "Name": "MR05",
+      "travel_time": 8.0,
+      "make_smooth": false,
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ],
+      "sequence_number": 1141227520
+    }
+  },
+  {
+    "source": "object",
+    "name": "MidTexture0",
+    "position": [
+      0.79999995,
+      -2.08,
+      4.4799976
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "GroupName": "",
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "ShootThrough": false,
+      "Name": "MidTexture0",
+      "Pos": [
+        80.0,
+        447.9997863769531,
+        -208.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "MR09",
+    "position": [
+      -0.26999998,
+      0.79999995,
+      3.4099998
+    ],
+    "rotation": [
+      5.5676003,
+      4.7420597,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "make_smooth": true,
+      "GroupName": "",
+      "Rotation": [
+        5.567600250244141,
+        4.742059707641602,
+        0.0,
+        1.0
+      ],
+      "Name": "MR09",
+      "Pos": [
+        -27.0,
+        341.0,
+        80.0
+      ],
+      "sequence_number": 1147535360,
+      "travel_time": 12.0,
+      "Color": [
+        255.0,
+        255.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "source": "object",
+    "name": "Light0",
+    "position": [
+      0.07,
+      0.55,
+      5.19
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "ClipLight": false,
+      "Time": 0.0,
+      "OuterColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "LightRadius": 70.0,
+      "LightColor": [
+        0.0,
+        255.0,
+        0.0
+      ],
+      "BrightScale": 0.25,
+      "Pos": [
+        7.0,
+        519.0,
+        55.0
+      ],
+      "LightObjects": true,
+      "Name": "Light0"
+    }
+  },
+  {
+    "source": "object",
+    "name": "MidTexture1",
+    "position": [
+      1.04,
+      -1.76,
+      4.4799976
+    ],
+    "rotation": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "aabb_min": null,
+    "aabb_max": null,
+    "properties": {
+      "GroupName": "",
+      "ShootThrough": false,
+      "Rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "Pos": [
+        104.0,
+        447.9997863769531,
+        -176.0
+      ],
+      "Name": "MidTexture1"
+    }
+  },
+  {
+    "source": "world_model",
+    "name": "CExitTrigger0",
+    "position": null,
+    "rotation": null,
+    "aabb_min": [
+      -4.96,
+      3.1999998,
+      1.92
+    ],
+    "aabb_max": [
+      -3.36,
+      3.36,
+      2.3999999
+    ],
+    "properties": {}
+  }
+]
