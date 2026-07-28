@@ -6,6 +6,8 @@
 
 It started as a [DLL injection project/D3D9 hook](http://https://github.com/scutyok/KPCmemoryHook "DLL injection project/D3D9 hook") but it has transpired into being a full KPC:TNC remake project. The original Lithtech 1.5 engine had it's physics FPS based, which led to speedruns of this game being very frustrating, locking to 24FPS being mandatory. This remake is made to address these issues as well to preserve the game in a modern, playable state.
 
+https://github.com/user-attachments/assets/413c1559-ead3-4899-ad97-ca549fca8e11
+
 <h2>Engine Capabilities</h2>
 
 - Reading .DAT world files
@@ -13,6 +15,7 @@ It started as a [DLL injection project/D3D9 hook](http://https://github.com/scut
 	-	Reading and rendering the BSP tree
 	-	Reading objects
 	-	Reading and applying world proprieties
+	- 	Reading and applying triggers over objects, enemies, surfaces, etc.
 - Reading, rendering and assigning .ABC models to objects
 - Reading, rendering and assigning .DTX textures to surfaces and models
 - Dynamic Lighting
@@ -20,6 +23,7 @@ It started as a [DLL injection project/D3D9 hook](http://https://github.com/scut
 - Simple Skyboxes (six-sided)
 - Complex Skyboxes (mirroring of models)
 - Occlusion culling
+- Frustum culling
 - Lithtech 1.0 Fog
 
 <h2>Roadmap</h2>
