@@ -319,6 +319,36 @@ pub unsafe fn create_pipeline(device: &Device, data: &mut AppData) -> Result<()>
         .create_graphics_pipelines(vk::PipelineCache::null(), &[sky_info], None)?
         .0[0];
 
+    // Opaque foreground sky layer (mountains/skybuilding pieces, sky_draw_layer == 2).
+    // Same rasterization/blend as the rest of the sky pass (no front-face
+    // culling, since winding isn't consistent across ported sky geometry),
+    // but with depth test/write enabled so overlapping foreground pieces
+    // occlude each other correctly instead of drawing in whatever order
+    // the DAT happened to list them ("inside out" buildings).
+    let sky_foreground_depth_stencil_state = vk::PipelineDepthStencilStateCreateInfo::builder()
+        .depth_test_enable(true)
+        .depth_write_enable(true)
+        .depth_compare_op(vk::CompareOp::LESS)
+        .depth_bounds_test_enable(false)
+        .stencil_test_enable(false);
+
+    let sky_foreground_info = vk::GraphicsPipelineCreateInfo::builder()
+        .stages(stages)
+        .vertex_input_state(&vertex_input_state)
+        .input_assembly_state(&input_assembly_state)
+        .viewport_state(&viewport_state)
+        .rasterization_state(&sky_rasterization_state)
+        .multisample_state(&multisample_state)
+        .depth_stencil_state(&sky_foreground_depth_stencil_state)
+        .color_blend_state(&sky_color_blend_state)
+        .layout(data.pipeline_layout)
+        .render_pass(data.render_pass)
+        .subpass(0);
+
+    data.sky_foreground_pipeline = device
+        .create_graphics_pipelines(vk::PipelineCache::null(), &[sky_foreground_info], None)?
+        .0[0];
+
     device.destroy_shader_module(vert_shader_module, None);
     device.destroy_shader_module(frag_shader_module, None);
 

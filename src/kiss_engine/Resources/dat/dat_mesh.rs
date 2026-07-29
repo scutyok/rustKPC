@@ -1,4 +1,3 @@
-
 //******************************************************************/
 //
 // mesh conversion for KISS Psycho Circus DAT files
@@ -9,6 +8,7 @@
 //******************************************************************/
 
 use crate::dat::{DatFile, Vector2, Vector3, WorldBsp, WorldPoly, WorldSurface};
+use crate::lightmap::{self, DecodedLightmap};
 use std::collections::HashMap;
 use std::hash::{Hash, Hasher};
 
@@ -226,6 +226,13 @@ impl<'a> MeshExtractor<'a> {
             ..Default::default()
         };
 
+        // Decode the real baked lightmap data once per world model. Vertex
+        // color previously came from `disk_vert.dummy`, which is not
+        // reliable per-vertex light data (empirically ~75% pure white
+        // regardless of actual scene lighting) -- this replaces it with
+        // real per-texel baked lighting sampled per vertex.
+        let lightmaps = lightmap::decode_world_lightmaps(bsp);
+
         // Group polygons by texture
         let mut texture_groups: HashMap<u16, Vec<usize>> = HashMap::new();
 
@@ -287,11 +294,13 @@ impl<'a> MeshExtractor<'a> {
             for poly_idx in poly_indices {
                 let polygon = &bsp.polygons[poly_idx];
                 let surface = &bsp.surfaces[polygon.surface_index as usize];
+                let poly_lightmap = lightmaps.get(poly_idx).and_then(|l| l.as_ref());
 
                 self.triangulate_polygon(
                     bsp,
                     polygon,
                     surface,
+                    poly_lightmap,
                     &mut textured_mesh.vertices,
                     &mut textured_mesh.indices,
                     &mut unique_vertices,
@@ -332,6 +341,7 @@ impl<'a> MeshExtractor<'a> {
         bsp: &WorldBsp,
         polygon: &WorldPoly,
         surface: &WorldSurface,
+        poly_lightmap: Option<&DecodedLightmap>,
         vertices: &mut Vec<DatVertex>,
         indices: &mut Vec<u32>,
         unique_vertices: &mut HashMap<DatVertex, u32>,
@@ -348,17 +358,40 @@ impl<'a> MeshExtractor<'a> {
             self.calculate_polygon_normal(bsp, polygon)
         };
 
-        // Get vertex positions
-        // Each element: (world-space pos, UV, per-vertex baked light 0..255)
-        let mut poly_vertices: Vec<(Vector3, Vector2, Vector3)> = Vec::with_capacity(polygon.disk_verts.len());
+        // Project every disk-vert into the surface's texture-UV space first.
+        // This space is reused to locate each vertex inside its polygon's
+        // decoded lightmap image (the lightmap covers exactly this
+        // polygon's footprint, so normalizing by the polygon's own UV
+        // bounding box maps every vertex to the correct texel region
+        // without needing the lightmap's absolute world-space origin).
+        let mut raw_verts: Vec<(usize, Vector3, Vector2, [u8; 3])> = Vec::with_capacity(polygon.disk_verts.len());
+        let mut uv_min = Vector2::new(f32::INFINITY, f32::INFINITY);
+        let mut uv_max = Vector2::new(f32::NEG_INFINITY, f32::NEG_INFINITY);
 
         for disk_vert in &polygon.disk_verts {
             let vert_idx = disk_vert.vertex_index as usize;
             if vert_idx >= bsp.points.len() {
                 continue;
             }
-
             let pos = bsp.points[vert_idx];
+            let tex_uv = self.calculate_uv(&pos, surface);
+            uv_min.x = uv_min.x.min(tex_uv.x);
+            uv_min.y = uv_min.y.min(tex_uv.y);
+            uv_max.x = uv_max.x.max(tex_uv.x);
+            uv_max.y = uv_max.y.max(tex_uv.y);
+            raw_verts.push((vert_idx, pos, tex_uv, disk_vert.dummy));
+        }
+
+        let uv_range = Vector2::new(
+            (uv_max.x - uv_min.x).max(1e-4),
+            (uv_max.y - uv_min.y).max(1e-4),
+        );
+
+        // Get vertex positions
+        // Each element: (world-space pos, UV, per-vertex baked light 0..1)
+        let mut poly_vertices: Vec<(Vector3, Vector2, Vector3)> = Vec::with_capacity(raw_verts.len());
+
+        for (_vert_idx, pos, tex_uv, dummy) in &raw_verts {
             // swap Y/Z for whatever reason
             // don't negate X here; the mesh scale will handle mirroring
             let scaled_pos = Vector3::new(
@@ -368,15 +401,22 @@ impl<'a> MeshExtractor<'a> {
             );
 
             // calculate texture coordinates using surface UV vectors
-            let uv = self.calculate_uv(&pos, surface);
+            let uv = self.calculate_uv(pos, surface);
 
-            // disk_vert.dummy[0..2] = per-vertex pre-baked RGB light (0..255 each).
-            // These are the compile-time lighting values stored by the Lithtech world compiler.
-            let light = Vector3::new(
-                disk_vert.dummy[0] as f32,
-                disk_vert.dummy[1] as f32,
-                disk_vert.dummy[2] as f32,
-            );
+            // Sample the real decoded per-texel lightmap when this
+            // polygon's surface has one (surface flag 0x80). Otherwise
+            // fall back to disk_vert.dummy -- confirmed (against a
+            // ground-truth reference LithTech .dat parser) to be a
+            // legitimate, if coarser, per-vertex baked light color, not
+            // garbage data.
+            let light = if let Some(lm) = poly_lightmap {
+                let norm_u = (tex_uv.x - uv_min.x) / uv_range.x;
+                let norm_v = (tex_uv.y - uv_min.y) / uv_range.y;
+                let rgb = lm.sample_normalized(norm_u, norm_v);
+                Vector3::new(rgb[0] * 255.0, rgb[1] * 255.0, rgb[2] * 255.0)
+            } else {
+                Vector3::new(dummy[0] as f32, dummy[1] as f32, dummy[2] as f32)
+            };
 
             poly_vertices.push((scaled_pos, uv, light));
         }

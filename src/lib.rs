@@ -9,6 +9,9 @@ pub mod dat;
 #[path = "kiss_engine/Resources/dat/dat_mesh.rs"]
 pub mod dat_mesh;
 
+#[path = "kiss_engine/Resources/dat/lightmap.rs"]
+pub mod lightmap;
+
 #[path = "kiss_engine/Mechanics/objects/game_objects.rs"]
 pub mod game_objects;
 

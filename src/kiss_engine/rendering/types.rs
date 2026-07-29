@@ -228,6 +228,10 @@ pub struct AppData {
     pub pipeline: vk::Pipeline,
     // Sky pipeline (depth write disabled, drawn behind world)
     pub sky_pipeline: vk::Pipeline,
+    // Opaque foreground sky layer (depth test/write enabled, drawn last
+    // among sky layers so mountains/skybuilding pieces correctly occlude
+    // each other instead of z-fighting/painting in DAT list order).
+    pub sky_foreground_pipeline: vk::Pipeline,
     // Framebuffers
     pub framebuffers: Vec<vk::Framebuffer>,
     // Command Pool
