@@ -19,7 +19,7 @@ https://github.com/user-attachments/assets/413c1559-ead3-4899-ad97-ca549fca8e11
 - Reading, rendering and assigning .ABC models to objects
 - Reading, rendering and assigning .DTX textures to surfaces and models
 - Dynamic Lighting
-- UV Lighting 
+- Baked Lightmaps. (No RLE, No Compression)
 - Simple Skyboxes (six-sided)
 - Complex Skyboxes (mirroring of models)
 - Occlusion culling
